@@ -105,11 +105,6 @@
 @font-face{font-family:'Switzer';src:url('fonts/Switzer-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'Switzer';src:url('fonts/Switzer-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
 @font-face{font-family:'Switzer';src:url('fonts/Switzer-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
-/* Aeonik (Display/Wordmark) — Lizenzschrift: .woff2-Dateien in /fonts ablegen.
-   Bis dahin Fallback auf Switzer. */
-@font-face{font-family:'Aeonik';src:url('fonts/Aeonik-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Aeonik';src:url('fonts/Aeonik-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Aeonik';src:url('fonts/Aeonik-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
@@ -120,7 +115,7 @@ html{scroll-behavior:smooth}
   --paper:#F4F2EC; --paper-2:#ECE9E0; --white:#FFFFFF;
   --text:#0B1C2B; --muted:#5b6b78; --line:#e2ded2;
   --ink-text:#aebfcb;
-  --disp:'Aeonik','Switzer','Space Grotesk',-apple-system,sans-serif;
+  --disp:'Switzer','Space Grotesk',-apple-system,sans-serif;
   --sans:'Inter',-apple-system,sans-serif;
   --mono:'Inter',-apple-system,sans-serif;
   --maxw:1200px; --pad:clamp(64px,9vh,130px);
@@ -227,7 +222,7 @@ section{padding:var(--pad) 0;position:relative}
 .card.g .badge{background:linear-gradient(150deg,rgba(31,168,90,.16),rgba(31,168,90,.06));color:var(--green-d)}
 .card.gr .badge{background:linear-gradient(150deg,rgba(91,107,120,.18),rgba(91,107,120,.06));color:#5b6b78}
 .card .ix{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--steel);text-transform:uppercase}
-.card h3{margin:.4rem 0 .6rem;font-size:1.12rem;letter-spacing:-.01em;white-space:nowrap}
+.card h3{margin:.4rem 0 .6rem;font-size:1.3rem;letter-spacing:-.01em;white-space:nowrap}
 .card .ds{color:var(--muted);font-size:.93rem;margin-bottom:1.2rem}
 .card ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
 .card li{font-size:.85rem;display:flex;gap:.6rem;align-items:center;white-space:nowrap}
@@ -239,8 +234,8 @@ section{padding:var(--pad) 0;position:relative}
 .cstep{padding:1.4rem 1.1rem;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.04);position:relative;transition:.3s}
 .cstep:hover{background:rgba(75,163,214,.12);border-color:rgba(75,163,214,.4);transform:translateY(-4px)}
 .cstep .n{font-family:var(--mono);font-size:.72rem;color:var(--blueprint);letter-spacing:.1em}
-.cstep strong{display:block;font-family:var(--disp);font-weight:600;color:#fff;margin-top:.4rem;font-size:1rem}
-.cstep span{font-size:.78rem;color:var(--ink-text)}
+.cstep strong{display:block;font-family:var(--disp);font-weight:600;color:#fff;margin-top:.4rem;font-size:1.18rem}
+.cstep span{font-size:.92rem;color:var(--ink-text)}
 .chain-add{margin-top:1.5rem;font-size:.92rem;color:var(--ink-text);display:flex;align-items:flex-start;gap:.5rem}
 .chain-add::before{content:'+';color:var(--blueprint);font-weight:700;flex-shrink:0}
 .chain-add strong{color:#fff;font-weight:600}
@@ -735,9 +730,9 @@ section{padding:var(--pad) 0;position:relative}
 <!-- LEISTUNGEN -->
 <section id="leistungen">
   <div class="container">
-    <div class="sh fade">
+    <div class="sh fade" style="max-width:none">
       <div class="mono-row"><span class="mono">Leistungen</span></div>
-      <h2>Ein Partner. Vom ersten Plan bis zur fertigen Umsetzung.</h2>
+      <h2 style="white-space:nowrap">Ein Partner. Vom ersten Plan bis zur Umsetzung.</h2>
       <p>Energieberatung, Förderung und Baubegleitung greifen bei uns ineinander.</p>
     </div>
     <div class="svc-grid">
@@ -1043,7 +1038,7 @@ section{padding:var(--pad) 0;position:relative}
       <!-- Schritt 1 -->
       <div class="wz-step active" id="wz-q1">
         <div class="wz-bar"><span class="wz-back-link" style="visibility:hidden">← Zurück</span></div>
-        <div class="wz-q">Worum geht es bei Ihrem Vorhaben?</div>
+        <div class="wz-q">Was ist das Ziel Ihres Vorhabens?</div>
         <div class="wz-opts">
           <button class="wz-opt" onclick="wzGoal('sanieren')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5h4v5"/></svg></span><span class="opt-txt"><strong>Bestand sanieren</strong><span class="opt-d">Heizung, Dämmung, Fenster. Schritt für Schritt fördern.</span></span><span class="opt-cue">Auswählen →</span></button>
           <button class="wz-opt" onclick="wzGoal('neubau')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></svg></span><span class="opt-txt"><strong>Neu bauen</strong><span class="opt-d">Effizienzhaus mit LCA &amp; KfW-Förderung.</span></span><span class="opt-cue">Auswählen →</span></button>
