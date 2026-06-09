@@ -1209,7 +1209,7 @@ section{padding:var(--pad) 0;position:relative}
             <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Telefonnummer"></div>
             <div class="fld"><label for="kf-mail">E-Mail</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail-Adresse" required></div>
           </div>
-          <div class="fld"><label for="vorhaben">Ihr Vorhaben</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Gewerbe zu Wohnen (KfW 266)</option><option>Noch unklar</option></select></div>
+          <div class="fld"><label for="vorhaben">Ihr Vorhaben</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Gewerbe zu Wohnen (KfW 266)</option><option>Noch unklar</option></select></div>
           <div class="fld"><label for="vorhaben-detail">Genauer</label><select id="vorhaben-detail" name="Vorhaben genauer"></select></div>
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1573,7 +1573,7 @@ function populateDetail(disp){
     return;
   }
   const k=GOALKEY[disp];
-  if(!k){det.innerHTML='<option>Vorhaben oben wählen</option>';det.disabled=true;return;}
+  if(!k){det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>';det.disabled=true;return;}
   det.disabled=false;det.innerHTML=WZ[k].subs.map(s=>`<option>${s.l}</option>`).join('');
 }
 function presetGzw(){
