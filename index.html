@@ -1463,7 +1463,8 @@ function houseZoomState(san){
   const svg=document.getElementById('houseSvg');if(!svg)return;
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
-  const MINX=34,MAXX=526,MIDX=285;   // Endanschläge leicht nach innen, damit der Kreis-Schatten nicht am Rand abschneidet; MIDX=285 = First/Symmetrieachse
+  const MINX=34,MAXX=526,MIDX=285;
+  const HOMEX=392;   // Start-/Ruheposition: eher rechts (ueberwiegend sanierter Zustand)   // Endanschläge leicht nach innen, damit der Kreis-Schatten nicht am Rand abschneidet; MIDX=285 = First/Symmetrieachse
   let split=MIDX;                   // Default MITTE (auf den First)
   function setSplit(x){
     split=Math.max(MINX,Math.min(MAXX,x));
@@ -1496,11 +1497,11 @@ function houseZoomState(san){
     if(e.target.closest('.catch')||e.target.closest('.hot')||e.target.closest('.part')||e.target.closest('.divider'))return;
     nudged=true;setSplit(pointerToX(e.clientX));
   });
-  setSplit(MIDX);
+  setSplit(HOMEX);
   // Anstups-Animation: Regler wippt dauerhaft sehr sanft um die MITTE (zeigt „ziehbar"), bis er erstmals bedient wird
   function nudge(){
     if(nudged||RM)return;
-    const t0=performance.now(),home=MIDX,amp=16,period=4200;
+    const t0=performance.now(),home=HOMEX,amp=16,period=4200;
     (function tick(t){
       if(nudged){setSplit(home);return;}
       const ph=((t-t0)%period)/period;                        // 0..1
