@@ -51,7 +51,7 @@
     {"@type": "Person", "name": "Jérôme Marquart", "jobTitle": "Wirtschaftsingenieur, Energieeffizienz-Experte (EEE)"},
     {"@type": "Person", "name": "Maximilian Rudorf", "jobTitle": "Architekt (bauvorlageberechtigt)"}
   ],
-  "knowsAbout": ["Energieberatung", "iSFP", "Sanierungsfahrplan", "KfW-Förderung", "BAFA-Förderung", "Energetische Baubegleitung", "Ökobilanz", "LCA", "Effizienzhaus", "Wärmepumpe", "Dämmung"],
+  "knowsAbout": ["Energieberatung", "iSFP", "Sanierungsfahrplan", "KfW-Förderung", "BAFA-Förderung", "Energetische Baubegleitung", "Ökobilanz", "LCA", "Effizienzhaus", "Wärmepumpe", "Dämmung", "Gewerbe zu Wohnen", "KfW 266", "Nutzungsänderung", "Effizienzhaus 85 EE"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Leistungen",
@@ -88,6 +88,11 @@
       "@type": "Question",
       "name": "Was ist eine Ökobilanz (LCA) und wann brauche ich sie?",
       "acceptedAnswer": {"@type": "Answer", "text": "Die Ökobilanz (LCA, Life Cycle Assessment) berechnet die Treibhausgase eines Gebäudes über den gesamten Lebenszyklus. Beim Neubau ist sie der Nachweis für die KfW-Stufe Klimafreundlicher Neubau (KFN) und damit Voraussetzung für diese Förderung."}
+    },
+    {
+      "@type": "Question",
+      "name": "Brauche ich für die KfW-Förderung Gewerbe zu Wohnen (266) einen Energieeffizienz-Experten?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Ja. Für das Programm Gewerbe zu Wohnen (KfW 266) muss die neue Wohneinheit energetisch mindestens den Standard Effizienzhaus 85 EE erreichen, und die KfW verlangt die Einbindung eines gelisteten Energieeffizienz-Experten. Wir erstellen das Energiekonzept und übernehmen den Nachweis und die Fachbegleitung. Die Umnutzung selbst plant und beantragt unser Architektur-Partner. Stand Juni 2026, Programmstart voraussichtlich Juli 2026, maßgeblich sind die Bedingungen der KfW."}
     },
     {
       "@type": "Question",
@@ -1027,6 +1032,59 @@ section{padding:var(--pad) 0;position:relative}
   </div>
 </section>
 
+<!-- GEWERBE ZU WOHNEN (KfW 266) -->
+<section id="gewerbe-zu-wohnen">
+  <style>
+    #gewerbe-zu-wohnen .gzw-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.6rem,4vw,3rem);align-items:center}
+    @media(max-width:880px){#gewerbe-zu-wohnen .gzw-grid{grid-template-columns:1fr}}
+    #gewerbe-zu-wohnen .gzw-lead{font-size:1.08rem;color:var(--muted);max-width:540px;margin-bottom:1.4rem}
+    #gewerbe-zu-wohnen .gzw-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-top:.4rem}
+    #gewerbe-zu-wohnen .gzw-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.98rem}
+    #gewerbe-zu-wohnen .gzw-list li b{color:var(--green-d);font-family:var(--mono);font-weight:600;flex-shrink:0}
+    #gewerbe-zu-wohnen .gzw-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.8rem}
+    #gewerbe-zu-wohnen .gzw-card{position:relative;background:linear-gradient(160deg,rgba(31,168,90,.10),#fff);border:1px solid rgba(31,168,90,.30);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow)}
+    #gewerbe-zu-wohnen .gzw-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--steel),var(--green));padding:.45rem 1rem;border-radius:999px;margin-bottom:1.2rem}
+    #gewerbe-zu-wohnen .gzw-num{font-family:var(--disp);font-weight:700;font-size:clamp(2.4rem,5.5vw,3.4rem);color:var(--green-d);line-height:1;letter-spacing:-.03em}
+    #gewerbe-zu-wohnen .gzw-num small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-top:.6rem}
+    #gewerbe-zu-wohnen .gzw-stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.4rem}
+    #gewerbe-zu-wohnen .gzw-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem}
+    #gewerbe-zu-wohnen .gzw-stat .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    #gewerbe-zu-wohnen .gzw-stat .s{font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--ink);margin-top:.2rem}
+    #gewerbe-zu-wohnen .gzw-note{font-family:var(--mono);font-size:.66rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:1rem;margin-top:1.3rem}
+  </style>
+  <div class="container">
+    <div class="gzw-grid">
+      <div class="fade">
+        <div class="mono-row"><span class="mono">Neue Förderung · KfW 266</span></div>
+        <h2>Aus Gewerbe wird Wohnraum, gefördert.</h2>
+        <p class="gzw-lead">Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum. Voraussichtlich ab Juli 2026 als direkter Zuschuss. Für die Förderung muss die neue Wohnung energetisch mindestens den Standard Effizienzhaus 85 EE erreichen. Genau hier kommen wir ins Spiel.</p>
+        <ul class="gzw-list">
+          <li><b>+</b> Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.</li>
+          <li><b>+</b> Als gelistete Energieeffizienz-Experten übernehmen wir die Fachbegleitung, die das Programm verlangt.</li>
+          <li><b>+</b> Wir prüfen, ob Ihr Vorhaben zum Programm passt, und begleiten Sie beim Antrag.</li>
+          <li><b>+</b> Beraten, planen und nachweisen aus einer Abstimmung.</li>
+        </ul>
+        <div class="gzw-cta">
+          <a href="#kontakt" class="btn btn-green magnetic" onclick="presetGzw()">Förderung besprechen <span class="ar">→</span></a>
+        </div>
+      </div>
+      <div class="fade d1">
+        <div class="gzw-card">
+          <span class="gzw-badge">KfW 266</span>
+          <div class="gzw-num">bis zu 30.000&nbsp;€<small>je neuer Wohneinheit</small></div>
+          <div class="gzw-stats">
+            <div class="gzw-stat"><div class="k">Förderart</div><div class="s">Zuschuss, ohne Rückzahlung</div></div>
+            <div class="gzw-stat"><div class="k">Förderquote</div><div class="s">30 % der Umbaukosten</div></div>
+            <div class="gzw-stat"><div class="k">Unser Part</div><div class="s">Effizienzhaus 85 EE</div></div>
+            <div class="gzw-stat"><div class="k">Voraussetzung</div><div class="s">beheizt, bisher kein Wohnen</div></div>
+          </div>
+          <p class="gzw-note">Stand Juni 2026. Das Programm startet voraussichtlich im Juli 2026. Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Ob und in welcher Höhe eine Förderung möglich ist, hängt vom Einzelfall ab.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WEGWEISER -->
 <section class="alt" id="wegweiser">
   <div class="wz-aura a1"></div><div class="wz-aura a2"></div>
@@ -1156,7 +1214,7 @@ section{padding:var(--pad) 0;position:relative}
             <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Telefonnummer"></div>
             <div class="fld"><label for="kf-mail">E-Mail</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail-Adresse" required></div>
           </div>
-          <div class="fld"><label for="vorhaben">Ihr Vorhaben</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Noch unklar</option></select></div>
+          <div class="fld"><label for="vorhaben">Ihr Vorhaben</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Gewerbe zu Wohnen (KfW 266)</option><option>Noch unklar</option></select></div>
           <div class="fld"><label for="vorhaben-detail">Genauer</label><select id="vorhaben-detail" name="Vorhaben genauer"></select></div>
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1508,9 +1566,20 @@ const FORM={sanieren:'Bestand sanieren',neubau:'Neu bauen (LCA)',invest:'Kaufen 
 const GOALKEY={'Bestand sanieren':'sanieren','Neu bauen (LCA)':'neubau','Kaufen & investieren':'invest','Noch unklar':null};
 function populateDetail(disp){
   const det=document.getElementById('vorhaben-detail');if(!det)return;
+  if(disp==='Gewerbe zu Wohnen (KfW 266)'){
+    det.disabled=false;
+    det.innerHTML=['Umnutzung Gewerbe zu Wohnen','Energiekonzept / Effizienzhaus 85 EE','Noch unklar'].map(s=>`<option>${s}</option>`).join('');
+    return;
+  }
   const k=GOALKEY[disp];
   if(!k){det.innerHTML='<option>Vorhaben oben wählen</option>';det.disabled=true;return;}
   det.disabled=false;det.innerHTML=WZ[k].subs.map(s=>`<option>${s.l}</option>`).join('');
+}
+function presetGzw(){
+  const sel=document.getElementById('vorhaben');if(!sel)return;
+  sel.value='Gewerbe zu Wohnen (KfW 266)';populateDetail(sel.value);
+  sel.style.borderColor='var(--steel)';sel.style.boxShadow='0 0 0 3px rgba(31,111,165,.18)';
+  setTimeout(()=>{sel.style.boxShadow=''},1600);
 }
 /* Kontaktformular: per AJAX an Formspree senden, Status inline anzeigen */
 (function(){
