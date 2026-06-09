@@ -1464,7 +1464,7 @@ function houseZoomState(san){
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
   const MINX=34,MAXX=526,MIDX=285;
-  const HOMEX=392;   // Start-/Ruheposition: eher rechts (ueberwiegend sanierter Zustand)   // Endanschläge leicht nach innen, damit der Kreis-Schatten nicht am Rand abschneidet; MIDX=285 = First/Symmetrieachse
+  const HOMEX=MAXX;   // Start-/Ruheposition: eher rechts (ueberwiegend sanierter Zustand)   // Endanschläge leicht nach innen, damit der Kreis-Schatten nicht am Rand abschneidet; MIDX=285 = First/Symmetrieachse
   let split=MIDX;                   // Default MITTE (auf den First)
   function setSplit(x){
     split=Math.max(MINX,Math.min(MAXX,x));
@@ -1501,12 +1501,16 @@ function houseZoomState(san){
   // Anstups-Animation: Regler wippt dauerhaft sehr sanft um die MITTE (zeigt „ziehbar"), bis er erstmals bedient wird
   function nudge(){
     if(nudged||RM)return;
-    const t0=performance.now(),home=HOMEX,amp=16,period=4200;
+    const home=HOMEX, amp=70, period=2600;   // alle 2,6s ein Puls nach links, dann zurueckschnappen
+    const t0=performance.now();
     (function tick(t){
       if(nudged){setSplit(home);return;}
-      const ph=((t-t0)%period)/period;                        // 0..1
-      const e=Math.sin(ph*Math.PI*2);                         // -1→0→1→0→-1 : Wippen um die Mitte
-      setSplit(home+amp*e);
+      const ph=((t-t0)%period)/period;                 // 0..1
+      // Puls: 0..0.35 sanft nach links ausschlagen, 0.35..0.6 zurueckschnappen, Rest Ruhe
+      let off=0;
+      if(ph<0.35){ const p=ph/0.35; off=-amp*(1-Math.pow(1-p,3)); }       // ease-out raus
+      else if(ph<0.60){ const p=(ph-0.35)/0.25; off=-amp*(1-(p*p)); }      // ease-in zurueck
+      setSplit(home+off);
       requestAnimationFrame(tick);
     })(t0);
   }
