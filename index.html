@@ -1573,7 +1573,7 @@ function populateDetail(disp){
     det.innerHTML=['Umnutzung Gewerbe zu Wohnen','Energiekonzept / Effizienzhaus 85 EE','Noch unklar'].map(s=>`<option>${s}</option>`).join('');
     return;
   }
-  if(disp==='Noch unklar'){det.disabled=false;det.innerHTML='<option selected>Noch unklar</option>';return;}
+  if(disp==='Noch unklar'){det.innerHTML='<option selected>Noch unklar</option>';det.disabled=true;return;}
   const k=GOALKEY[disp];
   if(!k){det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>';det.disabled=true;return;}
   det.disabled=false;det.innerHTML=WZ[k].subs.map(s=>`<option>${s.l}</option>`).join('');
