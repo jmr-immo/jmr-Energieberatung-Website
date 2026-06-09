@@ -350,7 +350,7 @@ section{padding:var(--pad) 0;position:relative}
 /* Der TEXT bestimmt die Zeilenhöhe; das Foto ist absolut positioniert und füllt exakt diese Höhe.
    object-position:top → Beschnitt unten, Köpfe oben bleiben sichtbar. */
 .team-photo{position:relative;margin:0;width:100%;min-height:280px}
-.team-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
+.team-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
 @media(max-width:860px){.team-photo{min-height:0}.team-photo img{position:static;height:auto;aspect-ratio:4/5}}
 .team-photo figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:14px;padding:.8rem 1rem}
 .team-photo figcaption strong{font-family:var(--disp);font-weight:600;display:block;font-size:.98rem;color:var(--ink)}
