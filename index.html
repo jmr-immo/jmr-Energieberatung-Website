@@ -186,11 +186,7 @@ section{padding:var(--pad) 0;position:relative}
 .hero-sign .b{font-family:var(--disp);font-size:2rem;color:var(--steel);line-height:.6}
 /* PHOTO FRAME */
 .photo{position:relative}
-.photo-img{aspect-ratio:4/5;border-radius:var(--r-lg);background:#dde7ef url("img/hero-team.jpg") center/cover;box-shadow:var(--shadow-lg);overflow:hidden}
-/* Platzhalter bis das Konferenzraum-Foto (Pläne/Beratung) da ist */
-/* Platzhalter-Fläche bis das Konferenzraum-Foto (Pläne/Beratung) da ist */
-.photo-placeholder{background:#dde4ea;display:flex;align-items:center;justify-content:center}
-.photo-placeholder::after{content:"Foto folgt";font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#8ea3b2}
+.photo-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;border-radius:var(--r-lg);background:#dde7ef;box-shadow:var(--shadow-lg)}
 .photo-ph{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--muted);text-align:center;text-transform:uppercase;line-height:1.9}
 .photo-ph b{display:block;font-size:1.5rem;color:var(--steel);margin-bottom:.4rem}
 .photo figcaption{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:16px;padding:.9rem 1.1rem;box-shadow:var(--shadow)}
@@ -715,8 +711,7 @@ section{padding:var(--pad) 0;position:relative}
       </div>
       <div class="fade vis d2">
         <figure class="photo">
-          <!-- Platzhalter: hier kommt das Foto von Jérôme & Maximilian im Konferenzraum (Pläne in der Hand, Beratungssituation) -->
-          <div class="photo-img photo-placeholder"></div>
+          <img class="photo-img" src="img/hero-konferenz.jpg" alt="Jérôme Marquart und Maximilian Rudorf im Konferenzraum beim Besprechen von Bauplänen, jmr Energieberatung Saarbrücken">
           <figcaption><strong>Jérôme Marquart &amp; Maximilian Rudorf</strong><span>Wirtschaftsingenieur · Architekt · Saarbrücken</span></figcaption>
         </figure>
       </div>
@@ -1155,7 +1150,7 @@ section{padding:var(--pad) 0;position:relative}
     </div>
     <div class="team-hero fade">
       <figure class="team-photo">
-        <img src="img/hero-team.jpg" alt="Jérôme Marquart und Maximilian Rudorf, Energieberater und Architekt der jmr Energieberatung in Saarbrücken">
+        <img src="img/team-treppe.jpg" alt="Jérôme Marquart und Maximilian Rudorf, Energieberater und Architekt der jmr Energieberatung in Saarbrücken">
       </figure>
       <div class="team-story">
         <p>Wir sind Jérôme und Maximilian, ein Wirtschaftsingenieur und ein Architekt aus Saarbrücken. Uns verbindet die Überzeugung, dass eine gute Sanierung kein Bauchgefühl sein darf, sondern eine durchgerechnete Entscheidung.</p>
