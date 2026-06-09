@@ -1032,6 +1032,57 @@ section{padding:var(--pad) 0;position:relative}
   </div>
 </section>
 
+<!-- WEGWEISER -->
+<section class="alt" id="wegweiser">
+  <div class="wz-aura a1"></div><div class="wz-aura a2"></div>
+  <div class="container">
+    <div class="wz fade" id="wz">
+      <div class="wz-title">Förder-Check</div>
+      <p class="wz-lead" id="wz-lead"><b>Wählen Sie Ihr Vorhaben</b> für eine erste Einordnung.</p>
+      <div class="wz-body">
+      <!-- Schritt 1 -->
+      <div class="wz-step active" id="wz-q1">
+        <div class="wz-bar"><span class="wz-back-link" style="visibility:hidden">← Zurück</span></div>
+        <div class="wz-q">Was ist das Ziel Ihres Vorhabens?</div>
+        <div class="wz-opts">
+          <button class="wz-opt" onclick="wzGoal('sanieren')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5h4v5"/></svg></span><span class="opt-txt"><strong>Bestand sanieren</strong><span class="opt-d">Heizung, Dämmung, Fenster. Schritt für Schritt fördern.</span></span><span class="opt-cue">Auswählen →</span></button>
+          <button class="wz-opt" onclick="wzGoal('neubau')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></svg></span><span class="opt-txt"><strong>Neu bauen</strong><span class="opt-d">Effizienzhaus mit LCA &amp; KfW-Förderung.</span></span><span class="opt-cue">Auswählen →</span></button>
+          <button class="wz-opt" onclick="wzGoal('invest')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><polyline points="5 15 10 10 13 13 19 6"/><path d="M19 6v4M19 6h-4"/></svg></span><span class="opt-txt"><strong>Kaufen &amp; investieren</strong><span class="opt-d">Objekt-Check, Sanierungs- &amp; Aufteilungsstrategie.</span></span><span class="opt-cue">Auswählen →</span></button>
+        </div>
+      </div>
+      <!-- Schritt 2 -->
+      <div class="wz-step" id="wz-q2">
+        <div class="wz-bar"><button class="wz-back-link" onclick="wzReset()">← Zurück</button></div>
+        <div class="wz-q" id="q2-question"></div>
+        <div class="wz-opts" id="q2-opts"></div>
+      </div>
+      <!-- Ergebnis -->
+      <div class="wz-step" id="wz-res">
+        <div class="wz-bar"><button class="wz-back-link" onclick="wzBack()">← Zurück</button></div>
+        <div class="wz-rh"><span class="ic" id="res-ic">A</span><div><h3 id="res-title">Ihr Weg</h3><p id="res-sub"></p></div></div>
+        <div class="wz-focus" id="res-focus"></div>
+        <div id="res-calc" class="calc" style="display:none">
+          <div class="calc-fields">
+            <div class="cf-cost"><label class="calc-lbl" for="calc-cost">Geplante Kosten — grobe Schätzung<span class="calc-tip" tabindex="0"><span class="calc-tip-i">i</span><span class="calc-tip-box" id="calc-note"></span></span></label>
+              <div class="calc-in"><span class="eur">€</span><input id="calc-cost" type="text" inputmode="numeric" autocomplete="off" placeholder="z. B. 25.000" oninput="calcUpdate()"></div>
+            </div>
+            <div class="cf-we" id="cf-we"><label class="calc-lbl">Wohneinheiten</label>
+              <div class="we-step"><button type="button" onclick="weStep(-1)" aria-label="weniger">−</button><input id="calc-we" type="text" value="1" readonly tabindex="-1"><button type="button" onclick="weStep(1)" aria-label="mehr">+</button></div>
+            </div>
+          </div>
+          <div id="calc-out" class="calc-out"></div>
+          <div id="calc-cap" class="calc-cap"></div>
+        </div>
+        <div class="fgrid" id="res-foerder"></div>
+        <p class="wz-note" id="res-disc">Grobe Orientierung, keine verbindliche Zusage. Förderprogramme und -sätze ändern sich laufend; maßgeblich ist Ihr individueller Förderbescheid.</p>
+        <div class="res-nudge">Nächster Schritt: Im kostenlosen Erstgespräch gehen wir ins Detail und finden den Weg, der sich für Sie wirklich lohnt (z. B. ob ein iSFP sinnvoll ist oder welche Maßnahmen wirklich Sinn machen, und welche nicht).</div>
+        <div class="wz-cta"><a href="#kontakt" class="btn btn-green magnetic" onclick="wzToContact()">Kostenloses Erstgespräch buchen <span class="ar">→</span></a></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- GEWERBE ZU WOHNEN (KfW 266) -->
 <section id="gewerbe-zu-wohnen">
   <style>
@@ -1081,57 +1132,6 @@ section{padding:var(--pad) 0;position:relative}
           </div>
           <p class="gzw-note">Stand Juni 2026. Das Programm startet voraussichtlich im Juli 2026. Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Ob und in welcher Höhe eine Förderung möglich ist, hängt vom Einzelfall ab.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WEGWEISER -->
-<section class="alt" id="wegweiser">
-  <div class="wz-aura a1"></div><div class="wz-aura a2"></div>
-  <div class="container">
-    <div class="wz fade" id="wz">
-      <div class="wz-title">Förder-Check</div>
-      <p class="wz-lead" id="wz-lead"><b>Wählen Sie Ihr Vorhaben</b> für eine erste Einordnung.</p>
-      <div class="wz-body">
-      <!-- Schritt 1 -->
-      <div class="wz-step active" id="wz-q1">
-        <div class="wz-bar"><span class="wz-back-link" style="visibility:hidden">← Zurück</span></div>
-        <div class="wz-q">Was ist das Ziel Ihres Vorhabens?</div>
-        <div class="wz-opts">
-          <button class="wz-opt" onclick="wzGoal('sanieren')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5h4v5"/></svg></span><span class="opt-txt"><strong>Bestand sanieren</strong><span class="opt-d">Heizung, Dämmung, Fenster. Schritt für Schritt fördern.</span></span><span class="opt-cue">Auswählen →</span></button>
-          <button class="wz-opt" onclick="wzGoal('neubau')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></svg></span><span class="opt-txt"><strong>Neu bauen</strong><span class="opt-d">Effizienzhaus mit LCA &amp; KfW-Förderung.</span></span><span class="opt-cue">Auswählen →</span></button>
-          <button class="wz-opt" onclick="wzGoal('invest')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><polyline points="5 15 10 10 13 13 19 6"/><path d="M19 6v4M19 6h-4"/></svg></span><span class="opt-txt"><strong>Kaufen &amp; investieren</strong><span class="opt-d">Objekt-Check, Sanierungs- &amp; Aufteilungsstrategie.</span></span><span class="opt-cue">Auswählen →</span></button>
-        </div>
-      </div>
-      <!-- Schritt 2 -->
-      <div class="wz-step" id="wz-q2">
-        <div class="wz-bar"><button class="wz-back-link" onclick="wzReset()">← Zurück</button></div>
-        <div class="wz-q" id="q2-question"></div>
-        <div class="wz-opts" id="q2-opts"></div>
-      </div>
-      <!-- Ergebnis -->
-      <div class="wz-step" id="wz-res">
-        <div class="wz-bar"><button class="wz-back-link" onclick="wzBack()">← Zurück</button></div>
-        <div class="wz-rh"><span class="ic" id="res-ic">A</span><div><h3 id="res-title">Ihr Weg</h3><p id="res-sub"></p></div></div>
-        <div class="wz-focus" id="res-focus"></div>
-        <div id="res-calc" class="calc" style="display:none">
-          <div class="calc-fields">
-            <div class="cf-cost"><label class="calc-lbl" for="calc-cost">Geplante Kosten — grobe Schätzung<span class="calc-tip" tabindex="0"><span class="calc-tip-i">i</span><span class="calc-tip-box" id="calc-note"></span></span></label>
-              <div class="calc-in"><span class="eur">€</span><input id="calc-cost" type="text" inputmode="numeric" autocomplete="off" placeholder="z. B. 25.000" oninput="calcUpdate()"></div>
-            </div>
-            <div class="cf-we" id="cf-we"><label class="calc-lbl">Wohneinheiten</label>
-              <div class="we-step"><button type="button" onclick="weStep(-1)" aria-label="weniger">−</button><input id="calc-we" type="text" value="1" readonly tabindex="-1"><button type="button" onclick="weStep(1)" aria-label="mehr">+</button></div>
-            </div>
-          </div>
-          <div id="calc-out" class="calc-out"></div>
-          <div id="calc-cap" class="calc-cap"></div>
-        </div>
-        <div class="fgrid" id="res-foerder"></div>
-        <p class="wz-note" id="res-disc">Grobe Orientierung, keine verbindliche Zusage. Förderprogramme und -sätze ändern sich laufend; maßgeblich ist Ihr individueller Förderbescheid.</p>
-        <div class="res-nudge">Nächster Schritt: Im kostenlosen Erstgespräch gehen wir ins Detail und finden den Weg, der sich für Sie wirklich lohnt (z. B. ob ein iSFP sinnvoll ist oder welche Maßnahmen wirklich Sinn machen, und welche nicht).</div>
-        <div class="wz-cta"><a href="#kontakt" class="btn btn-green magnetic" onclick="wzToContact()">Kostenloses Erstgespräch buchen <span class="ar">→</span></a></div>
-      </div>
       </div>
     </div>
   </div>
