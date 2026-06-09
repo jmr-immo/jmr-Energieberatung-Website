@@ -1210,7 +1210,7 @@ section{padding:var(--pad) 0;position:relative}
             <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Telefonnummer"></div>
             <div class="fld"><label for="kf-mail">E-Mail</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail-Adresse" required></div>
           </div>
-          <div class="fld"><label for="vorhaben">Ihr Vorhaben</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Gewerbe zu Wohnen (KfW 266)</option><option>Noch unklar</option></select></div>
+          <div class="fld"><label for="vorhaben">Ihr Vorhaben</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Noch unklar</option></select></div>
           <div class="fld"><label for="vorhaben-detail">Genauer</label><select id="vorhaben-detail" name="Vorhaben genauer"></select></div>
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1531,10 +1531,17 @@ const WZ={
     steps:['Ökobilanz / LCA über den 50-Jahre-Lebenszyklus','KFN-Förderung bei der KfW — wir unterstützen beim Antrag','Baubegleitung durch uns, Fachplanung über unseren Architektur-Partner'],
     subs:[{l:'Einfamilienhaus',f:'Effizienzhaus-Neubau (EFH)'},{l:'Mehrfamilienhaus',f:'MFH-Neubau, 100.000 € je Wohneinheit'},{l:'Bauträger / Projekt',f:'Bauträger-Projekt, LCA über alle Einheiten'}]},
   invest:{label:'Kaufen & investieren',ic:'C',code:'/// C · INVEST',q2:'Was planen Sie mit dem Objekt?',
-    title:'Kaufen & investieren: Invest-Check',sub:'Energetische Kaufberatung und Sanierungs- bzw. Aufteilungsstrategie. Bei Bauantrag und Umnutzung unterstützen wir über unseren <a href="https://jmr-architektur.de" target="_blank" rel="noopener" class="partner-link">Architektur-Partner</a>.',
+    title:'Kaufen & investieren: Invest-Check',sub:'Energetische Kaufberatung und Sanierungsstrategie. Bei Bauantrag und Umnutzung unterstützen wir über unseren <a href="https://jmr-architektur.de" target="_blank" rel="noopener" class="partner-link">Architektur-Partner</a>.',
     foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie, mit Architektur-Partner im Hintergrund'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
-    steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung, Umnutzung oder Aufteilung','Bauantrag über unseren Architektur-Partner, dann Umsetzung'],
-    subs:[{l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie'},{l:'Aufteilen',f:'Aufteilung in Wohnungseigentum'},{l:'Umnutzen',f:'z. B. Gewerbe → Wohnen'}]}
+    steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Bauantrag über unseren Architektur-Partner, dann Umsetzung'],
+    subs:[
+      {l:'Gewerbe zu Wohnen (KfW 266)',f:'Umnutzung Gewerbe zu Wohnen, gefördert',
+        title:'Gewerbe zu Wohnen: KfW 266',
+        sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, voraussichtlich ab Juli 2026. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach; die Umnutzung plant unser <a href="https://jmr-architektur.de" target="_blank" rel="noopener" class="partner-link">Architektur-Partner</a>.',
+        foerder:[{big:'bis 30.000 €',lbl:'Zuschuss je neuer Wohneinheit (30 % der förderfähigen Kosten)'},{big:'EH 85 EE',lbl:'energetischer Standard, den wir nachweisen'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
+      {l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie'},
+      {l:'Umnutzen',f:'z. B. unbeheizt → beheizt'}
+    ]}
 };
 /* Schätz-Rechner: grobe Spannen aus Wiki (KfW 458 / BAFA BEG EM / KfW 261) */
 const MEASURES={
@@ -1568,11 +1575,6 @@ const FORM={sanieren:'Bestand sanieren',neubau:'Neu bauen (LCA)',invest:'Kaufen 
 const GOALKEY={'Bestand sanieren':'sanieren','Neu bauen (LCA)':'neubau','Kaufen & investieren':'invest','Noch unklar':null};
 function populateDetail(disp){
   const det=document.getElementById('vorhaben-detail');if(!det)return;
-  if(disp==='Gewerbe zu Wohnen (KfW 266)'){
-    det.disabled=false;
-    det.innerHTML=['Umnutzung Gewerbe zu Wohnen','Energiekonzept / Effizienzhaus 85 EE','Noch unklar'].map(s=>`<option>${s}</option>`).join('');
-    return;
-  }
   if(disp==='Noch unklar'){det.innerHTML='<option selected>Noch unklar</option>';det.disabled=true;return;}
   const k=GOALKEY[disp];
   if(!k){det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>';det.disabled=true;return;}
@@ -1580,7 +1582,8 @@ function populateDetail(disp){
 }
 function presetGzw(){
   const sel=document.getElementById('vorhaben');if(!sel)return;
-  sel.value='Gewerbe zu Wohnen (KfW 266)';populateDetail(sel.value);
+  sel.value='Kaufen & investieren';populateDetail(sel.value);
+  const det=document.getElementById('vorhaben-detail');if(det)det.value='Gewerbe zu Wohnen (KfW 266)';
   sel.style.borderColor='var(--steel)';sel.style.boxShadow='0 0 0 3px rgba(31,111,165,.18)';
   setTimeout(()=>{sel.style.boxShadow=''},1600);
 }
@@ -1631,12 +1634,12 @@ function wzGoal(k){curGoal=k;const d=WZ[k];
 }
 function wzSub(i){const d=WZ[curGoal],sub=d.subs[i];lastGoal=curGoal;lastGoalLabel=d.label;lastFocus=sub.f;lastSub=sub.l;
   document.getElementById('res-ic').textContent=d.ic;
-  document.getElementById('res-title').textContent=d.title;
-  document.getElementById('res-sub').innerHTML=d.sub;
+  document.getElementById('res-title').textContent=sub.title||d.title;
+  document.getElementById('res-sub').innerHTML=sub.sub||d.sub;
   document.getElementById('res-focus').textContent='Fokus: '+sub.f;
   const calc=document.getElementById('res-calc'),fg=document.getElementById('res-foerder');
   if(curGoal==='sanieren'&&sub.m){fg.style.display='none';fg.innerHTML='';calc.style.display='block';setupCalc(sub.m);}
-  else{calc.style.display='none';fg.style.display='grid';fg.innerHTML=d.foerder.map(f=>`<div class="fbox"><div class="pct" data-full="${f.big}">${f.big}</div><div class="lbl">${f.lbl}</div></div>`).join('');document.querySelectorAll('#res-foerder .pct').forEach(countUp);}
+  else{calc.style.display='none';fg.style.display='grid';const fd=sub.foerder||d.foerder;fg.innerHTML=fd.map(f=>`<div class="fbox"><div class="pct" data-full="${f.big}">${f.big}</div><div class="lbl">${f.lbl}</div></div>`).join('');document.querySelectorAll('#res-foerder .pct').forEach(countUp);}
   show('wz-res');
 }
 function wzBack(){show('wz-q2')}
