@@ -1501,7 +1501,7 @@ function houseZoomState(san){
   // Anstups-Animation: Regler wippt dauerhaft sehr sanft um die MITTE (zeigt „ziehbar"), bis er erstmals bedient wird
   function nudge(){
     if(nudged||RM)return;
-    const home=HOMEX, amp=70, period=2600;   // alle 2,6s ein Puls nach links, dann zurueckschnappen
+    const home=HOMEX, amp=35, period=2600;   // alle 2,6s ein Puls nach links, dann zurueckschnappen
     const t0=performance.now();
     (function tick(t){
       if(nudged){setSplit(home);return;}
