@@ -1501,15 +1501,17 @@ function houseZoomState(san){
   // Anstups-Animation: Regler wippt dauerhaft sehr sanft um die MITTE (zeigt „ziehbar"), bis er erstmals bedient wird
   function nudge(){
     if(nudged||RM)return;
-    const home=HOMEX, amp=35, period=2600;   // alle 2,6s ein Puls nach links, dann zurueckschnappen
+    const home=HOMEX, amp=35, period=3400;   // 2 kurze Pulse nach links, dann laengere Pause
     const t0=performance.now();
+    // ein einzelner Puls (0..1): schnell raus (ease-out), zurueckschnappen (ease-in)
+    function pulse(p){ if(p<0.45){const q=p/0.45; return -amp*(1-Math.pow(1-q,3));} else if(p<0.9){const q=(p-0.45)/0.45; return -amp*(1-(q*q));} return 0; }
     (function tick(t){
       if(nudged){setSplit(home);return;}
-      const ph=((t-t0)%period)/period;                 // 0..1
-      // Puls: 0..0.35 sanft nach links ausschlagen, 0.35..0.6 zurueckschnappen, Rest Ruhe
+      const ph=((t-t0)%period)/period;        // 0..1 ueber die ganze Periode
       let off=0;
-      if(ph<0.35){ const p=ph/0.35; off=-amp*(1-Math.pow(1-p,3)); }       // ease-out raus
-      else if(ph<0.60){ const p=(ph-0.35)/0.25; off=-amp*(1-(p*p)); }      // ease-in zurueck
+      // zwei Pulse dicht hintereinander am Anfang der Periode, Rest Ruhe
+      if(ph<0.22){ off=pulse(ph/0.22); }
+      else if(ph<0.44){ off=pulse((ph-0.22)/0.22); }
       setSplit(home+off);
       requestAnimationFrame(tick);
     })(t0);
