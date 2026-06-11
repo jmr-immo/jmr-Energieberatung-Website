@@ -416,6 +416,10 @@ section{padding:var(--pad) 0;position:relative}
 .ftop .bn .flogo{height:30px;width:auto;display:block;margin-bottom:.8rem}
 .ftop .bn small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;color:#7d92a1;text-transform:uppercase;margin-top:.4rem}
 .fnav{display:flex;flex-wrap:wrap;gap:1.4rem}.fnav a{color:#7d92a1}.fnav a:hover{color:#fff}
+.fcol{display:flex;flex-direction:column;align-items:flex-end;gap:1rem}
+@media(max-width:760px){.fcol{align-items:flex-start}}
+.fpartner{font-family:var(--disp);font-weight:600;font-size:1rem;color:#cbd8e0;text-decoration:none;transition:color .2s}
+.fpartner:hover{color:#fff}
 .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-family:var(--mono);font-size:.72rem;color:#5a6f7d;position:relative;z-index:2}
 
 /* SPOTLIGHT */
@@ -1243,8 +1247,11 @@ section{padding:var(--pad) 0;position:relative}
   <div class="spot"></div>
   <div class="container">
     <div class="ftop">
-      <div class="bn"><img class="flogo" src="img/logo-white.png" alt="jmr Energieberatung">Energieberatung · Förderung · Baubegleitung</div>
-      <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="https://jmr-architektur.de" target="_blank" rel="noopener">Architektur ↗</a><a href="#kontakt">Erstgespräch</a></div>
+      <div class="bn"><img class="flogo" src="img/logo-white.png" alt="jmr Energieberatung">jmr Energieberatung<small>Energieberatung · Förderung · Baubegleitung</small></div>
+      <div class="fcol">
+        <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="#kontakt">Erstgespräch</a></div>
+        <a class="fpartner" href="https://jmr-architektur.de" target="_blank" rel="noopener">jmr Architektur ↗</a>
+      </div>
     </div>
     <div class="fbot"><span>© 2026 jmr Energieberatung · Marquart Consulting GmbH · Saarbrücken</span><span><a href="impressum.html" target="_blank" rel="noopener" style="color:inherit">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener" style="color:inherit">Datenschutz</a></span></div>
   </div>
