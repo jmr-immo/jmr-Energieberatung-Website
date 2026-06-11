@@ -777,7 +777,7 @@ section{padding:var(--pad) 0;position:relative}
     <div class="edu-stage fade" id="houseStage">
       <div class="house-frame">
         <div class="house-clip">
-        <svg class="house" id="houseSvg" viewBox="0 0 560 432" xmlns="http://www.w3.org/2000/svg">
+        <svg class="house" id="houseSvg" viewBox="-22 0 604 432" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset="1" stop-color="#dde4ea"/></linearGradient>
             <linearGradient id="gRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd6de"/><stop offset="1" stop-color="#aab6bf"/></linearGradient>
@@ -805,8 +805,8 @@ section{padding:var(--pad) 0;position:relative}
             <radialGradient id="unsanDark" cx="0.5" cy="0.5" r="0.72" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#0b1c2b" stop-opacity="0.30"/><stop offset="0.55" stop-color="#0b1c2b" stop-opacity="0.22"/><stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/></radialGradient>
             <!-- Sanierte Seite: dezenter Himmel→Wiese-Hintergrund (oben blau, unten grün), nur Hintergrund -->
             <linearGradient id="sanBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4BA3D6" stop-opacity="0.16"/><stop offset="0.45" stop-color="#5BD0E0" stop-opacity="0.08"/><stop offset="0.72" stop-color="#1FA85A" stop-opacity="0.10"/><stop offset="1" stop-color="#1FA85A" stop-opacity="0.20"/></linearGradient>
-            <clipPath id="clipUn"><rect id="clipUnRect" x="0" y="0" width="532" height="432"/></clipPath>
-            <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="0" width="28" height="432"/></clipPath>
+            <clipPath id="clipUn"><rect id="clipUnRect" x="-22" y="0" width="554" height="432"/></clipPath>
+            <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="0" width="50" height="432"/></clipPath>
             <clipPath id="clipRoom"><rect x="188" y="190" width="194" height="214"/></clipPath>
             <clipPath id="clipPV"><polygon points="300,102 396,175 389,184 293,111"/></clipPath>
             <!-- Dachraum-Dreieck: Dachdämmung nur hier sichtbar (im dunklen Bereich), endet am Übergang zum 1. OG -->
@@ -817,7 +817,7 @@ section{padding:var(--pad) 0;position:relative}
           </defs>
           <g id="scene">
             <!-- Sanierte Seite: Hintergrund Himmel→Wiese (liegt ganz hinten, nur Hintergrund, clipSan) -->
-            <rect class="s-only" clip-path="url(#clipSan)" x="0" y="0" width="560" height="432" fill="url(#sanBg)" style="pointer-events:none"/>
+            <rect class="s-only" clip-path="url(#clipSan)" x="-22" y="0" width="604" height="432" fill="url(#sanBg)" style="pointer-events:none"/>
             <!-- Solarenergie Sonne→PV: konzentrische „WLAN"-Wellen, die von der Sonne bis zur PV pulsieren -->
             <g class="wifi s-only" clip-path="url(#clipSan)">
               <path class="wifi-arc" d="M405.2 179.8 A120 120 0 0 1 338 71.8"/>
@@ -978,7 +978,7 @@ section{padding:var(--pad) 0;position:relative}
               <text class="loss-label" x="452" y="240" text-anchor="start"><tspan x="452" dy="0">Wärme-</tspan><tspan x="452" dy="8">verluste</tspan></text>
             </g>
             <!-- Unsanierte Seite leicht abgedunkelt, weich ausfadend (clipUn = links vom Slider) -->
-            <rect class="u-only" clip-path="url(#clipUn)" x="0" y="0" width="560" height="432" fill="url(#unsanDark)" style="pointer-events:none"/>
+            <rect class="u-only" clip-path="url(#clipUn)" x="-22" y="0" width="604" height="432" fill="url(#unsanDark)" style="pointer-events:none"/>
             <g class="hots">
               <g class="hot" id="hot-dach" onclick="housePick('dach')"><circle cx="222" cy="152" r="11"/><text x="222" y="157" text-anchor="middle">+</text></g>
               <g class="hot" id="hot-fassade" onclick="housePick('fassade')"><circle cx="391" cy="250" r="11"/><text x="391" y="255" text-anchor="middle">+</text></g>
@@ -986,11 +986,11 @@ section{padding:var(--pad) 0;position:relative}
               <g class="hot" id="hot-heizung" onclick="housePick('heizung')"><circle cx="240" cy="379" r="11"/><text x="240" y="384" text-anchor="middle">+</text></g>
               <g class="hot" id="hot-keller" onclick="housePick('keller')"><circle cx="320" cy="356" r="11"/><text x="320" y="361" text-anchor="middle">+</text></g>
             </g>
-            <rect class="catch" x="0" y="0" width="560" height="432" fill="transparent" onclick="houseReset()"/>
+            <rect class="catch" x="-22" y="0" width="604" height="432" fill="transparent" onclick="houseReset()"/>
             <g class="divider" id="divider">
               <line x1="532" y1="0" x2="532" y2="432" stroke="#fff" stroke-width="3"/>
               <circle cx="532" cy="206" r="18" fill="#fff" stroke="#e6e2d8" stroke-width="1.5"/>
-              <path d="M524 200 l-5 6 l5 6 Z M540 200 l5 6 l-5 6 Z" fill="#5b6b78" stroke="none"/>
+              <path d="M526 201 l-4 5 l4 5 Z M538 201 l4 5 l-4 5 Z" fill="#000" stroke="none"/>
             </g>
             <text class="divlabel" id="lblUn" x="44" y="36" text-anchor="middle">UNSANIERT</text>
             <text class="divlabel" id="lblSan" x="518" y="36" text-anchor="middle">SANIERT</text>
@@ -1452,7 +1452,7 @@ function ablaufFromHouse(k){
   });});}
 }
 function houseReset(){
-  animVB([0,0,560,432]);
+  animVB([-22,0,604,432]);
   if(window._houseClipRestore)window._houseClipRestore();
   document.getElementById('houseSvg').classList.remove('zoomed');
   document.querySelector('.house-frame').classList.remove('zoomed');
@@ -1480,22 +1480,20 @@ function houseZoomState(san){
   const svg=document.getElementById('houseSvg');if(!svg)return;
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
-  const MINX=0,MAXX=560,MIDX=285;    // Clip/Linie bis ganz an den Rand (kein Hintergrund-Rest sichtbar)
-  const GRIPMIN=20,GRIPMAX=540;      // der runde Griff bleibt knapp innen, damit er voll sichtbar ist
+  const MINX=0,MAXX=560,MIDX=285;    // Clip/Linie/Griff bis ganz an den Rand
   const HOMEX=360;   // Start-/Ruheposition: kurz vor dem rechtesten/tiefsten PV-Strich (x≈368), still (keine Animation)
   let split=HOMEX;
   function setSplit(x){
     split=Math.max(MINX,Math.min(MAXX,x));
-    cUn.setAttribute('width',split);
-    cSan.setAttribute('x',split);cSan.setAttribute('width',560-split);
+    cUn.setAttribute('width',split+22);          // clipUn beginnt bei x=-22, reicht bis zur Slider-Linie
+    cSan.setAttribute('x',split);cSan.setAttribute('width',582-split);
     div.querySelectorAll('line').forEach(l=>{l.setAttribute('x1',split);l.setAttribute('x2',split);});
-    const gx=Math.max(GRIPMIN,Math.min(GRIPMAX,split));   // Griff getrennt begrenzt
-    div.querySelector('circle').setAttribute('cx',gx);
-    div.querySelector('path').setAttribute('d',`M${gx-8} 200 l-5 6 l5 6 Z M${gx+8} 200 l5 6 l-5 6 Z`);
+    div.querySelector('circle').setAttribute('cx',split);   // Griff geht voll mit
+    div.querySelector('path').setAttribute('d',`M${split-6} 201 l-4 5 l4 5 Z M${split+6} 201 l4 5 l-4 5 Z`);
     lU.style.opacity = split<165?0:1;
     lS.style.opacity = split>405?0:1;
   }
-  function pointerToX(clientX){const r=svg.getBoundingClientRect();return (clientX-r.left)/r.width*560;}
+  function pointerToX(clientX){const r=svg.getBoundingClientRect();return -22 + (clientX-r.left)/r.width*604;}
   let dragging=false,nudged=false;
   window._stopSliderNudge=function(){nudged=true;};
   function start(e){if(svg.classList.contains('zoomed'))return;dragging=true;nudged=true;move(e);e.preventDefault();}
@@ -1506,8 +1504,8 @@ function houseZoomState(san){
   window.addEventListener('mouseup',end);window.addEventListener('touchend',end);
   let saved=500;
   window._houseSplit=function(){return split;};   // aktuelle Slider-Position (x in viewBox-Einheiten)
-  window._houseClipFull=function(){cUn.setAttribute('width',0);cSan.setAttribute('x',0);cSan.setAttribute('width',560);};
-  window._houseClipUnFull=function(){cUn.setAttribute('width',560);cSan.setAttribute('x',560);cSan.setAttribute('width',0);};
+  window._houseClipFull=function(){cUn.setAttribute('width',0);cSan.setAttribute('x',-22);cSan.setAttribute('width',604);};
+  window._houseClipUnFull=function(){cUn.setAttribute('width',604);cSan.setAttribute('x',582);cSan.setAttribute('width',0);};
   // Nach dem Rauszoomen: Slider auf das Extrem des zuletzt gezeigten Zustands setzen (Nachher=ganz saniert links, Vorher=ganz unsaniert rechts)
   window._houseClipRestore=function(){setSplit(window._zoomSan===false?MAXX:MINX);};
   svg.addEventListener('click',e=>{
