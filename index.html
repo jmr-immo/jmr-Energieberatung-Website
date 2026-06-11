@@ -571,7 +571,7 @@ section{padding:var(--pad) 0;position:relative}
 @keyframes fanspin{to{transform:rotate(360deg)}}
 /* Vorher/Nachher-Trennlinie */
 .divider{cursor:ew-resize}
-.divider circle{filter:drop-shadow(0 4px 12px rgba(11,28,43,.28))}
+.divider circle{filter:drop-shadow(0 2px 6px rgba(11,28,43,.18))}
 .house.zoomed .divider,.house.zoomed .divlabel{opacity:0;pointer-events:none;transition:opacity .3s}
 .divlabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--muted);font-weight:600;pointer-events:none;transition:opacity .3s}
 /* Gerichtete Energie-Leitungen: ruhige Grundlinie + wandernde Dashes in Flussrichtung (Quelle→Ziel) */
@@ -798,6 +798,8 @@ section{padding:var(--pad) 0;position:relative}
             <linearGradient id="gPipeR" gradientUnits="userSpaceOnUse" x1="209" y1="0" x2="270" y2="0"><stop offset="0" stop-color="#1FA85A" stop-opacity="0.95"/><stop offset="1" stop-color="#1FA85A" stop-opacity="0"/></linearGradient>
             <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0b1c2b" flood-opacity="0.15"/></filter>
             <radialGradient id="vign" cx="0.5" cy="0.5" r="0.62"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#eef1ec" stop-opacity="0.9"/></radialGradient>
+            <!-- Abdunkelung der unsanierten Seite: innen dunkel, weich zu allen Rändern ausfadend -->
+            <radialGradient id="unsanDark" cx="0.5" cy="0.5" r="0.72" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#0b1c2b" stop-opacity="0.30"/><stop offset="0.55" stop-color="#0b1c2b" stop-opacity="0.22"/><stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/></radialGradient>
             <clipPath id="clipUn"><rect id="clipUnRect" x="0" y="0" width="532" height="432"/></clipPath>
             <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="0" width="28" height="432"/></clipPath>
             <clipPath id="clipRoom"><rect x="188" y="190" width="194" height="214"/></clipPath>
@@ -968,6 +970,8 @@ section{padding:var(--pad) 0;position:relative}
               <text class="loss-label" x="118" y="240" text-anchor="end"><tspan x="118" dy="0">Wärme-</tspan><tspan x="118" dy="8">verluste</tspan></text>
               <text class="loss-label" x="452" y="240" text-anchor="start"><tspan x="452" dy="0">Wärme-</tspan><tspan x="452" dy="8">verluste</tspan></text>
             </g>
+            <!-- Unsanierte Seite leicht abgedunkelt, weich ausfadend (clipUn = links vom Slider) -->
+            <rect class="u-only" clip-path="url(#clipUn)" x="0" y="0" width="560" height="432" fill="url(#unsanDark)" style="pointer-events:none"/>
             <g class="hots">
               <g class="hot" id="hot-dach" onclick="housePick('dach')"><circle cx="222" cy="152" r="11"/><text x="222" y="157" text-anchor="middle">+</text></g>
               <g class="hot" id="hot-fassade" onclick="housePick('fassade')"><circle cx="391" cy="250" r="11"/><text x="391" y="255" text-anchor="middle">+</text></g>
@@ -978,7 +982,6 @@ section{padding:var(--pad) 0;position:relative}
             <rect class="catch" x="0" y="0" width="560" height="432" fill="transparent" onclick="houseReset()"/>
             <g class="divider" id="divider">
               <line x1="532" y1="14" x2="532" y2="426" stroke="#fff" stroke-width="3"/>
-              <line x1="532" y1="14" x2="532" y2="426" stroke="#0b1c2b" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
               <circle cx="532" cy="206" r="18" fill="#fff" stroke="#e6e2d8" stroke-width="1.5"/>
               <path d="M524 200 l-5 6 l5 6 Z M540 200 l5 6 l-5 6 Z" fill="#5b6b78" stroke="none"/>
             </g>
@@ -1471,8 +1474,8 @@ function houseZoomState(san){
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
   const MINX=34,MAXX=526,MIDX=285;
-  const HOMEX=MAXX;   // Start-/Ruheposition: eher rechts (ueberwiegend sanierter Zustand)   // Endanschläge leicht nach innen, damit der Kreis-Schatten nicht am Rand abschneidet; MIDX=285 = First/Symmetrieachse
-  let split=MIDX;                   // Default MITTE (auf den First)
+  const HOMEX=344;   // Start-/Ruheposition: auf Höhe des mittleren PV-Strichs (x≈344), still (keine Animation)
+  let split=HOMEX;
   function setSplit(x){
     split=Math.max(MINX,Math.min(MAXX,x));
     cUn.setAttribute('width',split);
@@ -1505,28 +1508,7 @@ function houseZoomState(san){
     nudged=true;setSplit(pointerToX(e.clientX));
   });
   setSplit(HOMEX);
-  // Anstups-Animation: Regler wippt dauerhaft sehr sanft um die MITTE (zeigt „ziehbar"), bis er erstmals bedient wird
-  function nudge(){
-    if(nudged||RM)return;
-    const home=HOMEX, amp=35, PULSE=750, PAUSE=1500, period=2*PULSE+PAUSE;  // 2 Pulse je 750ms, dann Pause
-    const t0=performance.now();
-    // ein einzelner Puls (0..1): schnell raus (ease-out), zurueckschnappen (ease-in)
-    function pulse(p){ if(p<0.45){const q=p/0.45; return -amp*(1-Math.pow(1-q,3));} else if(p<0.9){const q=(p-0.45)/0.45; return -amp*(1-(q*q));} return 0; }
-    (function tick(t){
-      if(nudged){setSplit(home);return;}
-      const e=(t-t0)%period;                  // ms in der Periode
-      let off=0;
-      if(e<PULSE){ off=pulse(e/PULSE); }
-      else if(e<2*PULSE){ off=pulse((e-PULSE)/PULSE); }
-      setSplit(home+off);
-      requestAnimationFrame(tick);
-    })(t0);
-  }
-  const stage=document.getElementById('houseStage');
-  if('IntersectionObserver' in window&&stage){
-    const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){nudge();io.disconnect();}})},{threshold:.35});
-    io.observe(stage);
-  }
+  // Slider startet still auf HOMEX (keine Anstups-Animation mehr).
 })();
 
 /* --- WEGWEISER (2 Schritte) --- */
