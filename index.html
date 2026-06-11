@@ -650,15 +650,18 @@ section{padding:var(--pad) 0;position:relative}
 .zoom-toggle{position:absolute;top:14px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:8;display:inline-flex;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
 .house-frame.zoomed .zoom-toggle{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .zoom-toggle button{border:none;background:none;font-family:var(--sans);font-weight:600;font-size:.8rem;padding:.36rem .95rem;border-radius:999px;cursor:pointer;color:var(--muted);transition:.2s}
-.zoom-toggle button{position:relative}
-.zoom-toggle button.on{background:var(--ink);color:#fff}
-/* aktiver Stand wackelt sanft Richtung der anderen Seite: zeigt "umschaltbar" */
-#hiSan.on{animation:nudgeToggleL 2.4s ease-in-out infinite}
-#hiUn.on{animation:nudgeToggleR 2.4s ease-in-out infinite}
-@keyframes nudgeToggleL{0%,72%,100%{transform:translateX(0)}82%{transform:translateX(-4px)}92%{transform:translateX(0)}}
-@keyframes nudgeToggleR{0%,72%,100%{transform:translateX(0)}82%{transform:translateX(4px)}92%{transform:translateX(0)}}
-.zoom-toggle:hover button.on{animation:none}
-@media(prefers-reduced-motion:reduce){#hiSan.on,#hiUn.on{animation:none}}
+.zoom-toggle button{position:relative;color:var(--muted)}
+.zoom-toggle button>*{position:relative;z-index:1}
+.zoom-toggle button.on{color:#fff;background:none}
+/* schwarzer Hintergrund als eigenes Element hinter dem Text */
+.zoom-toggle button.on::before{content:"";position:absolute;inset:0;background:var(--ink);border-radius:999px;z-index:0}
+/* nur der schwarze Hintergrund hüpft (Doppelhüpfer) Richtung der anderen Seite; Text bleibt fix */
+#hiSan.on::before{animation:nudgeToggleL 2.6s ease-in-out infinite}
+#hiUn.on::before{animation:nudgeToggleR 2.6s ease-in-out infinite}
+@keyframes nudgeToggleL{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-7px)}76%{transform:translateX(0)}84%{transform:translateX(-7px)}92%{transform:translateX(0)}}
+@keyframes nudgeToggleR{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(7px)}76%{transform:translateX(0)}84%{transform:translateX(7px)}92%{transform:translateX(0)}}
+.zoom-toggle:hover button.on::before{animation:none}
+@media(prefers-reduced-motion:reduce){#hiSan.on::before,#hiUn.on::before{animation:none}}
 /* Zurück-Button im Info-Panel */
 .hi-back{margin-top:1rem;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:.45rem 1rem;font-family:var(--sans);font-weight:600;font-size:.82rem;color:var(--ink);cursor:pointer;transition:.2s}
 .hi-back:hover{border-color:var(--steel);color:var(--steel)}
@@ -1010,8 +1013,8 @@ section{padding:var(--pad) 0;position:relative}
         </div><!-- /.house-clip -->
         <!-- Umschalter Unsaniert/Saniert: oben mittig, nur im Zoom -->
         <div class="zoom-toggle" id="hiToggle">
-          <button type="button" id="hiUn" onclick="houseZoomState(false)">Unsaniert</button>
-          <button type="button" id="hiSan" class="on" onclick="houseZoomState(true)">Saniert</button>
+          <button type="button" id="hiUn" onclick="houseZoomState(false)"><span>Unsaniert</span></button>
+          <button type="button" id="hiSan" class="on" onclick="houseZoomState(true)"><span>Saniert</span></button>
         </div>
         <div class="info-pop" id="infoPop">
           <span class="hi-tag" id="hiTag"></span>
