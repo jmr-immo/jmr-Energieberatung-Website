@@ -804,11 +804,11 @@ section{padding:var(--pad) 0;position:relative}
             <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0b1c2b" flood-opacity="0.15"/></filter>
             <radialGradient id="vign" cx="0.5" cy="0.5" r="0.62"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#eef1ec" stop-opacity="0.9"/></radialGradient>
             <!-- Abdunkelung der unsanierten Seite: innen dunkel, weich zu allen Rändern ausfadend -->
-            <radialGradient id="unsanDark" cx="0.5" cy="0.5" r="0.72" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#0b1c2b" stop-opacity="0.30"/><stop offset="0.55" stop-color="#0b1c2b" stop-opacity="0.22"/><stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/></radialGradient>
+            <radialGradient id="unsanDark" cx="280" cy="216" r="330" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0b1c2b" stop-opacity="0.30"/><stop offset="0.55" stop-color="#0b1c2b" stop-opacity="0.22"/><stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/></radialGradient>
             <!-- Sanierte Seite: dezenter Himmel→Wiese-Hintergrund (oben blau, unten grün), nur Hintergrund -->
-            <linearGradient id="sanBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4BA3D6" stop-opacity="0.16"/><stop offset="0.45" stop-color="#5BD0E0" stop-opacity="0.08"/><stop offset="0.72" stop-color="#1FA85A" stop-opacity="0.10"/><stop offset="1" stop-color="#1FA85A" stop-opacity="0.20"/></linearGradient>
-            <clipPath id="clipUn"><rect id="clipUnRect" x="-22" y="0" width="554" height="432"/></clipPath>
-            <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="0" width="50" height="432"/></clipPath>
+            <linearGradient id="sanBg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="432"><stop offset="0" stop-color="#4BA3D6" stop-opacity="0.16"/><stop offset="0.45" stop-color="#5BD0E0" stop-opacity="0.08"/><stop offset="0.72" stop-color="#1FA85A" stop-opacity="0.10"/><stop offset="1" stop-color="#1FA85A" stop-opacity="0.20"/></linearGradient>
+            <clipPath id="clipUn"><rect id="clipUnRect" x="-120" y="-120" width="652" height="660"/></clipPath>
+            <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="-120" width="148" height="660"/></clipPath>
             <clipPath id="clipRoom"><rect x="188" y="190" width="194" height="214"/></clipPath>
             <clipPath id="clipPV"><polygon points="300,102 396,175 389,184 293,111"/></clipPath>
             <!-- Dachraum-Dreieck: Dachdämmung nur hier sichtbar (im dunklen Bereich), endet am Übergang zum 1. OG -->
@@ -819,7 +819,7 @@ section{padding:var(--pad) 0;position:relative}
           </defs>
           <g id="scene">
             <!-- Sanierte Seite: Hintergrund Himmel→Wiese (liegt ganz hinten, nur Hintergrund, clipSan) -->
-            <rect class="s-only" clip-path="url(#clipSan)" x="-22" y="0" width="604" height="432" fill="url(#sanBg)" style="pointer-events:none"/>
+            <rect class="s-only" clip-path="url(#clipSan)" x="-120" y="-120" width="800" height="660" fill="url(#sanBg)" style="pointer-events:none"/>
             <!-- Solarenergie Sonne→PV: konzentrische „WLAN"-Wellen, die von der Sonne bis zur PV pulsieren -->
             <g class="wifi s-only" clip-path="url(#clipSan)">
               <path class="wifi-arc" d="M405.2 179.8 A120 120 0 0 1 338 71.8"/>
@@ -980,7 +980,7 @@ section{padding:var(--pad) 0;position:relative}
               <text class="loss-label" x="452" y="240" text-anchor="start"><tspan x="452" dy="0">Wärme-</tspan><tspan x="452" dy="8">verluste</tspan></text>
             </g>
             <!-- Unsanierte Seite leicht abgedunkelt, weich ausfadend (clipUn = links vom Slider) -->
-            <rect class="u-only" clip-path="url(#clipUn)" x="-22" y="0" width="604" height="432" fill="url(#unsanDark)" style="pointer-events:none"/>
+            <rect class="u-only" clip-path="url(#clipUn)" x="-120" y="-120" width="800" height="660" fill="url(#unsanDark)" style="pointer-events:none"/>
             <g class="hots">
               <g class="hot" id="hot-dach" onclick="housePick('dach')"><circle cx="222" cy="152" r="11"/><text x="222" y="157" text-anchor="middle">+</text></g>
               <g class="hot" id="hot-fassade" onclick="housePick('fassade')"><circle cx="391" cy="250" r="11"/><text x="391" y="255" text-anchor="middle">+</text></g>
@@ -1487,8 +1487,8 @@ function houseZoomState(san){
   let split=HOMEX;
   function setSplit(x){
     split=Math.max(MINX,Math.min(MAXX,x));
-    cUn.setAttribute('width',split+22);          // clipUn beginnt bei x=-22, reicht bis zur Slider-Linie
-    cSan.setAttribute('x',split);cSan.setAttribute('width',582-split);
+    cUn.setAttribute('width',split+120);         // clipUn beginnt bei x=-120, reicht bis zur Slider-Linie
+    cSan.setAttribute('x',split);cSan.setAttribute('width',680-split);
     div.querySelectorAll('line').forEach(l=>{l.setAttribute('x1',split);l.setAttribute('x2',split);});
     div.querySelector('circle').setAttribute('cx',split);   // Griff geht voll mit
     div.querySelector('path').setAttribute('d',`M${split-6} 201 l-4 5 l4 5 Z M${split+6} 201 l4 5 l-4 5 Z`);
@@ -1506,8 +1506,8 @@ function houseZoomState(san){
   window.addEventListener('mouseup',end);window.addEventListener('touchend',end);
   let saved=500;
   window._houseSplit=function(){return split;};   // aktuelle Slider-Position (x in viewBox-Einheiten)
-  window._houseClipFull=function(){cUn.setAttribute('width',0);cSan.setAttribute('x',-22);cSan.setAttribute('width',604);};
-  window._houseClipUnFull=function(){cUn.setAttribute('width',604);cSan.setAttribute('x',582);cSan.setAttribute('width',0);};
+  window._houseClipFull=function(){cUn.setAttribute('width',0);cSan.setAttribute('x',-120);cSan.setAttribute('width',800);};
+  window._houseClipUnFull=function(){cUn.setAttribute('width',800);cSan.setAttribute('x',680);cSan.setAttribute('width',0);};
   // Nach dem Rauszoomen: Slider auf das Extrem des zuletzt gezeigten Zustands setzen (Nachher=ganz saniert links, Vorher=ganz unsaniert rechts)
   window._houseClipRestore=function(){setSplit(window._zoomSan===false?MAXX:MINX);};
   svg.addEventListener('click',e=>{
