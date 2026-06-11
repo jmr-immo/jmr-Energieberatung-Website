@@ -800,6 +800,8 @@ section{padding:var(--pad) 0;position:relative}
             <radialGradient id="vign" cx="0.5" cy="0.5" r="0.62"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#eef1ec" stop-opacity="0.9"/></radialGradient>
             <!-- Abdunkelung der unsanierten Seite: innen dunkel, weich zu allen Rändern ausfadend -->
             <radialGradient id="unsanDark" cx="0.5" cy="0.5" r="0.72" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#0b1c2b" stop-opacity="0.30"/><stop offset="0.55" stop-color="#0b1c2b" stop-opacity="0.22"/><stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/></radialGradient>
+            <!-- Sanierte Seite: dezenter Himmel→Wiese-Hintergrund (oben blau, unten grün), nur Hintergrund -->
+            <linearGradient id="sanBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4BA3D6" stop-opacity="0.16"/><stop offset="0.45" stop-color="#5BD0E0" stop-opacity="0.08"/><stop offset="0.72" stop-color="#1FA85A" stop-opacity="0.10"/><stop offset="1" stop-color="#1FA85A" stop-opacity="0.20"/></linearGradient>
             <clipPath id="clipUn"><rect id="clipUnRect" x="0" y="0" width="532" height="432"/></clipPath>
             <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="0" width="28" height="432"/></clipPath>
             <clipPath id="clipRoom"><rect x="188" y="190" width="194" height="214"/></clipPath>
@@ -811,6 +813,8 @@ section{padding:var(--pad) 0;position:relative}
             <clipPath id="atticR"><path d="M383.1 190.3 L375.2 201.9 L273.4 132.6 L281.3 121.0 Z"/></clipPath>
           </defs>
           <g id="scene">
+            <!-- Sanierte Seite: Hintergrund Himmel→Wiese (liegt ganz hinten, nur Hintergrund, clipSan) -->
+            <rect class="s-only" clip-path="url(#clipSan)" x="0" y="0" width="560" height="432" fill="url(#sanBg)" style="pointer-events:none"/>
             <!-- Solarenergie Sonne→PV: konzentrische „WLAN"-Wellen, die von der Sonne bis zur PV pulsieren -->
             <g class="wifi s-only" clip-path="url(#clipSan)">
               <path class="wifi-arc" d="M405.2 179.8 A120 120 0 0 1 338 71.8"/>
@@ -981,7 +985,7 @@ section{padding:var(--pad) 0;position:relative}
             </g>
             <rect class="catch" x="0" y="0" width="560" height="432" fill="transparent" onclick="houseReset()"/>
             <g class="divider" id="divider">
-              <line x1="532" y1="14" x2="532" y2="426" stroke="#fff" stroke-width="3"/>
+              <line x1="532" y1="0" x2="532" y2="432" stroke="#fff" stroke-width="3"/>
               <circle cx="532" cy="206" r="18" fill="#fff" stroke="#e6e2d8" stroke-width="1.5"/>
               <path d="M524 200 l-5 6 l5 6 Z M540 200 l5 6 l-5 6 Z" fill="#5b6b78" stroke="none"/>
             </g>
@@ -1473,7 +1477,7 @@ function houseZoomState(san){
   const svg=document.getElementById('houseSvg');if(!svg)return;
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
-  const MINX=0,MAXX=560,MIDX=285;   // Endanschläge ganz an den Bildrand: kein dunkler Rahmenrest sichtbar
+  const MINX=20,MAXX=540,MIDX=285;   // Endanschläge knapp innen, damit der runde Griff (r18) voll sichtbar bleibt; dunkle Zone dort praktisch null
   const HOMEX=360;   // Start-/Ruheposition: kurz vor dem rechtesten/tiefsten PV-Strich (x≈368), still (keine Animation)
   let split=HOMEX;
   function setSplit(x){
