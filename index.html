@@ -650,7 +650,15 @@ section{padding:var(--pad) 0;position:relative}
 .zoom-toggle{position:absolute;top:14px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:8;display:inline-flex;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
 .house-frame.zoomed .zoom-toggle{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .zoom-toggle button{border:none;background:none;font-family:var(--sans);font-weight:600;font-size:.8rem;padding:.36rem .95rem;border-radius:999px;cursor:pointer;color:var(--muted);transition:.2s}
+.zoom-toggle button{position:relative}
 .zoom-toggle button.on{background:var(--ink);color:#fff}
+/* aktiver Stand wackelt sanft Richtung der anderen Seite: zeigt "umschaltbar" */
+#hiSan.on{animation:nudgeToggleL 2.4s ease-in-out infinite}
+#hiUn.on{animation:nudgeToggleR 2.4s ease-in-out infinite}
+@keyframes nudgeToggleL{0%,72%,100%{transform:translateX(0)}82%{transform:translateX(-4px)}92%{transform:translateX(0)}}
+@keyframes nudgeToggleR{0%,72%,100%{transform:translateX(0)}82%{transform:translateX(4px)}92%{transform:translateX(0)}}
+.zoom-toggle:hover button.on{animation:none}
+@media(prefers-reduced-motion:reduce){#hiSan.on,#hiUn.on{animation:none}}
 /* Zurück-Button im Info-Panel */
 .hi-back{margin-top:1rem;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:.45rem 1rem;font-family:var(--sans);font-weight:600;font-size:.82rem;color:var(--ink);cursor:pointer;transition:.2s}
 .hi-back:hover{border-color:var(--steel);color:var(--steel)}
