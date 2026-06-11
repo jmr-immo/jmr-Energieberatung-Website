@@ -571,7 +571,7 @@ section{padding:var(--pad) 0;position:relative}
 @keyframes fanspin{to{transform:rotate(360deg)}}
 /* Vorher/Nachher-Trennlinie */
 .divider{cursor:ew-resize}
-.divider circle{filter:drop-shadow(0 3px 9px rgba(11,40,56,.55))}
+.divider circle{filter:drop-shadow(0 4px 12px rgba(11,28,43,.28))}
 .house.zoomed .divider,.house.zoomed .divlabel{opacity:0;pointer-events:none;transition:opacity .3s}
 .divlabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--muted);font-weight:600;pointer-events:none;transition:opacity .3s}
 /* Gerichtete Energie-Leitungen: ruhige Grundlinie + wandernde Dashes in Flussrichtung (Quelle→Ziel) */
@@ -979,8 +979,8 @@ section{padding:var(--pad) 0;position:relative}
             <g class="divider" id="divider">
               <line x1="532" y1="14" x2="532" y2="426" stroke="#fff" stroke-width="3"/>
               <line x1="532" y1="14" x2="532" y2="426" stroke="#0b1c2b" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
-              <circle cx="532" cy="206" r="17" fill="#fff" stroke="#1F6FA5" stroke-width="2.5"/>
-              <path d="M527 200 l-6 6 l6 6 M537 200 l6 6 l-6 6" fill="none" stroke="#1F6FA5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="532" cy="206" r="18" fill="#fff" stroke="#e6e2d8" stroke-width="1.5"/>
+              <path d="M524 200 l-5 6 l5 6 Z M540 200 l5 6 l-5 6 Z" fill="#5b6b78" stroke="none"/>
             </g>
             <text class="divlabel" id="lblUn" x="44" y="36" text-anchor="middle">UNSANIERT</text>
             <text class="divlabel" id="lblSan" x="518" y="36" text-anchor="middle">SANIERT</text>
@@ -1479,7 +1479,7 @@ function houseZoomState(san){
     cSan.setAttribute('x',split);cSan.setAttribute('width',560-split);
     div.querySelectorAll('line').forEach(l=>{l.setAttribute('x1',split);l.setAttribute('x2',split);});
     div.querySelector('circle').setAttribute('cx',split);
-    div.querySelector('path').setAttribute('d',`M${split-5} 200 l-6 6 l6 6 M${split+5} 200 l6 6 l-6 6`);
+    div.querySelector('path').setAttribute('d',`M${split-8} 200 l-5 6 l5 6 Z M${split+8} 200 l5 6 l-5 6 Z`);
     lU.style.opacity = split<165?0:1;
     lS.style.opacity = split>405?0:1;
   }
