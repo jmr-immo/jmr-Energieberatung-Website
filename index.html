@@ -571,7 +571,9 @@ section{padding:var(--pad) 0;position:relative}
 @keyframes fanspin{to{transform:rotate(360deg)}}
 /* Vorher/Nachher-Trennlinie */
 .divider{cursor:ew-resize}
-.divider circle{filter:drop-shadow(0 2px 6px rgba(11,28,43,.18))}
+.divider circle{filter:drop-shadow(0 2px 6px rgba(11,28,43,.18));transform-box:fill-box;transform-origin:center;transition:transform .18s cubic-bezier(.16,1,.3,1)}
+.divider:hover circle{transform:scale(1.18)}
+.divider path{transition:transform .18s cubic-bezier(.16,1,.3,1)}
 .house.zoomed .divider,.house.zoomed .divlabel{opacity:0;pointer-events:none;transition:opacity .3s}
 .divlabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--muted);font-weight:600;pointer-events:none;transition:opacity .3s}
 /* Gerichtete Energie-Leitungen: ruhige Grundlinie + wandernde Dashes in Flussrichtung (Quelle→Ziel) */
@@ -607,7 +609,8 @@ section{padding:var(--pad) 0;position:relative}
 .house .hots .hot:nth-of-type(4){animation-delay:1.35s}
 .house .hots .hot:nth-of-type(5){animation-delay:1.8s}
 @keyframes hotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
-.house .hot:hover{animation-play-state:paused}
+.house .hot{transition:transform .18s cubic-bezier(.16,1,.3,1)}
+.house .hot:hover{animation-play-state:paused;transform:scale(1.28)}
 @media(prefers-reduced-motion:reduce){.house .hot{animation:none}}
 .house .hot text{fill:#fff;font-family:var(--disp);font-weight:700;font-size:14px;pointer-events:none}
 .house .hot:hover circle{fill:var(--green-d)}
@@ -1477,7 +1480,8 @@ function houseZoomState(san){
   const svg=document.getElementById('houseSvg');if(!svg)return;
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
-  const MINX=20,MAXX=540,MIDX=285;   // Endanschläge knapp innen, damit der runde Griff (r18) voll sichtbar bleibt; dunkle Zone dort praktisch null
+  const MINX=0,MAXX=560,MIDX=285;    // Clip/Linie bis ganz an den Rand (kein Hintergrund-Rest sichtbar)
+  const GRIPMIN=20,GRIPMAX=540;      // der runde Griff bleibt knapp innen, damit er voll sichtbar ist
   const HOMEX=360;   // Start-/Ruheposition: kurz vor dem rechtesten/tiefsten PV-Strich (x≈368), still (keine Animation)
   let split=HOMEX;
   function setSplit(x){
@@ -1485,8 +1489,9 @@ function houseZoomState(san){
     cUn.setAttribute('width',split);
     cSan.setAttribute('x',split);cSan.setAttribute('width',560-split);
     div.querySelectorAll('line').forEach(l=>{l.setAttribute('x1',split);l.setAttribute('x2',split);});
-    div.querySelector('circle').setAttribute('cx',split);
-    div.querySelector('path').setAttribute('d',`M${split-8} 200 l-5 6 l5 6 Z M${split+8} 200 l5 6 l-5 6 Z`);
+    const gx=Math.max(GRIPMIN,Math.min(GRIPMAX,split));   // Griff getrennt begrenzt
+    div.querySelector('circle').setAttribute('cx',gx);
+    div.querySelector('path').setAttribute('d',`M${gx-8} 200 l-5 6 l5 6 Z M${gx+8} 200 l5 6 l-5 6 Z`);
     lU.style.opacity = split<165?0:1;
     lS.style.opacity = split>405?0:1;
   }
