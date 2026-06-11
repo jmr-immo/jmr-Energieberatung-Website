@@ -400,6 +400,7 @@ section{padding:var(--pad) 0;position:relative}
 .fld{margin-bottom:1rem}.fld label{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
 .fld input,.fld select,.fld textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:.95rem;background:var(--paper);transition:.2s;color:var(--text)}
 .fld select{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:2.6rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%230B1C2B' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center}
+.form-note{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:.9rem;line-height:1.55;text-align:center}
 .kf-status{margin-top:1rem;padding:.9rem 1.1rem;border-radius:12px;font-size:.92rem;line-height:1.5}
 .kf-status.ok{background:rgba(31,168,90,.10);border:1px solid rgba(31,168,90,.35);color:var(--green-d);font-weight:600}
 .kf-status.err{background:rgba(214,69,69,.08);border:1px solid rgba(214,69,69,.3);color:#b33}
@@ -1217,6 +1218,7 @@ section{padding:var(--pad) 0;position:relative}
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit" class="btn btn-green magnetic" id="kfSubmit" style="width:100%;justify-content:center">Anfrage senden <span class="ar">→</span></button>
+          <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Mehr dazu in der <a href="datenschutz.html" target="_blank" rel="noopener" style="color:var(--green-d)">Datenschutzerklärung</a>.</p>
           <p class="kf-status" id="kfStatus" hidden></p>
           </form>
         </div>
@@ -1242,7 +1244,7 @@ section{padding:var(--pad) 0;position:relative}
   <div class="container">
     <div class="ftop">
       <div class="bn"><img class="flogo" src="img/logo-white.png" alt="jmr Energieberatung">Energieberatung · Förderung · Baubegleitung</div>
-      <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="#kontakt">Erstgespräch</a></div>
+      <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="https://jmr-architektur.de" target="_blank" rel="noopener">Architektur ↗</a><a href="#kontakt">Erstgespräch</a></div>
     </div>
     <div class="fbot"><span>© 2026 jmr Energieberatung · Marquart Consulting GmbH · Saarbrücken</span><span><a href="impressum.html" target="_blank" rel="noopener" style="color:inherit">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener" style="color:inherit">Datenschutz</a></span></div>
   </div>
