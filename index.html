@@ -798,8 +798,20 @@ section{padding:var(--pad) 0;position:relative}
             <linearGradient id="gPipeR" gradientUnits="userSpaceOnUse" x1="209" y1="0" x2="270" y2="0"><stop offset="0" stop-color="#1FA85A" stop-opacity="0.95"/><stop offset="1" stop-color="#1FA85A" stop-opacity="0"/></linearGradient>
             <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0b1c2b" flood-opacity="0.15"/></filter>
             <radialGradient id="vign" cx="0.5" cy="0.5" r="0.62"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#eef1ec" stop-opacity="0.9"/></radialGradient>
-            <!-- Abdunkelung der unsanierten Seite: innen dunkel, weich zu allen Rändern ausfadend -->
-            <radialGradient id="unsanDark" cx="0.5" cy="0.5" r="0.72" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#0b1c2b" stop-opacity="0.30"/><stop offset="0.55" stop-color="#0b1c2b" stop-opacity="0.22"/><stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/></radialGradient>
+            <!-- Abdunkelung der unsanierten Seite: horizontal an die Slider-Kante gekoppelt (dunkel links, weich auf 0 an der Linie), vertikal über Maske ausfadend -->
+            <linearGradient id="unsanDarkH" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="344" y2="0">
+              <stop offset="0" stop-color="#0b1c2b" stop-opacity="0"/>
+              <stop offset="0.40" stop-color="#0b1c2b" stop-opacity="0.26"/>
+              <stop offset="0.86" stop-color="#0b1c2b" stop-opacity="0.26"/>
+              <stop offset="1" stop-color="#0b1c2b" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="unsanFadeV" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="0.22" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="0.78" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <mask id="unsanVMask"><rect x="0" y="0" width="560" height="432" fill="url(#unsanFadeV)"/></mask>
             <clipPath id="clipUn"><rect id="clipUnRect" x="0" y="0" width="532" height="432"/></clipPath>
             <clipPath id="clipSan"><rect id="clipSanRect" x="532" y="0" width="28" height="432"/></clipPath>
             <clipPath id="clipRoom"><rect x="188" y="190" width="194" height="214"/></clipPath>
@@ -970,8 +982,8 @@ section{padding:var(--pad) 0;position:relative}
               <text class="loss-label" x="118" y="240" text-anchor="end"><tspan x="118" dy="0">Wärme-</tspan><tspan x="118" dy="8">verluste</tspan></text>
               <text class="loss-label" x="452" y="240" text-anchor="start"><tspan x="452" dy="0">Wärme-</tspan><tspan x="452" dy="8">verluste</tspan></text>
             </g>
-            <!-- Unsanierte Seite leicht abgedunkelt, weich ausfadend (clipUn = links vom Slider) -->
-            <rect class="u-only" clip-path="url(#clipUn)" x="0" y="0" width="560" height="432" fill="url(#unsanDark)" style="pointer-events:none"/>
+            <!-- Unsanierte Seite leicht abgedunkelt: horizontaler Verlauf endet weich an der Slider-Linie, vertikal über Maske ausgefadet -->
+            <rect id="unsanDarkRect" x="0" y="0" width="344" height="432" fill="url(#unsanDarkH)" mask="url(#unsanVMask)" style="pointer-events:none"/>
             <g class="hots">
               <g class="hot" id="hot-dach" onclick="housePick('dach')"><circle cx="222" cy="152" r="11"/><text x="222" y="157" text-anchor="middle">+</text></g>
               <g class="hot" id="hot-fassade" onclick="housePick('fassade')"><circle cx="391" cy="250" r="11"/><text x="391" y="255" text-anchor="middle">+</text></g>
@@ -1473,6 +1485,7 @@ function houseZoomState(san){
   const svg=document.getElementById('houseSvg');if(!svg)return;
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
+  const darkRect=document.getElementById('unsanDarkRect'),darkGrad=document.getElementById('unsanDarkH');
   const MINX=34,MAXX=526,MIDX=285;
   const HOMEX=344;   // Start-/Ruheposition: auf Höhe des mittleren PV-Strichs (x≈344), still (keine Animation)
   let split=HOMEX;
@@ -1483,6 +1496,9 @@ function houseZoomState(san){
     div.querySelectorAll('line').forEach(l=>{l.setAttribute('x1',split);l.setAttribute('x2',split);});
     div.querySelector('circle').setAttribute('cx',split);
     div.querySelector('path').setAttribute('d',`M${split-8} 200 l-5 6 l5 6 Z M${split+8} 200 l5 6 l-5 6 Z`);
+    // Abdunkelung der unsanierten Seite an die Slider-Kante koppeln (endet weich an der Linie)
+    if(darkRect){ darkRect.setAttribute('width',Math.max(0,split)); }
+    if(darkGrad){ darkGrad.setAttribute('x2',Math.max(1,split)); }
     lU.style.opacity = split<165?0:1;
     lS.style.opacity = split>405?0:1;
   }
