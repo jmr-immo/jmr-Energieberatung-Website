@@ -1388,9 +1388,9 @@ function housePick(k){const d=HOUSE[k];if(!d)return;
   // (links vom Slider = unsaniert/Vorher, rechts = saniert/Nachher)
   const split=window._houseSplit?window._houseSplit():560, hx=HOTX[k];
   const showSan = hx!==undefined ? (hx>=split) : true;
-  houseZoomState(showSan);
   document.getElementById('houseSvg').classList.add('zoomed');
   document.querySelector('.house-frame').classList.add('zoomed');
+  houseZoomState(showSan);
   document.querySelectorAll('.house .part').forEach(p=>p.classList.remove('hl'));
   document.querySelectorAll('.house .hl-ins').forEach(p=>p.classList.remove('hl-ins'));
   const part=document.getElementById('p-'+k);if(part&&part.classList.contains('part')){part.classList.add('hl');part.parentNode.appendChild(part);}
@@ -1522,7 +1522,8 @@ function houseZoomState(san){
     if(nudged||RM)return;
     const home=HOMEX, amp=11, period=4200, t0=performance.now();
     (function tick(t){
-      if(nudged){setSplit(home);return;}
+      // Beim Stoppen die Ruheposition nur setzen, wenn NICHT gezoomt wird (sonst würden die Zoom-Clips überschrieben)
+      if(nudged){ if(!svg.classList.contains('zoomed')) setSplit(home); return; }
       const e=Math.sin(((t-t0)%period)/period*Math.PI*2);  // -1..1, weich
       setSplit(home+amp*e);
       requestAnimationFrame(tick);
