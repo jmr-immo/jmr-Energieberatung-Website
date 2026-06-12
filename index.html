@@ -265,10 +265,10 @@ section{padding:var(--pad) 0;position:relative}
 .info-modal-card.has-media{max-width:760px}
 .info-modal-card.has-media .info-modal-media{display:block;flex:0 0 240px;align-self:stretch;background-size:cover;background-position:center;border-top-right-radius:22px;border-bottom-right-radius:22px}
 @media(max-width:640px){.info-modal-card.has-media{max-width:520px;flex-direction:column}.info-modal-card.has-media .info-modal-media{flex-basis:200px;border-radius:0}}
-.info-modal-x{position:absolute;top:1rem;right:1.2rem;z-index:2;border:none;background:none;font-size:1.7rem;line-height:1;color:var(--muted);cursor:pointer;transition:color .2s}
-.info-modal-x:hover{color:var(--ink)}
-.info-modal-card.has-media .info-modal-x{color:#fff;text-shadow:0 1px 4px rgba(11,28,43,.55)}
-.info-modal-card.has-media .info-modal-x:hover{color:#fff;opacity:.8}
+.info-modal-x{position:absolute;top:.95rem;right:1rem;z-index:2;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:none;border-radius:50%;background:rgba(11,28,43,.06);font-size:1.5rem;line-height:1;color:var(--muted);cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.info-modal-x:hover{background:rgba(11,28,43,.12);color:var(--ink);transform:rotate(90deg)}
+.info-modal-card.has-media .info-modal-x{color:#fff;background:rgba(11,28,43,.34);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(11,28,43,.25)}
+.info-modal-card.has-media .info-modal-x:hover{background:rgba(11,28,43,.55);color:#fff}
 .info-modal-tag{display:inline-block;font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--steel);font-weight:700;margin-bottom:.55rem}
 .info-modal-card h3{font-size:1.55rem;margin-bottom:.9rem}
 .info-modal-card p{color:var(--muted);font-size:.97rem;line-height:1.62;margin-bottom:.8rem}
@@ -1378,7 +1378,7 @@ bindGlass();
 const INFO={
   isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',img:'img/isfp-popup.jpg',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Aber wenn er zu Ihrem Vorhaben passt, bringt er einen Vorteil: Auf viele Sanierungsmaßnahmen gibt es dann <b>5 % mehr Förderung</b> (20 % statt 15 %).</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
   lca:{tag:'Begriff erklärt',title:'Was ist eine LCA?',body:'<p>Die <b>Ökobilanz (LCA, Life Cycle Assessment)</b> berechnet, wie viele Treibhausgase ein Gebäude über seinen <b>gesamten Lebenszyklus</b> verursacht: von der Herstellung der Baustoffe über den Betrieb bis zum Rückbau.</p><p>Beim Neubau ist die LCA der <b>Nachweis</b> für die KfW-Stufe „Klimafreundlicher Neubau" (KFN) und damit der Schlüssel zur Förderung.</p><p>Wir erstellen die LCA und sorgen dafür, dass die geforderten Grenzwerte eingehalten werden.</p>'},
-  baubegleitung:{tag:'Begriff erklärt',title:'Was ist Baubegleitung?',body:'<p>Bei der <b>Baubegleitung</b> ist ein Fachmann während der Sanierung oder beim Neubau an Ihrer Seite: Er prüft, ob alles <b>fachlich richtig und nach Plan</b> umgesetzt wird, und kümmert sich um die <b>Nachweise, die die Förderung verlangt</b>.</p><p>Für viele Förderungen ist diese Begleitung sogar <b>Pflicht</b> und sie ist selbst <b>bis zu 50 % förderfähig</b>. Sie sorgt dafür, dass am Ende kein Geld verloren geht, weil ein Detail nicht stimmt.</p><p>Bei uns haben Sie dafür einen festen Ansprechpartner, der den Überblick behält und die Fördernachweise im Blick hat.</p>'}
+  baubegleitung:{tag:'Begriff erklärt',title:'Was ist Baubegleitung?',img:'img/baubegleitung-popup.jpg',body:'<p>Bei der <b>Baubegleitung</b> ist ein Fachmann während der Sanierung oder beim Neubau an Ihrer Seite: Er prüft, ob alles <b>fachlich richtig und nach Plan</b> umgesetzt wird, und kümmert sich um die <b>Nachweise, die die Förderung verlangt</b>.</p><p>Für viele Förderungen ist diese Begleitung sogar <b>Pflicht</b> und sie ist selbst <b>bis zu 50 % förderfähig</b>. Sie sorgt dafür, dass am Ende kein Geld verloren geht, weil ein Detail nicht stimmt.</p><p>Bei uns haben Sie dafür einen festen Ansprechpartner, der den Überblick behält und die Fördernachweise im Blick hat.</p>'}
 };
 function openInfo(key){
   const d=INFO[key];if(!d)return;
