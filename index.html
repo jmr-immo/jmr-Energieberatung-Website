@@ -258,9 +258,17 @@ section{padding:var(--pad) 0;position:relative}
 .info-modal{position:fixed;inset:0;z-index:300;display:flex;align-items:flex-start;justify-content:center;padding:clamp(1rem,8vh,5rem) 1.2rem 1.2rem}
 .info-modal[hidden]{display:none}
 .info-modal-backdrop{position:absolute;inset:0;background:rgba(11,28,43,.6);backdrop-filter:blur(4px);animation:imFade .25s ease}
-.info-modal-card{position:relative;z-index:1;background:var(--white);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);max-width:520px;width:100%;padding:2.4rem 2.3rem;text-align:left;animation:imPop .3s cubic-bezier(.16,1,.3,1)}
-.info-modal-x{position:absolute;top:1rem;right:1.2rem;border:none;background:none;font-size:1.7rem;line-height:1;color:var(--muted);cursor:pointer;transition:color .2s}
+.info-modal-card{position:relative;z-index:1;background:var(--white);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);max-width:520px;width:100%;text-align:left;animation:imPop .3s cubic-bezier(.16,1,.3,1);overflow:hidden;display:flex}
+.info-modal-text{padding:2.4rem 2.3rem;flex:1 1 auto;min-width:0}
+.info-modal-media{display:none}
+/* Variante mit Bild: Popup nach rechts erweitert, Bild als gerader Cut */
+.info-modal-card.has-media{max-width:760px}
+.info-modal-card.has-media .info-modal-media{display:block;flex:0 0 240px;align-self:stretch;background-size:cover;background-position:center;border-top-right-radius:22px;border-bottom-right-radius:22px}
+@media(max-width:640px){.info-modal-card.has-media{max-width:520px;flex-direction:column}.info-modal-card.has-media .info-modal-media{flex-basis:200px;border-radius:0}}
+.info-modal-x{position:absolute;top:1rem;right:1.2rem;z-index:2;border:none;background:none;font-size:1.7rem;line-height:1;color:var(--muted);cursor:pointer;transition:color .2s}
 .info-modal-x:hover{color:var(--ink)}
+.info-modal-card.has-media .info-modal-x{color:#fff;text-shadow:0 1px 4px rgba(11,28,43,.55)}
+.info-modal-card.has-media .info-modal-x:hover{color:#fff;opacity:.8}
 .info-modal-tag{display:inline-block;font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--steel);font-weight:700;margin-bottom:.55rem}
 .info-modal-card h3{font-size:1.55rem;margin-bottom:.9rem}
 .info-modal-card p{color:var(--muted);font-size:.97rem;line-height:1.62;margin-bottom:.8rem}
@@ -1258,11 +1266,14 @@ section{padding:var(--pad) 0;position:relative}
 <!-- Info-Popup (z. B. iSFP-Erklärung) -->
 <div class="info-modal" id="infoModal" hidden>
   <div class="info-modal-backdrop" onclick="closeInfo()"></div>
-  <div class="info-modal-card" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+  <div class="info-modal-card" id="infoModalCard" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
     <button type="button" class="info-modal-x" onclick="closeInfo()" aria-label="Schließen">×</button>
-    <span class="info-modal-tag" id="infoModalTag"></span>
-    <h3 id="infoModalTitle"></h3>
-    <div id="infoModalBody"></div>
+    <div class="info-modal-text">
+      <span class="info-modal-tag" id="infoModalTag"></span>
+      <h3 id="infoModalTitle"></h3>
+      <div id="infoModalBody"></div>
+    </div>
+    <div class="info-modal-media" id="infoModalMedia" aria-hidden="true"></div>
   </div>
 </div>
 
@@ -1365,7 +1376,7 @@ bindGlass();
 
 /* --- Info-Popups (Begriffe einfach erklärt) --- */
 const INFO={
-  isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Aber wenn er zu Ihrem Vorhaben passt, bringt er einen Vorteil: Auf viele Sanierungsmaßnahmen gibt es dann <b>5 % mehr Förderung</b> (20 % statt 15 %).</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
+  isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',img:'img/isfp-popup.jpg',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Aber wenn er zu Ihrem Vorhaben passt, bringt er einen Vorteil: Auf viele Sanierungsmaßnahmen gibt es dann <b>5 % mehr Förderung</b> (20 % statt 15 %).</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
   lca:{tag:'Begriff erklärt',title:'Was ist eine LCA?',body:'<p>Die <b>Ökobilanz (LCA, Life Cycle Assessment)</b> berechnet, wie viele Treibhausgase ein Gebäude über seinen <b>gesamten Lebenszyklus</b> verursacht: von der Herstellung der Baustoffe über den Betrieb bis zum Rückbau.</p><p>Beim Neubau ist die LCA der <b>Nachweis</b> für die KfW-Stufe „Klimafreundlicher Neubau" (KFN) und damit der Schlüssel zur Förderung.</p><p>Wir erstellen die LCA und sorgen dafür, dass die geforderten Grenzwerte eingehalten werden.</p>'},
   baubegleitung:{tag:'Begriff erklärt',title:'Was ist Baubegleitung?',body:'<p>Bei der <b>Baubegleitung</b> ist ein Fachmann während der Sanierung oder beim Neubau an Ihrer Seite: Er prüft, ob alles <b>fachlich richtig und nach Plan</b> umgesetzt wird, und kümmert sich um die <b>Nachweise, die die Förderung verlangt</b>.</p><p>Für viele Förderungen ist diese Begleitung sogar <b>Pflicht</b> und sie ist selbst <b>bis zu 50 % förderfähig</b>. Sie sorgt dafür, dass am Ende kein Geld verloren geht, weil ein Detail nicht stimmt.</p><p>Bei uns haben Sie dafür einen festen Ansprechpartner, der den Überblick behält und die Fördernachweise im Blick hat.</p>'}
 };
@@ -1374,6 +1385,9 @@ function openInfo(key){
   document.getElementById('infoModalTag').textContent=d.tag;
   document.getElementById('infoModalTitle').textContent=d.title;
   document.getElementById('infoModalBody').innerHTML=d.body;
+  const card=document.getElementById('infoModalCard'),media=document.getElementById('infoModalMedia');
+  if(d.img){media.style.backgroundImage='url("'+d.img+'")';card.classList.add('has-media');}
+  else{media.style.backgroundImage='';card.classList.remove('has-media');}
   const m=document.getElementById('infoModal');m.hidden=false;document.body.style.overflow='hidden';
 }
 function closeInfo(){const m=document.getElementById('infoModal');if(m){m.hidden=true;document.body.style.overflow='';}}
