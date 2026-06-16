@@ -218,6 +218,14 @@ section{padding:var(--pad) 0;position:relative}
 .eee-logo-link{display:inline-flex;cursor:pointer}
 .eee-logo{height:48px;width:auto;display:block}
 @media(max-width:480px){.eee-logo{height:38px}}
+/* Desktop: Tags-Wrapper unsichtbar (Layout wie bisher, eine zentrierte Reihe) */
+.trust-tags{display:contents}
+/* Handy: Logo allein mittig oben, darunter Beratung links / Umsetzung rechts */
+@media(max-width:560px){
+  .trust .container{flex-direction:column;gap:1rem}
+  .eee-logo-link{justify-content:center}
+  .trust-tags{display:flex;justify-content:center;align-items:center;gap:1.4rem}
+}
 
 /* SECTION HEAD */
 .sh{max-width:760px;margin-bottom:3.2rem}
@@ -283,6 +291,8 @@ section{padding:var(--pad) 0;position:relative}
 .info-modal-x:hover{background:rgba(11,28,43,.12);color:var(--ink);transform:rotate(90deg)}
 .info-modal-card.has-media .info-modal-x{color:#fff;background:rgba(11,28,43,.34);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(11,28,43,.25)}
 .info-modal-card.has-media .info-modal-x:hover{background:rgba(11,28,43,.55);color:#fff}
+/* Handy: Schließen-X ohne Dreh-Animation und ohne Transform-Verzögerung (Touch löst :hover sonst beim Tippen aus) */
+@media(max-width:640px){.info-modal-x{transition:background .2s,color .2s}.info-modal-x:hover{transform:none}}
 .info-modal-tag{display:inline-block;font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--steel);font-weight:700;margin-bottom:.55rem}
 .info-modal-card h3{font-size:1.55rem;margin-bottom:.9rem}
 .info-modal-card p{color:var(--muted);font-size:.97rem;line-height:1.62;margin-bottom:.8rem}
@@ -300,12 +310,17 @@ section{padding:var(--pad) 0;position:relative}
 .cstep.cstep-hl{background:rgba(31,168,90,.16);border-color:var(--green);box-shadow:0 0 0 1px var(--green),0 14px 34px -16px rgba(31,168,90,.7);transform:translateY(-4px)}
 .cstep.cstep-hl .n{color:var(--green)}
 .chain-cta{margin-top:2rem;display:flex;justify-content:center}
+/* Handy: CTA-Button etwas größer/lesbarer (Desktop unverändert) */
+@media(max-width:560px){.chain-cta .btn{font-size:1.12rem;padding:1.1rem 1.8rem}}
 #moat .sh p em{font-style:normal;color:#fff;font-weight:600}
 #einsteiger{position:relative}
 
 /* WEGWEISER */
 .wz{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.9rem,3.4vw,3.8rem);box-shadow:var(--shadow);max-width:1180px;width:100%;margin:0 auto;height:clamp(480px,calc(100vh - 160px),1100px);display:flex;flex-direction:column;justify-content:flex-start}
 .wz.res-open{height:auto;min-height:clamp(480px,calc(100vh - 160px),1100px)}
+/* Handy: feste Höhe aufheben, sonst läuft der Inhalt (gestapelte Kacheln / Rechner) über den Container hinaus.
+   Container wächst dann natürlich mit; Auswahl-Kacheln kompakter. Desktop unverändert. */
+@media(max-width:560px){.wz{height:auto}.wz-opt{min-height:0}}
 .wz-title{font-family:var(--disp);font-weight:600;font-size:clamp(1.5rem,2.6vw,2.1rem);color:#fff;text-align:center;letter-spacing:-.02em;margin-bottom:.2rem;position:relative;z-index:2}
 .wz-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
 .wz-lead{text-align:center;color:#c5d8d0;font-size:clamp(1rem,1.5vw,1.18rem);max-width:560px;margin:.6rem auto 0;position:relative;z-index:2}
@@ -364,8 +379,6 @@ section{padding:var(--pad) 0;position:relative}
 .sign .sub{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-top:1.5rem}
 
 /* TEAM */
-.team{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.6rem}
-@media(max-width:760px){.team{grid-template-columns:1fr}}
 /* Über uns: großes zentrales Teamfoto + Geschichte */
 .team-hero{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:stretch;margin-top:1rem}
 @media(max-width:860px){.team-hero{grid-template-columns:1fr;justify-items:center}}
@@ -373,20 +386,13 @@ section{padding:var(--pad) 0;position:relative}
    object-position:top → Beschnitt unten, Köpfe oben bleiben sichtbar. */
 .team-photo{position:relative;margin:0;width:100%;min-height:280px}
 .team-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
-@media(max-width:860px){.team-photo{min-height:0}.team-photo img{position:static;height:auto;aspect-ratio:4/5}}
+@media(max-width:860px){.team-photo{min-height:0}.team-photo img{position:static;height:auto;aspect-ratio:3/2}}
 .team-photo figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:14px;padding:.8rem 1rem}
 .team-photo figcaption strong{font-family:var(--disp);font-weight:600;display:block;font-size:.98rem;color:var(--ink)}
 .team-photo figcaption span{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
 .team-story p{color:var(--muted);font-size:1.02rem;line-height:1.7}
 .team-story p+p{margin-top:1rem}
 @media(max-width:860px){.team-story{max-width:560px}}
-.person{position:relative;border:1px solid var(--line);background:var(--white);border-radius:var(--r);padding:1.9rem;display:flex;gap:1.2rem;transition:.3s}
-.person:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-.person .ph{width:120px;height:149px;border-radius:16px;background:linear-gradient(150deg,rgba(31,111,165,.16),rgba(31,168,90,.12));background-size:cover;background-position:center top;flex-shrink:0}
-@media(max-width:520px){.person .ph{width:96px;height:119px}}
-.person .ph-j{background-image:url("img/jerome.jpg")}.person .ph-m{background-image:url("img/max.jpg")}
-.person h3{font-size:1.12rem}.person .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--steel);text-transform:uppercase;margin:.25rem 0 .6rem}
-.person p{font-size:.88rem;color:var(--muted)}
 
 /* REVIEWS */
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.6rem}
@@ -408,11 +414,16 @@ section{padding:var(--pad) 0;position:relative}
 .rev-google:hover .rev-more{gap:.75rem}
 
 /* KONTAKT */
-.cgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:stretch}
-@media(max-width:880px){.cgrid{grid-template-columns:1fr}}
+/* Desktop: 2 Spalten, links Angaben (Zeile 1) + Bild (Zeile 2, füllt Resthöhe), rechts Formular über beide Zeilen.
+   Das Formular bestimmt die Gesamthöhe; das Bild streckt sich auf die verbleibende Höhe der linken Spalte (wie zuvor). */
+.cgrid{display:grid;grid-template-columns:1.05fr .95fr;grid-template-rows:auto 1fr;column-gap:3rem;row-gap:1.8rem;align-items:stretch}
+.cgrid .kontakt-left{grid-column:1;grid-row:1}
+.cgrid .kontakt-formcol{grid-column:2;grid-row:1/3}
+.cgrid .kontakt-photo{grid-column:1;grid-row:2;height:100%;min-height:220px}
 .kontakt-left{display:flex;flex-direction:column}
-.kontakt-photo{margin-top:1.8rem;flex:1;min-height:220px;border-radius:var(--r-lg);background:#0e2433 url("img/beratung.jpg") center/cover;box-shadow:var(--shadow-lg)}
-@media(max-width:880px){.kontakt-photo{min-height:240px}}
+.kontakt-photo{border-radius:var(--r-lg);background:#0e2433 url("img/beratung.jpg") center/cover;box-shadow:var(--shadow-lg)}
+/* Handy: einspaltig, Reihenfolge Angaben → Formular → Bild; Bild bekommt feste, ausgewogene Höhe */
+@media(max-width:880px){.cgrid{grid-template-columns:1fr;grid-template-rows:none}.cgrid .kontakt-left,.cgrid .kontakt-formcol,.cgrid .kontakt-photo{grid-column:1;grid-row:auto;height:auto}.kontakt-photo{min-height:240px}}
 .clist{list-style:none;display:flex;flex-wrap:wrap;gap:.85rem 1.6rem;margin-top:1.6rem}
 .clist li{display:flex;align-items:center;gap:.9rem;font-size:1rem}
 .clist .half{flex:0 1 auto}.clist .loc{flex:1 1 100%}
@@ -441,8 +452,6 @@ section{padding:var(--pad) 0;position:relative}
 .fnav{display:flex;flex-wrap:wrap;gap:1.4rem}.fnav a{color:#7d92a1}.fnav a:hover{color:#fff}
 .fcol{display:flex;flex-direction:column;align-items:flex-end;gap:1rem}
 @media(max-width:760px){.fcol{align-items:flex-start}}
-.fpartner{font-family:var(--disp);font-weight:600;font-size:1rem;color:#cbd8e0;text-decoration:none;transition:color .2s}
-.fpartner:hover{color:#fff}
 .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-family:var(--mono);font-size:.72rem;color:#5a6f7d;position:relative;z-index:2}
 
 /* SPOTLIGHT */
@@ -582,11 +591,12 @@ section{padding:var(--pad) 0;position:relative}
 .edu-stage{position:relative;text-align:center;max-width:760px;margin:0 auto}
 .edu-h2{white-space:nowrap}
 @media(max-width:560px){.edu-h2{white-space:normal;font-size:1.6rem}}
-/* Überschriften, die nur auf Desktop einzeilig bleiben sollen; auf dem Handy umbrechen */
+/* Überschriften, die nur auf Desktop einzeilig bleiben sollen; auf Handy/Tablet umbrechen.
+   Breakpoint bewusst auf 768px, damit der Umbruch auf allen Handygrößen (auch große/Querformat) greift. */
 .nowrap-d{white-space:nowrap}
-@media(max-width:560px){.nowrap-d{white-space:normal}}
+@media(max-width:768px){.nowrap-d{white-space:normal}}
 /* Handy: überschüssigen Leerraum unter dem interaktiven Haus reduzieren (Desktop unverändert) */
-@media(max-width:560px){#einsteiger{padding-bottom:28px}#einsteiger .sh{margin-bottom:1.8rem}}
+@media(max-width:560px){#einsteiger .sh{margin-bottom:1.8rem}}
 .house-frame{position:relative;touch-action:pan-y}
 .house{width:100%;height:auto;display:block}
 /* Echter, runder Clip-Rahmen um das SVG: beschneidet den (beim Zoom skalierten) Inhalt hart auf runde Ecken */
@@ -776,7 +786,7 @@ section{padding:var(--pad) 0;position:relative}
 <div class="trust">
   <div class="container">
     <a class="eee-logo-link" href="https://www.energie-effizienz-experten.de" target="_blank" rel="noopener" title="Zur Energieeffizienz-Expertenliste" aria-label="Energieeffizienz-Experte in der Expertenliste für Förderprogramme des Bundes"><img class="eee-logo" src="img/eee-experte-logo.png" alt="Energieeffizienz-Experte für Förderprogramme des Bundes"></a>
-    <span class="lg">Beratung <span class="lg-sub">(EBW)</span></span><span class="lg">Umsetzung <span class="lg-sub">(BEG)</span></span>
+    <span class="trust-tags"><span class="lg">Beratung <span class="lg-sub">(EBW)</span></span><span class="lg">Umsetzung <span class="lg-sub">(BEG)</span></span></span>
   </div>
 </div>
 
@@ -1131,7 +1141,7 @@ section{padding:var(--pad) 0;position:relative}
         <div class="fgrid" id="res-foerder"></div>
         <p class="wz-note" id="res-disc">Grobe Orientierung, keine verbindliche Zusage. Förderprogramme und -sätze ändern sich laufend; maßgeblich ist Ihr individueller Förderbescheid.</p>
         <div class="res-nudge">Nächster Schritt: Im kostenlosen Erstgespräch gehen wir ins Detail und finden den Weg, der sich für Sie wirklich lohnt (z. B. ob ein iSFP sinnvoll ist oder welche Maßnahmen wirklich Sinn machen, und welche nicht).</div>
-        <div class="wz-cta"><a href="#kontakt" class="btn btn-green magnetic" onclick="wzToContact()">Kostenloses Erstgespräch buchen <span class="ar">→</span></a></div>
+        <div class="wz-cta"><a href="#kontakt" class="btn btn-green magnetic" onclick="wzToContact()">Zum Erstgespräch <span class="ar">→</span></a></div>
       </div>
       </div>
     </div>
@@ -1147,7 +1157,7 @@ section{padding:var(--pad) 0;position:relative}
     #gewerbe-zu-wohnen .gzw-lead{font-size:1.08rem;color:var(--muted);max-width:540px;margin-bottom:1.4rem}
     #gewerbe-zu-wohnen .gzw-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-top:.4rem}
     #gewerbe-zu-wohnen .gzw-list li{display:flex;gap:.7rem;align-items:center;font-size:.96rem;white-space:nowrap}
-    @media(max-width:520px){#gewerbe-zu-wohnen .gzw-list li{white-space:normal;align-items:flex-start}}
+    @media(max-width:560px){#gewerbe-zu-wohnen .gzw-list li{white-space:normal;align-items:flex-start}}
     #gewerbe-zu-wohnen .gzw-list li b{color:var(--green-d);font-family:var(--mono);font-weight:600;flex-shrink:0}
     #gewerbe-zu-wohnen .gzw-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.8rem}
     #gewerbe-zu-wohnen .gzw-card{position:relative;background:linear-gradient(160deg,rgba(31,168,90,.10),#fff);border:1px solid rgba(31,168,90,.30);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow)}
@@ -1160,6 +1170,14 @@ section{padding:var(--pad) 0;position:relative}
     #gewerbe-zu-wohnen .gzw-stat .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
     #gewerbe-zu-wohnen .gzw-stat .s{font-family:var(--disp);font-weight:600;font-size:.96rem;color:var(--ink);margin-top:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     #gewerbe-zu-wohnen .gzw-note{font-family:var(--mono);font-size:.66rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:1rem;margin-top:1.3rem}
+    /* Handy: nichts darf breiter als der Viewport werden (sonst läuft die Sektion rechts raus/abgeschnitten).
+       nowrap in dieser Sektion aufheben, Grid-Spalten dürfen schrumpfen. Desktop unverändert. */
+    @media(max-width:560px){
+      #gewerbe-zu-wohnen .gzw-grid{min-width:0}
+      #gewerbe-zu-wohnen .gzw-grid>*{min-width:0}
+      #gewerbe-zu-wohnen .gzw-stat .s{white-space:normal}
+      #gewerbe-zu-wohnen .gzw-num,#gewerbe-zu-wohnen .gzw-num-2{overflow-wrap:anywhere}
+    }
   </style>
   <div class="container">
     <div class="gzw-grid">
@@ -1215,14 +1233,10 @@ section{padding:var(--pad) 0;position:relative}
         <img src="img/team-treppe.jpg" alt="Jérôme Marquart und Maximilian Rudorf, Energieberater und Architekt der jmr Energieberatung in Saarbrücken">
       </figure>
       <div class="team-story">
-        <p>Wir sind Jérôme und Maximilian, ein Wirtschaftsingenieur und ein Architekt aus Saarbrücken. Uns verbindet die Überzeugung, dass eine gute Sanierung kein Bauchgefühl sein darf, sondern eine durchgerechnete Entscheidung.</p>
-        <p>Deshalb arbeiten wir anders als viele: Wir verkaufen keine Maßnahmen, sondern prüfen erst, was sich für Ihr Haus wirklich lohnt. Manchmal ist das die große Lösung, oft reicht die kleine. Beides sagen wir Ihnen offen, mit Zahlen statt Werbeversprechen.</p>
-        <p>Und weil bei uns Energieberatung und Architektur Hand in Hand gehen, endet unsere Arbeit nicht beim Bericht: Wir begleiten Sie, bis die Förderung fließt und die Umsetzung steht.</p>
+        <p>Wir sind Jérôme Marquart und Maximilian Rudorf. Uns verbindet die Überzeugung, dass eine gute Sanierung kein Bauchgefühl sein darf, sondern eine durchgerechnete Entscheidung.</p>
+        <p>Deshalb arbeiten wir anders als viele: Wir empfehlen Ihnen blind keine Maßnahmen, sondern prüfen erst, was sich für Ihr Haus wirklich lohnt. Manchmal ist das die große Lösung, oft reicht die kleine. Beides sagen wir Ihnen offen, mit Zahlen statt Werbeversprechen.</p>
+        <p>Und weil bei uns Energieberatung und Planung Hand in Hand gehen, endet unsere Arbeit nicht beim Bericht: Wir begleiten Sie, bis die Förderung fließt und die Umsetzung steht.</p>
       </div>
-    </div>
-    <div class="team fade d1">
-      <div class="person"><span class="ph ph-j"></span><div><h3>Jérôme Marquart</h3><div class="role">Wirtschaftsingenieur</div><p>Denkt in Wirtschaftlichkeit und ROI. Übersetzt Technik in Zahlen, die für Sie zählen, und sagt auch, wenn sich etwas nicht rechnet.</p></div></div>
-      <div class="person"><span class="ph ph-m"></span><div><h3>Maximilian Rudorf</h3><div class="role">Architekt</div><p>Kommt aus der Praxis und kennt Baustelle wie Baurecht: was geht und was nicht. So wird aus dem Plan eine saubere Umsetzung.</p></div></div>
     </div>
   </div>
 </section>
@@ -1257,9 +1271,8 @@ section{padding:var(--pad) 0;position:relative}
         <h2>Unverbindliches Erstgespräch.</h2>
         <p style="color:var(--ink-text);font-size:1.1rem;margin-top:1rem">Kostenlos und unverbindlich. Wir klären Ihr Vorhaben, die passende Förderung und die nächsten Schritte.</p>
         <ul class="clist"><li class="half"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 6.6 1.5 1.5 0 0 1 5 4z"/></svg></span> 0681 9697198</li><li class="half"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span> info@jmr-energieberatung.de</li><li class="loc"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 0 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span> Halbergstraße 4, 66121 Saarbrücken</li></ul>
-        <div class="kontakt-photo"></div>
       </div>
-      <div class="fade d1">
+      <div class="fade d1 kontakt-formcol">
         <div class="ccard">
           <h3>Erstgespräch anfragen</h3>
           <p class="ds">Wir melden uns innerhalb von 24 Stunden.</p>
@@ -1282,6 +1295,7 @@ section{padding:var(--pad) 0;position:relative}
           </form>
         </div>
       </div>
+      <div class="kontakt-photo fade"></div>
     </div>
   </div>
 </section>
@@ -1308,7 +1322,6 @@ section{padding:var(--pad) 0;position:relative}
       <div class="bn"><img class="flogo" src="img/logo-white.png" alt="jmr Energieberatung">jmr Energieberatung<small>Energieberater in Saarbrücken & Saarland · Förderung · Baubegleitung</small></div>
       <div class="fcol">
         <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="#kontakt">Erstgespräch</a></div>
-        <a class="fpartner" href="https://jmr-architektur.de" target="_blank" rel="noopener">jmr Architektur ↗</a>
       </div>
     </div>
     <div class="fbot"><span>© 2026 jmr Energieberatung · Marquart Consulting GmbH · Saarbrücken</span><span><a href="impressum.html" target="_blank" rel="noopener" style="color:inherit">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener" style="color:inherit">Datenschutz</a></span></div>
