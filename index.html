@@ -310,8 +310,6 @@ section{padding:var(--pad) 0;position:relative}
 .cstep.cstep-hl{background:rgba(31,168,90,.16);border-color:var(--green);box-shadow:0 0 0 1px var(--green),0 14px 34px -16px rgba(31,168,90,.7);transform:translateY(-4px)}
 .cstep.cstep-hl .n{color:var(--green)}
 .chain-cta{margin-top:2rem;display:flex;justify-content:center}
-/* Handy: CTA-Button etwas größer/lesbarer (Desktop unverändert) */
-@media(max-width:560px){.chain-cta .btn{font-size:1.12rem;padding:1.1rem 1.8rem}}
 #moat .sh p em{font-style:normal;color:#fff;font-weight:600}
 #einsteiger{position:relative}
 
@@ -1151,8 +1149,15 @@ section{padding:var(--pad) 0;position:relative}
 <!-- GEWERBE ZU WOHNEN (KfW 266) -->
 <section id="gewerbe-zu-wohnen">
   <style>
-    #gewerbe-zu-wohnen .gzw-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.6rem,4vw,3rem);align-items:center}
-    @media(max-width:880px){#gewerbe-zu-wohnen .gzw-grid{grid-template-columns:1fr}}
+    /* Desktop: links Text (Zeile 1) + Button (Zeile 2), rechts Kasten über beide Zeilen, vertikal zentriert */
+    #gewerbe-zu-wohnen .gzw-grid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:auto auto;gap:clamp(1.6rem,4vw,3rem);align-items:center}
+    #gewerbe-zu-wohnen .gzw-grid>*:nth-child(1){grid-column:1;grid-row:1}
+    #gewerbe-zu-wohnen .gzw-grid>*:nth-child(2){grid-column:2;grid-row:1/3}
+    #gewerbe-zu-wohnen .gzw-cta{grid-column:1;grid-row:2;margin-top:0}
+    /* Handy: einspaltig, Reihenfolge Text → Kasten → Button (Button als Letztes) */
+    @media(max-width:880px){#gewerbe-zu-wohnen .gzw-grid{grid-template-columns:1fr;grid-template-rows:none}
+      #gewerbe-zu-wohnen .gzw-grid>*:nth-child(1),#gewerbe-zu-wohnen .gzw-grid>*:nth-child(2),#gewerbe-zu-wohnen .gzw-cta{grid-column:1;grid-row:auto}
+      #gewerbe-zu-wohnen .gzw-cta{margin-top:0}}
     #gewerbe-zu-wohnen h2{margin-bottom:1rem}
     #gewerbe-zu-wohnen .gzw-lead{font-size:1.08rem;color:var(--muted);max-width:540px;margin-bottom:1.4rem}
     #gewerbe-zu-wohnen .gzw-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-top:.4rem}
@@ -1190,9 +1195,6 @@ section{padding:var(--pad) 0;position:relative}
           <li><b>+</b> Prüfung beider Programme (266 und 261)</li>
           <li><b>+</b> Planung und Energieberatung aus einer Hand</li>
         </ul>
-        <div class="gzw-cta">
-          <a href="#kontakt" class="btn btn-green magnetic" onclick="presetGzw()">Förderung besprechen <span class="ar">→</span></a>
-        </div>
       </div>
       <div class="fade d1">
         <div class="gzw-card">
@@ -1207,6 +1209,9 @@ section{padding:var(--pad) 0;position:relative}
           </div>
           <p class="gzw-note">Stand Juni 2026. Die KfW 266 startet voraussichtlich im Juli 2026. Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Ob, in welcher Höhe und in welcher Kombination eine Förderung möglich ist, hängt vom Einzelfall ab.</p>
         </div>
+      </div>
+      <div class="gzw-cta fade">
+        <a href="#kontakt" class="btn btn-green magnetic" onclick="presetGzw()">Förderung besprechen <span class="ar">→</span></a>
       </div>
     </div>
   </div>
