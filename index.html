@@ -208,6 +208,8 @@ section{padding:var(--pad) 0;position:relative}
 .eee-badge b{font-family:var(--disp);font-weight:700;font-size:.92rem;color:#fff;background:linear-gradient(150deg,var(--steel),var(--ink));width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;letter-spacing:.03em;flex-shrink:0}
 .eee-badge>span{display:flex;flex-direction:column;line-height:1.18;font-family:var(--disp);font-weight:600;font-size:.86rem;color:var(--ink)}
 .eee-badge>span small{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;font-weight:400;margin-top:1px}
+.eee-logo-link{display:inline-flex;transition:opacity .2s}
+.eee-logo-link:hover{opacity:.78}
 .eee-logo{height:48px;width:auto;display:block}
 @media(max-width:480px){.eee-logo{height:38px}}
 
@@ -757,7 +759,7 @@ section{padding:var(--pad) 0;position:relative}
 <!-- TRUST -->
 <div class="trust">
   <div class="container">
-    <img class="eee-logo" src="img/eee-logo.png" alt="Energieeffizienz-Experte für Förderprogramme des Bundes">
+    <a class="eee-logo-link" href="https://www.energie-effizienz-experten.de" target="_blank" rel="noopener" aria-label="Energieeffizienz-Experte in der Expertenliste für Förderprogramme des Bundes"><img class="eee-logo" src="img/eee-experte-logo.png" alt="Energieeffizienz-Experte für Förderprogramme des Bundes"></a>
     <span class="lg">Beratung <span class="lg-sub">(EBW)</span></span><span class="lg">Umsetzung <span class="lg-sub">(BEG)</span></span>
   </div>
 </div>
