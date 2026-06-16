@@ -277,7 +277,8 @@ section{padding:var(--pad) 0;position:relative}
 /* Variante mit Bild: Popup nach rechts erweitert, Bild als gerader Cut */
 .info-modal-card.has-media{max-width:760px}
 .info-modal-card.has-media .info-modal-media{display:block;flex:0 0 240px;align-self:stretch;background-size:cover;background-position:center;border-top-right-radius:22px;border-bottom-right-radius:22px}
-@media(max-width:640px){.info-modal-card.has-media{max-width:520px;flex-direction:column}.info-modal-card.has-media .info-modal-media{flex-basis:200px;border-radius:0}}
+/* Handy/Tablet: in den Leistungs-Popups nur Text zeigen, kein Bild (Desktop unverändert) */
+@media(max-width:640px){.info-modal-card.has-media{max-width:520px}.info-modal-card.has-media .info-modal-media{display:none}}
 .info-modal-x{position:absolute;top:.95rem;right:1rem;z-index:2;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:none;border-radius:50%;background:rgba(11,28,43,.06);font-size:1.5rem;line-height:1;color:var(--muted);cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .info-modal-x:hover{background:rgba(11,28,43,.12);color:var(--ink);transform:rotate(90deg)}
 .info-modal-card.has-media .info-modal-x{color:#fff;background:rgba(11,28,43,.34);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(11,28,43,.25)}
@@ -706,7 +707,10 @@ section{padding:var(--pad) 0;position:relative}
 .hi-next:hover{transform:translateY(-1px);box-shadow:0 12px 26px -12px rgba(31,111,165,.5)}
 .hi-next:hover .ar{transform:translateY(3px)}
 @media(prefers-reduced-motion:reduce){.hi-next::before{animation:none}}
-@media(max-width:1100px){.info-pop{position:static;width:auto;transform:none;margin:1rem auto 0;max-width:430px}.info-pop.show{transform:none}}
+@media(max-width:1100px){.info-pop{position:static;width:auto;transform:none;margin:1rem auto 0;max-width:430px}.info-pop.show{transform:none}
+/* nicht geklickt: Box ganz aus dem Layout nehmen, damit unter dem Haus kein Leerraum bleibt.
+   .prep macht sie kurz unsichtbar sichtbar (im Layout, aber opacity:0), damit die Einblend-Animation greift */
+.info-pop:not(.show):not(.prep){display:none}}
 /* Bereich-Leiste */
 .part-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.6rem;margin-top:2.4rem}
 .part-bar.pb-top{margin-top:0;margin-bottom:1.8rem}
@@ -1457,7 +1461,11 @@ function housePick(k){const d=HOUSE[k];if(!d)return;
   const pop=document.getElementById('infoPop');
   pop.classList.remove('pop-left','pop-right');
   pop.classList.add(SIDE[k]==='left'?'pop-left':'pop-right');
-  pop.classList.add('show');
+  // Auf dem Handy ist die Box bis hierher display:none. Erst ins Layout holen (.prep, noch unsichtbar),
+  // Reflow erzwingen, dann .show im nächsten Frame → Einblend-Animation greift trotz display-Wechsel.
+  pop.classList.add('prep');
+  void pop.offsetWidth;
+  requestAnimationFrame(()=>{pop.classList.add('show');});
   trackPop();
   // Sanft so scrollen, dass die Oberkante des Klartext-Kästchens mit Abstand unter der
   // fixen Navbar (66px) sitzt. Nach dem Einblenden messen, dann scrollen.
@@ -1504,7 +1512,7 @@ function houseReset(){
   document.getElementById('houseSvg').classList.remove('zoomed');
   document.querySelector('.house-frame').classList.remove('zoomed');
   const pop=document.getElementById('infoPop');
-  pop.classList.remove('show','tracking');pop.style.setProperty('--popY','0px');
+  pop.classList.remove('show','tracking','prep');pop.style.setProperty('--popY','0px');
   document.querySelectorAll('.house .part').forEach(p=>p.classList.remove('hl'));
   document.querySelectorAll('.house .hl-ins').forEach(p=>p.classList.remove('hl-ins'));
   document.querySelectorAll('.pb-chip').forEach(c=>c.classList.remove('active'));
