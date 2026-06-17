@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Ads Conversion-Tracking + Cookie-Einwilligung (laedt erst nach Zustimmung) -->
+<script src="js/jmr-consent.js" defer></script>
 <!-- Favicons (jmr-Logo) -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
@@ -1698,6 +1700,7 @@ function presetGzw(){
     try{
       const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
       if(res.ok){
+        if(window.jmrTrackConversion){window.jmrTrackConversion();}
         form.reset();
         status.hidden=false;status.className='kf-status ok';
         status.textContent='Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden.';
