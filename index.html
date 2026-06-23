@@ -1782,7 +1782,9 @@ if(location.search.indexOf('diag')>-1){
       var b=document.getElementById('diagBanner')||document.createElement('div');
       b.id='diagBanner';
       b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b1c2b;color:#fff;font:11px/1.4 monospace;padding:8px;max-height:55vh;overflow:auto;white-space:pre-wrap';
-      b.textContent='Viewport='+vw+'  Treffer='+hits.length+'\n'+hits.slice(0,12).map(function(h){return 'L'+h.left+' R'+h.right+' w'+h.w+'  '+h.lab;}).join('\n');
+      var bo=document.body.getBoundingClientRect();
+      var meta='cw'+document.documentElement.clientWidth+' iw'+window.innerWidth+' vv'+(window.visualViewport?Math.round(window.visualViewport.width):'-')+' bodyW'+Math.round(bo.width)+' bodySW'+document.body.scrollWidth+' htmlSW'+document.documentElement.scrollWidth;
+      b.textContent=meta+'\nTreffer='+hits.length+'\n'+hits.slice(0,12).map(function(h){return 'L'+h.left+' R'+h.right+' w'+h.w+'  '+h.lab;}).join('\n');
       document.body.appendChild(b);
     }
     addEventListener('load',runDiag); setInterval(runDiag,1000);
