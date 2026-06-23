@@ -1853,6 +1853,20 @@ populateDetail(document.getElementById('vorhaben').value);
     addHidden('Referrer', document.referrer);
   }
 })();
+
+/* Handy: Buttons, die zum Kontakt führen, scrollen direkt zum Formular-Kasten (nicht zur Überschrift darüber) */
+(function(){
+  document.querySelectorAll('a[href="#kontakt"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(!window.matchMedia('(max-width:560px)').matches)return;
+      var card=document.querySelector('#kontakt .ccard');
+      if(!card)return;
+      e.preventDefault();
+      var y=card.getBoundingClientRect().top+window.scrollY-80;
+      window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+    });
+  });
+})();
 </script>
 </body>
 </html>
