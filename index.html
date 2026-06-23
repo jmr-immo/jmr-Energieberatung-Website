@@ -165,8 +165,9 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .btn-green{background:var(--green);color:#fff !important;box-shadow:0 10px 26px -12px rgba(31,168,90,.6)}
 .btn-green:hover{background:var(--green-d);box-shadow:0 16px 36px -12px rgba(31,168,90,.75)}
 .btn-green *{color:#fff !important}
-.btn-ghost{color:var(--ink);background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)) padding-box,linear-gradient(96deg,var(--steel),var(--cyan) 50%,var(--green)) border-box;-webkit-backdrop-filter:blur(9px) saturate(140%);backdrop-filter:blur(9px) saturate(140%)}
-.btn-ghost:hover{color:var(--steel);background:linear-gradient(rgba(255,255,255,.74),rgba(255,255,255,.74)) padding-box,linear-gradient(96deg,var(--steel),var(--cyan) 50%,var(--green)) border-box;box-shadow:0 12px 30px -16px rgba(31,111,165,.5)}
+.btn-ghost{color:var(--ink);background:linear-gradient(rgba(255,255,255,.14),rgba(255,255,255,.14)) padding-box,linear-gradient(90deg,var(--steel),var(--cyan),var(--green),var(--cyan),var(--steel)) border-box;background-size:auto,200% 100%;-webkit-backdrop-filter:blur(9px) saturate(130%);backdrop-filter:blur(9px) saturate(130%);animation:ghostFlow 5s linear infinite}
+.btn-ghost:hover{color:var(--steel);background:linear-gradient(rgba(255,255,255,.24),rgba(255,255,255,.24)) padding-box,linear-gradient(90deg,var(--steel),var(--cyan),var(--green),var(--cyan),var(--steel)) border-box;background-size:auto,200% 100%;box-shadow:0 12px 30px -16px rgba(31,111,165,.45)}
+@keyframes ghostFlow{from{background-position:0 0,0 0}to{background-position:0 0,-200% 0}}
 .dark .btn-ghost{color:#fff;border-color:rgba(255,255,255,.28)}.dark .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 .btn .ar{transition:transform .25s}.btn:hover .ar{transform:translateX(4px)}
 
@@ -350,7 +351,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-aura.a1{width:46vw;height:46vw;max-width:600px;max-height:600px;top:-6%;left:-8%;background:radial-gradient(circle,rgba(75,163,214,.5),transparent 66%);animation:wzdrift 17s ease-in-out infinite}
 .wz-aura.a2{width:40vw;height:40vw;max-width:520px;max-height:520px;bottom:-10%;right:-8%;background:radial-gradient(circle,rgba(31,168,90,.38),transparent 66%);animation:wzdrift 21s ease-in-out infinite reverse}
 @keyframes wzdrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(5%,6%) scale(1.1)}}
-@media(prefers-reduced-motion:reduce){.wz-aura,.wz.vis .wz-opt{animation:none}.wz .wz-opt{opacity:1}}
+@media(prefers-reduced-motion:reduce){.wz-aura,.wz.vis .wz-opt,.btn-ghost{animation:none}.wz .wz-opt{opacity:1}}
 .wz-bar{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;border-bottom:1px solid var(--line);padding-bottom:1rem}
 .wz-bar .st{color:var(--steel)}
 .wz-q{font-family:var(--disp);font-size:clamp(1.35rem,2.5vw,1.9rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem;min-height:1.35em}
@@ -593,7 +594,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-lead{color:var(--muted)}.wz-lead b{color:var(--ink)}
 .wz-bar{color:var(--muted);border-bottom-color:var(--line)}.wz-bar .st{color:var(--steel)}
 .wz-q{color:var(--ink)}
-.wz-back-link{color:var(--muted)}.wz-back-link:hover{color:var(--steel)}
+.wz-back-link{color:var(--steel-d);font-weight:700;background:rgba(31,111,165,.09);border:1px solid rgba(31,111,165,.24);border-radius:999px;padding:.42rem .9rem}.wz-back-link:hover{color:#fff;background:var(--steel);border-color:var(--steel)}
 .wz-rh h3{color:var(--ink)}.wz-rh p{color:var(--muted)}
 .wz-focus{background:rgba(31,111,165,.10);border-color:var(--line);color:var(--steel-d)}
 .wz-steps li{color:var(--ink)}
@@ -1336,8 +1337,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="fld"><label for="kf-nn">Nachname</label><input id="kf-nn" name="Nachname" type="text" placeholder="Nachname" required></div>
           </div>
           <div class="fld-row">
-            <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Telefonnummer"></div>
-            <div class="fld"><label for="kf-mail">E-Mail</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail-Adresse" required></div>
+            <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Telefon"></div>
+            <div class="fld"><label for="kf-mail">E-Mail</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail" required></div>
           </div>
           <div class="fld"><label for="vorhaben">Ihr Vorhaben (optional)</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Noch unklar</option></select></div>
           <div class="fld"><label for="vorhaben-detail">Genauer (optional)</label><select id="vorhaben-detail" name="Vorhaben genauer"><option value="" disabled selected>Bitte auswählen …</option></select></div>
