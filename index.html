@@ -340,6 +340,16 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-title{font-family:var(--disp);font-weight:600;font-size:clamp(1.5rem,2.6vw,2.1rem);color:#fff;text-align:center;letter-spacing:-.02em;margin-bottom:.2rem;position:relative;z-index:2}
 .wz-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
 .wz-lead{text-align:center;color:#c5d8d0;font-size:clamp(1rem,1.5vw,1.18rem);max-width:560px;margin:.6rem auto 0;position:relative;z-index:2}
+/* Handy: Förder-Check-Überschrift über den Kasten (statt im Kasten) */
+.wz-head-m{display:none}
+@media(max-width:560px){
+  .wz-head-m{display:block;text-align:center;margin-bottom:1.1rem}
+  .wz-head-m-title{font-family:var(--disp);font-weight:600;font-size:1.7rem;color:var(--ink);letter-spacing:-.02em}
+  .wz-head-m-lead{color:var(--muted);font-size:1rem;line-height:1.5;margin-top:.35rem}
+  .wz-head-m-lead b{color:var(--ink)}
+  .wz .wz-title{display:none}
+  #wz-lead{display:none!important}
+}
 .wz-lead b{color:#fff;font-weight:600}
 /* Kachel-Einfließen */
 .wz .wz-opt{opacity:0}
@@ -369,6 +379,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-opt .opt-cue{position:absolute;top:1.25rem;right:1.4rem;z-index:2;display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blueprint);font-weight:500;opacity:.85;transition:opacity .25s,gap .25s}
 .wz-opt:hover .opt-cue{opacity:1;gap:.6rem}
 .wz-opt .oar{display:none}
+/* Handy: Auswahlfelder nur so hoch wie ihr Inhalt (kein erzwungener Leerraum unten) */
+@media(max-width:560px){.wz-opt{min-height:0}}
 .wz-step{display:none}.wz-step.active{display:block;animation:fade .45s ease}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .wz-rh{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem}
@@ -657,6 +669,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .divider circle{filter:drop-shadow(0 2px 6px rgba(11,28,43,.18));transform-box:fill-box;transform-origin:center;transition:transform .18s cubic-bezier(.16,1,.3,1)}
 .divider:hover circle{transform:scale(1.18)}
 .divider path{transition:transform .18s cubic-bezier(.16,1,.3,1)}
+/* Handy: Schieberegler-Griff (Kreis + Pfeile) größer für besseres Antippen */
+@media(max-width:560px){.divider circle,.divider:hover circle{transform:scale(1.7)}.divider path{transform-box:fill-box;transform-origin:center;transform:scale(1.7)}}
 .house.zoomed .divider,.house.zoomed .divlabel{opacity:0;pointer-events:none;transition:opacity .3s}
 .divlabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--muted);font-weight:600;pointer-events:none;transition:opacity .3s}
 /* Gerichtete Energie-Leitungen: ruhige Grundlinie + wandernde Dashes in Flussrichtung (Quelle→Ziel) */
@@ -1150,6 +1164,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 <section class="alt" id="wegweiser">
   <div class="wz-aura a1"></div><div class="wz-aura a2"></div>
   <div class="container">
+    <div class="wz-head-m"><div class="wz-head-m-title">Förder-Check</div><p class="wz-head-m-lead"><b>Wählen Sie Ihr Vorhaben</b> für eine erste Einordnung.</p></div>
     <div class="wz fade" id="wz">
       <div class="wz-title">Förder-Check</div>
       <p class="wz-lead" id="wz-lead"><b>Wählen Sie Ihr Vorhaben</b> für eine erste Einordnung.</p>
