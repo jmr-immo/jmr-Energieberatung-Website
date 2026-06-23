@@ -1768,6 +1768,7 @@ function presetGzw(){
       const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
       if(res.ok){
         if(window.jmrTrackConversion){window.jmrTrackConversion();}
+        if(window.jmrTrackEvent){window.jmrTrackEvent('generate_lead',{});}
         form.reset();
         status.hidden=false;status.className='kf-status ok';
         status.textContent='Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden.';
@@ -1852,6 +1853,21 @@ populateDetail(document.getElementById('vorhaben').value);
     addHidden('Seite', location.href);
     addHidden('Referrer', document.referrer);
   }
+})();
+
+/* GA4-Events für Klicks (feuern nur bei Statistik-Zustimmung über window.jmrTrackEvent) */
+(function(){
+  document.addEventListener('click',function(e){
+    if(!window.jmrTrackEvent)return;
+    var el=e.target.closest('a[href^="tel:"],a[href^="mailto:"],a.btn,.wz-opt');
+    if(!el)return;
+    var href=(el.getAttribute&&el.getAttribute('href'))||'';
+    var txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
+    if(href.indexOf('tel:')===0){window.jmrTrackEvent('click_phone',{});}
+    else if(href.indexOf('mailto:')===0){window.jmrTrackEvent('click_email',{});}
+    else if(el.classList&&el.classList.contains('wz-opt')){window.jmrTrackEvent('foerdercheck_select',{label:txt});}
+    else{window.jmrTrackEvent('cta_click',{label:txt,ziel:href});}
+  });
 })();
 
 /* Handy: Buttons, die zum Kontakt führen, scrollen direkt zum Formular-Kasten (nicht zur Überschrift darüber) */

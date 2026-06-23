@@ -28,16 +28,21 @@
         desc: 'Für den Betrieb der Website erforderlich. Hierfür werden aktuell keine Cookies gesetzt. Diese Kategorie lässt sich nicht deaktivieren.'
       },
       {
+        id: 'statistics',
+        name: 'Statistik',
+        required: false,
+        desc: 'Anonyme Auswertung der Nutzung mit Google Analytics: Seitenaufrufe, Verweildauer und Klicks. Hilft uns, die Website zu verbessern. Die IP-Adresse wird anonymisiert. Dabei werden Cookies gesetzt.'
+      },
+      {
         id: 'marketing',
         name: 'Marketing',
         required: false,
         desc: 'Misst, wie gut unsere Werbeanzeigen funktionieren (z. B. Google Ads), und kann für weitere Werbedienste genutzt werden. Dabei werden Cookies gesetzt und Daten an die jeweiligen Anbieter übertragen.'
       }
-      // Beispiel für später:
-      // { id: 'statistics', name: 'Statistik', required: false, desc: 'Anonyme Auswertung der Nutzung, um die Website zu verbessern.' }
     ],
     googleAdsId: 'AW-18244917669',
-    conversionSendTo: 'AW-18244917669/SMiQCL6i2sAcEKWz7ftD'
+    conversionSendTo: 'AW-18244917669/SMiQCL6i2sAcEKWz7ftD',
+    ga4Id: 'G-EB7B2R76H8'
   };
 
   // ===== gtag-Grundgerüst + Consent Mode v2 (Standard: alles abgelehnt) =====
@@ -54,16 +59,28 @@
   });
 
   // ===== Tags laden (pro Kategorie) =====
-  var googleTagLoaded = false;
-  function loadGoogleTag() {
-    if (googleTagLoaded) { return; }
-    googleTagLoaded = true;
+  // gtag.js-Bibliothek wird nur einmal geladen; danach pro Dienst eine eigene config.
+  var gtagLibLoaded = false, adsConfigured = false, ga4Configured = false;
+  function ensureGtagLib(seedId) {
+    if (gtagLibLoaded) { return; }
+    gtagLibLoaded = true;
     var s = document.createElement('script');
     s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.googleAdsId;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + seedId;
     document.head.appendChild(s);
     window.gtag('js', new Date());
+  }
+  function loadGoogleAds() {            // Kategorie "marketing"
+    ensureGtagLib(CONFIG.googleAdsId);
+    if (adsConfigured) { return; }
+    adsConfigured = true;
     window.gtag('config', CONFIG.googleAdsId);
+  }
+  function loadGA4() {                  // Kategorie "statistics"
+    ensureGtagLib(CONFIG.ga4Id);
+    if (ga4Configured) { return; }
+    ga4Configured = true;
+    window.gtag('config', CONFIG.ga4Id, { anonymize_ip: true });
   }
   // Hier später weitere Marketing-Dienste ergänzen, z. B. function loadMetaPixel() { ... }
 
@@ -77,8 +94,9 @@
       ad_personalization: marketing ? 'granted' : 'denied',
       analytics_storage: statistics ? 'granted' : 'denied'
     });
+    if (statistics) { loadGA4(); }
     if (marketing) {
-      loadGoogleTag();
+      loadGoogleAds();
       // loadMetaPixel();
     }
   }
@@ -93,7 +111,7 @@
   function saveState(state) {
     try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(state)); } catch (e) {}
   }
-  function defaultState() { return { necessary: true, marketing: false }; }
+  function defaultState() { return { necessary: true, statistics: false, marketing: false }; }
   function currentState() { return readState() || defaultState(); }
 
   function commit(state) {
@@ -126,6 +144,14 @@
     var st = readState();
     if (st && st.marketing && typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', { 'send_to': CONFIG.conversionSendTo });
+    }
+  };
+
+  // ===== GA4-Event-Auslöser (Button-Klicks etc.) – feuert nur bei Statistik-Zustimmung =====
+  window.jmrTrackEvent = function (name, params) {
+    var st = readState();
+    if (st && st.statistics && typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
     }
   };
 
