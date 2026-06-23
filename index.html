@@ -97,7 +97,7 @@
     {
       "@type": "Question",
       "name": "Brauche ich für die KfW-Förderung Gewerbe zu Wohnen (266) einen Energieeffizienz-Experten?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Ja. Für das Programm Gewerbe zu Wohnen (KfW 266) muss die neue Wohneinheit energetisch mindestens den Standard Effizienzhaus 85 EE erreichen, und die KfW verlangt die Einbindung eines gelisteten Energieeffizienz-Experten. Wir erstellen das Energiekonzept und übernehmen den Nachweis und die Fachbegleitung. Die Umnutzung selbst plant und beantragt unser Architektur-Partner. Stand Juni 2026, Programmstart voraussichtlich Juli 2026, maßgeblich sind die Bedingungen der KfW."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Ja. Für das Programm Gewerbe zu Wohnen (KfW 266) muss die neue Wohneinheit energetisch mindestens den Standard Effizienzhaus 85 EE erreichen, und die KfW verlangt die Einbindung eines gelisteten Energieeffizienz-Experten. Wir erstellen das Energiekonzept und übernehmen den Nachweis und die Fachbegleitung. Stand Juni 2026, Programmstart voraussichtlich Juli 2026, maßgeblich sind die Bedingungen der KfW."}
     },
     {
       "@type": "Question",
@@ -121,7 +121,7 @@
 @font-face{font-family:'Switzer';src:url('fonts/Switzer-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
 @font-face{font-family:'Switzer';src:url('fonts/Switzer-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 :root{
   --ink:#0B1C2B; --ink-2:#102A3D;
   --steel:#1F6FA5; --steel-d:#16527c;
@@ -267,11 +267,6 @@ section{padding:var(--pad) 0;position:relative}
 .chain-add strong{color:#fff;font-weight:600}
 /* Anker mit Versatz, damit die Sektion nicht unter der fixen Navbar landet */
 .anchor-offset{position:absolute;top:-90px}
-/* Link zum Architektur-Partner (öffnet neue Seite) */
-.partner-link{color:var(--green-d);font-weight:700;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1.5px;transition:color .2s}
-.partner-link:hover{color:var(--green)}
-.dark .partner-link,.chain-add .partner-link{color:#5fe49a}
-.dark .partner-link:hover,.chain-add .partner-link:hover{color:#fff}
 /* Info-Pill „iSFP?" + Erklär-Popup */
 .info-pill{position:absolute;top:1.1rem;right:1.1rem;z-index:2;display:inline-flex;align-items:center;gap:.32rem;border:1px solid var(--steel);background:rgba(31,111,165,.08);color:var(--steel-d);font-family:var(--sans);font-weight:700;font-size:.74rem;line-height:1;padding:.2rem .55rem .2rem .35rem;border-radius:999px;cursor:pointer;transition:background .2s,color .2s;animation:pillPulse 3.2s ease-in-out infinite}
 @keyframes pillPulse{0%,100%{box-shadow:0 0 0 0 rgba(31,111,165,0)}50%{box-shadow:0 0 0 5px rgba(31,111,165,.14)}}
@@ -526,6 +521,15 @@ section{padding:var(--pad) 0;position:relative}
 .calc-tip-box{position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%) translateY(4px);width:min(280px,72vw);background:var(--ink);color:#e6eef4;font-family:var(--sans);font-weight:400;font-size:.8rem;line-height:1.5;letter-spacing:0;text-transform:none;text-align:left;padding:.75rem .9rem;border-radius:12px;box-shadow:0 14px 30px -12px rgba(11,28,43,.6);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s;z-index:20}
 .calc-tip-box::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--ink)}
 .calc-tip:hover .calc-tip-box,.calc-tip:focus .calc-tip-box,.calc-tip:focus-within .calc-tip-box{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+/* Handy: Tooltip nicht zentriert über dem randnahen Icon (würde rechts über den Bildschirm ragen),
+   sondern als volle Breite unter dem Kostenfeld verankert. So kann er nie horizontal überlaufen. */
+@media(max-width:560px){
+  .cf-cost{position:relative}
+  .calc-tip{position:static}
+  .calc-tip-box{left:0;right:0;top:calc(100% + 8px);bottom:auto;width:auto;max-width:100%;transform:translateY(-4px)}
+  .calc-tip:hover .calc-tip-box,.calc-tip:focus .calc-tip-box,.calc-tip:focus-within .calc-tip-box{transform:translateY(0)}
+  .calc-tip-box::after{display:none}
+}
 .calc-in{display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:.1rem .9rem;max-width:300px;min-width:0}
 .calc-in .eur{font-family:var(--disp);font-weight:600;color:var(--blueprint);font-size:1.2rem}
 .calc-in input{flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-family:var(--disp);font-weight:600;font-size:1.4rem;padding:.55rem 0}
@@ -539,6 +543,20 @@ section{padding:var(--pad) 0;position:relative}
 .calc-cap{font-family:var(--mono);font-size:.7rem;color:#8ea6b6;margin-top:.7rem;letter-spacing:.03em}
 .calc-out{margin-top:1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 @media(max-width:520px){.calc-out{grid-template-columns:1fr}}
+/* Handy: Ergebnis-Ansichten kompakter (kein kleinerer Text, sondern A/B/C-Badge weg + straffere Abstände) */
+@media(max-width:560px){
+  .wz-rh .ic{display:none}
+  .wz-rh{gap:0;margin-bottom:.7rem}
+  .wz-focus{margin-bottom:.5rem}
+  .calc{margin:1rem 0;padding:1rem}
+  .calc-out{margin-top:.8rem;gap:.7rem}
+  .calc-box{padding:.8rem .9rem}
+  .fgrid{margin:1rem 0;gap:.7rem}
+  .fbox{padding:1.05rem}
+  .res-nudge{margin:1rem 0;padding:.85rem 1rem}
+  .wz-note{margin-top:.8rem}
+  .wz-cta{margin-top:1.1rem;padding-top:1.1rem}
+}
 .calc-box{background:linear-gradient(160deg,rgba(31,168,90,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1rem 1.1rem}
 .calc-box .v{font-family:var(--disp);font-weight:700;font-size:1.4rem;color:#43d27e;line-height:1.1}
 .calc-box.eig{background:linear-gradient(160deg,rgba(75,163,214,.10),rgba(255,255,255,.03))}.calc-box.eig .v{color:#fff}
@@ -1623,16 +1641,16 @@ const WZ={
   neubau:{label:'Neu bauen',ic:'B',code:'/// B · NEUBAU',q2:'Was bauen Sie?',
     title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
     foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
-    steps:['Ökobilanz / LCA über den 50-Jahre-Lebenszyklus','KFN-Förderung bei der KfW — wir unterstützen beim Antrag','Baubegleitung durch uns, Fachplanung über unseren Architektur-Partner'],
+    steps:['Ökobilanz / LCA über den 50-Jahre-Lebenszyklus','KFN-Förderung bei der KfW — wir unterstützen beim Antrag','Baubegleitung durch uns'],
     subs:[{l:'Einfamilienhaus',f:'Effizienzhaus-Neubau (EFH)'},{l:'Mehrfamilienhaus',f:'MFH-Neubau, 100.000 € je Wohneinheit'},{l:'Bauträger / Projekt',f:'Bauträger-Projekt, LCA über alle Einheiten'}]},
   invest:{label:'Kaufen & investieren',ic:'C',code:'/// C · INVEST',q2:'Was planen Sie mit dem Objekt?',
-    title:'Kaufen & investieren: Invest-Check',sub:'Energetische Kaufberatung und Sanierungsstrategie. Bei Bauantrag und Umnutzung unterstützen wir über unseren <a href="https://jmr-architektur.de" target="_blank" rel="noopener" class="partner-link">Architektur-Partner</a>.',
-    foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie, mit Architektur-Partner im Hintergrund'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
-    steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Bauantrag über unseren Architektur-Partner, dann Umsetzung'],
+    title:'Kaufen & investieren: Invest-Check',sub:'Energetische Kaufberatung und Sanierungsstrategie.',
+    foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie aus einer Hand'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
+    steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Förderung sichern, dann Umsetzung'],
     subs:[
       {l:'Gewerbe zu Wohnen',f:'gefördert über KfW 266 & 261',
         title:'Gewerbe zu Wohnen: KfW 266 & 261',
-        sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, voraussichtlich ab Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach; die Umnutzung plant unser <a href="https://jmr-architektur.de" target="_blank" rel="noopener" class="partner-link">Architektur-Partner</a>.',
+        sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, voraussichtlich ab Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.',
         foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
       {l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie',
         title:'Kaufen & sanieren: Kauf-Check + Strategie',
@@ -1640,7 +1658,7 @@ const WZ={
         foerder:[{big:'bis 20<small>%</small>',lbl:'auf Einzelmaßnahmen mit iSFP, statt 15 %'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
       {l:'Umnutzen',f:'z. B. unbeheizt → beheizt',
         title:'Umnutzen: aus Fläche wird Wohnraum',
-        sub:'Wenn bisher unbeheizte oder anders genutzte Flächen zu Wohnraum werden, prüfen wir den energetischen Standard und die passende Förderung. Bauantrag und Nutzungsänderung übernimmt unser <a href="https://jmr-architektur.de" target="_blank" rel="noopener" class="partner-link">Architektur-Partner</a>.',
+        sub:'Wenn bisher unbeheizte oder anders genutzte Flächen zu Wohnraum werden, prüfen wir den energetischen Standard und die passende Förderung.',
         foerder:[{big:'EH 85 EE',lbl:'energetischer Standard für die KfW-Förderung, den wir nachweisen'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]}
     ]}
 };
