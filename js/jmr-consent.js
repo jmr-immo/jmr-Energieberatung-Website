@@ -87,7 +87,7 @@
   // ===== Einwilligung anwenden =====
   function applyConsent(state) {
     var marketing = !!state.marketing;
-    var statistics = !!state.statistics; // aktuell ungenutzt, fuer spaeter vorbereitet
+    var statistics = !!state.statistics; // steuert Google Analytics 4
     window.gtag('consent', 'update', {
       ad_storage: marketing ? 'granted' : 'denied',
       ad_user_data: marketing ? 'granted' : 'denied',
