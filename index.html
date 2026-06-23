@@ -194,6 +194,17 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .hero-sign{margin-top:2.2rem;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;align-items:center;gap:.8rem;max-width:480px}
 .hero-sign .q{font-family:var(--disp);font-size:1.22rem;color:var(--ink);line-height:1.3;font-weight:600}
 .hero-sign .b{font-family:var(--disp);font-size:2rem;color:var(--steel);line-height:.6}
+/* Hero-Kontaktzeile: nur auf dem Handy sichtbar (EEE-Logo links, Tel/E-Mail rechts) */
+.hero-contact{display:none}
+@media(max-width:560px){
+  .hero .mono-row{display:none}
+  .hero-sign{display:none}
+  .hero-contact{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid var(--line)}
+  .hero-contact .eee-logo{height:44px;width:auto;display:block}
+  .hero-contact-info{display:flex;flex-direction:column;align-items:flex-end;gap:.15rem;text-align:right;min-width:0}
+  .hero-contact-info .hc-tel{font-family:var(--disp);font-weight:600;font-size:1.05rem;color:var(--ink);text-decoration:none}
+  .hero-contact-info .hc-mail{font-size:.8rem;color:var(--muted);text-decoration:none;word-break:break-all}
+}
 /* PHOTO FRAME */
 .photo{position:relative}
 .photo-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;border-radius:var(--r-lg);background:#dde7ef;box-shadow:var(--shadow-lg)}
@@ -795,6 +806,10 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
           <a href="#wegweiser" class="btn btn-ghost">Förder-Check starten</a>
         </div>
         <div class="hero-sign"><span class="b">&ldquo;</span><span class="q">Klartext im Förderdschungel.</span></div>
+        <div class="hero-contact">
+          <a class="eee-logo-link" href="https://www.energie-effizienz-experten.de" target="_blank" rel="noopener" aria-label="Energieeffizienz-Experte in der Expertenliste für Förderprogramme des Bundes"><img class="eee-logo" src="img/eee-experte-logo.png" alt="Energieeffizienz-Experte für Förderprogramme des Bundes"></a>
+          <div class="hero-contact-info"><a href="tel:+496819697198" class="hc-tel">0681 9697198</a><a href="mailto:info@jmr-energieberatung.de" class="hc-mail">info@jmr-energieberatung.de</a></div>
+        </div>
       </div>
       <div class="fade vis d2">
         <figure class="photo">
@@ -1319,6 +1334,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
           <div class="fld"><label for="vorhaben">Ihr Vorhaben (optional)</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Noch unklar</option></select></div>
           <div class="fld"><label for="vorhaben-detail">Genauer (optional)</label><select id="vorhaben-detail" name="Vorhaben genauer"><option value="" disabled selected>Bitte auswählen …</option></select></div>
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
+          <input type="hidden" id="kf-foerdercheck" name="Förder-Check">
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit" class="btn btn-green magnetic" id="kfSubmit" style="width:100%;justify-content:center">Anfrage senden <span class="ar">→</span></button>
           <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Mehr dazu in der <a href="datenschutz.html" target="_blank" rel="noopener" style="color:var(--green-d)">Datenschutzerklärung</a>.</p>
@@ -1746,6 +1762,21 @@ function wzToContact(){
     const det=document.getElementById('vorhaben-detail');if(det&&lastSub)det.value=lastSub;
     sel.style.borderColor='var(--steel)';sel.style.boxShadow='0 0 0 3px rgba(31,111,165,.18)';setTimeout(()=>{sel.style.boxShadow=''},1600);
   }
+  // Förder-Check-Eingaben/Berechnung als verstecktes Feld ans Formular übergeben (erscheint in der Formspree-Mail)
+  const hf=document.getElementById('kf-foerdercheck');
+  if(hf){
+    const parts=[];
+    if(lastGoalLabel)parts.push('Ziel: '+lastGoalLabel);
+    if(lastSub)parts.push('Maßnahme: '+lastSub);
+    else if(lastFocus)parts.push('Fokus: '+lastFocus);
+    const costEl=document.getElementById('calc-cost');
+    if(costEl&&costEl.value.trim())parts.push('Geplante Kosten: '+costEl.value.trim()+' €');
+    const weWrap=document.getElementById('cf-we'),weEl=document.getElementById('calc-we');
+    if(weWrap&&weWrap.style.display!=='none'&&weEl&&weEl.value&&weEl.value!=='1')parts.push('Wohneinheiten: '+weEl.value);
+    const out=document.getElementById('calc-out');
+    if(out&&out.textContent.trim())parts.push('Berechnung: '+out.textContent.replace(/\s+/g,' ').trim());
+    hf.value=parts.join(' | ');
+  }
 }
 function show(id){document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');var ld=document.getElementById('wz-lead');if(ld)ld.style.display=(id==='wz-res')?'none':'block';document.getElementById('wz').classList.toggle('res-open',id==='wz-res')}
 function wzGoal(k){curGoal=k;const d=WZ[k];
@@ -1768,6 +1799,31 @@ function wzBack(){show('wz-q2')}
 function wzReset(){curGoal=null;show('wz-q1')}
 /* Detail-Dropdown initial befüllen */
 populateDetail(document.getElementById('vorhaben').value);
+
+/* UTM-/Klick-Parameter: an interne Unterseiten-Links anhängen + als versteckte Felder ins Kontaktformular (erscheint in der Formspree-Mail) */
+(function(){
+  var keep=new URLSearchParams();
+  new URLSearchParams(location.search).forEach(function(v,k){ if(/^(utm_|gclid$|fbclid$|msclkid$|gad_|gbraid$|wbraid$)/i.test(k)) keep.set(k,v); });
+  if(keep.toString()){
+    // an interne .html-Unterseiten-Links anhängen, damit die Parameter erhalten bleiben
+    document.querySelectorAll('a[href]').forEach(function(a){
+      try{
+        var u=new URL(a.getAttribute('href'), location.href);
+        if(u.hostname===location.hostname && /\.html?$/i.test(u.pathname)){
+          keep.forEach(function(v,k){ if(!u.searchParams.has(k)) u.searchParams.set(k,v); });
+          a.setAttribute('href', u.pathname+u.search+u.hash);
+        }
+      }catch(e){}
+    });
+  }
+  var form=document.getElementById('kontaktForm');
+  if(form){
+    function addHidden(n,v){ if(!v)return; var i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; form.appendChild(i); }
+    keep.forEach(function(v,k){ addHidden(k,v); });
+    addHidden('Seite', location.href);
+    addHidden('Referrer', document.referrer);
+  }
+})();
 </script>
 </body>
 </html>
