@@ -343,12 +343,15 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 /* Handy: Förder-Check-Überschrift über den Kasten (statt im Kasten) */
 .wz-head-m{display:none}
 @media(max-width:560px){
-  .wz-head-m{display:block;text-align:center;margin-bottom:1.1rem}
+  #wegweiser{justify-content:flex-start;padding-top:80px}
+  .wz-head-m{display:block;text-align:center;margin:0 0 1.9rem}
   .wz-head-m-title{font-family:var(--disp);font-weight:600;font-size:1.7rem;color:var(--ink);letter-spacing:-.02em}
   .wz-head-m-lead{color:var(--muted);font-size:1rem;line-height:1.5;margin-top:.35rem}
   .wz-head-m-lead b{color:var(--ink)}
   .wz .wz-title{display:none}
   #wz-lead{display:none!important}
+  /* erste Seite (q1) hat keinen Zurück-Button → leere Leiste + Trennlinie raus, spart Platz */
+  #wz-q1 .wz-bar{display:none}
 }
 .wz-lead b{color:#fff;font-weight:600}
 /* Kachel-Einfließen */
@@ -384,7 +387,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-step{display:none}.wz-step.active{display:block;animation:fade .45s ease}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .wz-rh{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem}
-.wz-rh .ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(150deg,var(--steel),var(--ink));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:1.3rem;flex-shrink:0}
+.wz-rh .ic{display:none}
 .wz-rh h3{font-size:1.35rem;margin-bottom:.25rem}.wz-rh p{color:var(--muted);font-size:.92rem}
 .wz-focus{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--steel);background:rgba(31,111,165,.08);border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;margin-bottom:.4rem}
 .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.4rem 0}
@@ -669,8 +672,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .divider circle{filter:drop-shadow(0 2px 6px rgba(11,28,43,.18));transform-box:fill-box;transform-origin:center;transition:transform .18s cubic-bezier(.16,1,.3,1)}
 .divider:hover circle{transform:scale(1.18)}
 .divider path{transition:transform .18s cubic-bezier(.16,1,.3,1)}
-/* Handy: Schieberegler-Griff (Kreis + Pfeile) größer für besseres Antippen */
-@media(max-width:560px){.divider circle,.divider:hover circle{transform:scale(1.7)}.divider path{transform-box:fill-box;transform-origin:center;transform:scale(1.7)}}
+/* Handy: Schieberegler-Griff (Kreis + Pfeile als eine Gruppe) größer; Pfeile bleiben immer mittig im Kreis */
+@media(max-width:560px){.dhandle{transform-box:fill-box;transform-origin:center;transform:scale(1.7)}}
 .house.zoomed .divider,.house.zoomed .divlabel{opacity:0;pointer-events:none;transition:opacity .3s}
 .divlabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--muted);font-weight:600;pointer-events:none;transition:opacity .3s}
 /* Gerichtete Energie-Leitungen: ruhige Grundlinie + wandernde Dashes in Flussrichtung (Quelle→Ziel) */
@@ -1106,8 +1109,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <rect class="catch" x="-120" y="-120" width="800" height="660" fill="transparent" onclick="houseReset()"/>
             <g class="divider" id="divider">
               <line x1="532" y1="0" x2="532" y2="432" stroke="#fff" stroke-width="3"/>
-              <circle cx="532" cy="206" r="18" fill="#fff" stroke="#e6e2d8" stroke-width="1.5"/>
-              <path d="M526 201 l-4 5 l4 5 Z M538 201 l4 5 l-4 5 Z" fill="#000" stroke="none"/>
+              <g class="dhandle"><circle cx="532" cy="206" r="18" fill="#fff" stroke="#e6e2d8" stroke-width="1.5"/><path d="M526 201 l-4 5 l4 5 Z M538 201 l4 5 l-4 5 Z" fill="#000" stroke="none"/></g>
             </g>
             <text class="divlabel" id="lblUn" x="44" y="36" text-anchor="middle">UNSANIERT</text>
             <text class="divlabel" id="lblSan" x="518" y="36" text-anchor="middle">SANIERT</text>
