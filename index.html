@@ -165,9 +165,10 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .btn-green{background:var(--green);color:#fff !important;box-shadow:0 10px 26px -12px rgba(31,168,90,.6)}
 .btn-green:hover{background:var(--green-d);box-shadow:0 16px 36px -12px rgba(31,168,90,.75)}
 .btn-green *{color:#fff !important}
-.btn-ghost{color:var(--ink);background:linear-gradient(rgba(255,255,255,.14),rgba(255,255,255,.14)) padding-box,linear-gradient(90deg,var(--steel),var(--cyan),var(--green),var(--cyan),var(--steel)) border-box;background-size:auto,200% 100%;-webkit-backdrop-filter:blur(9px) saturate(130%);backdrop-filter:blur(9px) saturate(130%);animation:ghostFlow 5s linear infinite}
-.btn-ghost:hover{color:var(--steel);background:linear-gradient(rgba(255,255,255,.24),rgba(255,255,255,.24)) padding-box,linear-gradient(90deg,var(--steel),var(--cyan),var(--green),var(--cyan),var(--steel)) border-box;background-size:auto,200% 100%;box-shadow:0 12px 30px -16px rgba(31,111,165,.45)}
-@keyframes ghostFlow{from{background-position:0 0,0 0}to{background-position:0 0,-200% 0}}
+.btn-ghost{position:relative;color:var(--ink);background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(9px) saturate(130%);backdrop-filter:blur(9px) saturate(130%)}
+.btn-ghost::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;background:linear-gradient(90deg,var(--steel),var(--cyan),var(--green),var(--cyan),var(--steel));background-size:200% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:ghostFlow 5s linear infinite}
+.btn-ghost:hover{color:var(--steel);background:rgba(255,255,255,.22);box-shadow:0 12px 30px -16px rgba(31,111,165,.45)}
+@keyframes ghostFlow{from{background-position:0 0}to{background-position:-200% 0}}
 .dark .btn-ghost{color:#fff;border-color:rgba(255,255,255,.28)}.dark .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 .btn .ar{transition:transform .25s}.btn:hover .ar{transform:translateX(4px)}
 
@@ -530,7 +531,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-opt{background:linear-gradient(155deg,rgba(255,255,255,.18),rgba(255,255,255,.04) 55%,rgba(75,163,214,.07));-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.24);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -26px 50px -26px rgba(0,0,0,.5),0 20px 50px -22px rgba(0,0,0,.6);overflow:hidden}
 .wz-opt::before{content:"";position:absolute;left:0;right:0;top:0;height:55%;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.24),transparent);pointer-events:none;z-index:0}
 .wz-opt::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(200px circle at var(--gx,50%) var(--gy,30%),rgba(120,220,180,.16),transparent 62%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:0}
-.wz-opt strong,.wz-opt>span:not(.oar){position:relative;z-index:1}
+.wz-opt strong,.wz-opt>span:not(.oar):not(.opt-cue){position:relative;z-index:1}
 .wz-opt .oar{z-index:2}
 .wz-opt:hover{background:linear-gradient(155deg,rgba(255,255,255,.28),rgba(75,163,214,.16));border-color:rgba(255,255,255,.42);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 30px 60px -22px rgba(0,0,0,.72)}
 .wz-opt:hover::after{opacity:1}
