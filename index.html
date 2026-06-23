@@ -464,6 +464,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .clist .ic{font-family:var(--mono);font-size:.66rem;color:var(--blueprint);border:1px solid rgba(255,255,255,.18);border-radius:11px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ccard{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:2.1rem;color:var(--text);box-shadow:var(--shadow-lg)}
 .ccard .mono-row{margin-bottom:.65rem}.ccard .mono{color:var(--steel)}.ccard .mono-row::before{background:var(--steel)}.ccard .ds{color:var(--muted);font-size:.9rem;margin-bottom:1.4rem}
+.kontakt-faq{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.5rem;font-family:var(--sans);font-weight:600;font-size:.95rem;color:var(--blueprint);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(75,163,214,.5);transition:color .2s}
+.kontakt-faq:hover{color:#fff}.kontakt-faq .ar{transition:transform .25s}.kontakt-faq:hover .ar{transform:translateX(3px)}
 .fld{margin-bottom:.95rem}.fld label{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
 .fld input,.fld select,.fld textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:.95rem;background:var(--paper);transition:.2s;color:var(--text)}
 .fld select{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:2.6rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%230B1C2B' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center}
@@ -1346,6 +1348,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
         <h2>Unverbindliches Erstgespräch.</h2>
         <p style="color:var(--ink-text);font-size:1.1rem;margin-top:1rem">Kostenlos und unverbindlich. Wir klären Ihr Vorhaben, die passende Förderung und die nächsten Schritte.</p>
         <ul class="clist"><li class="half"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 6.6 1.5 1.5 0 0 1 5 4z"/></svg></span> <a href="tel:+496819697198" style="color:inherit;text-decoration:none">0681 9697198</a></li><li class="half"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span> <a href="mailto:info@jmr-energieberatung.de" style="color:inherit;text-decoration:none">info@jmr-energieberatung.de</a></li><li class="loc"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 0 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span> Halbergstraße 4, 66121 Saarbrücken</li></ul>
+        <a href="faq.html" class="kontakt-faq">Vorab schon Fragen? Häufige Fragen ansehen <span class="ar">→</span></a>
       </div>
       <div class="fade d1 kontakt-formcol">
         <div class="ccard">
@@ -1392,13 +1395,10 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 </div>
 
 <footer class="footer">
-  <div class="spot"></div>
   <div class="container">
     <div class="ftop">
       <div class="bn"><img class="flogo" src="img/logo-white.png" alt="jmr Energieberatung">jmr Energieberatung<small>Energieberater in Saarbrücken & Saarland · Förderung · Baubegleitung</small></div>
-      <div class="fcol">
-        <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="#kontakt">Erstgespräch</a></div>
-      </div>
+      <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="faq.html">FAQ</a><a href="#kontakt">Erstgespräch</a></div>
     </div>
     <div class="fbot"><span>© 2026 jmr Energieberatung · Marquart Consulting GmbH · Saarbrücken</span><span><a href="impressum.html" target="_blank" rel="noopener" style="color:inherit">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener" style="color:inherit">Datenschutz</a></span></div>
   </div>
