@@ -476,7 +476,9 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 
 /* ===== FÖRDER-CHECK als interaktive Konsole (dunkel + Glow) ===== */
 #wegweiser{background:radial-gradient(70% 55% at 50% 50%,rgba(31,111,165,.12),transparent 72%),var(--paper-2);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;padding-bottom:70px;position:relative;overflow:hidden}
-#wegweiser .container{position:relative;z-index:1}
+/* #wegweiser ist ein Spalten-Flex-Container; .container hat margin:0 auto, wodurch es sich sonst auf
+   max-content-Breite aufbläht (und in der Ergebnis-Ansicht breiter als der Viewport wird). width:100% fixiert es auf Containerbreite. */
+#wegweiser .container{position:relative;z-index:1;width:100%;min-width:0}
 .wz-badge{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--steel),var(--green));padding:.5rem 1rem;border-radius:999px;box-shadow:0 12px 26px -12px rgba(31,111,165,.6)}
 .wz-badge .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:bpulse 1.4s infinite}
 @keyframes bpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,255,255,.6)}50%{opacity:.45;box-shadow:0 0 0 6px rgba(255,255,255,0)}}
