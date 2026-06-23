@@ -1772,16 +1772,17 @@ if(location.search.indexOf('diag')>-1){
   (function(){
     function runDiag(){
       var vw=document.documentElement.clientWidth, hits=[];
+      function lbl(el){if(!el)return '';var t=el.tagName.toLowerCase();var id=el.id?'#'+el.id:'';var cn=(typeof el.className==='string'?el.className:(el.getAttribute&&el.getAttribute('class'))||'');cn=cn?'.'+cn.trim().replace(/\s+/g,'.').slice(0,24):'';return t+id+cn;}
       document.querySelectorAll('body *').forEach(function(el){
         if(el.id==='diagBanner')return;
         var r=el.getBoundingClientRect();
-        if(r.width>0 && r.right>vw+1){ el.style.outline='2px solid red'; hits.push({c:(el.className&&el.className.toString())||el.tagName,right:Math.round(r.right),w:Math.round(r.width)}); }
+        if(r.width>0 && r.right>vw+1){ el.style.outline='2px solid red'; hits.push({lab:lbl(el)+' < '+lbl(el.parentElement),left:Math.round(r.left),right:Math.round(r.right),w:Math.round(r.width)}); }
       });
       hits.sort(function(a,b){return b.right-a.right;});
       var b=document.getElementById('diagBanner')||document.createElement('div');
       b.id='diagBanner';
-      b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b1c2b;color:#fff;font:11px/1.4 monospace;padding:8px;max-height:45vh;overflow:auto;white-space:pre-wrap';
-      b.textContent='Viewport='+vw+'px  Ueberlauf-Treffer='+hits.length+'\n'+hits.slice(0,10).map(function(h){return 'rechts '+h.right+'px  breite '+h.w+'  ['+h.c+']';}).join('\n');
+      b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b1c2b;color:#fff;font:11px/1.4 monospace;padding:8px;max-height:55vh;overflow:auto;white-space:pre-wrap';
+      b.textContent='Viewport='+vw+'  Treffer='+hits.length+'\n'+hits.slice(0,12).map(function(h){return 'L'+h.left+' R'+h.right+' w'+h.w+'  '+h.lab;}).join('\n');
       document.body.appendChild(b);
     }
     addEventListener('load',runDiag); setInterval(runDiag,1000);
