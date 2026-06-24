@@ -382,6 +382,10 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .team-story p{color:var(--muted);font-size:1.02rem;line-height:1.7}
 .team-story p+p{margin-top:1rem}
 @media(max-width:860px){.team-story{max-width:560px}}
+.trust-row{list-style:none;margin:2.2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.7rem 1.6rem;border-top:1px solid var(--line);padding-top:1.6rem}
+.trust-row li{position:relative;padding-left:1.6rem;font-size:.92rem;font-weight:500;color:var(--ink)}
+.trust-row li::before{content:'✓';position:absolute;left:0;top:-1px;color:var(--green);font-weight:700}
+@media(max-width:560px){.trust-row{gap:.55rem 1.2rem}.trust-row li{font-size:.86rem}}
 
 /* REVIEWS */
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.6rem}
@@ -1265,10 +1269,15 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
       </figure>
       <div class="team-story">
         <p>Wir sind Jérôme Marquart und Maximilian Rudorf. Uns verbindet die Überzeugung, dass eine gute Sanierung kein Bauchgefühl sein darf, sondern eine durchgerechnete Entscheidung.</p>
-        <p>Deshalb arbeiten wir anders als viele: Wir empfehlen Ihnen blind keine Maßnahmen, sondern prüfen erst, was sich für Ihr Haus wirklich lohnt. Manchmal ist das die große Lösung, oft reicht die kleine. Beides sagen wir Ihnen offen, mit Zahlen statt Werbeversprechen.</p>
+        <p>Deshalb arbeiten wir anders als viele: Wir empfehlen Ihnen blind keine Maßnahmen, sondern prüfen erst, was sich für Ihr Haus wirklich lohnt. Manchmal ist das die große Lösung, oft reicht die kleine. Beides sagen wir Ihnen offen, mit Zahlen statt Werbeversprechen. Dabei sind wir unabhängig: Wir verkaufen keine Heizungen, Dämmstoffe oder Fenster und erhalten keine Provisionen von Herstellern.</p>
         <p>Und weil bei uns Energieberatung und Planung Hand in Hand gehen, endet unsere Arbeit nicht beim Bericht: Wir begleiten Sie, bis die Förderung fließt und die Umsetzung steht.</p>
       </div>
     </div>
+    <ul class="trust-row fade">
+      <li>Unabhängig &amp; produktneutral</li>
+      <li>Beratung vor Ort im Saarland</li>
+      <li>Begleitung bis zur Umsetzung</li>
+    </ul>
   </div>
 </section>
 
