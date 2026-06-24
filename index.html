@@ -1817,19 +1817,47 @@ populateDetail(document.getElementById('vorhaben').value);
   }
 })();
 
-/* GA4-Events für Klicks (feuern nur bei Statistik-Zustimmung über window.jmrTrackEvent) */
+/* GA4-Events für Klicks: klar benannt nach Stelle (feuern nur bei Statistik-Zustimmung über window.jmrTrackEvent) */
 (function(){
+  // liefert eine lesbare Stelle (Sektion/Bereich), an der der Klick passiert ist
+  function stelle(el){
+    if(el.closest('nav.nav')) return 'nav';
+    if(el.closest('footer')) return 'footer';
+    if(el.closest('header.hero')) return 'hero';
+    var sec=el.closest('section');
+    if(sec&&sec.id) return sec.id.replace(/-/g,'_');
+    return 'sonstige';
+  }
   document.addEventListener('click',function(e){
     if(!window.jmrTrackEvent)return;
-    var el=e.target.closest('a[href^="tel:"],a[href^="mailto:"],a.btn,.wz-opt');
+    var el=e.target.closest('a[href^="tel:"],a[href^="mailto:"],a[href$="faq.html"],a.btn,.wz-opt');
     if(!el)return;
     var href=(el.getAttribute&&el.getAttribute('href'))||'';
     var txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
-    if(href.indexOf('tel:')===0){window.jmrTrackEvent('click_phone',{});}
-    else if(href.indexOf('mailto:')===0){window.jmrTrackEvent('click_email',{});}
+    var loc=stelle(el);
+    if(href.indexOf('tel:')===0){window.jmrTrackEvent('klick_telefon',{stelle:loc});}
+    else if(href.indexOf('mailto:')===0){window.jmrTrackEvent('klick_email',{stelle:loc});}
     else if(el.classList&&el.classList.contains('wz-opt')){window.jmrTrackEvent('foerdercheck_select',{label:txt});}
-    else{window.jmrTrackEvent('cta_click',{label:txt,ziel:href});}
+    else if(href.indexOf('faq')===0||/faq\.html$/.test(href)){window.jmrTrackEvent('klick_faq',{stelle:loc});}
+    else if(href.indexOf('#kontakt')===0){window.jmrTrackEvent('klick_erstgespraech_'+loc,{label:txt});}
+    else if(href.indexOf('#wegweiser')===0){window.jmrTrackEvent('klick_foerdercheck_'+loc,{label:txt});}
+    else{window.jmrTrackEvent('klick_button',{stelle:loc,label:txt,ziel:href});}
   });
+})();
+
+/* GA4: Abschnitt gesehen – feuert je Sektion einmal, sobald der Nutzer dort hinscrollt */
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var seen={};
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting && !seen[en.target.id]){
+        seen[en.target.id]=1;
+        if(window.jmrTrackEvent){window.jmrTrackEvent('abschnitt_'+en.target.id.replace(/-/g,'_'),{});}
+      }
+    });
+  },{threshold:0,rootMargin:'0px 0px -55% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){io.observe(s);});
 })();
 
 /* Handy: Buttons, die zum Kontakt führen, scrollen direkt zum Formular-Kasten (nicht zur Überschrift darüber) */
