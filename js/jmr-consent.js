@@ -31,7 +31,7 @@
         id: 'statistics',
         name: 'Statistik',
         required: false,
-        desc: 'Anonyme Auswertung der Nutzung mit Google Analytics: Seitenaufrufe, Verweildauer und Klicks. Hilft uns, die Website zu verbessern. Die IP-Adresse wird anonymisiert. Dabei werden Cookies gesetzt.'
+        desc: 'Anonyme Auswertung der Nutzung mit Google Analytics und Microsoft Clarity: Seitenaufrufe, Verweildauer und Klicks sowie pseudonyme Sitzungsaufzeichnungen und Heatmaps (Maus- und Scroll-Verhalten; Inhalte von Formulareingaben werden dabei ausgeblendet). Hilft uns, die Website zu verbessern. Die IP-Adresse wird anonymisiert. Dabei werden Cookies gesetzt.'
       },
       {
         id: 'marketing',
@@ -42,7 +42,10 @@
     ],
     googleAdsId: 'AW-18244917669',
     conversionSendTo: 'AW-18244917669/SMiQCL6i2sAcEKWz7ftD',
-    ga4Id: 'G-EB7B2R76H8'
+    ga4Id: 'G-EB7B2R76H8',
+    // Microsoft Clarity (Heatmaps/Sitzungsaufzeichnung) – Kategorie "statistics".
+    // Projekt-ID aus clarity.microsoft.com eintragen; solange leer, wird Clarity NICHT geladen.
+    clarityId: 'xf9vt9xkur'
   };
 
   // ===== gtag-Grundgerüst + Consent Mode v2 (Standard: alles abgelehnt) =====
@@ -82,6 +85,18 @@
     ga4Configured = true;
     window.gtag('config', CONFIG.ga4Id, { anonymize_ip: true });
   }
+  var clarityLoaded = false;
+  function loadClarity() {              // Kategorie "statistics"
+    if (clarityLoaded || !CONFIG.clarityId) { return; }
+    clarityLoaded = true;
+    // Offizielles Microsoft-Clarity-Snippet (lädt erst nach Statistik-Einwilligung).
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1;
+      t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', CONFIG.clarityId);
+  }
   // Hier später weitere Marketing-Dienste ergänzen, z. B. function loadMetaPixel() { ... }
 
   // ===== Einwilligung anwenden =====
@@ -94,7 +109,7 @@
       ad_personalization: marketing ? 'granted' : 'denied',
       analytics_storage: statistics ? 'granted' : 'denied'
     });
-    if (statistics) { loadGA4(); }
+    if (statistics) { loadGA4(); loadClarity(); }
     if (marketing) {
       loadGoogleAds();
       // loadMetaPixel();
