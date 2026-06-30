@@ -1835,7 +1835,7 @@ populateDetail(document.getElementById('vorhaben').value);
     var href=(el.getAttribute&&el.getAttribute('href'))||'';
     var txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
     var loc=stelle(el);
-    if(href.indexOf('tel:')===0){window.jmrTrackEvent('klick_telefon',{stelle:loc});}
+    if(href.indexOf('tel:')===0){window.jmrTrackEvent('klick_telefon',{stelle:loc});var stC=null;try{stC=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}if(stC&&stC.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':'AW-18244917669/8rLHCIeUs8gcEKWz7ftD'});}}
     else if(href.indexOf('mailto:')===0){window.jmrTrackEvent('klick_email',{stelle:loc});}
     else if(el.classList&&el.classList.contains('wz-opt')){window.jmrTrackEvent('foerdercheck_select',{label:txt});}
     else if(href.indexOf('faq')===0||/faq\.html$/.test(href)){window.jmrTrackEvent('klick_faq',{stelle:loc});}
