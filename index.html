@@ -1760,9 +1760,10 @@ function populateDetail(disp){
 function presetGzw(){
   const sel=document.getElementById('vorhaben');if(!sel)return;
   sel.value='Kaufen & investieren';populateDetail(sel.value);
-  const det=document.getElementById('vorhaben-detail');if(det)det.value='Gewerbe zu Wohnen';
-  sel.style.borderColor='var(--steel)';sel.style.boxShadow='0 0 0 3px rgba(31,111,165,.18)';
-  setTimeout(()=>{sel.style.boxShadow=''},1600);
+  const det=document.getElementById('vorhaben-detail');
+  if(det){det.disabled=false;det.value='Gewerbe zu Wohnen';}
+  [sel,det].forEach(el=>{if(!el)return;el.style.borderColor='var(--steel)';el.style.boxShadow='0 0 0 3px rgba(31,111,165,.18)';});
+  setTimeout(()=>{[sel,det].forEach(el=>{if(el)el.style.boxShadow='';});},1600);
 }
 /* Kontaktformular: per AJAX an Formspree senden, Status inline anzeigen */
 (function(){
