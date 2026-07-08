@@ -308,8 +308,6 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
   #wz-lead{display:none!important}
   /* erste Seite (q1) hat keinen Zurück-Button → leere Leiste + Trennlinie raus, spart Platz */
   #wz-q1 .wz-bar{display:none}
-  /* KfW-266-Sektion vorerst auf dem Handy ausblenden */
-  #gewerbe-zu-wohnen{display:none}
 }
 .wz-lead b{color:#fff;font-weight:600}
 /* Kachel-Einfließen */
@@ -1255,8 +1253,28 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
       #gewerbe-zu-wohnen .gzw-stat .s{white-space:normal}
       #gewerbe-zu-wohnen .gzw-num,#gewerbe-zu-wohnen .gzw-num-2{overflow-wrap:anywhere}
     }
+    /* Offizieller PDF-Link in den Programm-Karten (beide Sektionen) */
+    .gzw-pdf{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(31,168,90,.4);padding-bottom:2px}
+    .gzw-pdf:hover{border-bottom-color:var(--green-d)}
+    /* Mobil-Aufklapper: beide Sektionen zeigen erst nur Kurzüberschrift + „Mehr dazu", Inhalt öffnet auf Klick */
+    .prog-mtoggle{display:none}
+    @media(max-width:560px){
+      .prog-mtoggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:1rem;background:linear-gradient(160deg,rgba(31,168,90,.10),#fff);border:1px solid rgba(31,168,90,.30);border-radius:16px;padding:1.05rem 1.15rem;cursor:pointer;text-align:left;box-shadow:var(--shadow);font-family:var(--sans)}
+      .prog-mtoggle .pm-t{display:flex;flex-direction:column;gap:.28rem;font-family:var(--disp);font-weight:600;font-size:1.06rem;color:var(--ink);letter-spacing:-.02em}
+      .prog-mtoggle .pm-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--green-d);font-weight:600}
+      .prog-mtoggle .pm-more{display:flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--green-d);white-space:nowrap}
+      #gewerbe-zu-wohnen .gzw-grid,#jung-kauft-alt .gzw-grid{display:none}
+      #gewerbe-zu-wohnen.prog-open .gzw-grid,#jung-kauft-alt.prog-open .gzw-grid{display:grid}
+      #gewerbe-zu-wohnen.prog-open .prog-mtoggle,#jung-kauft-alt.prog-open .prog-mtoggle{display:none}
+      /* Inhalt kommt aus display:none → .fade-Animation greift nicht zuverlässig, daher sichtbar erzwingen */
+      #gewerbe-zu-wohnen .gzw-grid .fade,#jung-kauft-alt .gzw-grid .fade{opacity:1}
+    }
   </style>
   <div class="container">
+    <button type="button" class="prog-mtoggle" aria-expanded="false" onclick="progToggle(this)">
+      <span class="pm-t">Gewerbe zu Wohnen<span class="pm-tag">KfW 266</span></span>
+      <span class="pm-more">Mehr dazu <span class="pm-ar">→</span></span>
+    </button>
     <div class="gzw-grid">
       <div class="fade">
         <div class="mono-row"><span class="mono">Neue Förderung · KfW 266</span></div>
@@ -1280,6 +1298,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="gzw-stat"><div class="k">Ausgangslage</div><div class="s">Bisher kein Wohnen</div></div>
           </div>
           <p class="gzw-note">Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Ob, in welcher Höhe und in welcher Kombination eine Förderung möglich ist, hängt vom Einzelfall ab.</p>
+          <a class="gzw-pdf" href="https://www.kfw.de/PDF/Download-Center/F%C3%B6rderprogramme-(Inlandsf%C3%B6rderung)/PDF-Dokumente/6000005303_M_266.pdf" target="_blank" rel="noopener">Offizielles KfW-Merkblatt 266 (PDF) →</a>
         </div>
       </div>
       <div class="gzw-cta fade">
@@ -1328,6 +1347,10 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
   </style>
   <div class="container">
     <div class="prog-sep"></div>
+    <button type="button" class="prog-mtoggle" aria-expanded="false" onclick="progToggle(this)">
+      <span class="pm-t">Jung kauft Alt<span class="pm-tag">KfW 308</span></span>
+      <span class="pm-more">Mehr dazu <span class="pm-ar">→</span></span>
+    </button>
     <div class="gzw-grid">
       <div class="fade">
         <div class="mono-row"><span class="mono">Für Familien · KfW 308</span></div>
@@ -1350,6 +1373,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="gzw-stat"><div class="k">Zielniveau</div><div class="s">Effizienzhaus 85 EE</div></div>
           </div>
           <p class="gzw-note">Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Voraussetzung sind unter anderem mindestens ein Kind im Haushalt, Selbstnutzung und eine Einkommensgrenze. Der Kredit 308 fördert den Kauf; die Sanierung läuft über KfW 261 oder die Einzelmaßnahmen-Variante. Die genannten Kreditbeträge und die Einzelmaßnahmen-Variante gelten ab dem 03.08.2026.</p>
+          <a class="gzw-pdf" href="https://www.kfw.de/PDF/Download-Center/F%C3%B6rderprogramme-(Inlandsf%C3%B6rderung)/PDF-Dokumente/6000005152_M_308.pdf" target="_blank" rel="noopener">Offizielles KfW-Merkblatt 308 (PDF) →</a>
         </div>
       </div>
       <div class="gzw-cta fade">
@@ -1837,6 +1861,7 @@ function presetInvest(detailVal){
 }
 function presetGzw(){presetInvest('Gewerbe zu Wohnen');}
 function presetJka(){presetInvest('Jung kauft Alt');}
+function progToggle(btn){var sec=btn.closest('section');if(!sec)return;sec.classList.add('prog-open');btn.setAttribute('aria-expanded','true');if(window.jmrTrackEvent){window.jmrTrackEvent('abschnitt_aufklappen',{sektion:sec.id});}}
 /* Kontaktformular: per AJAX an Formspree senden, Status inline anzeigen */
 (function(){
   const form=document.getElementById('kontaktForm');if(!form)return;
