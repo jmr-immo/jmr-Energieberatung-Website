@@ -1224,8 +1224,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     /* Desktop: links Text (Zeile 1) + Button (Zeile 2), rechts Kasten über beide Zeilen, vertikal zentriert */
     #gewerbe-zu-wohnen .gzw-grid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:auto 1fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
     #gewerbe-zu-wohnen .gzw-grid>*:nth-child(1){grid-column:1;grid-row:1}
-    #gewerbe-zu-wohnen .gzw-grid>*:nth-child(2){grid-column:2;grid-row:1/3;align-self:stretch;display:flex}
-    #gewerbe-zu-wohnen .gzw-cta{grid-column:1;grid-row:2;align-self:end;margin-top:0}
+    #gewerbe-zu-wohnen .gzw-grid>*:nth-child(2){grid-column:2;grid-row:1/3;align-self:start;display:flex}
+    #gewerbe-zu-wohnen .gzw-cta{grid-column:1;grid-row:2;align-self:start;margin-top:0}
     /* Handy: einspaltig, Reihenfolge Text → Kasten → Button (Button als Letztes) */
     @media(max-width:880px){#gewerbe-zu-wohnen .gzw-grid{grid-template-columns:1fr;grid-template-rows:none}
       #gewerbe-zu-wohnen .gzw-grid>*:nth-child(1),#gewerbe-zu-wohnen .gzw-grid>*:nth-child(2),#gewerbe-zu-wohnen .gzw-cta{grid-column:1;grid-row:auto}
@@ -1236,7 +1236,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     #gewerbe-zu-wohnen .gzw-list li{display:flex;gap:.7rem;align-items:center;font-size:.96rem;white-space:nowrap}
     @media(max-width:560px){#gewerbe-zu-wohnen .gzw-list li{white-space:normal;align-items:flex-start}}
     #gewerbe-zu-wohnen .gzw-list li b{color:var(--green-d);font-family:var(--mono);font-weight:600;flex-shrink:0}
-    #gewerbe-zu-wohnen .gzw-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.8rem}
+    #gewerbe-zu-wohnen .gzw-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:.4rem}
     #gewerbe-zu-wohnen .gzw-card{position:relative;background:linear-gradient(160deg,rgba(31,168,90,.10),#fff);border:1px solid rgba(31,168,90,.30);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow);flex:1}
     #gewerbe-zu-wohnen .gzw-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--steel),var(--green));padding:.45rem 1rem;border-radius:999px;margin-bottom:1.2rem}
     #gewerbe-zu-wohnen .gzw-num{font-family:var(--disp);font-weight:700;font-size:clamp(2.4rem,5.5vw,3.4rem);color:var(--green-d);line-height:1;letter-spacing:-.03em}
@@ -1299,7 +1299,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     #jung-kauft-alt .prog-sep{height:1px;background:var(--line);margin-top:calc(-1 * var(--pad));margin-bottom:var(--pad)}
     /* < 560px ist die KfW-266-Sektion ausgeblendet → Trennstrich hier weg (sonst steht er allein über 308) */
     @media(max-width:560px){#jung-kauft-alt .prog-sep{display:none}}
-    #jung-kauft-alt .gzw-cta{grid-column:1;grid-row:2;align-self:end;margin-top:0}
+    #jung-kauft-alt .gzw-cta{grid-column:1;grid-row:2;align-self:start;margin-top:0}
     @media(max-width:880px){#jung-kauft-alt .gzw-grid{grid-template-columns:1fr;grid-template-rows:none}
       #jung-kauft-alt .gzw-grid>*:nth-child(1),#jung-kauft-alt .gzw-grid>*:nth-child(2),#jung-kauft-alt .gzw-cta{grid-column:1;grid-row:auto}
       #jung-kauft-alt .gzw-cta{margin-top:0}}
@@ -1309,7 +1309,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     #jung-kauft-alt .gzw-list li{display:flex;gap:.7rem;align-items:center;font-size:.96rem;white-space:nowrap}
     @media(max-width:560px){#jung-kauft-alt .gzw-list li{white-space:normal;align-items:flex-start}}
     #jung-kauft-alt .gzw-list li b{color:var(--green-d);font-family:var(--mono);font-weight:600;flex-shrink:0}
-    #jung-kauft-alt .gzw-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.8rem}
+    #jung-kauft-alt .gzw-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:.4rem}
     #jung-kauft-alt .gzw-card{position:relative;background:linear-gradient(160deg,rgba(31,168,90,.10),#fff);border:1px solid rgba(31,168,90,.30);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow);flex:1}
     #jung-kauft-alt .gzw-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--steel),var(--green));padding:.45rem 1rem;border-radius:999px;margin-bottom:1.2rem}
     #jung-kauft-alt .gzw-num{font-family:var(--disp);font-weight:700;font-size:clamp(2.4rem,5.5vw,3.4rem);color:var(--green-d);line-height:1;letter-spacing:-.03em}
@@ -1349,7 +1349,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="gzw-stat"><div class="k">ab 3 Kinder</div><div class="s">180.000 €</div></div>
             <div class="gzw-stat"><div class="k">Zielniveau</div><div class="s">Effizienzhaus 85 EE</div></div>
           </div>
-          <p class="gzw-note">Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Voraussetzung sind unter anderem mindestens ein Kind im Haushalt, Selbstnutzung und eine Einkommensgrenze. Der Kredit 308 fördert den Kauf; die Sanierung läuft über KfW 261 oder die Einzelmaßnahmen-Variante.</p>
+          <p class="gzw-note">Angaben ohne Gewähr, maßgeblich sind die Bedingungen der KfW. Voraussetzung sind unter anderem mindestens ein Kind im Haushalt, Selbstnutzung und eine Einkommensgrenze. Der Kredit 308 fördert den Kauf; die Sanierung läuft über KfW 261 oder die Einzelmaßnahmen-Variante. Die genannten Kreditbeträge und die Einzelmaßnahmen-Variante gelten ab dem 03.08.2026.</p>
         </div>
       </div>
       <div class="gzw-cta fade">
@@ -1775,7 +1775,7 @@ const WZ={
         foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
       {l:'Jung kauft Alt',dl:'Jung kauft Alt (KfW 308)',f:'Familie kauft & saniert einen Altbau (KfW 308)',
         title:'Jung kauft Alt: Förderkredit für Familien',
-        sub:'Zinsverbilligter KfW-Kredit (308) für Familien mit Kind, die einen sanierungsbedürftigen Altbau zur Selbstnutzung kaufen. Die anschließende Sanierung fördern Sie entweder als Effizienzhaus 85 EE über den KfW-Kredit 261 oder über die Einzelmaßnahmen-Variante (Heizung, Fenster, Fassade, Dach). Den energetischen Nachweis und die Förderabwicklung übernehmen wir.',
+        sub:'Zinsverbilligter KfW-Kredit (308) für Familien mit Kind, die einen sanierungsbedürftigen Altbau zur Selbstnutzung kaufen. Die anschließende Sanierung fördern Sie entweder als Effizienzhaus 85 EE über den KfW-Kredit 261 oder über die Einzelmaßnahmen-Variante (Heizung, Fenster, Fassade, Dach). Den energetischen Nachweis und die Förderabwicklung übernehmen wir. Hinweis: Die genannten Kreditbeträge und die Einzelmaßnahmen-Variante gelten ab dem 03.08.2026.',
         foerder:[{big:'bis 180.000 €',lbl:'zinsgünstiger KfW-Kredit, je nach Kinderzahl'},{big:'EH 85 EE',lbl:'Zielniveau, das wir nachweisen (oder Einzelmaßnahmen-Variante)'},{big:'Familie + Kind',lbl:'für Selbstnutzer mit Kind, innerhalb der Einkommensgrenze'}]},
       {l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie',
         title:'Kaufen & sanieren: Kauf-Check + Strategie',
