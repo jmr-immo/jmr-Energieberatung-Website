@@ -288,8 +288,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 #einsteiger{position:relative}
 
 /* WEGWEISER */
-.wz{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.9rem,3.4vw,3.8rem);box-shadow:var(--shadow);max-width:1180px;width:100%;margin:0 auto;height:clamp(480px,calc(100vh - 160px),1100px);display:flex;flex-direction:column;justify-content:flex-start}
-.wz.res-open{height:auto;min-height:clamp(480px,calc(100vh - 160px),1100px)}
+.wz{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.9rem,3.4vw,3.8rem);box-shadow:var(--shadow);max-width:1180px;width:100%;margin:0 auto;height:auto;min-height:clamp(460px,50vh,600px);display:flex;flex-direction:column;justify-content:flex-start}
+.wz.res-open{min-height:clamp(460px,50vh,600px)}
 /* Handy: feste Höhe aufheben, sonst läuft der Inhalt (gestapelte Kacheln / Rechner) über den Container hinaus.
    Container wächst dann natürlich mit; Auswahl-Kacheln kompakter. Desktop unverändert. */
 @media(max-width:560px){.wz{height:auto}.wz-opt{min-height:0}}
@@ -1170,7 +1170,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="cf-cost"><label class="calc-lbl" for="calc-cost">Geplante Kosten — grobe Schätzung<span class="calc-tip" tabindex="0"><span class="calc-tip-i">i</span><span class="calc-tip-box" id="calc-note"></span></span></label>
               <div class="calc-in"><span class="eur">€</span><input id="calc-cost" type="text" inputmode="numeric" autocomplete="off" placeholder="z. B. 25.000" oninput="calcUpdate()"></div>
             </div>
-            <div class="cf-we" id="cf-we"><label class="calc-lbl">Wohneinheiten</label>
+            <div class="cf-we" id="cf-we"><label class="calc-lbl" id="cf-we-lbl">Wohneinheiten</label>
               <div class="we-step"><button type="button" onclick="weStep(-1)" aria-label="weniger">−</button><input id="calc-we" type="text" value="1" readonly tabindex="-1"><button type="button" onclick="weStep(1)" aria-label="mehr">+</button></div>
             </div>
           </div>
@@ -1699,7 +1699,7 @@ const WZ={
     foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie aus einer Hand'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Förderung sichern, dann Umsetzung'],
     subs:[
-      {l:'Gewerbe zu Wohnen',f:'gefördert über KfW 266 & 261',
+      {l:'Gewerbe zu Wohnen',m:'kfw266',f:'gefördert über KfW 266 & 261',
         title:'Gewerbe zu Wohnen: KfW 266 & 261',
         sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, seit Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.',
         foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
@@ -1718,7 +1718,8 @@ const MEASURES={
   heizung:{satzMin:30,satzMax:70,we:true,note:'Heizungsförderung (KfW 458): 30 % Grundförderung, mit Boni (z. B. Klimageschwindigkeit, Einkommen) bis 70 %. Förderfähig bis 30.000 € für die 1. Wohneinheit (weitere gestaffelt).',caps:we=>{const c=30000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c,maxZ:c*0.7};}},
   daemmung:{satzMin:15,satzMax:20,we:true,note:'BAFA-Einzelmaßnahme an der Gebäudehülle (Dämmung, Fenster, Türen): 15 % Zuschuss, mit iSFP-Bonus 20 %. Förderfähig bis 30.000 € je Wohneinheit (mit iSFP bis 60.000 €).',caps:we=>({cap:we*30000,capMax:we*60000})},
   fenster:{satzMin:15,satzMax:20,we:true,note:'BAFA-Einzelmaßnahme (Fenster/Außentüren): 15 %, mit iSFP-Bonus 20 %. Förderfähig bis 30.000 € je Wohneinheit (mit iSFP bis 60.000 €).',caps:we=>({cap:we*30000,capMax:we*60000})},
-  komplett:{satzMin:5,satzMax:45,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 120.000 € je Wohneinheit): Tilgungszuschuss je nach Effizienzhaus-Stufe 5–45 %.',caps:we=>({cap:we*120000,capMax:we*120000})}
+  komplett:{satzMin:5,satzMax:45,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 120.000 € je Wohneinheit): Tilgungszuschuss je nach Effizienzhaus-Stufe 5–45 %.',caps:we=>({cap:we*120000,capMax:we*120000})},
+  kfw266:{satzMin:30,satzMax:30,we:true,weLbl:'neue Wohneinheiten',note:'Gewerbe zu Wohnen (KfW 266): Zuschuss von 30 % der reinen Umbaukosten der Umnutzung. Förderfähig bis 100.000 € je neuer Wohneinheit, entspricht bis 30.000 € Zuschuss je WE; Unternehmens-Deckel 300.000 € (De-minimis). Nur die Umbaukosten der Umnutzung zählen, nicht die energetische Sanierung. Voraussetzung: mind. Effizienzhaus 85 EE. Mit der BEG (z. B. KfW 261) kombinierbar.',caps:we=>{const c=we*100000;return{cap:c,capMax:c,maxZ:Math.min(we*30000,300000)};}}
 };
 let curMeasure=null;
 function eur(n){return Math.round(n).toLocaleString('de-DE')+' €'}
@@ -1726,19 +1727,25 @@ function parseCost(s){return parseInt((s||'').replace(/[^\d]/g,''),10)||0}
 function weStep(d){const i=document.getElementById('calc-we');i.value=Math.max(1,(parseInt(i.value,10)||1)+d);calcUpdate();}
 function setupCalc(m){curMeasure=m;document.getElementById('calc-cost').value='';document.getElementById('calc-we').value=1;
   document.getElementById('cf-we').style.display=MEASURES[m].we?'block':'none';
+  document.getElementById('cf-we-lbl').textContent=MEASURES[m].weLbl||'Wohneinheiten';
   document.getElementById('calc-note').textContent=MEASURES[m].note;calcUpdate();}
 function calcUpdate(){
   const m=MEASURES[curMeasure];if(!m)return;
   const cost=parseCost(document.getElementById('calc-cost').value),out=document.getElementById('calc-out');
   const we=Math.max(1,parseInt(document.getElementById('calc-we').value,10)||1);
   const cp=m.caps(we);
-  document.getElementById('calc-cap').textContent='Förderfähige Kosten: bis '+eur(cp.cap)+(cp.capMax>cp.cap?' (mit iSFP bis '+eur(cp.capMax)+')':'')+(m.we&&we>1?' · '+we+' Wohneinheiten':'');
+  document.getElementById('calc-cap').textContent='Förderfähige Kosten: bis '+eur(cp.cap)+(cp.capMax>cp.cap?' (mit iSFP bis '+eur(cp.capMax)+')':'')+(m.we&&we>1?' · '+we+' '+(m.weLbl||'Wohneinheiten'):'');
   if(!cost){out.innerHTML='';return;}
   let low=Math.min(cost,cp.cap)*m.satzMin/100, high=Math.min(cost,cp.capMax)*m.satzMax/100;
   if(cp.maxZ){low=Math.min(low,cp.maxZ);high=Math.min(high,cp.maxZ);}
   const fl=m.kredit?'Tilgungszuschuss (ca.)':'Mögliche Förderung (ca.)';
-  out.innerHTML=`<div class="calc-box"><div class="v">${eur(low)} – ${eur(high)}</div><div class="k">${fl} · ${m.satzMin}–${m.satzMax} %</div></div>`+
-    `<div class="calc-box eig"><div class="v">${eur(Math.max(0,cost-high))} – ${eur(Math.max(0,cost-low))}</div><div class="k">Geschätzter Eigenanteil (ca.)</div></div>`;
+  const same=Math.round(low)===Math.round(high);
+  const fv=same?eur(high):`${eur(low)} – ${eur(high)}`;
+  const fs=same?`${m.satzMax} %`:`${m.satzMin}–${m.satzMax} %`;
+  const eLow=Math.max(0,cost-high),eHigh=Math.max(0,cost-low);
+  const ev=Math.round(eLow)===Math.round(eHigh)?eur(eHigh):`${eur(eLow)} – ${eur(eHigh)}`;
+  out.innerHTML=`<div class="calc-box"><div class="v">${fv}</div><div class="k">${fl} · ${fs}</div></div>`+
+    `<div class="calc-box eig"><div class="v">${ev}</div><div class="k">Geschätzter Eigenanteil (ca.)</div></div>`;
 }
 let curGoal=null,lastGoal=null,lastFocus='',lastGoalLabel='',lastSub='',wzUnlockedPaths={},curPathKey='',preResStep='wz-q2';
 const FORM={sanieren:'Bestand sanieren',neubau:'Neu bauen (LCA)',invest:'Kaufen & investieren'};
@@ -1825,7 +1832,7 @@ function wzSub(i){const d=WZ[curGoal],sub=d.subs[i];lastGoal=curGoal;lastGoalLab
   document.getElementById('res-sub').innerHTML=sub.sub||d.sub;
   document.getElementById('res-focus').textContent='Fokus: '+sub.f;
   const calc=document.getElementById('res-calc'),fg=document.getElementById('res-foerder');
-  const isCalc=(curGoal==='sanieren'&&!!sub.m);
+  const isCalc=!!sub.m;
   if(isCalc){fg.style.display='none';fg.innerHTML='';calc.style.display='block';setupCalc(sub.m);}
   else{calc.style.display='none';fg.style.display='grid';const fd=sub.foerder||d.foerder;fg.innerHTML=fd.map(f=>`<div class="fbox"><div class="pct" data-full="${f.big}">${f.big}</div><div class="lbl">${f.lbl}</div></div>`).join('');document.querySelectorAll('#res-foerder .pct').forEach(countUp);}
   preResStep=isCalc?'wz-cost':'wz-q2';
