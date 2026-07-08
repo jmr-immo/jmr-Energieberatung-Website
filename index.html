@@ -1367,7 +1367,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Telefon"></div>
             <div class="fld"><label for="kf-mail">E-Mail</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail" required></div>
           </div>
-          <div class="fld"><label for="vorhaben">Ihr Vorhaben (optional)</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Neu bauen (LCA)</option><option>Kaufen &amp; investieren</option><option>Noch unklar</option></select></div>
+          <div class="fld"><label for="vorhaben">Ihr Vorhaben (optional)</label><select id="vorhaben" name="Vorhaben" onchange="populateDetail(this.value)"><option value="" disabled selected>Bitte auswählen …</option><option>Bestand sanieren</option><option>Kaufen &amp; investieren</option><option>Neu bauen</option><option>Noch unklar</option></select></div>
           <div class="fld"><label for="vorhaben-detail">Genauer (optional)</label><select id="vorhaben-detail" name="Vorhaben genauer"><option value="" disabled selected>Bitte auswählen …</option></select></div>
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="hidden" id="kf-foerdercheck" name="Förder-Check">
@@ -1688,7 +1688,7 @@ const WZ={
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
     foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'bis 20<small>%</small>',lbl:'auf Einzelmaßnahmen mit iSFP, statt 15 %'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
-    subs:[{l:'Dach / OGD',m:'daemmung',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',m:'daemmung',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit WDVS.'},{l:'Fenster / Türen',m:'fenster',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',m:'daemmung',f:'Dämmung Keller / Kellerdecke',d:'Kellerdecke oder erdberührte Bauteile.'},{l:'Heizung',m:'heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
+    subs:[{l:'Dach / OGD',m:'daemmung',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',m:'daemmung',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit Wärmedämmverbundsystem (WDVS).'},{l:'Fenster / Türen',m:'fenster',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',m:'daemmung',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',m:'heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
   neubau:{label:'Neu bauen',ic:'B',code:'/// B · NEUBAU',q2:'Was bauen Sie?',
     title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
     foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
@@ -1748,8 +1748,8 @@ function calcUpdate(){
     `<div class="calc-box eig"><div class="v">${ev}</div><div class="k">Geschätzter Eigenanteil (ca.)</div></div>`;
 }
 let curGoal=null,lastGoal=null,lastFocus='',lastGoalLabel='',lastSub='',wzUnlockedPaths={},curPathKey='',preResStep='wz-q2';
-const FORM={sanieren:'Bestand sanieren',neubau:'Neu bauen (LCA)',invest:'Kaufen & investieren'};
-const GOALKEY={'Bestand sanieren':'sanieren','Neu bauen (LCA)':'neubau','Kaufen & investieren':'invest','Noch unklar':null};
+const FORM={sanieren:'Bestand sanieren',neubau:'Neu bauen',invest:'Kaufen & investieren'};
+const GOALKEY={'Bestand sanieren':'sanieren','Neu bauen':'neubau','Kaufen & investieren':'invest','Noch unklar':null};
 function populateDetail(disp){
   const det=document.getElementById('vorhaben-detail');if(!det)return;
   if(disp==='Noch unklar'){det.innerHTML='<option selected>Noch unklar</option>';det.disabled=true;return;}
@@ -1760,7 +1760,7 @@ function populateDetail(disp){
 function presetGzw(){
   const sel=document.getElementById('vorhaben');if(!sel)return;
   sel.value='Kaufen & investieren';populateDetail(sel.value);
-  const det=document.getElementById('vorhaben-detail');if(det)det.value='Gewerbe zu Wohnen (KfW 266)';
+  const det=document.getElementById('vorhaben-detail');if(det)det.value='Gewerbe zu Wohnen';
   sel.style.borderColor='var(--steel)';sel.style.boxShadow='0 0 0 3px rgba(31,111,165,.18)';
   setTimeout(()=>{sel.style.boxShadow=''},1600);
 }
