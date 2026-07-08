@@ -1268,14 +1268,19 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
       /* Inhalt kommt aus display:none → .fade-Animation greift nicht zuverlässig, daher sichtbar erzwingen */
       #gewerbe-zu-wohnen .gzw-grid .fade,#jung-kauft-alt .gzw-grid .fade{opacity:1}
       /* Mobil-Überschrift über beiden eingeklappten Programmen */
-      .prog-mhead{display:block;font-family:var(--disp);font-weight:600;font-size:1.3rem;line-height:1.3;color:var(--ink);letter-spacing:-.02em;margin:0 0 1.6rem}
+      .prog-mhead{display:block;margin:0 0 1.6rem}
+      .prog-mhead .mono-row{margin-bottom:.55rem}
+      .prog-mhead .pmh-t{display:block;font-family:var(--disp);font-weight:600;font-size:1.35rem;line-height:1.3;color:var(--ink);letter-spacing:-.02em}
       /* eingeklappt: enge Abstände zwischen den beiden Programm-Karten */
       #gewerbe-zu-wohnen:not(.prog-open){padding-bottom:0}
       #jung-kauft-alt:not(.prog-open){padding-top:0}
     }
   </style>
   <div class="container">
-    <div class="prog-mhead">Diese Förderprogramme könnten Sie auch interessieren</div>
+    <div class="prog-mhead">
+      <div class="mono-row"><span class="mono">Weitere Förderung</span></div>
+      <span class="pmh-t">Diese Förderprogramme könnten Sie auch interessieren</span>
+    </div>
     <button type="button" class="prog-mtoggle" aria-expanded="false" onclick="progToggle(this)">
       <span class="pm-t">Gewerbe zu Wohnen<span class="pm-tag">KfW 266</span></span>
       <span class="pm-more">Mehr dazu <span class="pm-ar">→</span></span>
