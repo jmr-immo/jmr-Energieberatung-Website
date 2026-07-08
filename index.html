@@ -1699,7 +1699,7 @@ const WZ={
     foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie aus einer Hand'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Förderung sichern, dann Umsetzung'],
     subs:[
-      {l:'Gewerbe zu Wohnen',m:'kfw266',f:'gefördert über KfW 266 & 261',
+      {l:'Gewerbe zu Wohnen',dl:'Gewerbe zu Wohnen (KfW 266)',m:'kfw266',f:'gefördert über KfW 266 & 261',
         title:'Gewerbe zu Wohnen: KfW 266 & 261',
         sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, seit Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.',
         foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
@@ -1755,7 +1755,7 @@ function populateDetail(disp){
   if(disp==='Noch unklar'){det.innerHTML='<option selected>Noch unklar</option>';det.disabled=true;return;}
   const k=GOALKEY[disp];
   if(!k){det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>';det.disabled=true;return;}
-  det.disabled=false;det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>'+WZ[k].subs.map(s=>`<option>${s.l}</option>`).join('');
+  det.disabled=false;det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>'+WZ[k].subs.map(s=>`<option value="${s.l}">${s.dl||s.l}</option>`).join('');
 }
 function presetGzw(){
   const sel=document.getElementById('vorhaben');if(!sel)return;
