@@ -1738,7 +1738,7 @@ function calcUpdate(){
   out.innerHTML=`<div class="calc-box"><div class="v">${eur(low)} – ${eur(high)}</div><div class="k">${fl} · ${m.satzMin}–${m.satzMax} %</div></div>`+
     `<div class="calc-box eig"><div class="v">${eur(Math.max(0,cost-high))} – ${eur(Math.max(0,cost-low))}</div><div class="k">Geschätzter Eigenanteil (ca.)</div></div>`;
 }
-let curGoal=null,lastGoal=null,lastFocus='',lastGoalLabel='',lastSub='',wzUnlocked=false,preResStep='wz-q2';
+let curGoal=null,lastGoal=null,lastFocus='',lastGoalLabel='',lastSub='',wzUnlockedPaths={},curPathKey='',preResStep='wz-q2';
 const FORM={sanieren:'Bestand sanieren',neubau:'Neu bauen (LCA)',invest:'Kaufen & investieren'};
 const GOALKEY={'Bestand sanieren':'sanieren','Neu bauen (LCA)':'neubau','Kaufen & investieren':'invest','Noch unklar':null};
 function populateDetail(disp){
@@ -1817,7 +1817,7 @@ function wzGoal(k){curGoal=k;const d=WZ[k];
   bindGlass();
   show('wz-q2');
 }
-function wzSub(i){const d=WZ[curGoal],sub=d.subs[i];lastGoal=curGoal;lastGoalLabel=d.label;lastFocus=sub.f;lastSub=sub.l;
+function wzSub(i){const d=WZ[curGoal],sub=d.subs[i];lastGoal=curGoal;lastGoalLabel=d.label;lastFocus=sub.f;lastSub=sub.l;curPathKey=curGoal+'|'+sub.l;
   document.getElementById('res-ic').textContent=d.ic;
   document.getElementById('res-title').textContent=sub.title||d.title;
   document.getElementById('res-sub').innerHTML=sub.sub||d.sub;
@@ -1828,14 +1828,14 @@ function wzSub(i){const d=WZ[curGoal],sub=d.subs[i];lastGoal=curGoal;lastGoalLab
   else{calc.style.display='none';fg.style.display='grid';const fd=sub.foerder||d.foerder;fg.innerHTML=fd.map(f=>`<div class="fbox"><div class="pct" data-full="${f.big}">${f.big}</div><div class="lbl">${f.lbl}</div></div>`).join('');document.querySelectorAll('#res-foerder .pct').forEach(countUp);}
   preResStep=isCalc?'wz-cost':'wz-q2';
   if(isCalc){show('wz-cost');}
-  else if(wzUnlocked){show('wz-res');}
+  else if(wzUnlockedPaths[curPathKey]){show('wz-res');}
   else{show('wz-contact');}
 }
 function wzBack(){show(preResStep)}
 function wzReset(){curGoal=null;show('wz-q1')}
-function wzCostNext(){if(wzUnlocked){show('wz-res');}else{show('wz-contact');}}
+function wzCostNext(){if(wzUnlockedPaths[curPathKey]){show('wz-res');}else{show('wz-contact');}}
 function buildFcSummary(){var parts=[];if(lastGoalLabel)parts.push('Ziel: '+lastGoalLabel);if(lastSub)parts.push('Maßnahme: '+lastSub);else if(lastFocus)parts.push('Fokus: '+lastFocus);var costEl=document.getElementById('calc-cost');if(costEl&&costEl.value.trim())parts.push('Geplante Kosten: '+costEl.value.trim()+' €');var weWrap=document.getElementById('cf-we'),weEl=document.getElementById('calc-we');if(weWrap&&weWrap.style.display!=='none'&&weEl&&weEl.value&&weEl.value!=='1')parts.push('Wohneinheiten: '+weEl.value);var out=document.getElementById('calc-out');if(out&&out.textContent.trim())parts.push('Berechnung: '+out.textContent.replace(/\s+/g,' ').trim());return parts.join(' | ');}
-(function(){var form=document.getElementById('wzForm');if(!form)return;var status=document.getElementById('wzStatus'),btn=document.getElementById('wzSubmit');form.addEventListener('submit',async function(e){e.preventDefault();var fc=document.getElementById('wz-fc');if(fc)fc.value=buildFcSummary();btn.disabled=true;btn.style.opacity='.6';try{var res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(res.ok){if(window.jmrTrackConversion){window.jmrTrackConversion();}if(window.jmrTrackEvent){window.jmrTrackEvent('generate_lead',{stelle:'foerder_check'});}wzUnlocked=true;show('wz-res');}else{status.hidden=false;status.className='kf-status err';status.textContent='Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';btn.disabled=false;btn.style.opacity='';}}catch(err){status.hidden=false;status.className='kf-status err';status.textContent='Keine Verbindung. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';btn.disabled=false;btn.style.opacity='';}});})();
+(function(){var form=document.getElementById('wzForm');if(!form)return;var status=document.getElementById('wzStatus'),btn=document.getElementById('wzSubmit');form.addEventListener('submit',async function(e){e.preventDefault();if(wzUnlockedPaths[curPathKey]){show('wz-res');return;}var fc=document.getElementById('wz-fc');if(fc)fc.value=buildFcSummary();btn.disabled=true;btn.style.opacity='.6';try{var res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(res.ok){if(window.jmrTrackConversion){window.jmrTrackConversion();}if(window.jmrTrackEvent){window.jmrTrackEvent('generate_lead',{stelle:'foerder_check'});}wzUnlockedPaths[curPathKey]=true;btn.disabled=false;btn.style.opacity='';show('wz-res');}else{status.hidden=false;status.className='kf-status err';status.textContent='Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';btn.disabled=false;btn.style.opacity='';}}catch(err){status.hidden=false;status.className='kf-status err';status.textContent='Keine Verbindung. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';btn.disabled=false;btn.style.opacity='';}});})();
 /* Detail-Dropdown initial befüllen */
 populateDetail(document.getElementById('vorhaben').value);
 
