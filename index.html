@@ -1688,7 +1688,7 @@ const WZ={
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
     foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'bis 20<small>%</small>',lbl:'auf Einzelmaßnahmen mit iSFP, statt 15 %'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
-    subs:[{l:'Heizung',m:'heizung',f:'Heizungstausch (Wärmepumpe & Co.)'},{l:'Dach / OGD',m:'daemmung',f:'Dämmung Dach / oberste Geschossdecke'},{l:'Fassade',m:'daemmung',f:'Fassadendämmung'},{l:'Fenster / Türen',m:'fenster',f:'Fenster & Außentüren'},{l:'Keller / Kellerdecke',m:'daemmung',f:'Dämmung Keller / Kellerdecke'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
+    subs:[{l:'Dach / oberste Geschossdecke',m:'daemmung',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',m:'daemmung',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit WDVS.'},{l:'Fenster / Türen',m:'fenster',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',m:'daemmung',f:'Dämmung Keller / Kellerdecke',d:'Kellerdecke oder erdberührte Bauteile.'},{l:'Heizung',m:'heizung',f:'Heizungstausch (Wärmepumpe, Pellet & Co.)',d:'Neue Heizung: Wärmepumpe, Pellet & Co.'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
   neubau:{label:'Neu bauen',ic:'B',code:'/// B · NEUBAU',q2:'Was bauen Sie?',
     title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
     foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
@@ -1822,7 +1822,7 @@ function wzToContact(){
 function show(id){document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');var big=(id==='wz-res'||id==='wz-contact'||id==='wz-cost');var ld=document.getElementById('wz-lead');if(ld)ld.style.display=big?'none':'block';document.getElementById('wz').classList.toggle('res-open',big)}
 function wzGoal(k){curGoal=k;const d=WZ[k];
   document.getElementById('q2-question').textContent=d.q2;
-  document.getElementById('q2-opts').innerHTML=d.subs.map((s,i)=>`<button class="wz-opt" onclick="wzSub(${i})"><span class="oar">→</span><span class="opt-ic">${i+1}</span><span class="opt-txt"><strong>${s.l}</strong><span class="opt-d">${s.f}</span></span><span class="opt-cue">Auswählen →</span></button>`).join('');
+  document.getElementById('q2-opts').innerHTML=d.subs.map((s,i)=>`<button class="wz-opt" onclick="wzSub(${i})"><span class="oar">→</span><span class="opt-ic">${i+1}</span><span class="opt-txt"><strong>${s.l}</strong><span class="opt-d">${s.d||s.f}</span></span><span class="opt-cue">Auswählen →</span></button>`).join('');
   bindGlass();
   show('wz-q2');
 }
