@@ -329,6 +329,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz-q{font-family:var(--disp);font-size:clamp(1.35rem,2.5vw,1.9rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem;min-height:1.35em}
 .wz-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 @media(max-width:760px){.wz-opts{grid-template-columns:1fr}}
+/* Unterpunkte (Schritt 2) kompakter, damit auch 6 Kacheln in zwei Reihen passen */
+#wz-q2 .wz-opt{min-height:clamp(120px,16vh,168px);padding:1.35rem 1.5rem}
 .wz-opt{position:relative;text-align:left;cursor:pointer;border:1px solid var(--line);background:var(--paper);border-radius:22px;padding:1.9rem 1.7rem;transition:.25s;font-family:var(--sans);min-height:clamp(190px,30vh,340px);display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:.8rem}
 .wz-opt:hover{border-color:var(--steel);background:#fff;transform:translateY(-4px);box-shadow:var(--shadow)}
 .wz-opt .ix{display:inline-flex;width:40px;height:40px;border-radius:12px;background:linear-gradient(150deg,var(--steel),var(--ink));color:#fff;align-items:center;justify-content:center;font-family:var(--mono);font-size:.95rem;margin-bottom:1rem}
@@ -1148,8 +1150,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
         <div class="wz-q">Was ist das Ziel Ihres Vorhabens?</div>
         <div class="wz-opts">
           <button class="wz-opt" onclick="wzGoal('sanieren')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5h4v5"/></svg></span><span class="opt-txt"><strong>Bestand sanieren</strong><span class="opt-d">Heizung, Dämmung, Fenster. Schritt für Schritt fördern.</span></span><span class="opt-cue">Auswählen →</span></button>
+          <button class="wz-opt" onclick="wzGoal('invest')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><polyline points="5 15 10 10 13 13 19 6"/><path d="M19 6v4M19 6h-4"/></svg></span><span class="opt-txt"><strong>Kaufen &amp; investieren</strong><span class="opt-d">Objekt-Check, Gewerbe zu Wohnen (KfW 266)</span></span><span class="opt-cue">Auswählen →</span></button>
           <button class="wz-opt" onclick="wzGoal('neubau')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></svg></span><span class="opt-txt"><strong>Neu bauen</strong><span class="opt-d">Effizienzhaus mit LCA &amp; KfW-Förderung.</span></span><span class="opt-cue">Auswählen →</span></button>
-          <button class="wz-opt" onclick="wzGoal('invest')"><span class="oar">→</span><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><polyline points="5 15 10 10 13 13 19 6"/><path d="M19 6v4M19 6h-4"/></svg></span><span class="opt-txt"><strong>Kaufen &amp; investieren</strong><span class="opt-d">Objekt-Check, Sanierungs- &amp; Aufteilungsstrategie.</span></span><span class="opt-cue">Auswählen →</span></button>
         </div>
       </div>
       <!-- Schritt 2 -->
@@ -1686,7 +1688,7 @@ const WZ={
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
     foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'bis 20<small>%</small>',lbl:'auf Einzelmaßnahmen mit iSFP, statt 15 %'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
-    subs:[{l:'Heizung tauschen',m:'heizung',f:'Heizungstausch (Wärmepumpe & Co.)'},{l:'Dämmung & Fenster',m:'daemmung',f:'Gebäudehülle: Dämmung, Fenster & Türen'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
+    subs:[{l:'Heizung',m:'heizung',f:'Heizungstausch (Wärmepumpe & Co.)'},{l:'Dach / OGD',m:'daemmung',f:'Dämmung Dach / oberste Geschossdecke'},{l:'Fassade',m:'daemmung',f:'Fassadendämmung'},{l:'Fenster / Türen',m:'fenster',f:'Fenster & Außentüren'},{l:'Keller / Kellerdecke',m:'daemmung',f:'Dämmung Keller / Kellerdecke'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
   neubau:{label:'Neu bauen',ic:'B',code:'/// B · NEUBAU',q2:'Was bauen Sie?',
     title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
     foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
