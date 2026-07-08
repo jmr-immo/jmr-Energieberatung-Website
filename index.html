@@ -1257,7 +1257,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     .gzw-pdf{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(31,168,90,.4);padding-bottom:2px}
     .gzw-pdf:hover{border-bottom-color:var(--green-d)}
     /* Mobil-Aufklapper: beide Sektionen zeigen erst nur Kurzüberschrift + „Mehr dazu", Inhalt öffnet auf Klick */
-    .prog-mtoggle{display:none}
+    .prog-mtoggle,.prog-mhead{display:none}
     @media(max-width:560px){
       .prog-mtoggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:1rem;background:linear-gradient(160deg,rgba(31,168,90,.10),#fff);border:1px solid rgba(31,168,90,.30);border-radius:16px;padding:1.05rem 1.15rem;cursor:pointer;text-align:left;box-shadow:var(--shadow);font-family:var(--sans)}
       .prog-mtoggle .pm-t{display:flex;flex-direction:column;gap:.28rem;font-family:var(--disp);font-weight:600;font-size:1.06rem;color:var(--ink);letter-spacing:-.02em}
@@ -1267,9 +1267,15 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
       #gewerbe-zu-wohnen.prog-open .prog-mtoggle,#jung-kauft-alt.prog-open .prog-mtoggle{display:none}
       /* Inhalt kommt aus display:none → .fade-Animation greift nicht zuverlässig, daher sichtbar erzwingen */
       #gewerbe-zu-wohnen .gzw-grid .fade,#jung-kauft-alt .gzw-grid .fade{opacity:1}
+      /* Mobil-Überschrift über beiden eingeklappten Programmen */
+      .prog-mhead{display:block;font-family:var(--disp);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.02em;margin:0 0 1.2rem}
+      /* eingeklappt: enge Abstände zwischen den beiden Programm-Karten */
+      #gewerbe-zu-wohnen:not(.prog-open){padding-bottom:0}
+      #jung-kauft-alt:not(.prog-open){padding-top:0}
     }
   </style>
   <div class="container">
+    <div class="prog-mhead">Weitere Förderprogramme</div>
     <button type="button" class="prog-mtoggle" aria-expanded="false" onclick="progToggle(this)">
       <span class="pm-t">Gewerbe zu Wohnen<span class="pm-tag">KfW 266</span></span>
       <span class="pm-more">Mehr dazu <span class="pm-ar">→</span></span>
@@ -1315,8 +1321,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     #jung-kauft-alt .gzw-grid>*:nth-child(2){grid-column:2;grid-row:1/3;align-self:start;display:flex}
     /* Trennstrich zwischen KfW-266- und KfW-308-Sektion, zentriert in der Lücke */
     #jung-kauft-alt .prog-sep{height:1px;background:var(--line);margin-top:calc(-1 * var(--pad));margin-bottom:var(--pad)}
-    /* < 560px ist die KfW-266-Sektion ausgeblendet → Trennstrich hier weg (sonst steht er allein über 308) */
-    @media(max-width:560px){#jung-kauft-alt .prog-sep{display:none}}
+    /* < 560px: Trennstrich zwischen den beiden eingeklappten Programm-Karten, enger Abstand */
+    @media(max-width:560px){#jung-kauft-alt .prog-sep{display:block;margin:1.15rem 0}}
     #jung-kauft-alt .gzw-cta{grid-column:1;grid-row:2;align-self:start;margin-top:0}
     @media(max-width:880px){#jung-kauft-alt .gzw-grid{grid-template-columns:1fr;grid-template-rows:none}
       #jung-kauft-alt .gzw-grid>*:nth-child(1),#jung-kauft-alt .gzw-grid>*:nth-child(2),#jung-kauft-alt .gzw-cta{grid-column:1;grid-row:auto}
@@ -1916,7 +1922,7 @@ function wzToContact(){
     hf.value=parts.join(' | ');
   }
 }
-function show(id){document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');var big=(id==='wz-res'||id==='wz-contact'||id==='wz-cost');var ld=document.getElementById('wz-lead');if(ld)ld.style.display=big?'none':'block';document.getElementById('wz').classList.toggle('res-open',big)}
+function show(id){document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');var big=(id==='wz-res'||id==='wz-contact'||id==='wz-cost');var ld=document.getElementById('wz-lead');if(ld)ld.style.display=big?'none':'block';document.getElementById('wz').classList.toggle('res-open',big);if(window.matchMedia&&window.matchMedia('(max-width:560px)').matches){var a=document.querySelector('#wegweiser .wz-head-m')||document.getElementById('wz');if(a){var y=a.getBoundingClientRect().top+window.pageYOffset-78;window.scrollTo({top:y<0?0:y,behavior:'smooth'});}}}
 function wzGoal(k){curGoal=k;const d=WZ[k];
   document.getElementById('q2-question').textContent=d.q2;
   document.getElementById('q2-opts').innerHTML=d.subs.map((s,i)=>`<button class="wz-opt" onclick="wzSub(${i})"><span class="oar">→</span><span class="opt-ic">${i+1}</span><span class="opt-txt"><strong>${s.l}</strong><span class="opt-d">${s.d||s.f}</span></span><span class="opt-cue">Auswählen →</span></button>`).join('');
