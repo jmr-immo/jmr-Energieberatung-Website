@@ -292,7 +292,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .wz.res-open{min-height:clamp(460px,50vh,600px)}
 /* Handy: feste Höhe aufheben, sonst läuft der Inhalt (gestapelte Kacheln / Rechner) über den Container hinaus.
    Container wächst dann natürlich mit; Auswahl-Kacheln kompakter. Desktop unverändert. */
-@media(max-width:560px){.wz,.wz.res-open{height:auto;min-height:0}.wz-opt{min-height:0}.wz-body{justify-content:flex-start}}
+@media(max-width:560px){.wz{height:auto}.wz-opt{min-height:0}}
 .wz-title{font-family:var(--disp);font-weight:600;font-size:clamp(1.5rem,2.6vw,2.1rem);color:#fff;text-align:center;letter-spacing:-.02em;margin-bottom:.2rem;position:relative;z-index:2}
 .wz-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
 .wz-lead{text-align:center;color:#c5d8d0;font-size:clamp(1rem,1.5vw,1.18rem);max-width:560px;margin:.6rem auto 0;position:relative;z-index:2}
@@ -1128,7 +1128,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 <section class="alt" id="wegweiser">
   <div class="wz-aura a1"></div><div class="wz-aura a2"></div>
   <style>
-    #wz-cost,#wz-contact{max-width:640px;margin-left:auto;margin-right:auto}
+    #wz-cost,#wz-contact{width:100%;max-width:640px;margin-left:auto;margin-right:auto}
     #wz-cost .wz-gate-lead,#wz-contact .wz-gate-lead{color:var(--muted);font-size:.95rem;margin:.2rem 0 1.2rem}
     #wz-cost .wz-cta{margin-top:1.4rem}
     #wz-contact .wz-form .fld input{background:#fff}
