@@ -438,7 +438,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 @media(max-width:345px){.fld-row{grid-template-columns:1fr}}
 @media(max-width:560px){.ccard{padding:1.5rem}.fld{margin-bottom:.8rem}.fld-row{gap:.8rem;margin-bottom:.8rem}.fld label{margin-bottom:.3rem}.fld input,.fld select,.fld textarea{font-size:16px;padding:.72rem .9rem}.fld textarea{min-height:64px}
 /* Platz sparen: Labels der ersten vier Felder (Vorname/Nachname/Telefon/E-Mail) ausblenden, Platzhalter sagen ohnehin, was rein soll. Visuell weg, fuer Screenreader erhalten. */
-.ccard .fld-row label{position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
+.ccard .fld-row label,#wz-contact .fld-row label{position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
 
 /* FOOTER */
 .footer{padding:3rem 0 2.4rem;background:#08151F;color:#7d92a1;font-size:.85rem;font-family:var(--sans);position:relative;overflow:hidden}
@@ -1186,8 +1186,8 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
             <div class="fld"><label for="wz-nn">Nachname</label><input id="wz-nn" name="Nachname" type="text" placeholder="Nachname" required></div>
           </div>
           <div class="fld-row">
-            <div class="fld"><label for="wz-tel">Telefon</label><input id="wz-tel" name="Telefon" type="tel" placeholder="Für den Rückruf" required></div>
-            <div class="fld"><label for="wz-mail">E-Mail (optional)</label><input id="wz-mail" name="E-Mail" type="email" placeholder="E-Mail"></div>
+            <div class="fld"><label for="wz-tel">Telefon</label><input id="wz-tel" name="Telefon" type="tel" placeholder="Telefon" required></div>
+            <div class="fld"><label for="wz-mail">E-Mail</label><input id="wz-mail" name="E-Mail" type="email" placeholder="E-Mail" required></div>
           </div>
           <input type="hidden" id="wz-fc" name="Förder-Check">
           <input type="hidden" name="Anfrage über" value="Förder-Check">
