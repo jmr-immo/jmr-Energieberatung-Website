@@ -114,6 +114,15 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .mono-row{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}
 .mono-row::before{content:'';width:28px;height:2px;border-radius:2px;background:var(--steel)}
 .dark .mono{color:var(--blueprint)}.dark .mono-row::before{background:var(--blueprint)}
+/* Temporäre Reform-Hinweisleiste (oben im Hero) */
+.reform-bar{position:relative;z-index:3;display:flex;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;background:linear-gradient(120deg,rgba(31,168,90,.13),rgba(31,111,165,.10));border:1px solid rgba(31,168,90,.32);border-radius:14px;padding:.7rem .8rem .7rem 1.1rem;margin-bottom:2.2rem;box-shadow:0 10px 30px -22px rgba(11,28,43,.4)}
+.reform-bar .rb-txt{flex:1;min-width:210px;font-family:var(--sans);font-size:.9rem;line-height:1.45;color:var(--ink)}
+.reform-bar .rb-txt b{color:var(--green-d)}
+.reform-bar .rb-more{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--green-d);background:#fff;border:1px solid rgba(31,168,90,.45);border-radius:999px;padding:.42rem .85rem;cursor:pointer;white-space:nowrap;transition:.2s}
+.reform-bar .rb-more:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.reform-bar .rb-x{background:none;border:none;color:var(--muted);font-size:1.25rem;line-height:1;cursor:pointer;padding:.15rem .35rem;flex-shrink:0}
+.reform-bar .rb-x:hover{color:var(--ink)}
+@media(max-width:560px){.reform-bar{font-size:.85rem;padding:.65rem .7rem .65rem .9rem;margin-bottom:1.6rem}.reform-bar .rb-txt{min-width:0;font-size:.85rem}}
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:600;font-size:.92rem;padding:.95rem 1.7rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:background .25s,color .25s,box-shadow .3s,border-color .25s,transform .15s;will-change:transform}
@@ -785,6 +794,11 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 <header class="hero" id="top">
   <canvas id="topo"></canvas>
   <div class="container">
+    <div class="reform-bar" id="reformBar">
+      <span class="rb-txt"><b>Förderung ändert sich ab dem 21.07.2026.</b> Kein Grund zur Sorge, für Familien und ältere Häuser gibt es sogar neue Vorteile.</span>
+      <button type="button" class="rb-more" onclick="openInfo('reform')">Mehr erfahren →</button>
+      <button type="button" class="rb-x" aria-label="Hinweis schließen" onclick="dismissReformBar()">×</button>
+    </div>
     <div class="hero-grid">
       <div class="fade vis">
         <div class="mono-row"><span class="mono">Energieberatung · Förderung · Baubegleitung</span></div>
@@ -1601,7 +1615,8 @@ bindGlass();
 
 /* --- Info-Popups (Begriffe einfach erklärt) --- */
 const INFO={
-  isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',img:'img/isfp-popup.jpg',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Seit der BEG-Reform lohnt sich der iSFP-Bonus vor allem bei <b>größeren Sanierungen</b>: Die zusätzlichen 5 % gibt es erst ab <b>30.000 € förderfähiger Investition</b> und nur auf den darüber liegenden Betrag. Bei kleinen Einzelmaßnahmen bringt er daher wenig.</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
+  reform:{tag:'Neu 2026',title:'Was sich bei der Förderung ändert',img:'',body:'<p>Ab dem <b>21. Juli 2026</b> gelten neue Förder-Regeln. Ein paar Zahlen werden angepasst, aber es kommen auch <b>neue Chancen</b> dazu:</p><ul><li><b>Familien mit Kind</b> bekommen mehr Förderung (neuer Familienzuschlag).</li><li>Für <b>alte, noch nicht sanierte Häuser</b> gibt es einen Extra-Bonus, auch schon für einzelne Dämm-Maßnahmen.</li><li>Wir kennen alle neuen Regeln und holen für Sie das Beste heraus.</li></ul><p>Also: kein Grund zur Panik. Im kostenlosen Erstgespräch sagen wir Ihnen ehrlich, was für Sie drin ist.</p><p style="margin-top:1.2rem"><a href="#kontakt" class="btn btn-green" onclick="closeInfo()">Kostenloses Erstgespräch →</a></p>'},
+  isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',img:'img/isfp-popup.jpg',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Mit der BEG-Reform (ab 21.07.2026) lohnt sich der iSFP-Bonus vor allem bei <b>größeren Sanierungen</b>: Die zusätzlichen 5 % gibt es erst ab <b>30.000 € förderfähiger Investition</b> und nur auf den darüber liegenden Betrag. Bei kleinen Einzelmaßnahmen bringt er daher wenig.</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
   lca:{tag:'Begriff erklärt',title:'Was ist eine LCA?',img:'img/lca-popup.jpg',body:'<p>Die <b>Ökobilanz (LCA, Life Cycle Assessment)</b> berechnet, wie viele Treibhausgase ein Gebäude über seinen <b>gesamten Lebenszyklus</b> verursacht: von der Herstellung der Baustoffe über den Betrieb bis zum Rückbau.</p><p>Beim Neubau ist die LCA der <b>Nachweis</b> für die KfW-Stufe „Klimafreundlicher Neubau" (KFN) und damit der Schlüssel zur Förderung.</p><p>Wir erstellen die LCA und sorgen dafür, dass die geforderten Grenzwerte eingehalten werden.</p>'},
   baubegleitung:{tag:'Begriff erklärt',title:'Was ist Baubegleitung?',img:'img/baubegleitung-popup.jpg',body:'<p>Bei der <b>Baubegleitung</b> ist ein Fachmann während der Sanierung oder beim Neubau an Ihrer Seite: Er prüft, ob alles <b>fachlich richtig und nach Plan</b> umgesetzt wird, und kümmert sich um die <b>Nachweise, die die Förderung verlangt</b>.</p><p>Für viele Förderungen ist diese Begleitung sogar <b>Pflicht</b> und sie ist selbst <b>bis zu 50 % förderfähig</b>. Sie sorgt dafür, dass am Ende kein Geld verloren geht, weil ein Detail nicht stimmt.</p><p>Bei uns haben Sie dafür einen festen Ansprechpartner, der den Überblick behält und die Fördernachweise im Blick hat.</p>'}
 };
@@ -1617,6 +1632,9 @@ function openInfo(key){
 }
 function closeInfo(){const m=document.getElementById('infoModal');if(m){m.hidden=true;document.body.style.overflow='';}}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInfo();});
+/* Reform-Hinweisleiste: wegklicken und gemerkt (nur Startseite, temporär) */
+function dismissReformBar(){var b=document.getElementById('reformBar');if(b)b.style.display='none';try{localStorage.setItem('jmrReformBar2607','1');}catch(e){}}
+(function(){try{if(localStorage.getItem('jmrReformBar2607')==='1'){var b=document.getElementById('reformBar');if(b)b.style.display='none';}}catch(e){}})();
 
 /* --- EINSTEIGER: Haus + Klartext --- */
 const HOUSE={
@@ -1826,7 +1844,7 @@ const MEASURES={
   heizung:{satzMin:30,satzMax:70,we:true,note:'Heizungsförderung (KfW 458): 30 % Grundförderung, mit Boni (z. B. Klimageschwindigkeit, Einkommen) bis 70 %. Förderfähig bis 28.000 € für die 1. Wohneinheit (weitere gestaffelt). Familien mit Kind profitieren beim Einkommensbonus zusätzlich über den neuen Familienzuschlag.',caps:we=>{const c=28000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c,maxZ:c*0.7};}},
   daemmung:{satzMin:15,satzMax:15,we:true,note:'BAFA-Einzelmaßnahme an der Gebäudehülle (Dämmung): 15 % Zuschuss. Für unsanierte Altbauten kommt der neue WPB-Bonus hinzu (Dämmung der Hülle). Ein iSFP bringt weitere 5 % erst ab 30.000 € Investition und nur auf den übersteigenden Betrag. Förderfähig bis 30.000 € je Wohneinheit.',caps:we=>({cap:we*30000,capMax:we*30000})},
   fenster:{satzMin:15,satzMax:15,we:true,note:'BAFA-Einzelmaßnahme (Fenster/Außentüren): 15 % Zuschuss. Ein iSFP bringt weitere 5 % erst ab 30.000 € Investition und nur auf den übersteigenden Betrag. Förderfähig bis 30.000 € je Wohneinheit.',caps:we=>({cap:we*30000,capMax:we*30000})},
-  komplett:{satzMin:5,satzMax:35,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 120.000 € je Wohneinheit): Tilgungszuschuss je nach Effizienzhaus-Stufe. Seit der BEG-Reform ist die EE-Klasse Standard und die Tilgungszuschüsse wurden gekürzt, dafür gibt es mehr Zinsverbilligung. Grobe Orientierung, maßgeblich ist das aktuelle KfW-Merkblatt.',caps:we=>({cap:we*120000,capMax:we*120000})},
+  komplett:{satzMin:5,satzMax:35,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 120.000 € je Wohneinheit): Tilgungszuschuss je nach Effizienzhaus-Stufe. Mit der BEG-Reform (ab 21.07.2026) wird die EE-Klasse zum Standard und die Tilgungszuschüsse werden gekürzt, dafür gibt es mehr Zinsverbilligung. Grobe Orientierung, maßgeblich ist das aktuelle KfW-Merkblatt.',caps:we=>({cap:we*120000,capMax:we*120000})},
   kfw266:{satzMin:30,satzMax:30,we:true,weLbl:'neue Wohneinheiten',note:'Gewerbe zu Wohnen (KfW 266): Zuschuss von 30 % der reinen Umbaukosten der Umnutzung. Förderfähig bis 100.000 € je neuer Wohneinheit, entspricht bis 30.000 € Zuschuss je WE; Unternehmens-Deckel 300.000 € (De-minimis). Nur die Umbaukosten der Umnutzung zählen, nicht die energetische Sanierung. Voraussetzung: mind. Effizienzhaus 85 EE. Mit der BEG (z. B. KfW 261) kombinierbar.',caps:we=>{const c=we*100000;return{cap:c,capMax:c,maxZ:Math.min(we*30000,300000)};}}
 };
 let curMeasure=null;
