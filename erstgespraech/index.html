@@ -80,7 +80,8 @@ a{color:inherit;text-decoration:none}
 .fld label{font-size:.74rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
 .fld input,.fld select,.fld textarea{font-family:var(--sans);font-size:16px;padding:.8rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
 .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(31,111,165,.16)}
-.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.fld-row .fld{margin-bottom:0}
 @media(max-width:420px){.fld-row{grid-template-columns:1fr}}
 /* Mobil: Feld-Labels im Funnel-Gate ausblenden (Placeholder reicht, spart Platz) */
 @media(max-width:560px){#fn-gate .fld label{position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
@@ -110,7 +111,9 @@ a{color:inherit;text-decoration:none}
 .fn-opt:active{transform:translateY(0)}
 .fn-opt .fn-opt-t{display:flex;flex-direction:column;gap:.15rem;min-width:0}
 .fn-opt strong{font-family:var(--disp);font-weight:600;font-size:1rem;color:var(--ink);letter-spacing:-.01em}
-.fn-opt .fn-opt-d{font-size:.82rem;color:var(--muted);line-height:1.35}
+.fn-opt .fn-opt-d{font-size:.82rem;color:var(--muted);line-height:1.4}
+.fn-opt .fn-opt-d .fn-prog-line{display:block;white-space:nowrap}
+@media(max-width:400px){.fn-opt .fn-opt-d{font-size:.76rem}}
 .fn-opt .fn-cue{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--green);border-radius:999px;padding:.34rem .72rem;white-space:nowrap;flex-shrink:0;box-shadow:0 5px 13px -6px rgba(31,168,90,.65)}
 .fn-gate-lead{font-size:.92rem;color:var(--muted);margin:-.2rem 0 1rem;line-height:1.5}
 .fn-sel{display:block;background:rgba(31,111,165,.07);border:1px solid rgba(31,111,165,.18);border-radius:12px;padding:.6rem .85rem;margin-bottom:1rem}
@@ -222,8 +225,8 @@ a{color:inherit;text-decoration:none}
         <div class="fn-step active" id="fn-q1">
           <div class="fn-q">Was ist Ihr Vorhaben?</div>
           <div class="fn-opts">
-            <button type="button" class="fn-opt" onclick="fGoalPick('sanieren')"><span class="fn-opt-t"><strong>Bestand sanieren</strong><span class="fn-opt-d">Heizung, Dämmung, Fenster. Schritt für Schritt fördern.</span></span><span class="fn-cue">Weiter →</span></button>
-            <button type="button" class="fn-opt" onclick="fGoalPick('invest')"><span class="fn-opt-t"><strong>Kaufen &amp; investieren</strong><span class="fn-opt-d">Gewerbe zu Wohnen (KfW 266), Jung kauft Alt (KfW 308)</span></span><span class="fn-cue">Weiter →</span></button>
+            <button type="button" class="fn-opt" onclick="fGoalPick('sanieren')"><span class="fn-opt-t"><strong>Bestand sanieren</strong><span class="fn-opt-d">Heizung, Dämmung, Dach, Fenster, Türen und mehr.</span></span><span class="fn-cue">Weiter →</span></button>
+            <button type="button" class="fn-opt" onclick="fGoalPick('invest')"><span class="fn-opt-t"><strong>Kaufen &amp; investieren</strong><span class="fn-opt-d"><span class="fn-prog-line">Gewerbe zu Wohnen (KfW 266)</span><span class="fn-prog-line">Jung kauft Alt (KfW 308)</span></span></span><span class="fn-cue">Weiter →</span></button>
             <button type="button" class="fn-opt" onclick="fGoalPick('neubau')"><span class="fn-opt-t"><strong>Neu bauen</strong><span class="fn-opt-d">Effizienzhaus mit LCA &amp; KfW-Förderung.</span></span><span class="fn-cue">Weiter →</span></button>
           </div>
         </div>
@@ -338,7 +341,7 @@ const WZ={
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
     foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'Neu: WPB',lbl:'Extra-Bonus für unsanierte Altbauten bei der Dämmung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
-    subs:[{l:'Dach / OGD',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit Wärmedämmverbundsystem (WDVS).'},{l:'Fenster / Türen',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',f:'Schrittweise Komplettsanierung zum Effizienzhaus',d:'Schritt für Schritt zum Effizienzhaus.'}]},
+    subs:[{l:'Dach / OGD',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit WDVS.'},{l:'Fenster / Türen',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',f:'Schrittweise Komplettsanierung zum Effizienzhaus',d:'Schritt für Schritt zum Effizienzhaus.'}]},
   neubau:{label:'Neu bauen',q2:'Was bauen Sie?',
     title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
     foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
