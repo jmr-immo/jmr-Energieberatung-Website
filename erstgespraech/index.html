@@ -82,6 +82,7 @@ a{color:inherit;text-decoration:none}
 .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(31,111,165,.16)}
 .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
 .fld-row .fld{margin-bottom:0}
+@media(max-width:560px){.fld-row-stack{grid-template-columns:1fr}}
 /* Mobil: Feld-Labels im Funnel-Gate ausblenden (Placeholder reicht, spart Platz) */
 @media(max-width:560px){#fn-gate .fld label{position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
 .form-note{font-size:.74rem;color:var(--muted);margin-top:.8rem;line-height:1.5}
@@ -122,8 +123,7 @@ a{color:inherit;text-decoration:none}
 .fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:' · '}
 @media(max-width:560px){
   .fn-sel .fn-sel-lvl{display:block}
-  .fn-sel .fn-sel-lvl::before{content:'→ ';color:var(--green-d);font-weight:700}
-  .fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:'→ '}
+  .fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:'→ ';color:var(--green-d);font-weight:700;margin-right:.15rem}
   /* Auswahl-Buttons: „Weiter"-Pill auf Handy zum kompakten Pfeil, schafft Platz für die Beschreibung */
   .fn-opt{gap:.6rem;padding:.9rem .85rem}
   .fn-opt .fn-cue{font-size:0;padding:.34rem .5rem}
@@ -259,7 +259,7 @@ a{color:inherit;text-decoration:none}
               <div class="fld"><label for="fn-vn">Vorname</label><input id="fn-vn" name="Vorname" type="text" placeholder="Vorname" required></div>
               <div class="fld"><label for="fn-nn">Nachname</label><input id="fn-nn" name="Nachname" type="text" placeholder="Nachname" required></div>
             </div>
-            <div class="fld-row">
+            <div class="fld-row fld-row-stack">
               <div class="fld"><label for="fn-tel">Telefon</label><input id="fn-tel" name="Telefon" type="tel" placeholder="Telefon" required></div>
               <div class="fld"><label for="fn-mail">E-Mail</label><input id="fn-mail" name="E-Mail" type="email" placeholder="E-Mail" required></div>
             </div>
@@ -271,7 +271,7 @@ a{color:inherit;text-decoration:none}
             <button type="submit" class="btn btn-green" id="fnSubmit">Einordnung anzeigen <span class="ar">→</span></button>
             <ul class="fn-trust">
               <li>Kostenlos &amp; unverbindlich</li>
-              <li>Antwort in 24 Stunden</li>
+              <li>Wir melden uns zusätzlich</li>
             </ul>
             <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zu. Mehr in der <a href="../datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
             <p class="kf-status" id="fnStatus" hidden></p>
