@@ -74,6 +74,16 @@ a{color:inherit;text-decoration:none}
 .trustrow .grev{display:flex;flex-direction:column;gap:.1rem}
 .trustrow .grev .st{color:#f5b301;letter-spacing:.05em;font-size:.95rem}
 .trustrow .grev .lb{font-size:.76rem;color:var(--muted)}
+/* Mobil: kompakter Trust-/Kontaktblock direkt unter dem Formular (EEE + Telefon), Google-Sterne aus */
+.hr-mobile{display:none}
+@media(max-width:560px){
+  .hcopy-rest .herocall,.hcopy-rest .trustrow{display:none}
+  .hr-mobile{display:block;margin-bottom:1.3rem}
+  .hr-mobile .hrm-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .hr-mobile .ph{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.05rem;color:var(--ink)}
+  .hr-mobile .ph svg{width:20px;height:20px;stroke:var(--green-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .hr-mobile .hrm-note{color:var(--muted);font-size:.9rem;margin-top:.7rem}
+}
 /* CARD (Basis) */
 .fcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2rem);box-shadow:var(--shadow-lg)}
 .fld{margin-bottom:.8rem;display:flex;flex-direction:column;gap:.3rem}
@@ -205,6 +215,13 @@ a{color:inherit;text-decoration:none}
         <h1 id="heroH1">Welche Förderung passt zu Ihrem Vorhaben?</h1>
       </div>
       <div class="hcopy-rest">
+        <div class="hr-mobile">
+          <div class="hrm-row">
+            <span class="eeebox"><img class="eee" src="../img/eee-experte-logo.png" alt="Gelisteter Energieeffizienz-Experte für Förderprogramme des Bundes"></span>
+            <a href="tel:+496819697198" class="ph" data-call><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0681 9697198</a>
+          </div>
+          <p class="hrm-note">Lieber direkt sprechen? Rufen Sie uns an.</p>
+        </div>
         <p class="lead" id="heroLead">Wir prüfen, welche Förderung von BAFA und KfW für Sie in Frage kommt. Kostenlos und unverbindlich.</p>
         <ul class="tlist">
           <li>Förderung über BAFA und KfW, inklusive Antrag und Nachweisen</li>
@@ -267,7 +284,7 @@ a{color:inherit;text-decoration:none}
             <input type="hidden" name="Seite" value="Anzeigen-LP Förder-Check">
             <input type="hidden" name="Kampagne" id="fnUtm">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-            <button type="submit" class="btn btn-green" id="fnSubmit">Einordnung anzeigen <span class="ar">→</span></button>
+            <button type="submit" class="btn btn-green" id="fnSubmit">Einordnung sofort anzeigen <span class="ar">→</span></button>
             <ul class="fn-trust">
               <li>Wir melden uns zusätzlich bei Ihnen</li>
               <li>Kostenlos &amp; unverbindlich</li>
