@@ -797,7 +797,6 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
     <div class="reform-bar" id="reformBar">
       <span class="rb-txt"><b>Förderung ändert sich ab dem 21.07.2026.</b> Kein Grund zur Sorge, für Familien und ältere Häuser gibt es sogar neue Vorteile.</span>
       <button type="button" class="rb-more" onclick="openInfo('reform')">Mehr erfahren →</button>
-      <button type="button" class="rb-x" aria-label="Hinweis schließen" onclick="dismissReformBar()">×</button>
     </div>
     <div class="hero-grid">
       <div class="fade vis">
@@ -1632,9 +1631,6 @@ function openInfo(key){
 }
 function closeInfo(){const m=document.getElementById('infoModal');if(m){m.hidden=true;document.body.style.overflow='';}}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInfo();});
-/* Reform-Hinweisleiste: wegklicken und gemerkt (nur Startseite, temporär) */
-function dismissReformBar(){var b=document.getElementById('reformBar');if(b)b.style.display='none';try{localStorage.setItem('jmrReformBar2607','1');}catch(e){}}
-(function(){try{if(localStorage.getItem('jmrReformBar2607')==='1'){var b=document.getElementById('reformBar');if(b)b.style.display='none';}}catch(e){}})();
 
 /* --- EINSTEIGER: Haus + Klartext --- */
 const HOUSE={
