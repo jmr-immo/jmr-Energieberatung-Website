@@ -82,7 +82,6 @@ a{color:inherit;text-decoration:none}
 .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(31,111,165,.16)}
 .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
 .fld-row .fld{margin-bottom:0}
-@media(max-width:420px){.fld-row{grid-template-columns:1fr}}
 /* Mobil: Feld-Labels im Funnel-Gate ausblenden (Placeholder reicht, spart Platz) */
 @media(max-width:560px){#fn-gate .fld label{position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
 .form-note{font-size:.74rem;color:var(--muted);margin-top:.8rem;line-height:1.5}
@@ -118,7 +117,19 @@ a{color:inherit;text-decoration:none}
 .fn-gate-lead{font-size:.92rem;color:var(--muted);margin:-.2rem 0 1rem;line-height:1.5}
 .fn-sel{display:block;background:rgba(31,111,165,.07);border:1px solid rgba(31,111,165,.18);border-radius:12px;padding:.6rem .85rem;margin-bottom:1rem}
 .fn-sel .fn-sel-l{display:block;font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-d);margin-bottom:.15rem}
-.fn-sel .fn-sel-v{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--green-d);line-height:1.25;letter-spacing:-.01em}
+.fn-sel .fn-sel-v{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--green-d);line-height:1.3;letter-spacing:-.01em}
+.fn-sel .fn-sel-lvl{display:inline}
+.fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:' · '}
+@media(max-width:560px){
+  .fn-sel .fn-sel-lvl{display:block}
+  .fn-sel .fn-sel-lvl::before{content:'→ ';color:var(--green-d);font-weight:700}
+  .fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:'→ '}
+  /* Auswahl-Buttons: „Weiter"-Pill auf Handy zum kompakten Pfeil, schafft Platz für die Beschreibung */
+  .fn-opt{gap:.6rem;padding:.9rem .85rem}
+  .fn-opt .fn-cue{font-size:0;padding:.34rem .5rem}
+  .fn-opt .fn-cue::after{content:'→';font-size:.95rem;line-height:1}
+  .fn-opt .fn-opt-d{font-size:.78rem}
+}
 .funnel .btn{width:100%;margin-top:.5rem}
 .fn-trust{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin:.9rem 0 0;padding:0}
 .fn-trust li{position:relative;padding-left:1.35rem;font-size:.8rem;color:var(--ink);font-weight:500}
@@ -340,7 +351,7 @@ const WZ={
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
     foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'Neu: WPB',lbl:'Extra-Bonus für unsanierte Altbauten bei der Dämmung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
-    subs:[{l:'Dach / OGD',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit WDVS.'},{l:'Fenster / Türen',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',f:'Schrittweise Komplettsanierung zum Effizienzhaus',d:'Schritt für Schritt zum Effizienzhaus.'}]},
+    subs:[{l:'Dach / OGD',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit WDVS.'},{l:'Fenster / Türen',f:'Fenster & Außentüren',d:'Wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',f:'Schrittweise Komplettsanierung zum Effizienzhaus',d:'Schritt für Schritt zum Effizienzhaus.'}]},
   neubau:{label:'Neu bauen',q2:'Was bauen Sie?',
     title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
     foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
@@ -377,7 +388,7 @@ function fGoalPick(k){fGoal=k;fSub=null;var d=WZ[k];fEl('fnQ2Title').textContent
 function fSubPick(i){fSub=i;fToGate(false);}
 function fToGate(direct){var d=WZ[fGoal],s=d.subs[fSub];
   fEl('fnHZiel').value=d.label;fEl('fnHMass').value=(s.dl||s.l);
-  var sel=fEl('fnSel');sel.innerHTML='<span class="fn-sel-l">Ihre Auswahl</span><span class="fn-sel-v">'+d.label+' · '+(s.dl||s.l)+'</span>';sel.hidden=false;
+  var sel=fEl('fnSel');sel.innerHTML='<span class="fn-sel-l">Ihre Auswahl</span><span class="fn-sel-v"><span class="fn-sel-lvl">'+d.label+'</span><span class="fn-sel-lvl">'+(s.dl||s.l)+'</span></span>';sel.hidden=false;
   fGateDirect=!!direct;
   fEl('fnGateQ').textContent=direct?'Ihre kostenlose Förder-Einordnung':'Fast geschafft.';
   fEl('fnGateBack').textContent=direct?'← Anderes Vorhaben':'← Zurück';
