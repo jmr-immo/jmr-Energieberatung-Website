@@ -1750,7 +1750,7 @@ function houseZoomState(san){
   const svg=document.getElementById('houseSvg');if(!svg)return;
   const cUn=document.getElementById('clipUnRect'),cSan=document.getElementById('clipSanRect'),
         div=document.getElementById('divider'),lU=document.getElementById('lblUn'),lS=document.getElementById('lblSan');
-  const MINX=-22,MAXX=582,MIDX=285;  // Slider bis in den viewBox-Puffer: an den Extremen überdeckt eine Seite alles, kein Farbrest
+  const MINX=9,MAXX=551,MIDX=285;  // Grenzen so, dass der Griff-Kreis (r=18, mobil ×1.7 ≈ 30,6) am Rand bündig bleibt und nicht über die Rahmenkante (viewBox -22…582) ragt
   const HOMEX=285;   // Start-/Ruheposition: genau mittig auf der Dachspitze (First, x=285)
   let split=HOMEX;
   function setSplit(x){
