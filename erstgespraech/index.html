@@ -427,7 +427,7 @@ function fToGate(direct){var d=WZ[fGoal],s=d.subs[fSub];
   fEl('fnGateQ').textContent=direct?'Ihre kostenlose Förder-Einordnung':'Fast geschafft.';
   fEl('fnGateBack').textContent=direct?'← Anderes Vorhaben':'← Zurück';
   fShow('fn-gate',3);}
-function fBack(){if(fEl('fn-gate').classList.contains('active')){if(fGateDirect){fShow('fn-q1',1);}else{fShow('fn-q2',2);}}else{fShow('fn-q1',1);}}
+function fBack(){var g=fEl('fn-gate').classList.contains('active');if(g&&!fGateDirect){fShow('fn-q2',2);return;}if(window.fResetHead)fResetHead();fShow('fn-q1',1);}
 function fRenderResult(){var d=WZ[fGoal],s=d.subs[fSub];
   fEl('fnResTitle').textContent=s.title||d.title;
   fEl('fnResSub').innerHTML=s.sub||d.sub;
@@ -438,6 +438,8 @@ function fRenderResult(){var d=WZ[fGoal],s=d.subs[fSub];
 /* ?ziel= Vorwahl + Headline-Match */
 (function(){
   var z=(new URLSearchParams(location.search).get('ziel')||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  var DEFH=fEl('heroH1').textContent,DEFL=fEl('heroLead').textContent,DEFF=fEl('fnLead').textContent;
+  window.fResetHead=function(){fEl('heroH1').textContent=DEFH;fEl('heroLead').textContent=DEFL;fEl('fnLead').textContent=DEFF;};
   var HEAD={
     kfw266:['Gewerbe zu Wohnen (KfW 266): Ihre Förderung','Aus Gewerbefläche wird Wohnraum. Wir prüfen Zuschuss (KfW 266) und Kredit (KfW 261) für Ihr Vorhaben. Kostenlos und unverbindlich.'],
     gewerbe:['Gewerbe zu Wohnen (KfW 266): Ihre Förderung','Aus Gewerbefläche wird Wohnraum. Wir prüfen Zuschuss (KfW 266) und Kredit (KfW 261) für Ihr Vorhaben. Kostenlos und unverbindlich.'],
