@@ -115,14 +115,14 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .mono-row::before{content:'';width:28px;height:2px;border-radius:2px;background:var(--steel)}
 .dark .mono{color:var(--blueprint)}.dark .mono-row::before{background:var(--blueprint)}
 /* Temporäre Reform-Hinweisleiste (oben im Hero) */
-.reform-bar{position:relative;z-index:3;display:flex;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;background:linear-gradient(120deg,rgba(31,168,90,.13),rgba(31,111,165,.10));border:1px solid rgba(31,168,90,.32);border-radius:14px;padding:.7rem .8rem .7rem 1.1rem;margin-bottom:2.2rem;box-shadow:0 10px 30px -22px rgba(11,28,43,.4)}
+.reform-bar{position:relative;z-index:3;display:flex;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;background:linear-gradient(120deg,rgba(229,138,46,.12),rgba(229,138,46,.04));border:1px solid rgba(229,138,46,.55);border-radius:14px;padding:.7rem .8rem .7rem 1.1rem;margin-bottom:2.2rem;box-shadow:0 10px 30px -22px rgba(11,28,43,.4)}
 .reform-bar .rb-txt{flex:1;min-width:210px;font-family:var(--sans);font-size:.9rem;line-height:1.45;color:var(--ink)}
 .reform-bar .rb-txt b{color:var(--green-d)}
 .reform-bar .rb-more{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--green-d);background:#fff;border:1px solid rgba(31,168,90,.45);border-radius:999px;padding:.42rem .85rem;cursor:pointer;white-space:nowrap;transition:.2s}
 .reform-bar .rb-more:hover{background:var(--green);color:#fff;border-color:var(--green)}
 .reform-bar .rb-x{background:none;border:none;color:var(--muted);font-size:1.25rem;line-height:1;cursor:pointer;padding:.15rem .35rem;flex-shrink:0}
 .reform-bar .rb-x:hover{color:var(--ink)}
-@media(max-width:560px){.reform-bar{font-size:.85rem;padding:.65rem .7rem .65rem .9rem;margin-bottom:1.6rem}.reform-bar .rb-txt{min-width:0;font-size:.85rem}}
+@media(max-width:560px){.reform-bar{flex-direction:column;align-items:flex-start;font-size:.85rem;padding:.75rem .9rem;margin-bottom:1.6rem}.reform-bar .rb-txt{min-width:0;width:100%;font-size:.85rem}}
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:600;font-size:.92rem;padding:.95rem 1.7rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:background .25s,color .25s,box-shadow .3s,border-color .25s,transform .15s;will-change:transform}
@@ -780,7 +780,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 <div class="prog"><div class="prog-b" id="pb"></div></div>
 
 <nav class="nav" id="nav">
-  <a href="#top" class="brand"><img class="mk" src="img/logo-blue.png" alt="jmr Energieberatung"><span class="nm">jmr Energieberatung<small>Saarbrücken · seit 2026</small></span></a>
+  <a href="#top" class="brand"><img class="mk" src="img/logo-blue.png" alt="jmr Energieberatung"><span class="nm">jmr Energieberatung<small>Saarbrücken</small></span></a>
   <div class="nlinks">
     <a href="#leistungen">Leistungen</a>
     <a href="#einsteiger">Warum Energieberatung</a>
