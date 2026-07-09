@@ -122,8 +122,7 @@ a{color:inherit;text-decoration:none}
 .fn-sel .fn-sel-lvl{display:inline}
 .fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:' · '}
 @media(max-width:560px){
-  .fn-sel .fn-sel-lvl{display:block}
-  .fn-sel .fn-sel-lvl + .fn-sel-lvl::before{content:'→ ';color:var(--green-d);font-weight:700;margin-right:.15rem}
+  .fn-sel{display:none}
   /* Auswahl-Buttons: „Weiter"-Pill auf Handy zum kompakten Pfeil, schafft Platz für die Beschreibung */
   .fn-opt{gap:.6rem;padding:.9rem .85rem}
   .fn-opt .fn-cue{font-size:0;padding:.34rem .5rem}
@@ -206,7 +205,7 @@ a{color:inherit;text-decoration:none}
         <h1 id="heroH1">Welche Förderung passt zu Ihrem Vorhaben?</h1>
       </div>
       <div class="hcopy-rest">
-        <p class="lead" id="heroLead">In einer Minute zu Ihrer persönlichen Einordnung: Wir prüfen, welche Förderung von BAFA und KfW für Sie in Frage kommt. Kostenlos und unverbindlich.</p>
+        <p class="lead" id="heroLead">Wir prüfen, welche Förderung von BAFA und KfW für Sie in Frage kommt. Kostenlos und unverbindlich.</p>
         <ul class="tlist">
           <li>Förderung über BAFA und KfW, inklusive Antrag und Nachweisen</li>
           <li>Ehrliche Einschätzung, mit Zahlen statt Werbeversprechen</li>
@@ -252,7 +251,7 @@ a{color:inherit;text-decoration:none}
         <div class="fn-step" id="fn-gate">
           <div class="fn-bar"><button type="button" class="fn-back" id="fnGateBack" onclick="fBack()">← Zurück</button></div>
           <div class="fn-q" id="fnGateQ">Fast geschafft.</div>
-          <p class="fn-gate-lead">Ihre Einordnung sehen Sie sofort. Wir melden uns zusätzlich, kostenlos.</p>
+          <p class="fn-gate-lead">Ihre Einordnung sehen Sie sofort nach dem Absenden. Wir melden uns zusätzlich bei Ihnen, kostenlos & unverbindlich.</p>
           <div class="fn-sel" id="fnSel" hidden></div>
           <form id="funnelForm" action="https://formspree.io/f/xzdqjnqb" method="POST">
             <div class="fld-row">
@@ -270,8 +269,8 @@ a{color:inherit;text-decoration:none}
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="btn btn-green" id="fnSubmit">Einordnung anzeigen <span class="ar">→</span></button>
             <ul class="fn-trust">
+              <li>Wir melden uns zusätzlich bei Ihnen</li>
               <li>Kostenlos &amp; unverbindlich</li>
-              <li>Wir melden uns zusätzlich</li>
             </ul>
             <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zu. Mehr in der <a href="../datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
             <p class="kf-status" id="fnStatus" hidden></p>
