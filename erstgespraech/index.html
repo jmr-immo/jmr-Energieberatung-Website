@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<title>Kostenloses Erstgespräch · Energieberatung Saarbrücken &amp; Saarland · jmr</title>
-<meta name="description" content="Energieberater in Saarbrücken und im Saarland. Förderung von BAFA und KfW, persönlich und verständlich. Jetzt kostenloses Erstgespräch anfragen oder anrufen.">
+<title>Kostenloser Förder-Check · Energieberatung Saarbrücken &amp; Saarland · jmr</title>
+<meta name="description" content="In 1 Minute herausfinden, welche Förderung von BAFA und KfW zu Ihrem Vorhaben passt. Kostenlos, unverbindlich. Energieberater in Saarbrücken und im Saarland.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://jmr-energieberatung.de/erstgespraech/">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
@@ -50,7 +50,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:480px){.brand .nm{font-size:.92rem}.tcall{font-size:.82rem}.tcall svg{width:16px;height:16px}}
 /* HERO */
 .hero{padding:1.2rem 0 2.4rem}
-.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
+.hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
 @media(max-width:880px){.hgrid{grid-template-columns:1fr}}
 .hero h1{margin-top:.9rem}
 .hero .lead{font-size:1.08rem;color:var(--muted);margin-top:1rem;max-width:560px}
@@ -66,22 +66,59 @@ a{color:inherit;text-decoration:none}
 .trustrow .grev{display:flex;flex-direction:column;gap:.1rem}
 .trustrow .grev .st{color:#f5b301;letter-spacing:.05em;font-size:.95rem}
 .trustrow .grev .lb{font-size:.76rem;color:var(--muted)}
-/* FORM CARD */
+/* CARD (Basis) */
 .fcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2rem);box-shadow:var(--shadow-lg)}
-.fcard h2{font-size:1.35rem}
-.fcard .ds{color:var(--muted);font-size:.9rem;margin:.3rem 0 1.1rem}
 .fld{margin-bottom:.8rem;display:flex;flex-direction:column;gap:.3rem}
 .fld label{font-size:.74rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.fld input,.fld select,.fld textarea{font-family:var(--sans);font-size:.98rem;padding:.8rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
+.fld input,.fld select,.fld textarea{font-family:var(--sans);font-size:16px;padding:.8rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
 .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(31,111,165,.16)}
 .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 @media(max-width:420px){.fld-row{grid-template-columns:1fr}}
-.fcard .btn{width:100%;margin-top:.4rem}
 .form-note{font-size:.74rem;color:var(--muted);margin-top:.8rem;line-height:1.5}
 .form-note a{color:var(--green-d);text-decoration:underline}
 .kf-status{margin-top:.9rem;padding:.8rem .9rem;border-radius:12px;font-size:.92rem}
 .kf-status.ok{background:rgba(31,168,90,.12);color:var(--green-d)}
 .kf-status.err{background:rgba(214,69,69,.12);color:#b3322f}
+/* FUNNEL */
+.funnel{position:relative}
+.fn-head{margin-bottom:1.1rem}
+.fn-eyebrow{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-d)}
+.fn-lead{font-size:1.35rem;margin-top:.35rem;line-height:1.2}
+.fn-prog{display:flex;gap:.35rem;margin-top:.7rem}
+.fn-prog span{height:4px;flex:1;border-radius:2px;background:var(--line);transition:.3s}
+.fn-prog span.on{background:var(--green)}
+.fn-step{display:none;animation:fnIn .4s ease}
+.fn-step.active{display:block}
+@keyframes fnIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fn-bar{margin-bottom:.9rem}
+.fn-back{font-size:.74rem;font-weight:700;letter-spacing:.02em;color:var(--steel-d);background:rgba(31,111,165,.09);border:1px solid rgba(31,111,165,.22);border-radius:999px;padding:.35rem .8rem;cursor:pointer}
+.fn-back:hover{background:var(--steel);color:#fff;border-color:var(--steel)}
+.fn-q{font-family:var(--disp);font-weight:600;font-size:1.16rem;letter-spacing:-.02em;margin-bottom:.9rem;color:var(--ink)}
+.fn-opts{display:flex;flex-direction:column;gap:.6rem}
+.fn-opt{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.95rem 1.05rem;font-family:var(--sans);transition:.18s}
+.fn-opt:hover{border-color:var(--green);background:#fff;box-shadow:0 10px 26px -18px rgba(31,168,90,.5);transform:translateY(-1px)}
+.fn-opt .fn-opt-t{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.fn-opt strong{font-family:var(--disp);font-weight:600;font-size:1rem;color:var(--ink);letter-spacing:-.01em}
+.fn-opt .fn-opt-d{font-size:.82rem;color:var(--muted);line-height:1.35}
+.fn-opt .fn-cue{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--green-d);white-space:nowrap;flex-shrink:0}
+.fn-gate-lead{font-size:.92rem;color:var(--muted);margin:-.2rem 0 1rem;line-height:1.5}
+.fn-sel{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;color:var(--steel-d);background:rgba(31,111,165,.08);border:1px solid rgba(31,111,165,.2);border-radius:999px;padding:.35rem .8rem;margin-bottom:1rem}
+.fn-sel b{color:var(--green-d)}
+.funnel .btn{width:100%;margin-top:.5rem}
+.fn-trust{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin:.9rem 0 0;padding:0}
+.fn-trust li{position:relative;padding-left:1.35rem;font-size:.8rem;color:var(--ink);font-weight:500}
+.fn-trust li::before{content:'✓';position:absolute;left:0;top:-1px;color:var(--green);font-weight:700}
+/* Ergebnis */
+.fn-resok{display:flex;gap:.5rem;align-items:flex-start;font-size:.9rem;font-weight:600;color:var(--green-d);background:rgba(31,168,90,.1);border:1px solid rgba(31,168,90,.28);border-radius:12px;padding:.7rem .85rem;margin-bottom:1.1rem;line-height:1.4}
+.fn-res-sub{color:var(--muted);font-size:.92rem;margin:.35rem 0 1.1rem;line-height:1.5}
+.fn-fgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:1.1rem}
+@media(max-width:520px){.fn-fgrid{grid-template-columns:1fr}}
+.fn-fbox{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:.75rem .8rem}
+.fn-pct{font-family:var(--disp);font-weight:700;font-size:1.15rem;color:var(--green-d);letter-spacing:-.02em;line-height:1.05}
+.fn-pct small{font-size:.62em}
+.fn-flbl{font-size:.74rem;color:var(--muted);margin-top:.25rem;line-height:1.35}
+.fn-steps{margin:0 0 1.1rem;padding-left:1.1rem;color:var(--ink);font-size:.9rem;display:flex;flex-direction:column;gap:.4rem}
+.fn-disc{font-size:.72rem;color:var(--muted);line-height:1.5;margin-bottom:.4rem}
 /* BENEFITS */
 .sec{padding:clamp(2.4rem,5vh,3.6rem) 0}
 .sec.alt{background:var(--paper-2)}
@@ -105,9 +142,6 @@ a{color:inherit;text-decoration:none}
 .callbar a{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.9rem;border-radius:999px;background:var(--green);color:#fff;font-weight:700;font-size:1rem}
 .callbar a svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:720px){.callbar{display:block}body{padding-bottom:74px}}
-/* Schnelle-Reaktion-Badge */
-.fastpill{display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-d);background:rgba(31,168,90,.12);padding:.4rem .85rem;border-radius:999px;margin-bottom:.8rem}
-.fastpill svg{width:14px;height:14px;stroke:var(--green-d);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 /* EEE-Logo im weissen, abgerundeten Rahmen */
 .eeebox{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:14px;padding:.45rem .7rem;box-shadow:0 8px 22px -16px rgba(11,28,43,.4)}
 /* Ansprechpartner-Bild */
@@ -119,7 +153,7 @@ a{color:inherit;text-decoration:none}
 .team p{color:var(--muted);margin-top:.7rem}
 .team .ph{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.1rem;font-weight:700;color:var(--ink)}
 .team .ph svg{width:20px;height:20px;stroke:var(--green-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-/* FOOTER (1:1 wie auf den anderen Seiten) */
+/* FOOTER */
 .footer{padding:3rem 0 2.4rem;background:#08151F;color:#7d92a1;font-size:.85rem;font-family:var(--sans);position:relative;overflow:hidden}
 .footer .container{max-width:1200px;margin:0 auto;padding:0 clamp(1.3rem,4vw,3rem)}
 .footer .ftop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem 2rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.5rem}
@@ -144,11 +178,12 @@ a{color:inherit;text-decoration:none}
   <div class="container">
     <div class="hgrid">
       <div>
-        <span class="mono">Kostenloses Erstgespräch</span>
-        <h1>Ihr Energieberater in Saarbrücken und im Saarland.</h1>
-        <p class="lead">Wir prüfen, welche Förderung von BAFA und KfW zu Ihrem Vorhaben passt, und begleiten Sie von der Planung bis zur Auszahlung.</p>
+        <span class="mono">Kostenloser Förder-Check</span>
+        <h1 id="heroH1">Welche Förderung passt zu Ihrem Vorhaben?</h1>
+        <p class="lead" id="heroLead">In einer Minute zu Ihrer persönlichen Einordnung: Wir prüfen, welche Förderung von BAFA und KfW für Sie in Frage kommt. Kostenlos und unverbindlich.</p>
         <ul class="tlist">
           <li>Förderung über BAFA und KfW, inklusive Antrag und Nachweisen</li>
+          <li>Ehrliche Einschätzung, mit Zahlen statt Werbeversprechen</li>
           <li>Beratung vor Ort, im gesamten Saarland</li>
         </ul>
         <div class="herocall">
@@ -163,33 +198,71 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
 
-      <div class="fcard">
-        <h2>Erstgespräch anfragen</h2>
-        <p class="ds">Schnelle Rückmeldung am selben Tag.</p>
-        <form id="kontaktForm" action="https://formspree.io/f/xzdqjnqb" method="POST">
-          <div class="fld"><label for="kf-name">Name</label><input id="kf-name" name="Name" type="text" placeholder="Vor- und Nachname" required></div>
-          <div class="fld-row">
-            <div class="fld"><label for="kf-tel">Telefon</label><input id="kf-tel" name="Telefon" type="tel" placeholder="Für den Rückruf" required></div>
-            <div class="fld"><label for="kf-mail">E-Mail (optional)</label><input id="kf-mail" name="E-Mail" type="email" placeholder="E-Mail"></div>
+      <div class="fcard funnel" id="funnel">
+        <div class="fn-head">
+          <span class="fn-eyebrow" id="fnEyebrow">Kostenloser Förder-Check</span>
+          <h2 class="fn-lead" id="fnLead">In 1 Minute zu Ihrer Förder-Einordnung</h2>
+          <div class="fn-prog"><span id="fnp1" class="on"></span><span id="fnp2"></span><span id="fnp3"></span></div>
+        </div>
+
+        <!-- Schritt 1: Ziel -->
+        <div class="fn-step active" id="fn-q1">
+          <div class="fn-q">Was ist Ihr Vorhaben?</div>
+          <div class="fn-opts">
+            <button type="button" class="fn-opt" onclick="fGoalPick('sanieren')"><span class="fn-opt-t"><strong>Bestand sanieren</strong><span class="fn-opt-d">Heizung, Dämmung, Fenster. Schritt für Schritt fördern.</span></span><span class="fn-cue">Weiter →</span></button>
+            <button type="button" class="fn-opt" onclick="fGoalPick('invest')"><span class="fn-opt-t"><strong>Kaufen &amp; investieren</strong><span class="fn-opt-d">Gewerbe zu Wohnen (KfW 266), Jung kauft Alt (KfW 308)</span></span><span class="fn-cue">Weiter →</span></button>
+            <button type="button" class="fn-opt" onclick="fGoalPick('neubau')"><span class="fn-opt-t"><strong>Neu bauen</strong><span class="fn-opt-d">Effizienzhaus mit LCA &amp; KfW-Förderung.</span></span><span class="fn-cue">Weiter →</span></button>
           </div>
-          <div class="fld">
-            <select id="kf-anliegen" name="Anliegen" aria-label="Ihr Anliegen" required>
-              <option value="" disabled selected>Ihr Anliegen wählen …</option>
-              <option>Bestand sanieren</option>
-              <option>Neu bauen</option>
-              <option>Kaufen &amp; investieren</option>
-              <option>Förderung allgemein</option>
-              <option>Noch unklar</option>
-            </select>
-          </div>
-          <div class="fld"><textarea id="kf-msg" name="Nachricht" rows="2" placeholder="Nachricht (optional)" aria-label="Nachricht"></textarea></div>
-          <input type="hidden" name="Seite" value="Anzeigen-Landingpage Erstgespräch">
-          <input type="hidden" id="kf-utm" name="Kampagne">
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <button type="submit" class="btn btn-green" id="kfSubmit">Kostenloses Erstgespräch anfragen <span class="ar">→</span></button>
-          <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Mehr dazu in der <a href="../datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
-          <p class="kf-status" id="kfStatus" hidden></p>
-        </form>
+        </div>
+
+        <!-- Schritt 2: Maßnahme -->
+        <div class="fn-step" id="fn-q2">
+          <div class="fn-bar"><button type="button" class="fn-back" onclick="fBack()">← Zurück</button></div>
+          <div class="fn-q" id="fnQ2Title"></div>
+          <div class="fn-opts" id="fnQ2Opts"></div>
+        </div>
+
+        <!-- Schritt 3: Kontakt-Gate -->
+        <div class="fn-step" id="fn-gate">
+          <div class="fn-bar"><button type="button" class="fn-back" onclick="fBack()">← Zurück</button></div>
+          <div class="fn-q">Fast geschafft.</div>
+          <p class="fn-gate-lead">Ihre erste Förder-Einordnung sehen Sie direkt nach dem Absenden. Für die genaue Einordnung melden wir uns zusätzlich bei Ihnen, kostenlos und unverbindlich.</p>
+          <div class="fn-sel" id="fnSel" hidden></div>
+          <form id="funnelForm" action="https://formspree.io/f/xzdqjnqb" method="POST">
+            <div class="fld-row">
+              <div class="fld"><label for="fn-vn">Vorname</label><input id="fn-vn" name="Vorname" type="text" placeholder="Vorname" required></div>
+              <div class="fld"><label for="fn-nn">Nachname</label><input id="fn-nn" name="Nachname" type="text" placeholder="Nachname" required></div>
+            </div>
+            <div class="fld-row">
+              <div class="fld"><label for="fn-tel">Telefon</label><input id="fn-tel" name="Telefon" type="tel" placeholder="Telefon" required></div>
+              <div class="fld"><label for="fn-mail">E-Mail</label><input id="fn-mail" name="E-Mail" type="email" placeholder="E-Mail" required></div>
+            </div>
+            <input type="hidden" name="Ziel" id="fnHZiel">
+            <input type="hidden" name="Maßnahme" id="fnHMass">
+            <input type="hidden" name="Seite" value="Anzeigen-LP Förder-Check">
+            <input type="hidden" name="Kampagne" id="fnUtm">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <button type="submit" class="btn btn-green" id="fnSubmit">Einordnung anzeigen <span class="ar">→</span></button>
+            <ul class="fn-trust">
+              <li>Kostenlos &amp; unverbindlich</li>
+              <li>Antwort in 24 Stunden</li>
+              <li>Daten nur für Ihre Anfrage</li>
+            </ul>
+            <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zu. Mehr in der <a href="../datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
+            <p class="kf-status" id="fnStatus" hidden></p>
+          </form>
+        </div>
+
+        <!-- Schritt 4: Ergebnis -->
+        <div class="fn-step" id="fn-res">
+          <div class="fn-resok"><span>✓</span><span>Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden mit Ihrer persönlichen Einordnung.</span></div>
+          <h3 id="fnResTitle"></h3>
+          <p class="fn-res-sub" id="fnResSub"></p>
+          <div class="fn-fgrid" id="fnResFoerder"></div>
+          <ol class="fn-steps" id="fnResSteps"></ol>
+          <p class="fn-disc">Grobe Orientierung, keine verbindliche Zusage. Förderprogramme und -sätze ändern sich laufend; maßgeblich ist Ihr individueller Förderbescheid.</p>
+          <a href="tel:+496819697198" class="btn btn-green" data-call>Direkt anrufen · 0681 9697198 <span class="ar">→</span></a>
+        </div>
       </div>
     </div>
   </div>
@@ -251,45 +324,116 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script>
-(function(){
-  // UTM/Kampagne aus der URL in verstecktes Feld schreiben (Lead-Zuordnung)
-  var qs=location.search;
-  if(qs){ var f=document.getElementById('kf-utm'); if(f) f.value=qs.replace(/^\?/,''); }
+/* ===== Förder-Check-Funnel (Inhalte 1:1 aus der Startseite) ===== */
+const WZ={
+  sanieren:{label:'Bestand sanieren',q2:'Welche Maßnahme steht an?',
+    title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
+    foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'Neu: WPB',lbl:'Extra-Bonus für unsanierte Altbauten bei der Dämmung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
+    steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
+    subs:[{l:'Dach / OGD',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit Wärmedämmverbundsystem (WDVS).'},{l:'Fenster / Türen',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',f:'Schrittweise Komplettsanierung zum Effizienzhaus',d:'Schritt für Schritt zum Effizienzhaus.'}]},
+  neubau:{label:'Neu bauen',q2:'Was bauen Sie?',
+    title:'Neu bauen: Effizienzhaus mit LCA',sub:'Die Ökobilanz (LCA) ist der Nachweis für die KfW-Stufe „Klimafreundlicher Neubau", der eigentliche Förder-Hebel im Neubau.',
+    foerder:[{big:'100.000 €',lbl:'KfW-Kredit je Wohneinheit (Klimafreundlicher Neubau)'},{big:'LCA',lbl:'Ökobilanz als Nachweis, Pflicht für die KFN-Förderung'},{big:'bis 50<small>%</small>',lbl:'auf Baubegleitung förderfähig'}],
+    steps:['Ökobilanz / LCA über den 50-Jahre-Lebenszyklus','KFN-Förderung bei der KfW — wir unterstützen beim Antrag','Baubegleitung durch uns'],
+    subs:[{l:'Einfamilienhaus',f:'Effizienzhaus-Neubau (EFH)',d:'Effizienzhaus-Neubau (EFH).'},{l:'Mehrfamilienhaus',f:'MFH-Neubau, 100.000 € je Wohneinheit',d:'100.000 € je Wohneinheit.'},{l:'Bauträger / Projekt',f:'Bauträger-Projekt, LCA über alle Einheiten',d:'LCA über alle Einheiten.'}]},
+  invest:{label:'Kaufen & investieren',q2:'Was planen Sie mit dem Objekt?',
+    title:'Kaufen & investieren: Invest-Check',sub:'Energetische Kaufberatung und Sanierungsstrategie.',
+    foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie aus einer Hand'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
+    steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Förderung sichern, dann Umsetzung'],
+    subs:[
+      {l:'Gewerbe zu Wohnen',dl:'Gewerbe zu Wohnen (KfW 266)',f:'gefördert über KfW 266 & 261',d:'Gewerbe zu Wohnen (KfW 266).',
+        title:'Gewerbe zu Wohnen: KfW 266 & 261',
+        sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, seit Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.',
+        foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
+      {l:'Jung kauft Alt',dl:'Jung kauft Alt (KfW 308)',f:'Familie kauft & saniert einen Altbau (KfW 308)',d:'Förderkredit für Familien (KfW 308).',
+        title:'Jung kauft Alt: Förderkredit für Familien',
+        sub:'Zinsverbilligter KfW-Kredit (308) für Familien mit Kind, die einen sanierungsbedürftigen Altbau zur Selbstnutzung kaufen. Die anschließende Sanierung fördern Sie entweder als Effizienzhaus 85 EE über den KfW-Kredit 261 oder über die Einzelmaßnahmen-Variante (Heizung, Fenster, Fassade, Dach). Den energetischen Nachweis und die Förderabwicklung übernehmen wir. Hinweis: Die genannten Kreditbeträge und die Einzelmaßnahmen-Variante gelten ab dem 03.08.2026.',
+        foerder:[{big:'bis 180.000 €',lbl:'zinsgünstiger KfW-Kredit, je nach Kinderzahl'},{big:'EH 85 EE',lbl:'Zielniveau, das wir nachweisen (oder Einzelmaßnahmen-Variante)'},{big:'Familie + Kind',lbl:'für Selbstnutzer mit Kind; plus neuer Familienzuschlag bei der Sanierungsförderung'}]},
+      {l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie',d:'Kauf-Check + Sanierungsstrategie.',
+        title:'Kaufen & sanieren: Kauf-Check + Strategie',
+        sub:'Vor dem Kauf prüfen wir das Objekt energetisch und wirtschaftlich und entwickeln eine Sanierungsstrategie. So wissen Sie vorher, welche Förderung sich nach dem Kauf realistisch erschließen lässt.',
+        foerder:[{big:'bis 15<small>%</small>',lbl:'BAFA-Zuschuss auf Einzelmaßnahmen, plus WPB-Bonus für unsanierte Altbauten'},{big:'bis 120.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]}
+    ]}
+};
 
-  // Telefon-Conversion: send_to wird nach Anlegen der Google-Ads-Conversion-Aktion eingetragen
+var fGoal=null,fSub=null;
+function fEl(id){return document.getElementById(id);}
+function fProg(step){['fnp1','fnp2','fnp3'].forEach(function(p,i){fEl(p).classList.toggle('on',i<step);});}
+function fScroll(){if(window.matchMedia&&window.matchMedia('(max-width:880px)').matches){var a=fEl('funnel');if(a){var y=a.getBoundingClientRect().top+window.pageYOffset-14;window.scrollTo({top:y<0?0:y,behavior:'smooth'});}}}
+function fShow(id,step){document.querySelectorAll('.fn-step').forEach(function(s){s.classList.remove('active');});var s=fEl(id);if(s)s.classList.add('active');if(step)fProg(step);fScroll();}
+function fGoalPick(k){fGoal=k;fSub=null;var d=WZ[k];fEl('fnQ2Title').textContent=d.q2;
+  fEl('fnQ2Opts').innerHTML=d.subs.map(function(s,i){return '<button type="button" class="fn-opt" onclick="fSubPick('+i+')"><span class="fn-opt-t"><strong>'+s.l+'</strong><span class="fn-opt-d">'+(s.d||s.f)+'</span></span><span class="fn-cue">Weiter →</span></button>';}).join('');
+  fShow('fn-q2',2);}
+function fSubPick(i){fSub=i;fToGate();}
+function fToGate(){var d=WZ[fGoal],s=d.subs[fSub];
+  fEl('fnHZiel').value=d.label;fEl('fnHMass').value=(s.dl||s.l);
+  var sel=fEl('fnSel');sel.innerHTML='Ihre Auswahl: <b>'+d.label+' · '+(s.dl||s.l)+'</b>';sel.hidden=false;
+  fShow('fn-gate',3);}
+function fBack(){if(fEl('fn-gate').classList.contains('active')){fShow('fn-q2',2);}else{fShow('fn-q1',1);}}
+function fRenderResult(){var d=WZ[fGoal],s=d.subs[fSub];
+  fEl('fnResTitle').textContent=s.title||d.title;
+  fEl('fnResSub').innerHTML=s.sub||d.sub;
+  var fd=s.foerder||d.foerder;
+  fEl('fnResFoerder').innerHTML=fd.map(function(f){return '<div class="fn-fbox"><div class="fn-pct">'+f.big+'</div><div class="fn-flbl">'+f.lbl+'</div></div>';}).join('');
+  fEl('fnResSteps').innerHTML=d.steps.map(function(st){return '<li>'+st+'</li>';}).join('');}
+
+/* ?ziel= Vorwahl + Headline-Match */
+(function(){
+  var z=(new URLSearchParams(location.search).get('ziel')||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  var HEAD={
+    kfw266:['Gewerbe zu Wohnen (KfW 266): Ihre Förderung','Aus Gewerbefläche wird Wohnraum. Wir prüfen Zuschuss (KfW 266) und Kredit (KfW 261) für Ihr Vorhaben. Kostenlos und unverbindlich.'],
+    gewerbe:['Gewerbe zu Wohnen (KfW 266): Ihre Förderung','Aus Gewerbefläche wird Wohnraum. Wir prüfen Zuschuss (KfW 266) und Kredit (KfW 261) für Ihr Vorhaben. Kostenlos und unverbindlich.'],
+    jungkauftalt:['Jung kauft Alt (KfW 308): Förderung für Familien','Als Familie einen Altbau kaufen und sanieren. Wir prüfen den Förderkredit und die Sanierungsförderung für Sie. Kostenlos und unverbindlich.'],
+    jka:['Jung kauft Alt (KfW 308): Förderung für Familien','Als Familie einen Altbau kaufen und sanieren. Wir prüfen den Förderkredit und die Sanierungsförderung für Sie. Kostenlos und unverbindlich.'],
+    sanieren:['Sanieren mit der passenden Förderung','Wir prüfen, welche Förderung von BAFA und KfW zu Ihrer Sanierung passt. Kostenlos und unverbindlich.'],
+    neubau:['Neu bauen mit KfW-Förderung','Effizienzhaus mit Ökobilanz (LCA) als Förder-Hebel. Wir prüfen Ihre KfW-Förderung. Kostenlos und unverbindlich.'],
+    invest:['Kaufen & investieren: Ihre Förderung','Objekt-Check, Sanierungs- und Aufteilungsstrategie. Wir prüfen die passende Förderung. Kostenlos und unverbindlich.']
+  };
+  var MAP={sanieren:['sanieren',null],invest:['invest',null],neubau:['neubau',null],
+    kfw266:['invest',0],gewerbe:['invest',0],'266':['invest',0],
+    jungkauftalt:['invest',1],jka:['invest',1],'308':['invest',1]};
+  if(HEAD[z]){fEl('heroH1').textContent=HEAD[z][0];fEl('heroLead').textContent=HEAD[z][1];fEl('fnLead').textContent=HEAD[z][0];}
+  var m=MAP[z];
+  if(m){ fGoalPick(m[0]); if(m[1]!==null){ fSubPick(m[1]); } }
+})();
+
+/* ===== Telefon-Conversion + UTM + Funnel-Absenden ===== */
+(function(){
+  var qs=location.search;
+  if(qs){var f=fEl('fnUtm');if(f)f.value=qs.replace(/^\?/,'');}
+
   var PHONE_CONV='AW-18244917669/8rLHCIeUs8gcEKWz7ftD';
   document.addEventListener('click',function(e){
-    var el=e.target.closest('a[data-call]'); if(!el) return;
-    if(window.jmrTrackEvent) window.jmrTrackEvent('klick_telefon',{stelle:'erstgespraech_lp'});
-    if(PHONE_CONV){ var st=null; try{st=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}
-      if(st&&st.marketing&&typeof window.gtag==='function'){ window.gtag('event','conversion',{'send_to':PHONE_CONV}); } }
+    var el=e.target.closest('a[data-call]');if(!el)return;
+    if(window.jmrTrackEvent)window.jmrTrackEvent('klick_telefon',{stelle:'erstgespraech_lp'});
+    if(PHONE_CONV){var st=null;try{st=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}
+      if(st&&st.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':PHONE_CONV});}}
   });
 
-  // Kontaktformular: AJAX an Formspree, Conversion + generate_lead bei Erfolg
-  var form=document.getElementById('kontaktForm');
+  var form=fEl('funnelForm');
   if(form){
-    var status=document.getElementById('kfStatus'), btn=document.getElementById('kfSubmit');
+    var status=fEl('fnStatus'),btn=fEl('fnSubmit');
     form.addEventListener('submit',async function(e){
       e.preventDefault();
-      btn.disabled=true; btn.style.opacity='.6';
+      btn.disabled=true;btn.style.opacity='.6';
       try{
         var res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
         if(res.ok){
           if(window.jmrTrackConversion){window.jmrTrackConversion();}
           if(window.jmrTrackEvent){window.jmrTrackEvent('generate_lead',{stelle:'erstgespraech_lp'});}
-          form.reset();
-          status.hidden=false; status.className='kf-status ok';
-          status.textContent='Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden.';
-          form.querySelectorAll('.fld,.fld-row,button').forEach(function(el){el.style.display='none';});
+          fRenderResult();
+          btn.disabled=false;btn.style.opacity='';
+          fShow('fn-res',3);
         }else{
-          status.hidden=false; status.className='kf-status err';
+          status.hidden=false;status.className='kf-status err';
           status.textContent='Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';
+          btn.disabled=false;btn.style.opacity='';
         }
       }catch(err){
-        status.hidden=false; status.className='kf-status err';
+        status.hidden=false;status.className='kf-status err';
         status.textContent='Keine Verbindung. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';
+        btn.disabled=false;btn.style.opacity='';
       }
-      btn.disabled=false; btn.style.opacity='';
     });
   }
 })();
