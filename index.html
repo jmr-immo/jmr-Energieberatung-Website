@@ -1303,7 +1303,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
         <div class="gzw-card">
           <span class="gzw-badge">KfW 266 &amp; 261</span>
           <div class="gzw-num">bis zu 30.000&nbsp;€<small>KfW 266 · Zuschuss je Wohneinheit</small></div>
-          <div class="gzw-num gzw-num-2">bis zu 120.000&nbsp;€<small>KfW 261 · Kredit je Wohneinheit,<br><span style="text-transform:none">davon bis 45 % Tilgungszuschuss</span></small></div>
+          <div class="gzw-num gzw-num-2">bis zu 120.000&nbsp;€<small>KfW 261 · zinsgünstiger Kredit je Wohneinheit<br><span style="text-transform:none">mit Tilgungszuschuss für die Sanierung</span></small></div>
           <div class="gzw-stats">
             <div class="gzw-stat"><div class="k">KfW 266</div><div class="s">Direkter Zuschuss</div></div>
             <div class="gzw-stat"><div class="k">KfW 261</div><div class="s">Kredit + Tilgung</div></div>
@@ -1372,6 +1372,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
         <ul class="gzw-list">
           <li><b>+</b> Energiekonzept und Nachweis Effizienzhaus 85 EE</li>
           <li><b>+</b> Sanierung über KfW 261 oder die Einzelmaßnahmen-Variante</li>
+          <li><b>+</b> Familien mit Kind: höherer Einkommensbonus durch den neuen Familienzuschlag</li>
           <li><b>+</b> Planung und Energieberatung aus einer Hand</li>
         </ul>
       </div>
@@ -1600,7 +1601,7 @@ bindGlass();
 
 /* --- Info-Popups (Begriffe einfach erklärt) --- */
 const INFO={
-  isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',img:'img/isfp-popup.jpg',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Aber wenn er zu Ihrem Vorhaben passt, bringt er einen Vorteil: Auf viele Sanierungsmaßnahmen gibt es dann <b>5 % mehr Förderung</b> (20 % statt 15 %).</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
+  isfp:{tag:'Begriff erklärt',title:'Was ist ein iSFP?',img:'img/isfp-popup.jpg',body:'<p>Der <b>individuelle Sanierungsfahrplan (iSFP)</b> ist ein vom Staat gefördertes Beratungsdokument. Ein Energieberater schaut sich Ihr Haus an und erstellt einen Plan: <b>welche Maßnahme wann sinnvoll ist</b> und wie sie aufeinander aufbauen.</p><p>Der iSFP ist <b>keine Pflicht</b>. Seit der BEG-Reform lohnt sich der iSFP-Bonus vor allem bei <b>größeren Sanierungen</b>: Die zusätzlichen 5 % gibt es erst ab <b>30.000 € förderfähiger Investition</b> und nur auf den darüber liegenden Betrag. Bei kleinen Einzelmaßnahmen bringt er daher wenig.</p><p>Wir prüfen für Sie ehrlich, ob sich ein iSFP in Ihrem Fall lohnt oder ob es ohne genauso gut geht.</p>'},
   lca:{tag:'Begriff erklärt',title:'Was ist eine LCA?',img:'img/lca-popup.jpg',body:'<p>Die <b>Ökobilanz (LCA, Life Cycle Assessment)</b> berechnet, wie viele Treibhausgase ein Gebäude über seinen <b>gesamten Lebenszyklus</b> verursacht: von der Herstellung der Baustoffe über den Betrieb bis zum Rückbau.</p><p>Beim Neubau ist die LCA der <b>Nachweis</b> für die KfW-Stufe „Klimafreundlicher Neubau" (KFN) und damit der Schlüssel zur Förderung.</p><p>Wir erstellen die LCA und sorgen dafür, dass die geforderten Grenzwerte eingehalten werden.</p>'},
   baubegleitung:{tag:'Begriff erklärt',title:'Was ist Baubegleitung?',img:'img/baubegleitung-popup.jpg',body:'<p>Bei der <b>Baubegleitung</b> ist ein Fachmann während der Sanierung oder beim Neubau an Ihrer Seite: Er prüft, ob alles <b>fachlich richtig und nach Plan</b> umgesetzt wird, und kümmert sich um die <b>Nachweise, die die Förderung verlangt</b>.</p><p>Für viele Förderungen ist diese Begleitung sogar <b>Pflicht</b> und sie ist selbst <b>bis zu 50 % förderfähig</b>. Sie sorgt dafür, dass am Ende kein Geld verloren geht, weil ein Detail nicht stimmt.</p><p>Bei uns haben Sie dafür einen festen Ansprechpartner, der den Überblick behält und die Fördernachweise im Blick hat.</p>'}
 };
@@ -1619,11 +1620,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInfo();});
 
 /* --- EINSTEIGER: Haus + Klartext --- */
 const HOUSE={
-  dach:{tag:'Dach / oberste Geschossdecke',title:'Dach oder oberste Geschossdecke dämmen',text:'Nach oben entweicht viel Wärme. Ausgebauter Dachboden? Dann wird das Dach gedämmt. Nicht ausgebaut? Dann reicht meist die günstigere oberste Geschossdecke.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 % (mit iSFP sogar 20 %).',bridge:'Dach oder oberste Geschossdecke – was bei Ihnen sinnvoll ist, klären wir gemeinsam.'},
-  fassade:{tag:'Außenwände / Fassade',title:'Fassade dämmen',text:'Gedämmte Außenwände verlieren weniger Wärme, fühlen sich innen wärmer an und schützen die Bausubstanz.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 % (mit iSFP 20 %).',bridge:'Die Fassade ist eine große Investition. Wir rechnen vorher durch, ob und wann sie sich für Sie wirklich lohnt.'},
-  fenster:{tag:'Fenster & Türen',title:'Fenster & Türen tauschen',text:'Moderne Fenster und Haustüren dämmen besser gegen Kälte und Lärm. Weniger Zugluft, weniger Wärmeverlust.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 % (mit iSFP 20 %).',bridge:'Neue Fenster vor oder nach der Dämmung? Die Reihenfolge entscheidet über Förderung und Wirkung – wir planen sie für Sie.'},
+  dach:{tag:'Dach / oberste Geschossdecke',title:'Dach oder oberste Geschossdecke dämmen',text:'Nach oben entweicht viel Wärme. Ausgebauter Dachboden? Dann wird das Dach gedämmt. Nicht ausgebaut? Dann reicht meist die günstigere oberste Geschossdecke.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 %, für unsanierte Altbauten zusätzlich der neue WPB-Bonus.',bridge:'Dach oder oberste Geschossdecke – was bei Ihnen sinnvoll ist, klären wir gemeinsam.'},
+  fassade:{tag:'Außenwände / Fassade',title:'Fassade dämmen',text:'Gedämmte Außenwände verlieren weniger Wärme, fühlen sich innen wärmer an und schützen die Bausubstanz.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 %, für unsanierte Altbauten zusätzlich der neue WPB-Bonus.',bridge:'Die Fassade ist eine große Investition. Wir rechnen vorher durch, ob und wann sie sich für Sie wirklich lohnt.'},
+  fenster:{tag:'Fenster & Türen',title:'Fenster & Türen tauschen',text:'Moderne Fenster und Haustüren dämmen besser gegen Kälte und Lärm. Weniger Zugluft, weniger Wärmeverlust.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 %.',bridge:'Neue Fenster vor oder nach der Dämmung? Die Reihenfolge entscheidet über Förderung und Wirkung – wir planen sie für Sie.'},
   heizung:{tag:'Heizung',title:'Heizung erneuern',text:'Eine moderne Heizung auf erneuerbarer Basis (z. B. Wärmepumpe) senkt Verbrauch und CO₂ deutlich.',foerder:'Förderung: bis 70 % über die KfW-Heizungsförderung.',bridge:'Wärmepumpe ja – aber passt sie zu Ihrem Haus? Wir prüfen die Voraussetzungen und sichern die bis zu 70 % Förderung ab.'},
-  keller:{tag:'Kellerdecke / Bodenplatte',title:'Keller dämmen',text:'Eine gedämmte Kellerdecke hält die Wärme in den Wohnräumen, der Boden bleibt fußwarm.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 % (mit iSFP 20 %).',bridge:'Oft die günstigste Maßnahme mit spürbarem Effekt. Wir sagen Ihnen, ob sie bei Ihnen den Anfang machen sollte.'}
+  keller:{tag:'Kellerdecke / Bodenplatte',title:'Keller dämmen',text:'Eine gedämmte Kellerdecke hält die Wärme in den Wohnräumen, der Boden bleibt fußwarm.',foerder:'Förderung: BAFA-Einzelmaßnahme, 15 %, für unsanierte Altbauten zusätzlich der neue WPB-Bonus.',bridge:'Oft die günstigste Maßnahme mit spürbarem Effekt. Wir sagen Ihnen, ob sie bei Ihnen den Anfang machen sollte.'}
 };
 const ZOOMVB={dach:[80,40,320,235],fassade:[240,155,280,206],fenster:[155,138,260,191],heizung:[70,266,300,221],keller:[130,252,340,250]};
 const HOTX={dach:222,fassade:391,fenster:285,heizung:216,keller:285};   // x-Position der +-Punkte (für Vorher/Nachher-Vorauswahl)
@@ -1793,7 +1794,7 @@ function houseZoomState(san){
 const WZ={
   sanieren:{label:'Bestand sanieren',ic:'A',code:'/// A · BESTAND',q2:'Welche Maßnahme steht an?',
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
-    foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'bis 20<small>%</small>',lbl:'auf Einzelmaßnahmen mit iSFP, statt 15 %'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
+    foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'Neu: WPB',lbl:'Extra-Bonus für unsanierte Altbauten bei der Dämmung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
     subs:[{l:'Dach / OGD',m:'daemmung',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',m:'daemmung',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit Wärmedämmverbundsystem (WDVS).'},{l:'Fenster / Türen',m:'fenster',f:'Fenster & Außentüren',d:'Austausch gegen wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',m:'daemmung',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',m:'heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Heizung: Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',m:'komplett',f:'Schrittweise Komplettsanierung zum Effizienzhaus'}]},
   neubau:{label:'Neu bauen',ic:'B',code:'/// B · NEUBAU',q2:'Was bauen Sie?',
@@ -1809,23 +1810,23 @@ const WZ={
       {l:'Gewerbe zu Wohnen',dl:'Gewerbe zu Wohnen (KfW 266)',m:'kfw266',f:'gefördert über KfW 266 & 261',
         title:'Gewerbe zu Wohnen: KfW 266 & 261',
         sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, seit Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.',
-        foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
+        foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
       {l:'Jung kauft Alt',dl:'Jung kauft Alt (KfW 308)',f:'Familie kauft & saniert einen Altbau (KfW 308)',
         title:'Jung kauft Alt: Förderkredit für Familien',
         sub:'Zinsverbilligter KfW-Kredit (308) für Familien mit Kind, die einen sanierungsbedürftigen Altbau zur Selbstnutzung kaufen. Die anschließende Sanierung fördern Sie entweder als Effizienzhaus 85 EE über den KfW-Kredit 261 oder über die Einzelmaßnahmen-Variante (Heizung, Fenster, Fassade, Dach). Den energetischen Nachweis und die Förderabwicklung übernehmen wir. Hinweis: Die genannten Kreditbeträge und die Einzelmaßnahmen-Variante gelten ab dem 03.08.2026.',
-        foerder:[{big:'bis 180.000 €',lbl:'zinsgünstiger KfW-Kredit, je nach Kinderzahl'},{big:'EH 85 EE',lbl:'Zielniveau, das wir nachweisen (oder Einzelmaßnahmen-Variante)'},{big:'Familie + Kind',lbl:'für Selbstnutzer mit Kind, innerhalb der Einkommensgrenze'}]},
+        foerder:[{big:'bis 180.000 €',lbl:'zinsgünstiger KfW-Kredit, je nach Kinderzahl'},{big:'EH 85 EE',lbl:'Zielniveau, das wir nachweisen (oder Einzelmaßnahmen-Variante)'},{big:'Familie + Kind',lbl:'für Selbstnutzer mit Kind; plus neuer Familienzuschlag bei der Sanierungsförderung'}]},
       {l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie',
         title:'Kaufen & sanieren: Kauf-Check + Strategie',
         sub:'Vor dem Kauf prüfen wir das Objekt energetisch und wirtschaftlich und entwickeln eine Sanierungsstrategie. So wissen Sie vorher, welche Förderung sich nach dem Kauf realistisch erschließen lässt.',
-        foerder:[{big:'bis 20<small>%</small>',lbl:'auf Einzelmaßnahmen mit iSFP, statt 15 %'},{big:'bis 120.000 €',lbl:'KfW 261: Kredit je Wohneinheit, davon bis 45 % Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]}
+        foerder:[{big:'bis 15<small>%</small>',lbl:'BAFA-Zuschuss auf Einzelmaßnahmen, plus WPB-Bonus für unsanierte Altbauten'},{big:'bis 120.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]}
     ]}
 };
 /* Schätz-Rechner: grobe Spannen aus Wiki (KfW 458 / BAFA BEG EM / KfW 261) */
 const MEASURES={
-  heizung:{satzMin:30,satzMax:70,we:true,note:'Heizungsförderung (KfW 458): 30 % Grundförderung, mit Boni (z. B. Klimageschwindigkeit, Einkommen) bis 70 %. Förderfähig bis 30.000 € für die 1. Wohneinheit (weitere gestaffelt).',caps:we=>{const c=30000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c,maxZ:c*0.7};}},
-  daemmung:{satzMin:15,satzMax:20,we:true,note:'BAFA-Einzelmaßnahme an der Gebäudehülle (Dämmung, Fenster, Türen): 15 % Zuschuss, mit iSFP-Bonus 20 %. Förderfähig bis 30.000 € je Wohneinheit (mit iSFP bis 60.000 €).',caps:we=>({cap:we*30000,capMax:we*60000})},
-  fenster:{satzMin:15,satzMax:20,we:true,note:'BAFA-Einzelmaßnahme (Fenster/Außentüren): 15 %, mit iSFP-Bonus 20 %. Förderfähig bis 30.000 € je Wohneinheit (mit iSFP bis 60.000 €).',caps:we=>({cap:we*30000,capMax:we*60000})},
-  komplett:{satzMin:5,satzMax:45,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 120.000 € je Wohneinheit): Tilgungszuschuss je nach Effizienzhaus-Stufe 5–45 %.',caps:we=>({cap:we*120000,capMax:we*120000})},
+  heizung:{satzMin:30,satzMax:70,we:true,note:'Heizungsförderung (KfW 458): 30 % Grundförderung, mit Boni (z. B. Klimageschwindigkeit, Einkommen) bis 70 %. Förderfähig bis 28.000 € für die 1. Wohneinheit (weitere gestaffelt). Familien mit Kind profitieren beim Einkommensbonus zusätzlich über den neuen Familienzuschlag.',caps:we=>{const c=28000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c,maxZ:c*0.7};}},
+  daemmung:{satzMin:15,satzMax:15,we:true,note:'BAFA-Einzelmaßnahme an der Gebäudehülle (Dämmung): 15 % Zuschuss. Für unsanierte Altbauten kommt der neue WPB-Bonus hinzu (Dämmung der Hülle). Ein iSFP bringt weitere 5 % erst ab 30.000 € Investition und nur auf den übersteigenden Betrag. Förderfähig bis 30.000 € je Wohneinheit.',caps:we=>({cap:we*30000,capMax:we*30000})},
+  fenster:{satzMin:15,satzMax:15,we:true,note:'BAFA-Einzelmaßnahme (Fenster/Außentüren): 15 % Zuschuss. Ein iSFP bringt weitere 5 % erst ab 30.000 € Investition und nur auf den übersteigenden Betrag. Förderfähig bis 30.000 € je Wohneinheit.',caps:we=>({cap:we*30000,capMax:we*30000})},
+  komplett:{satzMin:5,satzMax:35,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 120.000 € je Wohneinheit): Tilgungszuschuss je nach Effizienzhaus-Stufe. Seit der BEG-Reform ist die EE-Klasse Standard und die Tilgungszuschüsse wurden gekürzt, dafür gibt es mehr Zinsverbilligung. Grobe Orientierung, maßgeblich ist das aktuelle KfW-Merkblatt.',caps:we=>({cap:we*120000,capMax:we*120000})},
   kfw266:{satzMin:30,satzMax:30,we:true,weLbl:'neue Wohneinheiten',note:'Gewerbe zu Wohnen (KfW 266): Zuschuss von 30 % der reinen Umbaukosten der Umnutzung. Förderfähig bis 100.000 € je neuer Wohneinheit, entspricht bis 30.000 € Zuschuss je WE; Unternehmens-Deckel 300.000 € (De-minimis). Nur die Umbaukosten der Umnutzung zählen, nicht die energetische Sanierung. Voraussetzung: mind. Effizienzhaus 85 EE. Mit der BEG (z. B. KfW 261) kombinierbar.',caps:we=>{const c=we*100000;return{cap:c,capMax:c,maxZ:Math.min(we*30000,300000)};}}
 };
 let curMeasure=null;
