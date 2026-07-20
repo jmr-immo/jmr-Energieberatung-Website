@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://jmr-energieberatung.de/sitemap.xml

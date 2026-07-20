@@ -386,7 +386,7 @@ a{color:inherit;text-decoration:none}
 const WZ={
   sanieren:{label:'Bestand sanieren',q2:'Welche Maßnahme steht an?',
     title:'Bestand sanieren: Ihre Förder-Einordnung',sub:'Je nach Maßnahme greifen unterschiedliche Förderungen. Hier eine grobe Einordnung. Den optimalen Weg finden wir gemeinsam im Erstgespräch.',
-    foerder:[{big:'bis 70<small>%</small>',lbl:'Zuschuss für die neue Heizung (Heizungstausch)'},{big:'Neu: WPB',lbl:'Extra-Bonus für unsanierte Altbauten bei der Dämmung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
+    foerder:[{big:'bis 80<small>%</small>',lbl:'Zuschuss für die neue Heizung, je nach Einkommen und Boni'},{big:'bis 15<small>%</small>',lbl:'BAFA-Zuschuss auf Dämmung, Fenster und Anlagentechnik'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Wir prüfen, ob ein iSFP (Sanierungsfahrplan) sich für Sie lohnt','Förderung bei BAFA/KfW — wir prüfen Ihren Anspruch und unterstützen beim Antrag','Umsetzung mit Baubegleitung, bis die Förderung fließt'],
     subs:[{l:'Dach / OGD',f:'Dämmung Dach / oberste Geschossdecke',d:'Steildach, Flachdach oder oberste Geschossdecke.'},{l:'Fassade',f:'Fassadendämmung',d:'Außenwand dämmen, z. B. mit WDVS.'},{l:'Fenster / Türen',f:'Fenster & Außentüren',d:'Wärmedämmende Fenster und Türen.'},{l:'Keller / Kellerdecke',f:'Dämmung Keller / Kellerdecke',d:'Dämmung von Kellerdecke oder erdberührten Bauteilen.'},{l:'Heizung',f:'Heizungstausch (Wärmepumpe, Pelletheizung & Co.)',d:'Neue Wärmepumpe, Pelletheizung & Co.'},{l:'Komplettsanierung',f:'Schrittweise Komplettsanierung zum Effizienzhaus',d:'Schritt für Schritt zum Effizienzhaus.'}]},
   neubau:{label:'Neu bauen',q2:'Was bauen Sie?',
@@ -396,13 +396,13 @@ const WZ={
     subs:[{l:'Einfamilienhaus',f:'Effizienzhaus-Neubau (EFH)',d:'Effizienzhaus-Neubau (EFH).'},{l:'Mehrfamilienhaus',f:'MFH-Neubau, 100.000 € je Wohneinheit',d:'100.000 € je Wohneinheit.'},{l:'Bauträger / Projekt',f:'Bauträger-Projekt, LCA über alle Einheiten',d:'LCA über alle Einheiten.'}]},
   invest:{label:'Kaufen & investieren',q2:'Was planen Sie mit dem Objekt?',
     title:'Kaufen & investieren: Invest-Check',sub:'Energetische Kaufberatung und Sanierungsstrategie.',
-    foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie aus einer Hand'},{big:'bis 70<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
+    foerder:[{big:'1 Anlaufstelle',lbl:'für Energie und Strategie aus einer Hand'},{big:'bis 80<small>%</small>',lbl:'mögliche Heizungsförderung nach Sanierung'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}],
     steps:['Invest-Check: energetische & wirtschaftliche Bewertung','Strategie: Sanierung oder Umnutzung','Förderung sichern, dann Umsetzung'],
     subs:[
       {l:'Gewerbe zu Wohnen',dl:'Gewerbe zu Wohnen (KfW 266)',f:'gefördert über KfW 266 & 261',d:'Gewerbe zu Wohnen (KfW 266).',
         title:'Gewerbe zu Wohnen: KfW 266 & 261',
         sub:'Der Bund fördert die Umnutzung von Gewerbeflächen in Wohnraum, seit Juli 2026. Dazu lässt sich der KfW-Kredit 261 für das fertige Wohngebäude kombinieren. Wir erstellen das Energiekonzept und weisen den Standard Effizienzhaus 85 EE nach.',
-        foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 120.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
+        foerder:[{big:'bis 30.000 €',lbl:'KfW 266: Zuschuss je neuer Wohneinheit (30 % der Kosten)'},{big:'bis 150.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]},
       {l:'Jung kauft Alt',dl:'Jung kauft Alt (KfW 308)',f:'Familie kauft & saniert einen Altbau (KfW 308)',d:'Förderkredit für Familien (KfW 308).',
         title:'Jung kauft Alt: Förderkredit für Familien',
         sub:'Zinsverbilligter KfW-Kredit (308) für Familien mit Kind, die einen sanierungsbedürftigen Altbau zur Selbstnutzung kaufen. Die anschließende Sanierung fördern Sie entweder als Effizienzhaus 85 EE über den KfW-Kredit 261 oder über die Einzelmaßnahmen-Variante (Heizung, Fenster, Fassade, Dach). Den energetischen Nachweis und die Förderabwicklung übernehmen wir. Hinweis: Die genannten Kreditbeträge und die Einzelmaßnahmen-Variante gelten ab dem 03.08.2026.',
@@ -410,7 +410,7 @@ const WZ={
       {l:'Kaufen & sanieren',f:'Kauf-Check + Sanierungsstrategie',d:'Kauf-Check + Sanierungsstrategie.',
         title:'Kaufen & sanieren: Kauf-Check + Strategie',
         sub:'Vor dem Kauf prüfen wir das Objekt energetisch und wirtschaftlich und entwickeln eine Sanierungsstrategie. So wissen Sie vorher, welche Förderung sich nach dem Kauf realistisch erschließen lässt.',
-        foerder:[{big:'bis 15<small>%</small>',lbl:'BAFA-Zuschuss auf Einzelmaßnahmen, plus WPB-Bonus für unsanierte Altbauten'},{big:'bis 120.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]}
+        foerder:[{big:'bis 15<small>%</small>',lbl:'BAFA-Zuschuss auf Einzelmaßnahmen an Dach, Fassade, Fenstern'},{big:'bis 150.000 €',lbl:'KfW 261: zinsgünstiger Kredit je Wohneinheit mit Tilgungszuschuss'},{big:'bis 50<small>%</small>',lbl:'auf Energieberatung & Baubegleitung'}]}
     ]}
 };
 
