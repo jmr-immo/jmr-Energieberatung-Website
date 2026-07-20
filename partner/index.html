@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<title>Partner für Handwerksbetriebe · jmr Energieberatung</title>
+<meta name="description" content="EEE-Partner für Handwerksbetriebe im Saarland: Wir übernehmen die Förderung Ihrer Maßnahme, von Antrag bei BAFA und KfW bis zur Auszahlung. So sinkt der Eigenanteil Ihres Kunden.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://jmr-energieberatung.de/partner/">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+
+<!-- Google Ads + Google Analytics + Cookie-Einwilligung (laedt erst nach Zustimmung) -->
+<script src="../js/jmr-consent.js" defer></script>
+
+<style>
+@font-face{font-family:'Inter';src:url('../fonts/Inter-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url('../fonts/SpaceGrotesk-Variable.woff2') format('woff2');font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('../fonts/Switzer-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('../fonts/Switzer-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+:root{
+  --ink:#0B1C2B;--ink-2:#102A3D;--steel:#1F6FA5;--steel-d:#16527c;--blueprint:#4BA3D6;--cyan:#5BD0E0;
+  --green:#1FA85A;--green-d:#15813f;--paper:#F4F2EC;--paper-2:#ECE9E0;--white:#FFFFFF;
+  --text:#0B1C2B;--muted:#5b6b78;--line:#e2ded2;--disp:'Switzer','Space Grotesk',-apple-system,sans-serif;
+  --sans:'Inter',-apple-system,sans-serif;--mono:'Inter',-apple-system,sans-serif;--maxw:1080px;
+  --r:18px;--r-lg:26px;--shadow:0 24px 60px -28px rgba(11,28,43,.34);--shadow-lg:0 40px 90px -40px rgba(11,28,43,.5);
+}
+body{font-family:var(--sans);color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--disp);font-weight:600;letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+h1{font-size:clamp(2.1rem,5vw,3.3rem);letter-spacing:-.03em;line-height:1.1}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.3rem,4vw,3rem)}
+.mono{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1rem;border-radius:999px;background:var(--steel);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:600;font-size:.95rem;padding:1rem 1.8rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:.25s}
+.btn-green{background:var(--green);color:#fff !important;box-shadow:0 10px 26px -12px rgba(31,168,90,.6)}
+.btn-green:hover{background:var(--green-d);box-shadow:0 16px 36px -12px rgba(31,168,90,.75)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--steel);color:var(--steel-d)}
+.btn .ar{transition:transform .25s}.btn:hover .ar{transform:translateX(4px)}
+/* TOPBAR */
+.top{display:flex;align-items:center;justify-content:space-between;padding-top:1.3rem;padding-bottom:1.3rem}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand img{height:30px;width:auto;display:block}
+.brand .nm{font-family:var(--disp);font-weight:600;font-size:1.02rem;color:var(--ink)}
+.brand .nm small{display:block;font-family:var(--sans);font-size:.56rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-top:1px}
+.top .tcall{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9rem;color:var(--steel-d)}
+.top .tcall svg{width:18px;height:18px;stroke:var(--green-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:480px){.brand .nm{font-size:.92rem}.top .tcall{font-size:.82rem}.top .tcall svg{width:16px;height:16px}}
+/* HERO */
+.hero{padding:2rem 0 1rem}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:center}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{margin:1.1rem 0 0}
+.hero h1 .ja{color:var(--green-d)}
+.hero .lead{font-size:1.1rem;color:var(--muted);max-width:560px;margin-top:1.1rem}
+.hero-act{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.hero-fig{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;background:var(--paper-2)}
+.hero-fig img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+@media(max-width:820px){.hero-fig{aspect-ratio:16/9}}
+/* SERVICES */
+.sec{padding:clamp(2.6rem,6vh,4.5rem) 0}
+.sec.alt{background:var(--paper-2)}
+.sh{max-width:680px;margin-bottom:2rem}
+.sh h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-top:.8rem}
+.sh p{color:var(--muted);margin-top:.6rem}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media(max-width:680px){.svc-grid{grid-template-columns:1fr}}
+.svc{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.5rem;box-shadow:0 12px 34px -26px rgba(11,28,43,.34)}
+.svc .dot{width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(31,168,90,.14);margin-bottom:.9rem}
+.svc h3{font-size:1.06rem}
+.svc p{color:var(--muted);font-size:.92rem;margin-top:.35rem}
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;counter-reset:s}
+@media(max-width:680px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding:1.4rem 1.5rem 1.4rem 1.5rem;background:var(--white);border:1px solid var(--line);border-radius:var(--r)}
+.step::before{counter-increment:s;content:counter(s);display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--disp);font-weight:700;font-size:.9rem;margin-bottom:.8rem}
+.step h3{font-size:1.02rem}
+.step p{color:var(--muted);font-size:.9rem;margin-top:.3rem}
+/* 24h BADGE */
+.h24{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;background:linear-gradient(155deg,var(--ink),var(--ink-2));border-radius:var(--r-lg);padding:1.8rem 2rem;color:#fff;box-shadow:var(--shadow)}
+.h24 .big{font-family:var(--disp);font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--green);letter-spacing:-.02em;line-height:1}
+.h24 .txt{color:#cdd9e3;font-size:.98rem;max-width:520px}
+/* KONTAKT */
+.kcard{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:2rem clamp(1.4rem,3vw,2.4rem);box-shadow:var(--shadow)}
+@media(max-width:680px){.kcard{grid-template-columns:1fr}}
+.kcard .eyebrow{font-family:var(--sans);font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.kcard h3{font-size:1.5rem}
+.kcard .role{color:var(--muted);font-size:.9rem;margin:.3rem 0 1rem}
+.krow{display:flex;align-items:center;gap:.7rem;font-weight:600;color:var(--ink);margin-bottom:.5rem}
+.krow svg{width:18px;height:18px;stroke:var(--green-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.kcta{display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
+.kcta .eee{height:46px;width:auto}
+/* FOOTER (1:1 wie auf den anderen Seiten) */
+.footer{padding:3rem 0 2.4rem;background:#08151F;color:#7d92a1;font-size:.85rem;font-family:var(--sans);position:relative;overflow:hidden}
+.footer .container{max-width:1200px;margin:0 auto;padding:0 clamp(1.3rem,4vw,3rem)}
+.ftop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem 2rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.5rem}
+.ftop .bn{color:#7d92a1;font-weight:400;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;max-width:300px}
+.ftop .bn .flogo{height:30px;width:auto;display:block;margin-bottom:.8rem}
+.ftop .bn small{display:block;font-size:.6rem;letter-spacing:.16em;color:#7d92a1;text-transform:uppercase;margin-top:.4rem;line-height:1.5}
+.fnav{display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:flex-end}.fnav a{color:#7d92a1}.fnav a:hover{color:#fff}
+@media(max-width:760px){.ftop{align-items:flex-start}.fnav{justify-content:flex-start}}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.72rem;color:#5a6f7d}
+.fbot a{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="container top">
+  <a href="../index.html" class="brand"><img src="../img/logo-blue.png" alt="jmr Energieberatung"><span class="nm">jmr Energieberatung<small>Saarbrücken</small></span></a>
+  <a href="tel:+491744142298" class="tcall" data-cta><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>0174 4142298</span></a>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="pill">EEE-Partner für Handwerksbetriebe</span>
+        <h1>Mit Förderung sagt Ihr Kunde eher <span class="ja">Ja.</span></h1>
+        <p class="lead">Sie bauen, wir kümmern uns um die Förderung. Von der technischen Projektbeschreibung über den Antrag bei BAFA und KfW bis zur Auszahlung. Wo eine Förderung möglich ist, sinkt der Eigenanteil Ihres Kunden, und Ihr Angebot überzeugt leichter.</p>
+        <div class="hero-act">
+          <a href="tel:+491744142298" class="btn btn-green" data-cta>Jetzt anrufen <span class="ar">→</span></a>
+          <a href="mailto:info@jmr-energieberatung.de" class="btn btn-ghost" data-cta>E-Mail schreiben</a>
+        </div>
+      </div>
+      <figure class="hero-fig">
+        <img src="../img/team-treppe.jpg" alt="Jérôme Marquart und Maximilian Rudorf, jmr Energieberatung in Saarbrücken">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="container">
+    <div class="sh">
+      <span class="mono">Das übernehmen wir</span>
+      <h2>Die Förderung ist unser Teil.</h2>
+      <p>Sie konzentrieren sich auf Ihr Handwerk. Den Papierkram rund um die Förderung erledigen wir, als gelisteter Energieeffizienz-Experte.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="dot"></div><h3>Förderantrag</h3><p>Wir stellen den Antrag bei BAFA und KfW und kümmern uns um die geforderten Nachweise.</p></div>
+      <div class="svc"><div class="dot"></div><h3>Technische Projektbeschreibung</h3><p>Die fachliche Grundlage für den Antrag, sauber dokumentiert.</p></div>
+      <div class="svc"><div class="dot"></div><h3>Bestätigung nach Durchführung</h3><p>Den Nachweis, damit die bewilligte Förderung auch ausgezahlt werden kann.</p></div>
+      <div class="svc"><div class="dot"></div><h3>Energetische Baubegleitung</h3><p>Wir begleiten die Umsetzung bis zum Nachweis, dort wo sie gefragt ist.</p></div>
+    </div>
+    <div class="svc" style="margin-top:1rem"><div class="dot"></div><h3>Zusätzlich: individueller Sanierungsfahrplan (iSFP)</h3><p>Wo es sinnvoll ist, prüfen wir für Ihren Kunden einen iSFP. Er ist keine Pflicht, kann die Förderung für viele Sanierungsmaßnahmen aber erhöhen.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container">
+    <div class="sh">
+      <span class="mono">So läuft die Zusammenarbeit</span>
+      <h2>In drei Schritten zur Förderung.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Projekt melden</h3><p>Sie sagen uns kurz, um welche Maßnahme es geht. Per Anruf oder E-Mail.</p></div>
+      <div class="step"><h3>Förderung übernehmen</h3><p>Wir prüfen, was möglich ist, und kümmern uns um Antrag und Nachweise.</p></div>
+      <div class="step"><h3>Umsetzen und bestätigen</h3><p>Sie setzen um, wir begleiten und bestätigen, damit die Förderung fließen kann.</p></div>
+    </div>
+    <div class="h24" style="margin-top:1.6rem">
+      <div class="big">Binnen 24 Stunden</div>
+      <div class="txt">Sie bekommen eine Rückmeldung von Ihrem festen Ansprechpartner, der Ihre Projekte kennt.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="container">
+    <div class="kcard">
+      <div>
+        <div class="eyebrow">Ihr Ansprechpartner</div>
+        <h3>Jérôme Marquart</h3>
+        <div class="role">Wirtschaftsingenieur · gelisteter Energieeffizienz-Experte</div>
+        <div class="krow"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+491744142298" data-cta>0174 4142298</a>&nbsp;·&nbsp;<a href="tel:+496819697198" data-cta>0681 9697198</a></div>
+        <div class="krow"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:info@jmr-energieberatung.de" data-cta>info@jmr-energieberatung.de</a></div>
+        <div style="margin-top:1.3rem;display:flex;flex-wrap:wrap;gap:.7rem"><a href="tel:+491744142298" class="btn btn-green" data-cta>Jetzt anrufen <span class="ar">→</span></a><a href="mailto:info@jmr-energieberatung.de" class="btn btn-ghost" data-cta>E-Mail schreiben</a></div>
+      </div>
+      <div class="kcta">
+        <img class="eee" src="../img/eee-experte-logo.png" alt="Gelisteter Energieeffizienz-Experte für Förderprogramme des Bundes">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(2rem,4.5vh,3.2rem);text-align:center">
+  <div class="container">
+    <p style="font-size:.78rem;color:var(--muted);max-width:620px;margin:0 auto">Ob und in welcher Höhe eine Förderung möglich ist, hängt vom Einzelfall ab. Maßgeblich sind die jeweils gültigen Bedingungen von BAFA und KfW.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="ftop">
+      <div class="bn"><img class="flogo" src="../img/logo-white.png" alt="jmr Energieberatung">jmr Energieberatung<small>Energieberater in Saarbrücken &amp; Saarland · Förderung · Baubegleitung</small></div>
+      <div class="fnav"><a href="../index.html#leistungen">Leistungen</a><a href="../index.html#einsteiger">Warum Energieberatung</a><a href="../index.html#wegweiser">Förder-Check</a><a href="../index.html#team">Über uns</a><a href="../faq.html">FAQ</a><a href="../index.html#kontakt">Erstgespräch</a></div>
+    </div>
+    <div class="fbot"><span>© 2026 jmr Energieberatung · Marquart Consulting GmbH · Saarbrücken</span><span><a href="../impressum.html" target="_blank" rel="noopener" style="color:inherit">Impressum</a> · <a href="../datenschutz.html" target="_blank" rel="noopener" style="color:inherit">Datenschutz</a></span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Klicks messen (nur bei Statistik-Zustimmung ueber window.jmrTrackEvent)
+  document.addEventListener('click',function(e){
+    if(!window.jmrTrackEvent)return;
+    var el=e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+    if(!el)return;
+    var h=el.getAttribute('href')||'';
+    if(h.indexOf('tel:')===0){window.jmrTrackEvent('klick_partner_anruf',{});var stC=null;try{stC=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}if(stC&&stC.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':'AW-18244917669/8rLHCIeUs8gcEKWz7ftD'});}}
+    else window.jmrTrackEvent('klick_partner_email',{});
+  });
+  // Flyer-Herkunft: kommt jemand mit ?utm_source=... (QR vom Flyer), ein klares Ereignis
+  // feuern, sobald die Statistik-Einwilligung steht (GA4 erfasst die Quelle zusaetzlich automatisch).
+  var src=new URLSearchParams(location.search).get('utm_source');
+  if(src){
+    var tries=0, iv=setInterval(function(){
+      tries++;
+      var st=null; try{st=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(e){}
+      if(st&&st.statistics&&typeof window.gtag==='function'){
+        if(window.jmrTrackEvent)window.jmrTrackEvent('flyer_besuch',{quelle:src});
+        clearInterval(iv);
+      }
+      if(tries>120)clearInterval(iv);
+    },500);
+  }
+})();
+</script>
+</body>
+</html>

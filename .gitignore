@@ -1,0 +1,13 @@
+# Lokale Arbeits- und Backup-Dateien nicht veröffentlichen
+index-backup-*.html
+v1-*.html
+v2-*.html
+v3-*.html
+.DS_Store
+.gh-token
+jmr-website.bundle
+GO-LIVE-ANLEITUNG.md
+CLAUDE.md
+
+# Interne Quell-/Rohdaten (Logo-Nutzungsbedingungen etc.), nicht öffentlich
+dena Expertenlogos/
