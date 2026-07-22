@@ -74,10 +74,10 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .nav-drop-trig{display:inline-flex;align-items:center;gap:.35rem}
 .nav-chev{width:12px;height:12px;flex-shrink:0;transition:transform .25s}
 .nav-drop:hover .nav-chev,.nav-drop.open .nav-chev,.nav-drop:focus-within .nav-chev{transform:rotate(180deg)}
-.nav-mega{position:absolute;top:calc(100% + 14px);right:0;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:1.5rem 1.8rem;display:grid;grid-template-columns:repeat(3,max-content);gap:1.4rem 2.6rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .25s cubic-bezier(.16,1,.3,1),transform .25s cubic-bezier(.16,1,.3,1),visibility .25s;z-index:110}
+.nav-mega{position:fixed;top:72px;left:50%;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:1.5rem 1.8rem;display:grid;grid-template-columns:repeat(3,max-content);gap:1.4rem 2.6rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-50%) translateY(-8px);transition:opacity .25s cubic-bezier(.16,1,.3,1),transform .25s cubic-bezier(.16,1,.3,1),visibility .25s;z-index:110}
 /* unsichtbare Brücke, damit der Hover zwischen Trigger und Panel nicht abreißt */
-.nav-mega::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px}
-.nav-drop:hover .nav-mega,.nav-drop.open .nav-mega,.nav-drop:focus-within .nav-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.nav-mega::before{content:'';position:absolute;top:-24px;left:0;right:0;height:24px}
+.nav-drop:hover .nav-mega,.nav-drop.open .nav-mega,.nav-drop:focus-within .nav-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .nav-col{display:flex;flex-direction:column;min-width:170px}
 .nav-col-h{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.55rem;padding:0 .55rem;line-height:1.3}
 .nav-mega .nav-col-h{min-height:2.6em}
