@@ -150,32 +150,30 @@ function populateDetail(disp){
   });
 })();
 
-/* Beispielrechnung: Balken, Ring und Zahlen beim Sichtbarwerden animieren */
+/* Zusatzbausteine: Zahlen, Balken, Ringe beim Sichtbarwerden animieren */
 (function(){
-  var grid=document.querySelector('.calc-grid');
-  if(!grid)return;
+  var blocks=[].slice.call(document.querySelectorAll('[data-anim]'));
+  if(!blocks.length)return;
   var RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
   function countUp(el,dur){
     var target=+el.dataset.count, suf=el.dataset.suffix||'', t0=null;
     if(RM){el.innerHTML=target.toLocaleString('de-DE')+suf;return;}
-    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
-      el.innerHTML=Math.round(target*e).toLocaleString('de-DE')+suf; if(p<1)requestAnimationFrame(step); }
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+      el.innerHTML=Math.round(target*e).toLocaleString('de-DE')+suf;if(p<1)requestAnimationFrame(step);}
     requestAnimationFrame(step);
   }
   function ringUp(el,dur){
-    var pt=+el.dataset.p||0, t0=null;
+    var pt=+el.dataset.p||0,t0=null;
     if(RM){el.style.setProperty('--pcur',pt);return;}
-    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
-      el.style.setProperty('--pcur',(pt*e).toFixed(1)); if(p<1)requestAnimationFrame(step); }
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+      el.style.setProperty('--pcur',(pt*e).toFixed(1));if(p<1)requestAnimationFrame(step);}
     requestAnimationFrame(step);
   }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting){
-      grid.classList.add('run');
-      grid.querySelectorAll('[data-count]').forEach(function(el){countUp(el,1300);});
-      var d=document.querySelector('.calc-donut'); if(d)ringUp(d,1400);
-      io.disconnect();
-    }
-  });},{threshold:.35});
-  io.observe(grid);
+    if(e.isIntersecting){var b=e.target;b.classList.add('run');
+      b.querySelectorAll('[data-count]').forEach(function(el){countUp(el,1300);});
+      b.querySelectorAll('[data-p]').forEach(function(el){ringUp(el,1400);});
+      io.unobserve(b);
+    }});},{threshold:.28});
+  blocks.forEach(function(b){io.observe(b);});
 })();
