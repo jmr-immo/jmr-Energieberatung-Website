@@ -1,5 +1,12 @@
-/* Kontaktformular der Leistungsseiten: per AJAX an Formspree, Status inline,
-   Conversion-/Lead-Tracking über die Consent-Funktionen (falls Einwilligung vorliegt). */
+/* Leistungsseiten: Nav-Scroll-Zustand, Fade-Reveal (wie Startseite) und Kontaktformular. */
+(function(){
+  var nav=document.querySelector('.nav');
+  function sc(){ if(nav) nav.classList.toggle('scrolled', window.scrollY>20); }
+  window.addEventListener('scroll',sc,{passive:true}); sc();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.12});
+  document.querySelectorAll('.fade').forEach(function(el){io.observe(el);});
+})();
+
 (function(){
   var form=document.getElementById('kontaktForm');
   if(!form)return;

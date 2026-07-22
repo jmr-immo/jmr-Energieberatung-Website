@@ -34,7 +34,7 @@
 </script>
 </head>
 <body>
-<nav class="nav">
+<nav class="nav scrolled" id="nav">
   <a href="/" class="brand"><img class="mk" src="/img/logo-blue.png" alt="jmr Energieberatung"><span class="nm">jmr Energieberatung<small>Saarbrücken</small></span></a>
   <div class="nlinks">
     <a href="/#leistungen">Leistungen</a>
@@ -47,21 +47,20 @@
 <header class="hero" id="top">
   <div class="container">
     <div class="hero-grid">
-      <div>
+      <div class="fade vis">
         <div class="mono-row"><span class="mono">Leistung · Energieberatung</span></div>
-        <h1>Energieberatung in Saarbrücken und im Saarland</h1>
-        <p class="hero-lead">Wir schauen uns Ihr Gebäude an, rechnen den energetischen Zustand durch und sagen Ihnen, welche Sanierungsschritte sich für Sie lohnen und welche Förderung dazu passt. Unabhängig, mit Zahlen statt Bauchgefühl.</p>
+        <h1>Energieberatung in <span class="grad">Saarbrücken &amp; im Saarland</span></h1>
+        <p class="hero-lead">Wir schauen uns Ihr Gebäude an, rechnen den energetischen Zustand durch und sagen Ihnen, welche Sanierungsschritte sich lohnen und welche Förderung dazu passt. Unabhängig, mit Zahlen statt Bauchgefühl.</p>
         <div class="hero-act">
-          <a href="#kontakt" class="btn btn-green">Kostenloses Erstgespräch <span class="ar">→</span></a>
-          <a href="/#wegweiser" class="btn btn-ghost">Förder-Check starten</a>
+          <a href="#kontakt" class="btn btn-green magnetic">Kostenloses Erstgespräch <span class="ar">→</span></a>
         </div>
-        <div class="hero-sign">
-          <a href="tel:+496819697198"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 6.6 1.5 1.5 0 0 1 5 4z"/></svg>0681 9697198</a>
-          <a href="mailto:info@jmr-energieberatung.de"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>info@jmr-energieberatung.de</a>
+        <div class="hero-sign"><a href="tel:+496819697198" class="hs-tel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 6.6 1.5 1.5 0 0 1 5 4z"/></svg>0681 9697198</a><a href="mailto:info@jmr-energieberatung.de" class="hs-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>info@jmr-energieberatung.de</a></div>
+        <div class="hero-contact">
           <img class="eee-logo" src="/img/eee-experte-logo.png" alt="Energieeffizienz-Experte für Förderprogramme des Bundes">
+          <div class="hero-contact-info"><a href="tel:+496819697198" class="hc-tel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 6.6 1.5 1.5 0 0 1 5 4z"/></svg>0681 9697198</a><a href="mailto:info@jmr-energieberatung.de" class="hc-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>info@jmr-energieberatung.de</a></div>
         </div>
       </div>
-      <div>
+      <div class="fade vis d2">
         <figure class="photo">
           <img class="photo-img" src="/img/hero-konferenz.jpg" alt="Jérôme Marquart und Maximilian Rudorf im Konferenzraum beim Besprechen von Bauplänen, jmr Energieberatung Saarbrücken">
           <figcaption><span class="cap-p"><strong>Jérôme Marquart</strong><span>Wirtschaftsingenieur<br>Energieeffizienz-Experte</span></span><span class="cap-p"><strong>Maximilian Rudorf</strong><span>Architekt<br>Planungsexperte</span></span></figcaption>
@@ -73,72 +72,60 @@
 
 <section>
   <div class="container">
-    <div class="sec-head"><h2>Was eine Energieberatung Ihnen bringt</h2></div>
-    <div class="prose">
-      <p>Eine energetische Sanierung ist eine große Investition, und die Förderlandschaft aus KfW und BAFA ändert sich laufend. Eine Energieberatung sorgt dafür, dass Sie nicht auf gut Glück sanieren, sondern wissen, was Ihr Gebäude wirklich braucht, in welcher Reihenfolge die Schritte sinnvoll sind und wie viel Förderung Ihnen zusteht.</p>
-      <p>Als in der Energieeffizienz-Expertenliste des Bundes gelisteter Berater dürfen wir die für die meisten Förderungen nötigen Nachweise selbst ausstellen. Sie haben damit Beratung, Förderabwicklung und Baubegleitung aus einer Hand.</p>
-    </div>
-    <p class="indep">Wir verkaufen keine Heizungen, Dämmstoffe oder Fenster und erhalten keine Provisionen von Herstellern. Unsere Empfehlung richtet sich allein danach, was sich für Ihr Gebäude rechnet.</p>
+    <div class="sh fade"><div class="mono-row"><span class="mono">Warum Energieberatung</span></div><h2>Sanieren mit Plan, nicht auf gut Glück.</h2><p>Was Ihr Gebäude braucht, in welcher Reihenfolge, und welche Förderung dazu passt.</p></div>
+    <p class="lp-p fade">Eine energetische Sanierung ist eine große Investition, und die Förderlandschaft aus KfW und BAFA ändert sich laufend. Eine Energieberatung sorgt dafür, dass Sie wissen, was Ihr Gebäude wirklich braucht, in welcher Reihenfolge die Schritte sinnvoll sind und wie viel Förderung Ihnen zusteht.</p>
+    <p class="lp-p fade">Als in der Energieeffizienz-Expertenliste des Bundes gelisteter Berater dürfen wir die für die meisten Förderungen nötigen Nachweise selbst ausstellen. Sie haben damit Beratung, Förderabwicklung und Baubegleitung aus einer Hand.</p>
+    <p class="lp-indep fade">Wir verkaufen keine Heizungen, Dämmstoffe oder Fenster und erhalten keine Provisionen von Herstellern. Unsere Empfehlung richtet sich allein danach, was sich für Ihr Gebäude rechnet.</p>
   </div>
 </section>
 
 <section class="alt">
   <div class="container">
-    <div class="sec-head"><h2>So läuft Ihre Energieberatung ab</h2><p class="sec-lead">In vier Schritten vom ersten Gespräch bis zur begleiteten Umsetzung.</p></div>
-    <div class="steps">
-      <div class="step"><span class="n">1</span><div><h3>Kostenloses Erstgespräch</h3><p>Wir klären Ihr Vorhaben, Ihre Ziele und ob eine Förderung in Frage kommt. Unverbindlich und ohne Kosten.</p></div></div>
-      <div class="step"><span class="n">2</span><div><h3>Aufnahme vor Ort</h3><p>Wir nehmen Ihr Gebäude bei einem Termin vor Ort auf: Bauteile, Heizung, Zustand. Grundlage für jede belastbare Aussage.</p></div></div>
-      <div class="step"><span class="n">3</span><div><h3>Berechnung und Empfehlung</h3><p>Wir berechnen den energetischen Zustand und erstellen Ihre Empfehlung, auf Wunsch als geförderten Sanierungsfahrplan (iSFP).</p></div></div>
-      <div class="step"><span class="n">4</span><div><h3>Förderung und Umsetzung</h3><p>Wir übernehmen die Förderabwicklung und begleiten auf Wunsch die Umsetzung, bis die Förderung fließt und die Arbeiten stehen.</p></div></div>
+    <div class="sh fade"><div class="mono-row"><span class="mono">Ablauf</span></div><h2>So läuft Ihre Energieberatung ab.</h2><p>In drei Schritten vom ersten Gespräch bis zur begleiteten Umsetzung.</p></div>
+    <div class="svc-grid">
+      <div class="card g fade"><div class="num">1</div><span class="ix">Schritt 1</span><h3>Erstgespräch</h3><p class="ds">Wir klären Ihr Vorhaben, Ihre Ziele und ob eine Förderung in Frage kommt. Kostenlos und unverbindlich.</p></div>
+      <div class="card g fade"><div class="num">2</div><span class="ix">Schritt 2</span><h3>Aufnahme &amp; Plan</h3><p class="ds">Wir nehmen Ihr Gebäude vor Ort auf, berechnen den energetischen Zustand und erstellen Ihre Empfehlung, auf Wunsch als geförderten iSFP.</p></div>
+      <div class="card g fade"><div class="num">3</div><span class="ix">Schritt 3</span><h3>Förderung &amp; Bau</h3><p class="ds">Wir übernehmen die Förderabwicklung und begleiten die Umsetzung, bis die Förderung fließt und die Arbeiten stehen.</p></div>
     </div>
-    <p style="margin-top:1.8rem"><a href="/#einsteiger" class="btn btn-ghost">Interaktiver Hausrundgang ansehen <span class="ar">→</span></a></p>
+    <p class="fade" style="margin-top:2rem"><a href="/#einsteiger" class="btn btn-ghost">Interaktiver Hausrundgang ansehen <span class="ar">→</span></a></p>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="infobox">
-      <h3>Die Beratung ist selbst gefördert</h3>
-      <p>Die Energieberatung für Wohngebäude und der individuelle Sanierungsfahrplan werden von der BAFA mit 50 Prozent des Honorars gefördert, bei Ein- und Zweifamilienhäusern bis zu 650 Euro, ab drei Wohneinheiten bis zu 850 Euro. Auch die energetische Baubegleitung ist mit 50 Prozent förderfähig. Ihr Eigenanteil bleibt dadurch überschaubar.</p>
-      <p class="fine">Maßgeblich sind die Bedingungen der Förderstelle. Den genauen Preis nennen wir Ihnen nach einem kurzen Blick auf Ihr Gebäude.</p>
+    <div class="svc-grid" style="grid-template-columns:1fr">
+      <div class="card g fade wide"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg></div><span class="ix">Gut zu wissen</span><h3 class="hn">Die Beratung ist selbst gefördert.</h3><p class="ds">Die Energieberatung für Wohngebäude und der individuelle Sanierungsfahrplan werden von der BAFA mit 50 Prozent des Honorars gefördert, bei Ein- und Zweifamilienhäusern bis zu 650 Euro, ab drei Wohneinheiten bis zu 850 Euro. Auch die energetische Baubegleitung ist mit 50 Prozent förderfähig. Ihr Eigenanteil bleibt dadurch überschaubar. Maßgeblich sind die Bedingungen der Förderstelle.</p></div>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="container">
-    <div class="sec-head"><h2>Was wir für Sie übernehmen</h2></div>
-    <ul class="checks">
-      <li>Gebäudeaufnahme und energetische Berechnung</li>
-      <li>Individueller Sanierungsfahrplan (iSFP)</li>
-      <li>Fördermittelberatung für KfW und BAFA</li>
-      <li>Antragstellung und geforderte Nachweise</li>
-      <li>Energetische Baubegleitung auf Wunsch</li>
-      <li>Ein fester Ansprechpartner über das ganze Vorhaben</li>
-    </ul>
+    <div class="sh fade"><div class="mono-row"><span class="mono">Leistungsumfang</span></div><h2>Was wir für Sie übernehmen.</h2></div>
+    <div class="svc-grid" style="grid-template-columns:1fr">
+      <div class="card fade wide">
+        <ul class="clist2">
+          <li><b>+</b> Gebäudeaufnahme und energetische Berechnung</li>
+          <li><b>+</b> Individueller Sanierungsfahrplan (iSFP)</li>
+          <li><b>+</b> Fördermittelberatung für KfW und BAFA</li>
+          <li><b>+</b> Antragstellung und geforderte Nachweise</li>
+          <li><b>+</b> Energetische Baubegleitung auf Wunsch</li>
+          <li><b>+</b> Ein fester Ansprechpartner über das ganze Vorhaben</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="sec-head"><h2>Häufige Fragen</h2></div>
-    <div class="faqt">
-      <details><summary>Was kostet eine Energieberatung?</summary><div class="a">Die Energieberatung für Wohngebäude und der Sanierungsfahrplan werden von der BAFA mit bis zu 50 Prozent gefördert. Den genauen Preis nennen wir Ihnen nach einem kurzen Blick auf Ihr Gebäude im kostenlosen Erstgespräch.</div></details>
-      <details><summary>Brauche ich für die Förderung einen Energieeffizienz-Experten?</summary><div class="a">Ja. Für die meisten BAFA- und KfW-Förderungen ist ein in der Energieeffizienz-Expertenliste des Bundes gelisteter Berater Pflicht. jmr Energieberatung ist dort gelistet und übernimmt Antrag und Nachweise für Sie.</div></details>
-      <details><summary>In welchen Regionen sind Sie tätig?</summary><div class="a">Im gesamten Saarland, mit Sitz in Saarbrücken, unter anderem in Völklingen, Saarlouis, Neunkirchen, Homburg, St. Wendel, Merzig und Blieskastel. Für Beratung und Gebäudeaufnahme kommen wir zu Ihnen vor Ort.</div></details>
+    <div class="sh fade"><div class="mono-row"><span class="mono">Das passt dazu</span></div><h2>Weitere Leistungen.</h2></div>
+    <div class="svc-grid">
+      <a class="card fade" href="/isfp-sanierungsfahrplan/"><span class="ix">Bestand</span><h3>Sanierungsfahrplan</h3><p class="ds">Der geförderte Plan für Ihre Sanierung, Schritt für Schritt.</p></a>
+      <a class="card fade" href="/foerdermittelberatung/"><span class="ix">Förderung</span><h3>Fördermittel</h3><p class="ds">KfW und BAFA im Überblick, wir holen die passende Förderung.</p></a>
+      <a class="card fade" href="/baubegleitung/"><span class="ix">Umsetzung</span><h3>Baubegleitung</h3><p class="ds">Begleitung der Umsetzung, selbst bis zu 50 Prozent förderfähig.</p></a>
     </div>
-    <a class="more" href="/faq.html">Alle häufigen Fragen ansehen →</a>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="container">
-    <div class="sec-head"><h2>Das passt dazu</h2></div>
-    <div class="cross">
-      <a href="/isfp-sanierungsfahrplan/"><div class="k">Sanierungsfahrplan (iSFP)</div><div class="d">Der geförderte Plan für Ihre Sanierung, Schritt für Schritt.</div></a>
-      <a href="/foerdermittelberatung/"><div class="k">Fördermittelberatung</div><div class="d">KfW und BAFA im Überblick, wir holen die passende Förderung.</div></a>
-      <a href="/baubegleitung/"><div class="k">Energetische Baubegleitung</div><div class="d">Begleitung der Umsetzung, selbst bis zu 50 Prozent förderfähig.</div></a>
-    </div>
+    <a class="lp-more fade" href="/faq.html">Häufige Fragen zur Energieberatung →</a>
   </div>
 </section>
 
@@ -146,13 +133,13 @@
   <div class="spot"></div>
   <div class="container">
     <div class="cgrid">
-      <div class="kontakt-left">
+      <div class="fade kontakt-left">
         <div class="mono-row"><span class="mono">Jetzt anfragen</span></div>
         <h2>Unverbindliches Erstgespräch.</h2>
         <p style="color:var(--ink-text);font-size:1.1rem;margin-top:1rem">Kostenlos und unverbindlich. Wir klären Ihr Vorhaben, die passende Förderung und die nächsten Schritte.</p>
         <ul class="clist"><li class="half"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 6.6 1.5 1.5 0 0 1 5 4z"/></svg></span> <a href="tel:+496819697198" style="color:inherit;text-decoration:none">0681 9697198</a></li><li class="half"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span> <a href="mailto:info@jmr-energieberatung.de" style="color:inherit;text-decoration:none">info@jmr-energieberatung.de</a></li><li class="loc"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 0 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span> Halbergstraße 4, 66121 Saarbrücken</li></ul>
       </div>
-      <div class="kontakt-formcol">
+      <div class="fade d1 kontakt-formcol">
         <div class="ccard">
           <div class="mono-row"><span class="mono">Kontaktformular</span></div>
           <p class="ds">Wir melden uns innerhalb von 24 Stunden.</p>
@@ -168,13 +155,13 @@
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="hidden" name="Seite" value="Energieberatung">
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <button type="submit" class="btn btn-green" id="kfSubmit" style="width:100%;justify-content:center">Anfrage senden <span class="ar">→</span></button>
+          <button type="submit" class="btn btn-green magnetic" id="kfSubmit" style="width:100%;justify-content:center">Anfrage senden <span class="ar">→</span></button>
           <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Mehr dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener" style="color:var(--green-d)">Datenschutzerklärung</a>.</p>
           <p class="kf-status" id="kfStatus" hidden></p>
           </form>
         </div>
       </div>
-      <div class="kontakt-photo"></div>
+      <div class="kontakt-photo fade"></div>
     </div>
   </div>
 </section>
