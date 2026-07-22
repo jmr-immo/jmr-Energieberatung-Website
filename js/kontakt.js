@@ -48,3 +48,40 @@ function populateDetail(disp){
     btn.disabled=false;btn.style.opacity='';
   });
 })();
+
+/* Stolperstein-Karten: Spotlight folgt der Maus */
+(function(){
+  document.querySelectorAll('.prob').forEach(function(c){
+    c.addEventListener('mousemove',function(e){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+})();
+
+/* Ablauf: Etappe in Bildschirmmitte fokussieren, Zeitleiste mitlaufen lassen */
+(function(){
+  var fl=document.getElementById('flow');if(!fl)return;
+  var steps=[].slice.call(fl.querySelectorAll('.fstep'));
+  var rail=fl.querySelector('.flow-rail');
+  if(!steps.length)return;
+  var RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(RM){steps.forEach(function(s){s.classList.add('active');});if(rail)rail.style.setProperty('--fp','100%');return;}
+  var active=-1,raf=0;
+  function upd(){
+    raf=0;var mid=innerHeight*0.5,best=0,bd=1e9;
+    steps.forEach(function(s,i){var r=s.getBoundingClientRect();var c=r.top+r.height/2;var d=Math.abs(c-mid);if(d<bd){bd=d;best=i;}});
+    if(best!==active){active=best;steps.forEach(function(s,i){s.classList.toggle('active',i===active);});}
+    if(rail){
+      var first=steps[0].getBoundingClientRect();var lastr=steps[steps.length-1].getBoundingClientRect();
+      var cFirst=first.top+first.height/2,cLast=lastr.top+lastr.height/2;
+      var pct=cLast>cFirst?((mid-cFirst)/(cLast-cFirst))*100:100;
+      pct=Math.max(0,Math.min(100,pct));
+      rail.style.setProperty('--fp',pct+'%');
+    }
+  }
+  addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
+  addEventListener('resize',function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
+  upd();
+})();
