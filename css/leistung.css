@@ -708,13 +708,17 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .lp-more:hover{color:var(--green-d)}
 
 /* ==== Zentrierter Hero (Vorlage Architektur-Umnutzung, in Energieberatungsfarben) ==== */
-.hero{min-height:auto;display:flex;flex-direction:column;justify-content:center;padding:150px 0 88px;position:relative;overflow:hidden;background:radial-gradient(125% 95% at 50% 0%,#fff 0%,var(--paper) 60%)}
-.hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(90% 80% at 82% 8%,rgba(31,168,90,.10) 0%,transparent 46%),radial-gradient(90% 100% at 8% 100%,rgba(31,111,165,.12) 0%,transparent 52%)}
+.hero{min-height:auto;display:flex;flex-direction:column;justify-content:center;padding:150px 0 88px;position:relative;overflow:hidden;background:radial-gradient(125% 95% at 50% 0%,#fff 0%,var(--paper) 62%)}
+.hero::before{content:'';position:absolute;inset:-25%;z-index:1;pointer-events:none;filter:blur(8px);background:radial-gradient(closest-side,rgba(31,168,90,.20),transparent 72%) 18% 24%/48% 54% no-repeat,radial-gradient(closest-side,rgba(31,111,165,.17),transparent 72%) 84% 16%/54% 56% no-repeat,radial-gradient(closest-side,rgba(91,208,224,.14),transparent 72%) 60% 84%/48% 52% no-repeat;animation:heroAurora 22s ease-in-out infinite alternate}
+.hero::after{display:none}
+@keyframes heroAurora{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3%,-2.5%,0) scale(1.1)}100%{transform:translate3d(-2.5%,1.5%,0) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.hero::before{animation:none}}
 .hero .container{position:relative;z-index:3;width:100%;max-width:1000px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);font-weight:600;margin-bottom:1.5rem}
-.h1-hero{font-size:clamp(1.9rem,3.6vw,3.1rem);margin-bottom:0;letter-spacing:-.03em;line-height:1.08}
+.h1-hero{font-size:clamp(1.85rem,3.2vw,2.8rem);margin-bottom:0;letter-spacing:-.03em;line-height:1.08}
 .h1-hero .h1l{display:block;white-space:nowrap}
-@media(max-width:600px){.h1-hero{font-size:clamp(2rem,8vw,2.8rem)}.h1-hero .h1l{white-space:normal}}
+.h1-hero .h1l:first-child{font-size:1.55em;line-height:1.02;margin-bottom:.12em}
+@media(max-width:600px){.h1-hero{font-size:clamp(1.7rem,6.5vw,2.3rem)}.h1-hero .h1l{white-space:normal}.h1-hero .h1l:first-child{font-size:1.4em}}
 .hero .hero-lead{font-size:clamp(1.1rem,1.7vw,1.32rem);color:var(--muted);max-width:660px;margin:1.7rem auto 2.1rem}
 .hero-act{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:center}
 
