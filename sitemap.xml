@@ -61,6 +61,31 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://jmr-energieberatung.de/beg-einzelmassnahmen/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jmr-energieberatung.de/beg-wohngebaeude/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jmr-energieberatung.de/heizungsfoerderung-kfw-458/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jmr-energieberatung.de/jung-kauft-alt-kfw-308/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jmr-energieberatung.de/gewerbe-zu-wohnen-kfw-266/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://jmr-energieberatung.de/faq.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
