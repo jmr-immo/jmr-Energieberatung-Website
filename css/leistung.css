@@ -709,10 +709,11 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 
 /* ==== Zentrierter Hero (Vorlage Architektur-Umnutzung, in Energieberatungsfarben) ==== */
 .hero{min-height:auto;display:flex;flex-direction:column;justify-content:center;padding:150px 0 88px;position:relative;overflow:hidden;background:radial-gradient(125% 95% at 50% 0%,#fff 0%,var(--paper) 62%)}
-.hero::before{content:'';position:absolute;inset:-25%;z-index:1;pointer-events:none;filter:blur(8px);background:radial-gradient(closest-side,rgba(31,168,90,.20),transparent 72%) 18% 24%/48% 54% no-repeat,radial-gradient(closest-side,rgba(31,111,165,.17),transparent 72%) 84% 16%/54% 56% no-repeat,radial-gradient(closest-side,rgba(91,208,224,.14),transparent 72%) 60% 84%/48% 52% no-repeat;animation:heroAurora 22s ease-in-out infinite alternate}
-.hero::after{display:none}
-@keyframes heroAurora{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3%,-2.5%,0) scale(1.1)}100%{transform:translate3d(-2.5%,1.5%,0) scale(1.05)}}
-@media(prefers-reduced-motion:reduce){.hero::before{animation:none}}
+.hero::before{content:'';position:absolute;inset:-30%;z-index:1;pointer-events:none;filter:blur(44px);background:radial-gradient(34% 40% at 24% 30%,rgba(31,168,90,.32),transparent 68%),radial-gradient(38% 42% at 79% 22%,rgba(31,111,165,.28),transparent 70%),radial-gradient(36% 40% at 60% 86%,rgba(91,208,224,.24),transparent 70%);animation:heroAuroraA 26s ease-in-out infinite alternate}
+.hero::after{content:'';display:block;position:absolute;inset:-30%;z-index:1;pointer-events:none;filter:blur(52px);background:radial-gradient(30% 36% at 70% 44%,rgba(31,168,90,.22),transparent 70%),radial-gradient(32% 38% at 28% 68%,rgba(75,163,214,.20),transparent 70%);animation:heroAuroraB 34s ease-in-out infinite alternate}
+@keyframes heroAuroraA{0%{transform:translate(-2%,-1%) scale(1.04) rotate(-2deg)}100%{transform:translate(3%,2.5%) scale(1.14) rotate(2deg)}}
+@keyframes heroAuroraB{0%{transform:translate(2.5%,1%) scale(1.1) rotate(1.5deg)}100%{transform:translate(-2%,-2.5%) scale(1.02) rotate(-1.5deg)}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none}}
 .hero .container{position:relative;z-index:3;width:100%;max-width:1000px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);font-weight:600;margin-bottom:1.5rem}
 .h1-hero{font-size:clamp(1.85rem,3.2vw,2.8rem);margin-bottom:0;letter-spacing:-.03em;line-height:1.08}
@@ -849,3 +850,6 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .lp-faq details[open] summary::after{content:'–'}
 .lp-faq .a{padding:0 1.4rem 1.3rem;color:var(--muted);font-size:1rem;line-height:1.65}
 .lp-faq-more{text-align:center;margin-top:1.8rem}
+
+/* Trust-Leiste (EEE-Logo) auch auf Mobil zeigen (Leistungsseiten haben kein Hero-Kontaktelement) */
+.trust{display:block !important}
