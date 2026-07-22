@@ -956,3 +956,4 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .calc-sublabel{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-top:.25rem}
 .calc-quote{font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;color:var(--ink-text)}
 .calc-note{color:#6f8697!important;margin-top:2.4rem}
+.calc-cta{text-align:center;margin-top:2.4rem}
