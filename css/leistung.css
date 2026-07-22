@@ -850,6 +850,3 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .lp-faq details[open] summary::after{content:'–'}
 .lp-faq .a{padding:0 1.4rem 1.3rem;color:var(--muted);font-size:1rem;line-height:1.65}
 .lp-faq-more{text-align:center;margin-top:1.8rem}
-
-/* Trust-Leiste (EEE-Logo) auch auf Mobil zeigen (Leistungsseiten haben kein Hero-Kontaktelement) */
-.trust{display:block !important}
