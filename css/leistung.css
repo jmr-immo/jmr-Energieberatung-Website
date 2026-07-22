@@ -850,3 +850,11 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .lp-faq details[open] summary::after{content:'–'}
 .lp-faq .a{padding:0 1.4rem 1.3rem;color:var(--muted);font-size:1rem;line-height:1.65}
 .lp-faq-more{text-align:center;margin-top:1.8rem}
+
+/* Feine Strich-Animation im Hero (dezent, keine Höhenlinien), zusätzlich zur Aurora */
+.hero-lines{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.55;background-image:repeating-linear-gradient(118deg,transparent 0 46px,rgba(31,111,165,.07) 46px 47px);background-size:180% 180%;animation:heroLines 46s linear infinite;-webkit-mask-image:radial-gradient(92% 82% at 50% 42%,#000 0%,transparent 86%);mask-image:radial-gradient(92% 82% at 50% 42%,#000 0%,transparent 86%)}
+@keyframes heroLines{0%{background-position:0 0}100%{background-position:180% 180%}}
+@media(prefers-reduced-motion:reduce){.hero-lines{animation:none}}
+
+/* Hero-Kontaktleiste mobil: sauber randlos bis zur Bildschirmkante (im zentrierten Hero) */
+@media(max-width:560px){.hero .hero-contact{align-self:stretch;width:auto;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:clamp(1.3rem,4vw,3rem);padding-right:clamp(1.3rem,4vw,3rem)}}
