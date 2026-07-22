@@ -1,4 +1,18 @@
-/* Leistungsseiten: Nav-Scroll-Zustand, Fade-Reveal (wie Startseite) und Kontaktformular. */
+/* Leistungsseiten: Nav-Scroll, Fade-Reveal, Vorhaben-Dropdown und Kontaktformular (wie Startseite). */
+var GOAL_DETAILS={
+  'Bestand sanieren':['Dach / oberste Geschossdecke','Fassade','Fenster & Türen','Keller / Kellerdecke','Heizung','Komplettsanierung'],
+  'Kaufen & investieren':['Gewerbe zu Wohnen','Jung kauft Alt','Kaufen & sanieren'],
+  'Neu bauen':['Einfamilienhaus','Mehrfamilienhaus','Bauträger / Projekt']
+};
+function populateDetail(disp){
+  var det=document.getElementById('vorhaben-detail');if(!det)return;
+  if(disp==='Noch unklar'){det.innerHTML='<option selected>Noch unklar</option>';det.disabled=true;return;}
+  var opts=GOAL_DETAILS[disp];
+  if(!opts){det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>';det.disabled=true;return;}
+  det.disabled=false;
+  det.innerHTML='<option value="" disabled selected>Bitte auswählen …</option>'+opts.map(function(o){return '<option value="'+o+'">'+o+'</option>';}).join('');
+}
+
 (function(){
   var nav=document.querySelector('.nav');
   function sc(){ if(nav) nav.classList.toggle('scrolled', window.scrollY>20); }
