@@ -717,3 +717,6 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 @media(max-width:600px){.h1-hero{font-size:clamp(2rem,8vw,2.8rem)}}
 .hero .hero-lead{font-size:clamp(1.1rem,1.7vw,1.32rem);color:var(--muted);max-width:660px;margin:1.7rem auto 2.1rem}
 .hero-act{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:center}
+
+/* Leistungsseiten: Inhalte immer sichtbar (robuster als fragiler Scroll-Reveal) */
+.fade{opacity:1 !important;transform:none !important}
