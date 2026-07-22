@@ -1022,3 +1022,44 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .g6-ico svg{width:24px;height:24px}
 .g6-card b{font-family:var(--disp);font-weight:600;color:var(--ink);font-size:1.05rem}
 .g6-card small{display:block;color:var(--muted);font-size:.85rem;margin-top:.28rem;line-height:1.5}
+
+/* ==== Zusatzbaustein: Split-Vergleich (Energieausweis) ==== */
+.split{background:var(--paper-2)}
+.split-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:clamp(.7rem,2.5vw,1.5rem);max-width:880px;margin:2.6rem auto 0}
+@media(max-width:640px){.split-grid{grid-template-columns:1fr;gap:1rem}.split-mid{transform:rotate(90deg)}}
+.split-col{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.8rem 1.6rem;opacity:0;transition:opacity .6s,transform .6s cubic-bezier(.16,1,.3,1)}
+.split-col.a{transform:translateX(-26px);border-top:3px solid var(--steel)}
+.split-col.b{transform:translateX(26px);border-top:3px solid var(--green)}
+.split-grid.run .split-col{opacity:1;transform:none}
+.split-grid.run .split-col.b{transition-delay:.12s}
+.split-tag{display:inline-block;font-family:var(--disp);font-weight:600;font-size:1.18rem;margin-bottom:1rem}
+.split-col.a .split-tag{color:var(--steel-d)}
+.split-col.b .split-tag{color:var(--green-d)}
+.split-list{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+.split-list li{position:relative;padding-left:1.4rem;color:var(--text);font-size:.94rem;line-height:1.5}
+.split-list li::before{content:'';position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%}
+.split-col.a .split-list li::before{background:var(--steel)}
+.split-col.b .split-list li::before{background:var(--green)}
+.split-list b{color:var(--ink)}
+.split-mid{display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* ==== Zusatzbaustein: Zeitstrahl (iSFP) ==== */
+.tl-sec{background:linear-gradient(150deg,#E7F3EA,var(--paper) 60%)}
+.tl{position:relative;max-width:900px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.tl-track{position:absolute;top:14px;left:9%;right:9%;height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.tl-track i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,var(--green),var(--cyan));transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+.tl.run .tl-track i{width:100%}
+.tl-step{position:relative;text-align:center;padding-top:38px}
+.tl-dot{position:absolute;top:5px;left:50%;transform:translateX(-50%) scale(0);width:20px;height:20px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(31,168,90,.15);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.tl.run .tl-step:nth-child(2) .tl-dot{transition-delay:.2s}
+.tl.run .tl-step:nth-child(3) .tl-dot{transition-delay:.6s}
+.tl.run .tl-step:nth-child(4) .tl-dot{transition-delay:1s}
+.tl.run .tl-dot{transform:translateX(-50%) scale(1)}
+.tl-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.1rem;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s cubic-bezier(.16,1,.3,1)}
+.tl.run .tl-step:nth-child(2) .tl-card{transition-delay:.28s}
+.tl.run .tl-step:nth-child(3) .tl-card{transition-delay:.68s}
+.tl.run .tl-step:nth-child(4) .tl-card{transition-delay:1.08s}
+.tl.run .tl-card{opacity:1;transform:none}
+.tl-year{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-d);margin-bottom:.4rem}
+.tl-card b{font-family:var(--disp);font-weight:600;color:var(--ink);font-size:1rem;line-height:1.3}
+@media(max-width:640px){.tl{grid-template-columns:1fr;gap:1.1rem}.tl-track{top:0;bottom:0;left:9px;right:auto;width:3px;height:auto}.tl-track i{inset:0 0 auto 0;width:100%;height:0;background:linear-gradient(var(--green),var(--cyan));transition:height 1.6s cubic-bezier(.16,1,.3,1)}.tl.run .tl-track i{height:100%}.tl-step{padding-top:0;padding-left:36px;text-align:left}.tl-dot{top:6px;left:0;transform:scale(0)}.tl.run .tl-dot{transform:scale(1)}}
