@@ -918,3 +918,12 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 
 /* Lange Hero-Keywords (Komposita) sauber umbrechen statt ueberlaufen */
 .h1-hero .h1l:first-child{overflow-wrap:break-word;hyphens:auto}
+
+/* Leistungs-Uebersichtsseite: klickbare Karten */
+.lgroup{margin-top:1rem}
+.lcard{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.lcard h3{font-family:var(--disp);font-weight:600;font-size:1.12rem;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.01em}
+.lcard p{color:var(--muted);font-size:.94rem;line-height:1.55;flex:1;margin-bottom:1rem}
+.lcard .ar{color:var(--green-d);font-weight:600;font-size:.9rem;transition:transform .2s;align-self:flex-start}
+.lcard:hover .ar{transform:translateX(4px)}
+.lcard:hover h3{color:var(--green-d)}
