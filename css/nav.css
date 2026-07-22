@@ -1,0 +1,67 @@
+/* Gemeinsame Navigation (Startseite, FAQ, rechtliche Seiten).
+   Identisch zur Nav der Leistungsseiten (in leistung.css). Bei Änderungen beide pflegen. */
+:root{
+  --nav-ink:#0B1C2B; --nav-steel:#1F6FA5; --nav-green:#1FA85A; --nav-green-d:#15813f;
+  --nav-paper:#F4F2EC; --nav-white:#FFFFFF; --nav-muted:#5b6b78; --nav-line:#e2ded2;
+  --nav-disp:'Switzer','Space Grotesk',-apple-system,sans-serif;
+  --nav-sans:'Inter',-apple-system,sans-serif;
+  --nav-mono:'Inter',-apple-system,sans-serif;
+  --nav-shadow:0 24px 60px -28px rgba(11,28,43,.34);
+}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.3rem,4vw,3rem);background:rgba(244,242,236,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.3s}
+.nav.scrolled{border-bottom-color:var(--nav-line);background:rgba(244,242,236,.92)}
+.nav .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.nav .brand .mk{height:30px;width:auto;display:block}
+.nav .brand .nm{font-family:var(--nav-disp);font-weight:600;font-size:1.02rem;color:var(--nav-ink)}
+.nav .brand .nm small{display:block;font-family:var(--nav-mono);font-size:.56rem;letter-spacing:.18em;color:var(--nav-muted);text-transform:uppercase;margin-top:1px;font-weight:500}
+.nlinks{display:flex;align-items:center;gap:.1rem;font-size:.85rem}
+.nlinks > a:not(.btn),.nav-drop-trig{color:var(--nav-muted);padding:.45rem .8rem;border-radius:999px;transition:.2s;font-weight:500;font-family:var(--nav-sans);font-size:.85rem;background:none;border:none;cursor:pointer;text-decoration:none}
+.nlinks > a:not(.btn):hover,.nav-drop-trig:hover{color:var(--nav-steel)}
+.nlinks .btn{margin-left:.6rem}
+.nav-drop{position:relative}
+.nav-drop-trig{display:inline-flex;align-items:center;gap:.35rem}
+.nav-chev{width:12px;height:12px;flex-shrink:0;transition:transform .25s}
+.nav-drop:hover .nav-chev,.nav-drop.open .nav-chev,.nav-drop:focus-within .nav-chev{transform:rotate(180deg)}
+.nav-mega{position:fixed;top:72px;left:50%;background:var(--nav-white);border:1px solid var(--nav-line);border-radius:16px;box-shadow:var(--nav-shadow);padding:1.5rem 1.8rem;display:grid;grid-template-columns:repeat(3,max-content);gap:1.4rem 2.6rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-50%) translateY(-8px);transition:opacity .25s cubic-bezier(.16,1,.3,1),transform .25s cubic-bezier(.16,1,.3,1),visibility .25s;z-index:110}
+.nav-mega::before{content:'';position:absolute;top:-24px;left:0;right:0;height:24px}
+.nav-drop:hover .nav-mega,.nav-drop.open .nav-mega,.nav-drop:focus-within .nav-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-col{display:flex;flex-direction:column;min-width:170px}
+.nav-col-h{font-family:var(--nav-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--nav-muted);font-weight:500;margin-bottom:.55rem;padding:0 .55rem;line-height:1.3}
+.nav-mega .nav-col-h{min-height:2.6em}
+.nlinks .nav-mega a{display:block;color:var(--nav-ink);font-weight:500;font-size:.9rem;padding:.42rem .55rem;border-radius:9px;transition:color .18s,background .18s;white-space:nowrap;text-decoration:none}
+.nlinks .nav-mega a:hover{color:var(--nav-steel);background:rgba(31,111,165,.06)}
+.nav-burger{display:none;position:relative;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;margin-left:.3rem}
+.nav-burger span{position:absolute;left:50%;top:50%;width:24px;height:2px;margin:-1px 0 0 -12px;border-radius:2px;background:var(--nav-ink);transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s}
+.nav-burger span:nth-child(1){transform:translateY(-6.5px)}
+.nav-burger span:nth-child(3){transform:translateY(6.5px)}
+body.nav-open .nav-burger span:nth-child(1){transform:rotate(45deg)}
+body.nav-open .nav-burger span:nth-child(2){opacity:0}
+body.nav-open .nav-burger span:nth-child(3){transform:rotate(-45deg)}
+.mnav{position:fixed;top:66px;left:0;right:0;bottom:0;z-index:99;background:var(--nav-paper);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:1.2rem clamp(1.3rem,4vw,3rem) 2.6rem;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .28s,transform .28s,visibility .28s}
+body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
+.mnav-sec{border-bottom:1px solid var(--nav-line)}
+.mnav-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:52px;background:none;border:none;cursor:pointer;font-family:var(--nav-disp);font-weight:600;font-size:1.12rem;color:var(--nav-ink);padding:.6rem 0}
+.mnav-toggle .nav-chev{width:14px;height:14px}
+.mnav-sec.open .mnav-toggle .nav-chev{transform:rotate(180deg)}
+.mnav-panel{display:none;padding:.1rem 0 1rem}
+.mnav-sec.open .mnav-panel{display:block}
+.mnav-panel .nav-col-h{display:block;margin:1.1rem 0 .3rem;padding:0}
+.mnav-panel .nav-col-h:first-child{margin-top:.3rem}
+.mnav-panel a{display:flex;align-items:center;min-height:44px;color:var(--nav-ink);font-weight:500;font-size:1rem;padding:.3rem 0 .3rem .2rem;transition:color .18s;text-decoration:none}
+.mnav-panel a:hover{color:var(--nav-steel)}
+.mnav-link{display:flex;align-items:center;min-height:52px;font-family:var(--nav-disp);font-weight:600;font-size:1.12rem;color:var(--nav-ink);border-bottom:1px solid var(--nav-line);transition:color .18s;text-decoration:none}
+.mnav-link:hover{color:var(--nav-steel)}
+.mnav-cta{margin-top:1.7rem;width:100%;justify-content:center}
+/* Erstgespräch-Button in der Nav / im Overlay */
+.nav .btn,.mnav .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--nav-sans);font-weight:600;font-size:.92rem;padding:.95rem 1.7rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:background .25s,box-shadow .3s;text-decoration:none}
+.nav .btn-sm{padding:.5rem 1.2rem;font-size:.83rem}
+.nav .btn-green,.mnav .btn-green{background:var(--nav-green);color:#fff !important;box-shadow:0 10px 26px -12px rgba(31,168,90,.6)}
+.nav .btn-green:hover,.mnav .btn-green:hover{background:var(--nav-green-d)}
+
+@media(max-width:860px){
+  .nlinks{display:none}
+  .nav-burger{display:flex}
+}
+@media(min-width:861px){
+  .mnav{display:none}
+}

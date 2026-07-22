@@ -776,21 +776,85 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .klar-card h4{font-family:var(--disp);font-weight:600;font-size:1.05rem;margin-bottom:.45rem}
 .klar-card p{color:var(--muted);font-size:.9rem;line-height:1.55}
 </style>
+<link rel="stylesheet" href="/css/nav.css?v=20260722l">
 </head>
 <body>
 
 <div class="prog"><div class="prog-b" id="pb"></div></div>
 
 <nav class="nav" id="nav">
-  <a href="#top" class="brand"><img class="mk" src="img/logo-blue.png" alt="jmr Energieberatung"><span class="nm">jmr Energieberatung<small>Saarbrücken</small></span></a>
+  <a href="/" class="brand"><img class="mk" src="/img/logo-blue.png" alt="jmr Energieberatung"><span class="nm">jmr Energieberatung<small>Saarbrücken</small></span></a>
   <div class="nlinks">
-    <a href="#leistungen">Leistungen</a>
+    <div class="nav-drop" data-nav-drop>
+      <a href="/leistungen" class="nav-drop-trig" aria-haspopup="true" aria-expanded="false">Leistungen <svg class="nav-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></a>
+      <div class="nav-mega">
+        <div class="nav-col">
+          <span class="nav-col-h">Beratung &amp; Planung</span>
+          <a href="/energieberatung/">Energieberatung</a>
+          <a href="/isfp-sanierungsfahrplan/">Sanierungsfahrplan (iSFP)</a>
+          <a href="/foerdermittelberatung/">Fördermittelberatung</a>
+          <a href="/baubegleitung/">Energetische Baubegleitung</a>
+          <a href="/oekobilanz-lca-neubau/">Ökobilanz (LCA)</a>
+          <a href="/energetische-kaufberatung/">Energetische Kaufberatung</a>
+        </div>
+        <div class="nav-col">
+          <span class="nav-col-h">Förderprogramme</span>
+          <a href="/beg-einzelmassnahmen/">BEG Einzelmaßnahmen</a>
+          <a href="/beg-wohngebaeude/">BEG Wohngebäude</a>
+          <a href="/heizungsfoerderung-kfw-458/">Heizungsförderung (KfW 458)</a>
+          <a href="/jung-kauft-alt-kfw-308/">Jung kauft Alt (KfW 308)</a>
+          <a href="/gewerbe-zu-wohnen-kfw-266/">Gewerbe zu Wohnen (KfW 266)</a>
+        </div>
+        <div class="nav-col">
+          <span class="nav-col-h">Nachweise &amp; Berechnungen</span>
+          <a href="/energieausweis/">Energieausweis</a>
+          <a href="/geg-nachweis-waermeschutz/">GEG-Nachweis / Wärmeschutz</a>
+          <a href="/waermebrueckenberechnung/">Wärmebrückenberechnung</a>
+          <a href="/heizlastberechnung/">Heizlastberechnung</a>
+          <a href="/kuehllastberechnung/">Kühllastberechnung</a>
+        </div>
+      </div>
+    </div>
     <a href="#einsteiger">Warum Energieberatung</a>
     <a href="#wegweiser">Förder-Check</a>
     <a href="#team">Über uns</a>
     <a href="#kontakt" class="btn btn-green btn-sm">Erstgespräch</a>
   </div>
+  <button type="button" class="nav-burger" aria-label="Menü" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mnav" id="mobileMenu">
+  <div class="mnav-sec">
+    <button type="button" class="mnav-toggle" aria-expanded="false">Leistungen <svg class="nav-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></button>
+    <div class="mnav-panel">
+      <span class="nav-col-h">Beratung &amp; Planung</span>
+      <a href="/energieberatung/">Energieberatung</a>
+      <a href="/isfp-sanierungsfahrplan/">Sanierungsfahrplan (iSFP)</a>
+      <a href="/foerdermittelberatung/">Fördermittelberatung</a>
+      <a href="/baubegleitung/">Energetische Baubegleitung</a>
+      <a href="/oekobilanz-lca-neubau/">Ökobilanz (LCA)</a>
+      <a href="/energetische-kaufberatung/">Energetische Kaufberatung</a>
+      <span class="nav-col-h">Förderprogramme</span>
+      <a href="/beg-einzelmassnahmen/">BEG Einzelmaßnahmen</a>
+      <a href="/beg-wohngebaeude/">BEG Wohngebäude</a>
+      <a href="/heizungsfoerderung-kfw-458/">Heizungsförderung (KfW 458)</a>
+      <a href="/jung-kauft-alt-kfw-308/">Jung kauft Alt (KfW 308)</a>
+      <a href="/gewerbe-zu-wohnen-kfw-266/">Gewerbe zu Wohnen (KfW 266)</a>
+      <span class="nav-col-h">Nachweise &amp; Berechnungen</span>
+      <a href="/energieausweis/">Energieausweis</a>
+      <a href="/geg-nachweis-waermeschutz/">GEG-Nachweis / Wärmeschutz</a>
+      <a href="/waermebrueckenberechnung/">Wärmebrückenberechnung</a>
+      <a href="/heizlastberechnung/">Heizlastberechnung</a>
+      <a href="/kuehllastberechnung/">Kühllastberechnung</a>
+    </div>
+  </div>
+  <a class="mnav-link" href="#einsteiger">Warum Energieberatung</a>
+  <a class="mnav-link" href="#wegweiser">Förder-Check</a>
+  <a class="mnav-link" href="#team">Über uns</a>
+  <a class="mnav-cta btn btn-green" href="#kontakt">Erstgespräch</a>
+</div>
+
 
 <!-- HERO -->
 <header class="hero" id="top">
@@ -1521,7 +1585,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
   <div class="container">
     <div class="ftop">
       <div class="bn"><img class="flogo" src="img/logo-white.png" alt="jmr Energieberatung">jmr Energieberatung<small>Energieberater in Saarbrücken & Saarland · Förderung · Baubegleitung</small></div>
-      <div class="fnav"><a href="#leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="faq.html">FAQ</a><a href="#kontakt">Erstgespräch</a></div>
+      <div class="fnav"><a href="/leistungen">Leistungen</a><a href="#einsteiger">Warum Energieberatung</a><a href="#wegweiser">Förder-Check</a><a href="#team">Über uns</a><a href="faq.html">FAQ</a><a href="#kontakt">Erstgespräch</a></div>
     </div>
     <div class="fbot"><span>© 2026 jmr Energieberatung · Marquart Consulting GmbH · Saarbrücken</span><span><a href="impressum.html" target="_blank" rel="noopener" style="color:inherit">Impressum</a> · <a href="datenschutz.html" target="_blank" rel="noopener" style="color:inherit">Datenschutz</a></span></div>
   </div>
@@ -2053,5 +2117,6 @@ populateDetail(document.getElementById('vorhaben').value);
   });
 })();
 </script>
+<script src="/js/nav.js?v=20260722l" defer></script>
 </body>
 </html>
