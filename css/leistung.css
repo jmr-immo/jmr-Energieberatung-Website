@@ -915,3 +915,6 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .lp-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:.4rem}
 @media(max-width:720px){.lp-duo{grid-template-columns:1fr}}
 .lp-hint{text-align:center;color:var(--muted);max-width:760px;margin:1.6rem auto 0;font-size:.98rem}
+
+/* Lange Hero-Keywords (Komposita) sauber umbrechen statt ueberlaufen */
+.h1-hero .h1l:first-child{overflow-wrap:break-word;hyphens:auto}
