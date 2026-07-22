@@ -835,3 +835,13 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .pak-list li{position:relative;padding-left:1.5rem;font-size:.95rem;color:var(--text);line-height:1.45}
 .pak-list li::before{content:'';position:absolute;left:0;top:.45em;width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(31,168,90,.18)}
 .pak-cta{margin-top:auto;justify-content:center;width:100%}
+
+/* ==== FAQ-Anriss auf Leistungsseiten ==== */
+.lp-faq{max-width:820px;margin:0 auto;display:grid;gap:.8rem}
+.lp-faq details{background:var(--white);border:1px solid var(--line);border-radius:14px}
+.lp-faq summary{cursor:pointer;list-style:none;padding:1.15rem 1.4rem;font-family:var(--disp);font-weight:600;font-size:1.06rem;color:var(--ink);display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.lp-faq summary::-webkit-details-marker{display:none}
+.lp-faq summary::after{content:'+';color:var(--steel);font-weight:400;font-size:1.4rem;line-height:1}
+.lp-faq details[open] summary::after{content:'–'}
+.lp-faq .a{padding:0 1.4rem 1.3rem;color:var(--muted);font-size:1rem;line-height:1.65}
+.lp-faq-more{text-align:center;margin-top:1.8rem}
