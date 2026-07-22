@@ -41,6 +41,21 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://jmr-energieberatung.de/isfp-sanierungsfahrplan/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jmr-energieberatung.de/baubegleitung/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jmr-energieberatung.de/oekobilanz-lca-neubau/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://jmr-energieberatung.de/faq.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
