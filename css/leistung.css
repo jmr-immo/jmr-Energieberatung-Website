@@ -1063,3 +1063,11 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .tl-year{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-d);margin-bottom:.4rem}
 .tl-card b{font-family:var(--disp);font-weight:600;color:var(--ink);font-size:1rem;line-height:1.3}
 @media(max-width:640px){.tl{grid-template-columns:1fr;gap:1.1rem}.tl-track{top:0;bottom:0;left:9px;right:auto;width:3px;height:auto}.tl-track i{inset:0 0 auto 0;width:100%;height:0;background:linear-gradient(var(--green),var(--cyan));transition:height 1.6s cubic-bezier(.16,1,.3,1)}.tl.run .tl-track i{height:100%}.tl-step{padding-top:0;padding-left:36px;text-align:left}.tl-dot{top:6px;left:0;transform:scale(0)}.tl.run .tl-dot{transform:scale(1)}}
+
+/* Gut lesbares "Rechenbeispiel"-Label direkt an der Rechnung */
+.ex-flag{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.02em;padding:.4rem .9rem;border-radius:999px;background:rgba(31,168,90,.12);color:var(--green-d);border:1px solid rgba(31,168,90,.28)}
+.ex-flag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+.calc .ex-flag{background:rgba(91,208,224,.14);color:#8fe3ef;border-color:rgba(91,208,224,.32)}
+.calc .ex-flag::before{background:var(--cyan)}
+.ex-flag-wrap{text-align:center;margin:0 0 1.6rem}
+.sumup-card .ex-flag{margin-bottom:1.1rem}
