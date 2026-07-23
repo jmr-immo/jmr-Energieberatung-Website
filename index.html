@@ -776,7 +776,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .klar-card h4{font-family:var(--disp);font-weight:600;font-size:1.05rem;margin-bottom:.45rem}
 .klar-card p{color:var(--muted);font-size:.9rem;line-height:1.55}
 </style>
-<link rel="stylesheet" href="/css/nav.css?v=20260723a">
+<link rel="stylesheet" href="/css/nav.css?v=20260723c">
 </head>
 <body>
 
@@ -807,10 +807,18 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
         </div>
         <div class="nav-col">
           <span class="nav-col-h">Nachweise &amp; Berechnungen</span>
+          <div class="nav-acc">
+            <button type="button" class="nav-acc-toggle" aria-expanded="false"><span class="nav-subgroup-h">Heizung &amp; Wärmepumpe</span><svg class="nav-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></button>
+            <div class="nav-acc-panel">
+              <a class="nav-sub" href="/heizlastberechnung/">Heizlastberechnung</a>
+              <a class="nav-sub" href="/hydraulischer-abgleich/">Hydraulischer Abgleich</a>
+              <a class="nav-sub" href="/heizflaechenauslegung/">Heizflächenauslegung</a>
+              <a class="nav-sub" href="/waermepumpendimensionierung/">Wärmepumpendimensionierung</a>
+            </div>
+          </div>
           <a href="/energieausweis/">Energieausweis</a>
           <a href="/geg-nachweis-waermeschutz/">GEG-Nachweis / Wärmeschutz</a>
           <a href="/waermebrueckenberechnung/">Wärmebrückenberechnung</a>
-          <a href="/heizlastberechnung/">Heizlastberechnung</a>
           <a href="/kuehllastberechnung/">Kühllastberechnung</a>
         </div>
       </div>
@@ -842,10 +850,18 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
       <a href="/jung-kauft-alt-kfw-308/">Jung kauft Alt (KfW 308)</a>
       <a href="/gewerbe-zu-wohnen-kfw-266/">Gewerbe zu Wohnen (KfW 266)</a>
       <span class="nav-col-h">Nachweise &amp; Berechnungen</span>
+      <div class="nav-acc">
+        <button type="button" class="nav-acc-toggle" aria-expanded="false"><span class="nav-subgroup-h">Heizung &amp; Wärmepumpe</span><svg class="nav-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></button>
+        <div class="nav-acc-panel">
+          <a class="nav-sub" href="/heizlastberechnung/">Heizlastberechnung</a>
+          <a class="nav-sub" href="/hydraulischer-abgleich/">Hydraulischer Abgleich</a>
+          <a class="nav-sub" href="/heizflaechenauslegung/">Heizflächenauslegung</a>
+          <a class="nav-sub" href="/waermepumpendimensionierung/">Wärmepumpendimensionierung</a>
+        </div>
+      </div>
       <a href="/energieausweis/">Energieausweis</a>
       <a href="/geg-nachweis-waermeschutz/">GEG-Nachweis / Wärmeschutz</a>
       <a href="/waermebrueckenberechnung/">Wärmebrückenberechnung</a>
-      <a href="/heizlastberechnung/">Heizlastberechnung</a>
       <a href="/kuehllastberechnung/">Kühllastberechnung</a>
     </div>
   </div>
@@ -2117,6 +2133,6 @@ populateDetail(document.getElementById('vorhaben').value);
   });
 })();
 </script>
-<script src="/js/nav.js?v=20260722l" defer></script>
+<script src="/js/nav.js?v=20260723c" defer></script>
 </body>
 </html>

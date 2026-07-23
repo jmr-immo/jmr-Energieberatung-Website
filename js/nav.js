@@ -58,3 +58,27 @@
     }
   });
 })();
+/* Nav: Untergruppe "Heizung & Wärmepumpe" aufklappbar + aktive Leistungsseite markieren */
+(function(){
+  document.querySelectorAll('.nav-acc-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      var acc=btn.closest('.nav-acc');
+      var open=acc.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open?'true':'false');
+    });
+  });
+  var path=location.pathname.replace(/index\.html$/,'');
+  if(path.charAt(path.length-1)!=='/') path+='/';
+  document.querySelectorAll('.nav-mega a, .mnav-panel a').forEach(function(a){
+    var href=a.getAttribute('href')||'';
+    if(href.length>1 && href.charAt(0)==='/'){
+      var hp=href.replace(/index\.html$/,''); if(hp.charAt(hp.length-1)!=='/') hp+='/';
+      if(hp===path){
+        a.classList.add('active'); a.setAttribute('aria-current','page');
+        var acc=a.closest('.nav-acc');
+        if(acc){ acc.classList.add('open'); var t=acc.querySelector('.nav-acc-toggle'); if(t) t.setAttribute('aria-expanded','true'); }
+      }
+    }
+  });
+})();

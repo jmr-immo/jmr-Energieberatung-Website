@@ -28,6 +28,19 @@
 .nav-col{display:flex;flex-direction:column;min-width:170px}
 .nav-col-h{font-family:var(--nav-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--nav-steel);font-weight:700;margin-bottom:.55rem;padding:0 .55rem;line-height:1.3}
 .nav-mega .nav-col-h{min-height:2.6em}
+.nav-subgroup-h{display:block;font-family:var(--nav-sans);font-size:.9rem;color:var(--nav-ink);font-weight:500;margin:.5rem 0 .12rem;padding:0 .55rem}
+.nlinks .nav-mega a.nav-sub{padding-left:1.5rem;font-size:.82rem}
+.mnav-panel .nav-subgroup-h{font-size:1rem;margin:.6rem 0 .1rem;padding:0}
+.mnav-panel a.nav-sub{padding-left:1.15rem;font-size:.9rem}
+.nav-acc-toggle{display:flex;align-items:center;gap:.5rem;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;color:inherit}
+.nav-acc-toggle .nav-subgroup-h{margin:0;padding:0;flex:1}
+.nav-acc-toggle .nav-chev{width:10px;height:10px;color:var(--nav-muted);flex:none;transition:transform .2s}
+.nav-acc.open .nav-acc-toggle .nav-chev{transform:rotate(180deg)}
+.nav-acc-panel{display:none}
+.nav-acc.open .nav-acc-panel{display:block}
+.nav-mega .nav-acc-toggle{margin:.5rem 0 .12rem;padding:.1rem .55rem}
+.mnav-panel .nav-acc-toggle{margin:.5rem 0 .1rem;min-height:44px}
+.nlinks .nav-mega a.active,.mnav-panel a.active{color:var(--nav-steel);font-weight:700}
 .nlinks .nav-mega a{display:block;color:var(--nav-ink);font-weight:500;font-size:.9rem;padding:.42rem .55rem;border-radius:9px;transition:color .18s,background .18s;white-space:nowrap;text-decoration:none}
 .nlinks .nav-mega a:hover{color:var(--nav-steel);background:rgba(31,111,165,.06)}
 .nav-burger{display:none;position:relative;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;margin-left:.3rem}

@@ -30,6 +30,9 @@ Nachweise & Berechnungen:
 - [GEG-Nachweis / Wärmeschutz](https://jmr-energieberatung.de/geg-nachweis-waermeschutz/): Nachweis der GEG-Anforderungen.
 - [Wärmebrückenberechnung](https://jmr-energieberatung.de/waermebrueckenberechnung/): Psi-Werte, Nachweis für die Förderung.
 - [Heizlastberechnung](https://jmr-energieberatung.de/heizlastberechnung/): Norm-Heizlast nach DIN EN 12831.
+- [Hydraulischer Abgleich](https://jmr-energieberatung.de/hydraulischer-abgleich/): rechnerisch nach VdZ-Verfahren B, Voraussetzung für Förderung und Wärmepumpe.
+- [Heizflächenauslegung](https://jmr-energieberatung.de/heizflaechenauslegung/): Heizkörper und Flächen für niedrige Vorlauftemperaturen auslegen.
+- [Wärmepumpendimensionierung](https://jmr-energieberatung.de/waermepumpendimensionierung/): Wärmepumpe passgenau auf Heizlast und Warmwasser auslegen.
 - [Kühllastberechnung](https://jmr-energieberatung.de/kuehllastberechnung/): Kühllast nach VDI 2078.
 
 ## Leistungen
