@@ -79,7 +79,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 .nav-mega::before{content:'';position:absolute;top:-24px;left:0;right:0;height:24px}
 .nav-drop:hover .nav-mega,.nav-drop.open .nav-mega,.nav-drop:focus-within .nav-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .nav-col{display:flex;flex-direction:column;min-width:170px}
-.nav-col-h{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.55rem;padding:0 .55rem;line-height:1.3}
+.nav-col-h{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:700;margin-bottom:.55rem;padding:0 .55rem;line-height:1.3}
 .nav-mega .nav-col-h{min-height:2.6em}
 .nlinks .nav-mega a{display:block;color:var(--ink);font-weight:500;font-size:.9rem;padding:.42rem .55rem;border-radius:9px;transition:color .18s,background .18s;white-space:nowrap}
 .nlinks .nav-mega a:hover{color:var(--steel);background:rgba(31,111,165,.06)}
