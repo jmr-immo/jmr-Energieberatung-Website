@@ -21,7 +21,7 @@
 .nav-drop{position:relative}
 .nav-drop-trig{display:inline-flex;align-items:center;gap:.35rem}
 .nav-chev{width:12px;height:12px;flex-shrink:0;transition:transform .25s}
-.nav-drop:hover .nav-chev,.nav-drop.open .nav-chev,.nav-drop:focus-within .nav-chev{transform:rotate(180deg)}
+.nav-drop:hover .nav-drop-trig .nav-chev,.nav-drop.open .nav-drop-trig .nav-chev,.nav-drop:focus-within .nav-drop-trig .nav-chev{transform:rotate(180deg)}
 .nav-mega{position:fixed;top:72px;left:50%;background:var(--nav-white);border:1px solid var(--nav-line);border-radius:16px;box-shadow:var(--nav-shadow);padding:1.5rem 1.8rem;display:grid;grid-template-columns:repeat(3,max-content);gap:1.4rem 2.6rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-50%) translateY(-8px);transition:opacity .25s cubic-bezier(.16,1,.3,1),transform .25s cubic-bezier(.16,1,.3,1),visibility .25s;z-index:110}
 .nav-mega::before{content:'';position:absolute;top:-24px;left:0;right:0;height:24px}
 .nav-drop:hover .nav-mega,.nav-drop.open .nav-mega,.nav-drop:focus-within .nav-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
@@ -34,12 +34,12 @@
 .mnav-panel a.nav-sub{padding-left:1.15rem;font-size:.9rem}
 .nav-acc-toggle{display:flex;align-items:center;gap:.5rem;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;color:inherit}
 .nav-acc-toggle .nav-subgroup-h{margin:0;padding:0;flex:1}
-.nav-acc-toggle .nav-chev{width:10px;height:10px;color:var(--nav-muted);flex:none;transition:transform .2s}
-.nav-acc.open .nav-acc-toggle .nav-chev{transform:rotate(180deg)}
+.nav-acc-toggle .nav-chev{width:10px;height:10px;color:var(--nav-muted);flex:none;transform:rotate(-90deg);transition:transform .2s}
+.nav-acc.open .nav-acc-toggle .nav-chev{transform:rotate(0deg)}
 .nav-acc-panel{display:none}
 .nav-acc.open .nav-acc-panel{display:block}
-.nav-mega .nav-acc-toggle{margin:.5rem 0 .12rem;padding:.1rem .55rem}
-.mnav-panel .nav-acc-toggle{margin:.5rem 0 .1rem;min-height:44px}
+.nav-mega .nav-acc-toggle{margin:0;padding:.42rem .55rem}
+.mnav-panel .nav-acc-toggle{margin:0;min-height:44px;padding:.3rem 0 .3rem .2rem}
 .nlinks .nav-mega a.active,.mnav-panel a.active{color:var(--nav-steel);font-weight:700}
 .nlinks .nav-mega a{display:block;color:var(--nav-ink);font-weight:500;font-size:.9rem;padding:.42rem .55rem;border-radius:9px;transition:color .18s,background .18s;white-space:nowrap;text-decoration:none}
 .nlinks .nav-mega a:hover{color:var(--nav-steel);background:rgba(31,111,165,.06)}
