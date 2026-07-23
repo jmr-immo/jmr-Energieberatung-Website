@@ -5,7 +5,32 @@
 ## Wichtige Seiten
 
 - [Startseite](https://jmr-energieberatung.de/): Leistungen, Förder-Check und Kontakt.
+- [Leistungen (Übersicht)](https://jmr-energieberatung.de/leistungen/): alle Leistungen in drei Gruppen.
 - [Häufige Fragen (FAQ)](https://jmr-energieberatung.de/faq.html): Antworten zu Förderung, iSFP, Heizungstausch, Baubegleitung und zur Wahl eines guten, unabhängigen Energieberaters.
+
+## Leistungsseiten
+
+Beratung & Planung:
+- [Energieberatung](https://jmr-energieberatung.de/energieberatung/): unabhängige Analyse mit klarer Empfehlung.
+- [Sanierungsfahrplan (iSFP)](https://jmr-energieberatung.de/isfp-sanierungsfahrplan/): geförderter Schritt-für-Schritt-Plan.
+- [Fördermittelberatung](https://jmr-energieberatung.de/foerdermittelberatung/): passende KfW-/BAFA-Förderung, Antrag und Abwicklung.
+- [Energetische Baubegleitung](https://jmr-energieberatung.de/baubegleitung/): förderkonforme Begleitung bis zur Abnahme.
+- [Ökobilanz (LCA)](https://jmr-energieberatung.de/oekobilanz-lca-neubau/): Lebenszyklusanalyse für KFN und QNG.
+- [Energetische Kaufberatung](https://jmr-energieberatung.de/energetische-kaufberatung/): Zustand und Sanierungskosten vor dem Kauf.
+
+Förderprogramme:
+- [BEG Einzelmaßnahmen](https://jmr-energieberatung.de/beg-einzelmassnahmen/): BAFA-Zuschuss für einzelne Sanierungsschritte.
+- [BEG Wohngebäude](https://jmr-energieberatung.de/beg-wohngebaeude/): KfW-Kredit 261 mit Tilgungszuschuss zum Effizienzhaus.
+- [Heizungsförderung (KfW 458)](https://jmr-energieberatung.de/heizungsfoerderung-kfw-458/): bis zu 70 % für die neue Heizung.
+- [Jung kauft Alt (KfW 308)](https://jmr-energieberatung.de/jung-kauft-alt-kfw-308/): zinsverbilligter Kredit für Familien.
+- [Gewerbe zu Wohnen (KfW 266)](https://jmr-energieberatung.de/gewerbe-zu-wohnen-kfw-266/): 30 % Zuschuss für die Umnutzung.
+
+Nachweise & Berechnungen:
+- [Energieausweis](https://jmr-energieberatung.de/energieausweis/): Bedarfs- oder Verbrauchsausweis, amtlich registriert.
+- [GEG-Nachweis / Wärmeschutz](https://jmr-energieberatung.de/geg-nachweis-waermeschutz/): Nachweis der GEG-Anforderungen.
+- [Wärmebrückenberechnung](https://jmr-energieberatung.de/waermebrueckenberechnung/): Psi-Werte, Nachweis für die Förderung.
+- [Heizlastberechnung](https://jmr-energieberatung.de/heizlastberechnung/): Norm-Heizlast nach DIN EN 12831.
+- [Kühllastberechnung](https://jmr-energieberatung.de/kuehllastberechnung/): Kühllast nach VDI 2078.
 
 ## Leistungen
 
