@@ -201,3 +201,25 @@ function populateDetail(disp){
     }
   });
 })();
+
+/* Telefon-Klick: Google-Ads-Conversion + GA4-Event (wie auf der Startseite).
+   Greift für alle tel:-Links der Leistungsseiten. Feuert nur bei Marketing-Einwilligung. */
+(function(){
+  var AW_TEL='AW-18244917669/8rLHCIeUs8gcEKWz7ftD';
+  function stelle(el){
+    if(el.closest('.nav,.mnav')) return 'nav';
+    if(el.closest('footer,.foot')) return 'footer';
+    if(el.closest('#kontakt')) return 'kontakt';
+    return 'seite';
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if(!el) return;
+    if(window.jmrTrackEvent){ window.jmrTrackEvent('klick_telefon',{stelle:stelle(el)}); }
+    var st=null;
+    try{ st=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null'); }catch(x){}
+    if(st && st.marketing && typeof window.gtag==='function'){
+      window.gtag('event','conversion',{'send_to':AW_TEL});
+    }
+  });
+})();
