@@ -182,7 +182,7 @@
       '<div class="jmrc-bar">' +
         '<div class="jmrc-bar-text">' +
           '<span class="jmrc-lead">Datenschutz-Einstellungen</span>' +
-          '<p class="jmrc-text">Wir verwenden Cookies und ähnliche Technologien. Einige sind für den Betrieb der Website nötig, andere nutzen wir nur mit Ihrer Einwilligung, etwa um die Wirksamkeit unserer Werbung zu messen. Mehr dazu in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>' +
+          '<p class="jmrc-text">Für den reinen Betrieb dieser Website setzen wir keine Cookies. Mit Ihrer Einwilligung sehen wir zusätzlich, welche Inhalte wirklich weiterhelfen (Statistik) und ob unsere Anzeigen ankommen (Marketing) – so können wir die Seite für Sie verbessern. Ihre Auswahl können Sie jederzeit ändern. Details in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>' +
         '</div>' +
         '<div class="jmrc-actions">' +
           '<button type="button" id="jmrc-settings" class="jmrc-link">Einstellungen anpassen</button>' +
