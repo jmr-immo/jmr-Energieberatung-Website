@@ -178,11 +178,12 @@
     bar.id = 'jmr-consent';
     bar.setAttribute('role', 'dialog');
     bar.setAttribute('aria-label', 'Datenschutz-Einstellungen');
+    bar.setAttribute('aria-modal', 'true');
     bar.innerHTML =
       '<div class="jmrc-bar">' +
         '<div class="jmrc-bar-text">' +
           '<span class="jmrc-lead">Datenschutz-Einstellungen</span>' +
-          '<p class="jmrc-text">Für den reinen Betrieb dieser Website setzen wir keine Cookies. Mit Ihrer Einwilligung sehen wir zusätzlich, welche Inhalte wirklich weiterhelfen (Statistik) und ob unsere Anzeigen ankommen (Marketing) – so können wir die Seite für Sie verbessern. Ihre Auswahl können Sie jederzeit ändern. Details in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>' +
+          '<p class="jmrc-text">Damit wir diese Website für Sie verbessern können, würden wir gern sehen, welche Inhalte wirklich weiterhelfen (Statistik) und ob unsere Anzeigen ankommen (Marketing). Dafür brauchen wir Ihre Einwilligung. Ihre Auswahl können Sie jederzeit ändern. Details in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>' +
         '</div>' +
         '<div class="jmrc-actions">' +
           '<button type="button" id="jmrc-settings" class="jmrc-link">Einstellungen anpassen</button>' +
@@ -196,7 +197,15 @@
     bar.querySelector('#jmrc-deny').addEventListener('click', denyAll);
     bar.querySelector('#jmrc-settings').addEventListener('click', openSettings);
   }
-  function showBanner() { buildBanner(); bannerEl.style.display = 'block'; }
+  function lockScroll() { document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden'; }
+  function unlockScroll() { document.documentElement.style.overflow = ''; document.body.style.overflow = ''; }
+  function showBanner() {
+    buildBanner();
+    bannerEl.style.display = 'block';
+    lockScroll();
+    var card = bannerEl.querySelector('.jmrc-bar');
+    if (card) { card.setAttribute('tabindex', '-1'); try { card.focus({ preventScroll: true }); } catch (e) { card.focus(); } }
+  }
   function hideBanner() { if (bannerEl) { bannerEl.style.display = 'none'; } }
 
   // ===== UI: Ebene 2 – Einstellungs-Fenster =====
@@ -244,9 +253,9 @@
     ov.querySelector('#jmrc-m-deny').addEventListener('click', denyAll);
     ov.querySelector('#jmrc-m-save').addEventListener('click', saveSelection);
   }
-  function openSettings() { hideBanner(); buildModal(); modalEl.style.display = 'flex'; }
-  function hideModal() { if (modalEl) { modalEl.style.display = 'none'; } }
-  function hideAll() { hideBanner(); hideModal(); }
+  function openSettings() { hideBanner(); buildModal(); modalEl.style.display = 'flex'; lockScroll(); }
+  function hideModal() { if (modalEl) { modalEl.style.display = 'none'; } unlockScroll(); }
+  function hideAll() { hideBanner(); hideModal(); unlockScroll(); }
 
   // Öffentliche API (z. B. "Cookie-Einstellungen ändern" in der Datenschutzerklärung)
   window.jmrConsent = { open: openSettings, acceptAll: acceptAll, denyAll: denyAll };
@@ -256,13 +265,15 @@
     if (document.getElementById('jmr-consent-css')) { return; }
     var css = '' +
       // Leiste unten (Ebene 1)
-      '#jmr-consent{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:none;background:#F4F2EC;border-top:1px solid #e2ded2;box-shadow:0 -12px 40px -18px rgba(11,28,43,.35);font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif}' +
-      '#jmr-consent .jmrc-bar{max-width:1120px;margin:0 auto;padding:1rem 1.25rem;display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap}' +
-      '#jmr-consent .jmrc-bar-text{flex:1 1 340px;min-width:240px}' +
-      '#jmr-consent .jmrc-lead{display:block;font-family:"Switzer","Space Grotesk",-apple-system,sans-serif;font-weight:600;letter-spacing:-.025em;font-size:.98rem;color:#0B1C2B;margin-bottom:.15rem}' +
-      '#jmr-consent .jmrc-text{font-size:.82rem;line-height:1.5;color:#33424e;margin:0}' +
+      '#jmr-consent{position:fixed;inset:0;z-index:9999;display:none;background:rgba(11,28,43,.55);padding:1rem;overflow:auto;font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif}' +
+      '#jmr-consent .jmrc-bar{max-width:500px;width:100%;margin:10vh auto;background:#F4F2EC;border:1px solid #e2ded2;border-radius:18px;padding:1.6rem;box-shadow:0 24px 70px -20px rgba(11,28,43,.6);outline:none}' +
+      '#jmr-consent .jmrc-bar-text{margin-bottom:1.3rem}' +
+      '#jmr-consent .jmrc-lead{display:block;font-family:"Switzer","Space Grotesk",-apple-system,sans-serif;font-weight:600;letter-spacing:-.025em;font-size:1.14rem;color:#0B1C2B;margin-bottom:.5rem}' +
+      '#jmr-consent .jmrc-text{font-size:.86rem;line-height:1.55;color:#33424e;margin:0}' +
       '#jmr-consent .jmrc-text a{color:#16527c;text-decoration:underline}' +
-      '#jmr-consent .jmrc-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}' +
+      '#jmr-consent .jmrc-actions{display:flex;flex-direction:column;align-items:stretch;gap:.55rem}' +
+      '#jmr-consent .jmrc-actions .jmrc-btn{width:100%;padding:.78rem 1.25rem;font-size:.9rem}' +
+      '#jmr-consent #jmrc-accept{order:1}#jmr-consent #jmrc-deny{order:2}#jmr-consent #jmrc-settings{order:3;margin-top:.15rem}' +
       // Fenster (Ebene 2)
       '#jmr-consent-modal{position:fixed;inset:0;z-index:10000;display:none;background:rgba(11,28,43,.55);padding:1rem;overflow:auto;font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif}' +
       '#jmr-consent-modal .jmrc-modal{max-width:540px;width:100%;margin:6vh auto;background:#F4F2EC;color:#0B1C2B;border:1px solid #e2ded2;border-radius:18px;padding:1.5rem;box-shadow:0 24px 70px -20px rgba(11,28,43,.6)}' +
@@ -293,7 +304,7 @@
       '.jmrc-link{background:none;border:none;cursor:pointer;font-family:inherit;font-size:.82rem;color:#5b6b78;text-decoration:underline;padding:.4rem .3rem}' +
       '.jmrc-link:hover{color:#16527c}' +
       // Mobil
-      '@media(max-width:760px){#jmr-consent .jmrc-bar{gap:.9rem}#jmr-consent .jmrc-actions{width:100%}#jmr-consent .jmrc-btn{flex:1 1 auto}#jmr-consent .jmrc-link{order:3;width:100%;text-align:center}}' +
+      '@media(max-width:760px){#jmr-consent{padding:.75rem}#jmr-consent .jmrc-bar{margin:5vh auto;padding:1.3rem}}' +
       '@media(max-width:520px){#jmr-consent-modal .jmrc-btns-modal .jmrc-btn{flex:1 1 auto}}';
     var st = document.createElement('style');
     st.id = 'jmr-consent-css';
