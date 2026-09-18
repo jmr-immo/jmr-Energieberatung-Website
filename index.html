@@ -1915,8 +1915,8 @@ const WZ={
 /* Schätz-Rechner: grobe Spannen aus Wiki (KfW 458 / BAFA BEG EM / KfW 261) */
 const MEASURES={
   heizung:{satzMin:30,satzMax:80,we:true,note:'Heizungsförderung (KfW 458): 30 % Grundförderung, mit Boni (Klimageschwindigkeit 16 %, Einkommensbonus 40, 30 oder 10 % je nach Haushaltseinkommen) bis 70 %. Für selbstnutzende Eigentümer mit einem zu versteuernden Haushaltseinkommen bis 30.000 € liegt die Obergrenze bei 80 %. Familien mit mindestens einem Kind unter 18 rechnen über den Familienzuschlag 10.000 € vom Einkommen ab, die Grenze liegt dann bei 40.000 €. Förderfähig bis 28.000 € für die 1. Wohneinheit (weitere gestaffelt).',caps:we=>{const c=28000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c,maxZ:c*0.8};}},
-  daemmung:{satzMin:15,satzMax:15,we:true,note:'BAFA-Einzelmaßnahme an der Gebäudehülle (Dämmung): 15 % Zuschuss. Ein iSFP bringt weitere 5 Prozentpunkte, allerdings erst ab 30.000 € Investition und nur auf den übersteigenden Betrag. Förderfähig bis 30.000 € für die 1. Wohneinheit, je 15.000 € für die 2. bis 6. und je 8.000 € ab der 7. Wohneinheit (mit iSFP verdoppeln sich diese Grenzen).',caps:we=>{const c=30000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c};}},
-  fenster:{satzMin:15,satzMax:15,we:true,note:'BAFA-Einzelmaßnahme (Fenster/Außentüren): 15 % Zuschuss. Ein iSFP bringt weitere 5 Prozentpunkte, allerdings erst ab 30.000 € Investition und nur auf den übersteigenden Betrag. Förderfähig bis 30.000 € für die 1. Wohneinheit, je 15.000 € für die 2. bis 6. und je 8.000 € ab der 7. Wohneinheit (mit iSFP verdoppeln sich diese Grenzen).',caps:we=>{const c=30000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000;return{cap:c,capMax:c};}},
+  daemmung:{satzMin:15,satzMax:20,we:true,note:'BAFA-Einzelmaßnahme an der Gebäudehülle (Dämmung): 15 % Zuschuss. Mit gefördertem iSFP kommen 5 Prozentpunkte hinzu, allerdings nur auf den Teil der Kosten oberhalb der Grenze ohne iSFP. Förderfähig bis 30.000 € für die 1. Wohneinheit, je 15.000 € für die 2. bis 6. und je 8.000 € ab der 7. Wohneinheit; mit iSFP 60.000 €, je 30.000 € und je 15.000 €.',caps:we=>({cap:30000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000,capMax:60000+Math.min(Math.max(we-1,0),5)*30000+Math.max(we-6,0)*15000}),calc:(cost,cp)=>({low:Math.min(cost,cp.cap)*0.15,high:Math.min(cost,cp.cap)*0.15+Math.max(0,Math.min(cost,cp.capMax)-cp.cap)*0.20})},
+  fenster:{satzMin:15,satzMax:20,we:true,note:'BAFA-Einzelmaßnahme (Fenster/Außentüren): 15 % Zuschuss. Mit gefördertem iSFP kommen 5 Prozentpunkte hinzu, allerdings nur auf den Teil der Kosten oberhalb der Grenze ohne iSFP. Förderfähig bis 30.000 € für die 1. Wohneinheit, je 15.000 € für die 2. bis 6. und je 8.000 € ab der 7. Wohneinheit; mit iSFP 60.000 €, je 30.000 € und je 15.000 €.',caps:we=>({cap:30000+Math.min(Math.max(we-1,0),5)*15000+Math.max(we-6,0)*8000,capMax:60000+Math.min(Math.max(we-1,0),5)*30000+Math.max(we-6,0)*15000}),calc:(cost,cp)=>({low:Math.min(cost,cp.cap)*0.15,high:Math.min(cost,cp.cap)*0.15+Math.max(0,Math.min(cost,cp.capMax)-cp.cap)*0.20})},
   komplett:{satzMin:0,satzMax:10,kredit:true,we:true,note:'KfW-Effizienzhaus (Kredit bis 150.000 € je Wohneinheit): Der Tilgungszuschuss hängt von der Effizienzhaus-Stufe ab. Die Erneuerbare-Energien-Klasse ist inzwischen Standard, die Tilgungszuschüsse sind dafür niedriger und der Zinsvorteil ist höher. Bei den Stufen Effizienzhaus 85 EE und 70 EE gibt es keinen Tilgungszuschuss mehr, dort zählt allein der günstige Zins. Für unsanierte Altbauten und für serielles Sanieren kommen weitere Prozentpunkte hinzu. Grobe Orientierung, maßgeblich ist das aktuelle KfW-Merkblatt.',caps:we=>({cap:we*150000,capMax:we*150000})},
   kfw266:{satzMin:30,satzMax:30,we:true,weLbl:'neue Wohneinheiten',note:'Gewerbe zu Wohnen (KfW 266): Zuschuss von 30 % der reinen Umbaukosten der Umnutzung. Förderfähig bis 100.000 € je neuer Wohneinheit, entspricht bis 30.000 € Zuschuss je WE; Unternehmens-Deckel 300.000 € (De-minimis). Nur die Umbaukosten der Umnutzung zählen, nicht die energetische Sanierung. Voraussetzung: mind. Effizienzhaus 85 EE. Mit der BEG (z. B. KfW 261) kombinierbar.',caps:we=>{const c=we*100000;return{cap:c,capMax:c,maxZ:Math.min(we*30000,300000)};}}
 };
@@ -1935,12 +1935,14 @@ function calcUpdate(){
   const cp=m.caps(we);
   document.getElementById('calc-cap').textContent='Förderfähige Kosten: bis '+eur(cp.cap)+(cp.capMax>cp.cap?' (mit iSFP bis '+eur(cp.capMax)+')':'')+(m.we&&we>1?' · '+we+' '+(m.weLbl||'Wohneinheiten'):'');
   if(!cost){out.innerHTML='';return;}
-  let low=Math.min(cost,cp.cap)*m.satzMin/100, high=Math.min(cost,cp.capMax)*m.satzMax/100;
+  let low,high;
+  if(m.calc){const r=m.calc(cost,cp);low=r.low;high=r.high;}
+  else{low=Math.min(cost,cp.cap)*m.satzMin/100;high=Math.min(cost,cp.capMax)*m.satzMax/100;}
   if(cp.maxZ){low=Math.min(low,cp.maxZ);high=Math.min(high,cp.maxZ);}
   const fl=m.kredit?'Tilgungszuschuss (ca.)':'Mögliche Förderung (ca.)';
   const same=Math.round(low)===Math.round(high);
   const fv=same?eur(high):`${eur(low)} – ${eur(high)}`;
-  const fs=same?`${m.satzMax} %`:`${m.satzMin}–${m.satzMax} %`;
+  const fs=same?`${m.satzMin} %`:`${m.satzMin}–${m.satzMax} %`;
   const eLow=Math.max(0,cost-high),eHigh=Math.max(0,cost-low);
   const ev=Math.round(eLow)===Math.round(eHigh)?eur(eHigh):`${eur(eLow)} – ${eur(eHigh)}`;
   out.innerHTML=`<div class="calc-box"><div class="v">${fv}</div><div class="k">${fl} · ${fs}</div></div>`+
