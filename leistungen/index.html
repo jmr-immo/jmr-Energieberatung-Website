@@ -144,6 +144,7 @@
   ]
 }
 </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <nav class="nav scrolled" id="nav">
@@ -363,7 +364,8 @@
           <div class="fld"><label for="vorhaben-detail">Genauer (optional)</label><select id="vorhaben-detail" name="Vorhaben genauer" disabled><option value="" disabled selected>Bitte auswählen …</option></select></div>
           <div class="fld"><label for="kf-msg">Ihre Nachricht an uns</label><textarea id="kf-msg" name="Nachricht" rows="3" placeholder="Worum geht es konkret? (optional)"></textarea></div>
           <input type="hidden" name="Seite" value="Leistungen (Übersicht)">
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAE89pf5xM8kY9vmY" style="margin:12px 0"></div>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit" class="btn btn-green magnetic" id="kfSubmit" style="width:100%;justify-content:center">Anfrage senden <span class="ar">→</span></button>
           <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Mehr dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener" style="color:var(--green-d)">Datenschutzerklärung</a>.</p>
           <p class="kf-status" id="kfStatus" hidden></p>

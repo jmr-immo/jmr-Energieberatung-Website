@@ -38,11 +38,11 @@ function populateDetail(disp){
         status.textContent='Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden.';
         form.querySelectorAll('.fld-row,.fld,button').forEach(function(el){el.style.display='none';});
       }else{
-        status.hidden=false;status.className='kf-status err';
+        if(window.turnstile)turnstile.reset();status.hidden=false;status.className='kf-status err';
         status.textContent='Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an info@jmr-energieberatung.de.';
       }
     }catch(err){
-      status.hidden=false;status.className='kf-status err';
+      if(window.turnstile)turnstile.reset();status.hidden=false;status.className='kf-status err';
       status.textContent='Keine Verbindung. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an info@jmr-energieberatung.de.';
     }
     btn.disabled=false;btn.style.opacity='';

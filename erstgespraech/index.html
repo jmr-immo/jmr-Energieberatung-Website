@@ -216,6 +216,7 @@ a{color:inherit;text-decoration:none}
 .footer .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.72rem;color:#5a6f7d}
 .footer .fbot a{color:inherit;text-decoration:none}
 </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -304,6 +305,7 @@ a{color:inherit;text-decoration:none}
             <input type="hidden" name="Maßnahme" id="fnHMass">
             <input type="hidden" name="Seite" value="Anzeigen-LP Förder-Check">
             <input type="hidden" name="Kampagne" id="fnUtm">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAE89pf5xM8kY9vmY" style="margin:12px 0"></div>
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="btn btn-green" id="fnSubmit">Einordnung sofort anzeigen <span class="ar">→</span></button>
             <ul class="fn-trust">
@@ -488,12 +490,12 @@ function fRenderResult(){var d=WZ[fGoal],s=d.subs[fSub];
           btn.disabled=false;btn.style.opacity='';
           fShow('fn-res',3);
         }else{
-          status.hidden=false;status.className='kf-status err';
+          if(window.turnstile)turnstile.reset();status.hidden=false;status.className='kf-status err';
           status.textContent='Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';
           btn.disabled=false;btn.style.opacity='';
         }
       }catch(err){
-        status.hidden=false;status.className='kf-status err';
+        if(window.turnstile)turnstile.reset();status.hidden=false;status.className='kf-status err';
         status.textContent='Keine Verbindung. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0681 9697198.';
         btn.disabled=false;btn.style.opacity='';
       }
