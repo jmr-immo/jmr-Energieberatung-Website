@@ -11,7 +11,7 @@
 ## Leistungsseiten
 
 Beratung & Planung:
-- [Energieberatung](https://jmr-energieberatung.de/energieberatung/): unabhängige Analyse mit klarer Empfehlung.
+- [Energieberatung für Wohngebäude](https://jmr-energieberatung.de/energieberatung/): unabhängige Analyse für Ein-, Zwei- und Mehrfamilienhäuser mit klarer Empfehlung.
 - [Sanierungsfahrplan (iSFP)](https://jmr-energieberatung.de/isfp-sanierungsfahrplan/): geförderter Schritt-für-Schritt-Plan.
 - [Fördermittelberatung](https://jmr-energieberatung.de/foerdermittelberatung/): passende KfW-/BAFA-Förderung, Antrag und Abwicklung.
 - [Energetische Baubegleitung](https://jmr-energieberatung.de/baubegleitung/): förderkonforme Begleitung bis zur Abnahme.
