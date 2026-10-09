@@ -189,7 +189,7 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 @media(max-width:480px){.eee-logo{height:38px}}
 /* Desktop: Tags-Wrapper unsichtbar (Layout wie bisher, eine zentrierte Reihe) */
 .trust-tags{display:contents}
-.trust-claim{font-family:var(--disp);font-weight:600;font-size:.95rem;color:var(--ink);max-width:330px;line-height:1.35;letter-spacing:-.01em}
+.trust-claim{font-family:var(--disp);font-weight:400;font-size:.95rem;color:var(--ink);max-width:330px;line-height:1.35;letter-spacing:-.01em;text-decoration:none}.trust-claim strong{font-weight:600}.trust-claim:hover{text-decoration:underline}
 /* Handy: Logo allein mittig oben, darunter Beratung links / Umsetzung rechts */
 @media(max-width:560px){
   .trust .container{flex-direction:column;gap:1rem}
