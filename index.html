@@ -73,7 +73,7 @@
     {"@type": "State", "name": "Saarland"},
     {"@type": "City", "name": "Saarbrücken"}
   ],
-  "founder": {"@type": "Person", "name": "Jérôme Marquart", "jobTitle": "Wirtschaftsingenieur, Energieeffizienz-Experte (EEE)"},
+  "founder": {"@type": "Person", "name": "Jérôme Marquart", "jobTitle": "Wirtschaftsingenieur, Energieeffizienz-Experte (EEE)", "hasCredential": {"@type": "EducationalOccupationalCredential", "name": "Energieeffizienz-Experte für Förderprogramme des Bundes (BAFA/KfW)", "credentialCategory": "Eintrag in der Energieeffizienz-Expertenliste für Förderprogramme des Bundes", "description": "Eingetragen für Wohngebäude: Energieberatung für Wohngebäude (BAFA, inkl. iSFP), BEG Effizienzhaus (KfW), BEG Einzelmaßnahmen (Wärmedämmung, Fenster und Türen, Heizung, Lüftung), Klimafreundlicher Neubau (KFN) und Wohneigentum für Familien (WEF) mit Zusatzqualifikation Lebenszyklusanalyse (LCA).", "recognizedBy": {"@type": "Organization", "name": "Deutsche Energie-Agentur (dena)", "url": "https://www.energie-effizienz-experten.de"}, "validIn": {"@type": "Country", "name": "Deutschland"}}},
   "knowsAbout": ["Energieberatung", "Energieberater", "iSFP", "Sanierungsfahrplan", "KfW-Förderung", "BAFA-Förderung", "Energetische Baubegleitung", "Ökobilanz", "LCA", "Effizienzhaus", "Wärmepumpe", "Dämmung", "Gewerbe zu Wohnen", "KfW 266", "Nutzungsänderung", "Effizienzhaus 85 EE", "Jung kauft Alt", "KfW 308", "Heizungsförderung", "KfW 458", "BEG-Förderung"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -216,11 +216,13 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 @media(max-width:480px){.eee-logo{height:38px}}
 /* Desktop: Tags-Wrapper unsichtbar (Layout wie bisher, eine zentrierte Reihe) */
 .trust-tags{display:contents}
+.trust-claim{font-family:var(--disp);font-weight:600;font-size:.95rem;color:var(--ink);max-width:330px;line-height:1.35;letter-spacing:-.01em}
 /* Handy: Logo allein mittig oben, darunter Beratung links / Umsetzung rechts */
 @media(max-width:560px){
   .trust .container{flex-direction:column;gap:1rem}
   .eee-logo-link{justify-content:center}
   .trust-tags{display:flex;justify-content:center;align-items:center;gap:1.4rem}
+  .trust-claim{text-align:center}
 }
 
 /* SECTION HEAD */
@@ -910,6 +912,7 @@ section{padding:var(--pad) 0;position:relative;overflow-x:clip}
 <div class="trust">
   <div class="container">
     <a class="eee-logo-link" href="https://www.energie-effizienz-experten.de" target="_blank" rel="noopener" title="Zur Energieeffizienz-Expertenliste" aria-label="Energieeffizienz-Experte in der Expertenliste für Förderprogramme des Bundes"><img class="eee-logo" src="img/eee-experte-logo.png" alt="Energieeffizienz-Experte für Förderprogramme des Bundes"></a>
+    <span class="trust-claim">Gelistet als Energieeffizienz-Experte für Förderprogramme des Bundes (BAFA/KfW)</span>
     <span class="trust-tags"><span class="lg">Beratung <span class="lg-sub">(EBW)</span></span><span class="lg">Umsetzung <span class="lg-sub">(BEG)</span></span></span>
   </div>
 </div>
