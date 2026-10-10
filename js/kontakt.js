@@ -215,11 +215,33 @@ function populateDetail(disp){
   document.addEventListener('click',function(e){
     var el=e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
     if(!el) return;
-    if(window.jmrTrackEvent){ window.jmrTrackEvent('klick_telefon',{stelle:stelle(el)}); }
+    var sp=!!(window.jmrIsSmartphone && window.jmrIsSmartphone());
+    if(window.jmrTrackEvent){ window.jmrTrackEvent('klick_telefon',{stelle:stelle(el),geraet:sp?'smartphone':'andere'}); }
     var st=null;
     try{ st=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null'); }catch(x){}
-    if(st && st.marketing && typeof window.gtag==='function'){
+    // Ads-Conversion nur bei Klick vom Smartphone (am Computer fuehrt ein tel:-Klick selten zu einem Anruf)
+    if(sp && st && st.marketing && typeof window.gtag==='function'){
       window.gtag('event','conversion',{'send_to':AW_TEL});
     }
+  });
+})();
+
+/* E-Mail-Klicks und Buttons zum Kontaktformular (GA4, nur bei Statistik-Zustimmung) */
+(function(){
+  function stelle(el){
+    if(el.closest('.nav,.mnav')) return 'nav';
+    if(el.closest('footer,.foot,.footer')) return 'footer';
+    if(el.closest('#kontakt')) return 'kontakt';
+    if(el.closest('.hero')) return 'hero';
+    return 'seite';
+  }
+  document.addEventListener('click',function(e){
+    if(!window.jmrTrackEvent) return;
+    var el=e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if(!el) return;
+    var h=el.getAttribute('href')||'';
+    var txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
+    if(h.indexOf('mailto:')===0){ window.jmrTrackEvent('klick_email',{stelle:stelle(el)}); }
+    else if(h==='#kontakt'||h==='/#kontakt'||h.indexOf('/erstgespraech')===0){ window.jmrTrackEvent('klick_formular_button',{stelle:stelle(el),label:txt}); }
   });
 })();

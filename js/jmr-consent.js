@@ -84,6 +84,12 @@
     if (ga4Configured) { return; }
     ga4Configured = true;
     window.gtag('config', CONFIG.ga4Id, { anonymize_ip: true });
+    // Weiches Signal fuer Google Ads: 3+ Seitenaufrufe in einer Sitzung (einmal je Sitzung)
+    try {
+      var pvKey = 'jmr-pv', n = (parseInt(sessionStorage.getItem(pvKey) || '0', 10) || 0) + 1;
+      sessionStorage.setItem(pvKey, String(n));
+      if (n === 3) { window.gtag('event', 'seitenaufrufe_3', {}); }
+    } catch (e) {}
   }
   var clarityLoaded = false;
   function loadClarity() {              // Kategorie "statistics"
@@ -168,6 +174,18 @@
     if (st && st.statistics && typeof window.gtag === 'function') {
       window.gtag('event', name, params || {});
     }
+  };
+
+  // ===== Geraet: nur echte Smartphones (keine Tablets/Computer) =====
+  window.jmrIsSmartphone = function () {
+    return /iPhone|iPod|Android.+Mobile|Windows Phone/i.test(navigator.userAgent || '');
+  };
+  // ===== GA4-Event hoechstens einmal je Sitzung =====
+  window.jmrTrackOnce = function (name, params) {
+    var st = readState();
+    if (!(st && st.statistics)) { return; }
+    try { var k = 'jmr-once-' + name; if (sessionStorage.getItem(k)) { return; } sessionStorage.setItem(k, '1'); } catch (e) {}
+    window.jmrTrackEvent(name, params);
   };
 
   // ===== UI: Ebene 1 – vollbreite Leiste unten =====

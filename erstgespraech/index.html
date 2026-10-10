@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 
 <!-- Google Ads + Google Analytics + Cookie-Einwilligung (laedt erst nach Zustimmung) -->
-<script src="../js/jmr-consent.js?v=20260803b" defer></script>
+<script src="../js/jmr-consent.js?v=20261010a" defer></script>
 
 <style>
 @font-face{font-family:'Inter';src:url('../fonts/Inter-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
@@ -472,7 +472,7 @@ function fRenderResult(){var d=WZ[fGoal],s=d.subs[fSub];
     var el=e.target.closest('a[data-call]');if(!el)return;
     if(window.jmrTrackEvent)window.jmrTrackEvent('klick_telefon',{stelle:'erstgespraech_lp'});
     if(PHONE_CONV){var st=null;try{st=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}
-      if(st&&st.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':PHONE_CONV});}}
+      if(window.jmrIsSmartphone&&window.jmrIsSmartphone()&&st&&st.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':PHONE_CONV});}}
   });
 
   var form=fEl('funnelForm');

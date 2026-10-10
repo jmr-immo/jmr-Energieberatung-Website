@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <!-- Google Ads Conversion-Tracking + Cookie-Einwilligung (laedt erst nach Zustimmung) -->
-<script src="js/jmr-consent.js?v=20260803b" defer></script>
+<script src="js/jmr-consent.js?v=20261010a" defer></script>
 <!-- Favicons (jmr-Logo) -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png">
@@ -2033,7 +2033,7 @@ function wzToContact(){
     hf.value=parts.join(' | ');
   }
 }
-function show(id){document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');var big=(id==='wz-res'||id==='wz-contact'||id==='wz-cost');var ld=document.getElementById('wz-lead');if(ld)ld.style.display=big?'none':'block';document.getElementById('wz').classList.toggle('res-open',big);if(window.matchMedia&&window.matchMedia('(max-width:560px)').matches){var a=document.querySelector('#wegweiser .wz-head-m')||document.getElementById('wz');if(a){var y=a.getBoundingClientRect().top+window.pageYOffset-78;window.scrollTo({top:y<0?0:y,behavior:'smooth'});}}}
+function show(id){if(id==='wz-contact'&&window.jmrTrackOnce){window.jmrTrackOnce('foerdercheck_kontaktschritt',{});}document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');var big=(id==='wz-res'||id==='wz-contact'||id==='wz-cost');var ld=document.getElementById('wz-lead');if(ld)ld.style.display=big?'none':'block';document.getElementById('wz').classList.toggle('res-open',big);if(window.matchMedia&&window.matchMedia('(max-width:560px)').matches){var a=document.querySelector('#wegweiser .wz-head-m')||document.getElementById('wz');if(a){var y=a.getBoundingClientRect().top+window.pageYOffset-78;window.scrollTo({top:y<0?0:y,behavior:'smooth'});}}}
 function wzGoal(k){curGoal=k;const d=WZ[k];
   document.getElementById('q2-question').textContent=d.q2;
   document.getElementById('q2-opts').innerHTML=d.subs.map((s,i)=>`<button class="wz-opt" onclick="wzSub(${i})"><span class="oar">→</span><span class="opt-ic">${i+1}</span><span class="opt-txt"><strong>${s.l}</strong><span class="opt-d">${s.d||s.f}</span></span><span class="opt-cue">Auswählen →</span></button>`).join('');
@@ -2105,11 +2105,11 @@ populateDetail(document.getElementById('vorhaben').value);
     var href=(el.getAttribute&&el.getAttribute('href'))||'';
     var txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
     var loc=stelle(el);
-    if(href.indexOf('tel:')===0){window.jmrTrackEvent('klick_telefon',{stelle:loc});var stC=null;try{stC=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}if(stC&&stC.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':'AW-18244917669/8rLHCIeUs8gcEKWz7ftD'});}}
+    if(href.indexOf('tel:')===0){var sp=!!(window.jmrIsSmartphone&&window.jmrIsSmartphone());window.jmrTrackEvent('klick_telefon',{stelle:loc,geraet:sp?'smartphone':'andere'});var stC=null;try{stC=JSON.parse(localStorage.getItem('jmr-consent-v2')||'null');}catch(x){}if(sp&&stC&&stC.marketing&&typeof window.gtag==='function'){window.gtag('event','conversion',{'send_to':'AW-18244917669/8rLHCIeUs8gcEKWz7ftD'});}}
     else if(href.indexOf('mailto:')===0){window.jmrTrackEvent('klick_email',{stelle:loc});}
     else if(el.classList&&el.classList.contains('wz-opt')){window.jmrTrackEvent('foerdercheck_select',{label:txt});}
     else if(href.indexOf('faq')===0||/faq\.html$/.test(href)){window.jmrTrackEvent('klick_faq',{stelle:loc});}
-    else if(href.indexOf('#kontakt')===0){window.jmrTrackEvent('klick_erstgespraech_'+loc,{label:txt});}
+    else if(href.indexOf('#kontakt')===0||href.indexOf('/#kontakt')===0||href.indexOf('/erstgespraech')===0){window.jmrTrackEvent('klick_erstgespraech_'+loc,{label:txt});window.jmrTrackEvent('klick_formular_button',{stelle:loc,label:txt});}
     else if(href.indexOf('#wegweiser')===0){window.jmrTrackEvent('klick_foerdercheck_'+loc,{label:txt});}
     else{window.jmrTrackEvent('klick_button',{stelle:loc,label:txt,ziel:href});}
   });
