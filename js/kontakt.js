@@ -226,7 +226,8 @@ function populateDetail(disp){
   });
 })();
 
-/* E-Mail-Klicks und Buttons zum Kontaktformular (GA4, nur bei Statistik-Zustimmung) */
+/* E-Mail-Klicks und Buttons zum Kontaktformular
+   (GA4 bei Statistik-, Google-Ads-Conversion bei Marketing-Zustimmung) */
 (function(){
   function stelle(el){
     if(el.closest('.nav,.mnav')) return 'nav';
@@ -241,7 +242,8 @@ function populateDetail(disp){
     if(!el) return;
     var h=el.getAttribute('href')||'';
     var txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
-    if(h.indexOf('mailto:')===0){ window.jmrTrackEvent('klick_email',{stelle:stelle(el)}); }
-    else if(h==='#kontakt'||h==='/#kontakt'||h.indexOf('/erstgespraech')===0){ window.jmrTrackEvent('klick_formular_button',{stelle:stelle(el),label:txt}); }
+    var aw=window.jmrAdsConversion||function(){};
+    if(h.indexOf('mailto:')===0){ window.jmrTrackEvent('klick_email',{stelle:stelle(el)}); aw('email'); }
+    else if(h==='#kontakt'||h==='/#kontakt'||h.indexOf('/erstgespraech')===0){ window.jmrTrackEvent('klick_formular_button',{stelle:stelle(el),label:txt}); aw('formular_button'); }
   });
 })();

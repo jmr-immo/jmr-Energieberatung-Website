@@ -55,7 +55,7 @@
 </script>
 
 <!-- Google Ads + Google Analytics + Cookie-Einwilligung (laedt erst nach Zustimmung) -->
-<script src="js/jmr-consent.js?v=20261010a" defer></script>
+<script src="js/jmr-consent.js?v=20261010b" defer></script>
 
 <style>
 @font-face{font-family:'Inter';src:url('fonts/Inter-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
@@ -380,6 +380,17 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
+<script>
+/* Buttons zum Kontaktformular und E-Mail-Klicks (GA4 bei Statistik-, Ads bei Marketing-Zustimmung) */
+document.addEventListener('click',function(e){
+  var el=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!el)return;
+  var h=el.getAttribute('href')||'', txt=(el.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
+  var st=el.closest('.nav,.mnav')?'nav':(el.closest('footer,.foot,.footer')?'footer':'seite');
+  var ev=window.jmrTrackEvent||function(){}, aw=window.jmrAdsConversion||function(){};
+  if(h.indexOf('mailto:')===0){ev('klick_email',{stelle:st});aw('email');}
+  else if(h==='#kontakt'||h==='/#kontakt'||h.indexOf('/erstgespraech')===0){ev('klick_formular_button',{stelle:st,label:txt});aw('formular_button');}
+});
+</script>
 <script src="/js/nav.js?v=20260802a" defer></script>
 <script src="/js/jmr-params.js?v=20260802a" defer></script>
 </body>

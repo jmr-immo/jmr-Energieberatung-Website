@@ -42,6 +42,13 @@
     ],
     googleAdsId: 'AW-18244917669',
     conversionSendTo: 'AW-18244917669/SMiQCL6i2sAcEKWz7ftD',
+    // Weitere Google-Ads-Conversions (Werte werden in Google Ads gepflegt)
+    adsLabels: {
+      email: 'AW-18244917669/QxljCOu56JcdEKWz7ftD',            // E-Mail-Klick Website (30 €)
+      formular_button: 'AW-18244917669/UfjqCPS56JcdEKWz7ftD',  // Formular-Button Klick (10 €)
+      foerdercheck_kontakt: 'AW-18244917669/BKS6CPG56JcdEKWz7ftD', // Förder-Check Kontaktschritt (20 €)
+      seitenaufrufe_3: 'AW-18244917669/jIZFCO656JcdEKWz7ftD'   // 3+ Seitenaufrufe (1 €)
+    },
     ga4Id: 'G-EB7B2R76H8',
     // Microsoft Clarity (Heatmaps/Sitzungsaufzeichnung) – Kategorie "statistics".
     // Projekt-ID aus clarity.microsoft.com eintragen; solange leer, wird Clarity NICHT geladen.
@@ -84,11 +91,20 @@
     if (ga4Configured) { return; }
     ga4Configured = true;
     window.gtag('config', CONFIG.ga4Id, { anonymize_ip: true });
-    // Weiches Signal fuer Google Ads: 3+ Seitenaufrufe in einer Sitzung (einmal je Sitzung)
+  }
+  // Weiches Signal: 3+ Seitenaufrufe in einer Sitzung (einmal je Seitenaufruf gezaehlt,
+  // GA4-Event bei Statistik-, Ads-Conversion bei Marketing-Einwilligung)
+  var pvCounted = false;
+  function countPageview(state) {
+    if (pvCounted) { return; }
+    pvCounted = true;
     try {
       var pvKey = 'jmr-pv', n = (parseInt(sessionStorage.getItem(pvKey) || '0', 10) || 0) + 1;
       sessionStorage.setItem(pvKey, String(n));
-      if (n === 3) { window.gtag('event', 'seitenaufrufe_3', {}); }
+      if (n === 3) {
+        if (state.statistics) { window.gtag('event', 'seitenaufrufe_3', {}); }
+        if (state.marketing) { window.gtag('event', 'conversion', { 'send_to': CONFIG.adsLabels.seitenaufrufe_3 }); }
+      }
     } catch (e) {}
   }
   var clarityLoaded = false;
@@ -120,6 +136,7 @@
       loadGoogleAds();
       // loadMetaPixel();
     }
+    if (statistics || marketing) { countPageview(state); }
   }
 
   // ===== Auswahl lesen/speichern =====
@@ -166,6 +183,17 @@
     if (st && st.marketing && typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', { 'send_to': CONFIG.conversionSendTo });
     }
+  };
+
+  // ===== Weitere Ads-Conversions (E-Mail, Formular-Button, Förder-Check, Seitenaufrufe) =====
+  // Feuert nur bei Marketing-Einwilligung. once=true: hoechstens einmal je Sitzung.
+  window.jmrAdsConversion = function (key, once) {
+    var st = readState(), id = CONFIG.adsLabels[key];
+    if (!id || !(st && st.marketing) || typeof window.gtag !== 'function') { return; }
+    if (once) {
+      try { var k = 'jmr-aw-' + key; if (sessionStorage.getItem(k)) { return; } sessionStorage.setItem(k, '1'); } catch (e) {}
+    }
+    window.gtag('event', 'conversion', { 'send_to': id });
   };
 
   // ===== GA4-Event-Auslöser (Button-Klicks etc.) – feuert nur bei Statistik-Zustimmung =====
