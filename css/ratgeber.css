@@ -71,3 +71,19 @@
 /* Ratgeber-Hinweis auf Leistungsseiten */
 .lp-faq-more .rg-link{margin-left:.6rem}
 @media(max-width:560px){.lp-faq-more .rg-link{margin:.7rem 0 0}}
+
+/* Titelbild im Artikel und Vorschaubild in der Übersicht */
+.rg-figure{margin:2.2rem auto 0;max-width:960px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:2/1;background:var(--paper-2)}
+.rg-figure img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:600px){.rg-figure{aspect-ratio:3/2;margin-top:1.6rem;border-radius:var(--r)}}
+.rg-list .lcard{overflow:hidden}
+.rg-thumb{display:block;margin:-1.8rem -1.7rem 1.3rem;aspect-ratio:16/9;overflow:hidden;background:var(--paper-2)}
+.rg-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.rg-list .lcard:hover .rg-thumb img{transform:scale(1.04)}
+
+/* Artikelkopf linksbündig, an der Textspalte ausgerichtet */
+.rg-art .container{align-items:stretch;text-align:left}
+.rg-art .rg-head{width:100%;max-width:760px;margin:0 auto}
+.rg-art .rg-crumb{justify-content:flex-start}
+.rg-art .rg-lead{max-width:none}
+.rg-art .rg-figure{width:100%}
