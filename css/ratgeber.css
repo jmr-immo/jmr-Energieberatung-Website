@@ -1,0 +1,73 @@
+/* Ratgeber: Übersicht und Artikel. Ergänzt leistung.css (Variablen, Nav, Footer, Kontakt). */
+
+/* Kompakter Kopfbereich statt Vollbild-Hero */
+.hero.rg-hero{min-height:auto;padding:140px 0 56px;display:block}
+@media(max-width:900px){.hero.rg-hero{min-height:auto;padding:104px 0 36px}}
+.rg-hero .container{position:relative;z-index:3}
+.rg-crumb{font-size:.8rem;color:var(--muted);margin-bottom:1.4rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.rg-crumb a{color:var(--steel)}
+.rg-crumb a:hover{color:var(--steel-d);text-decoration:underline}
+.rg-crumb span[aria-hidden]{opacity:.5}
+.rg-h1{font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.1;letter-spacing:-.03em;max-width:900px}
+.rg-lead{font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--muted);line-height:1.65;max-width:760px;margin-top:1.3rem}
+.rg-meta{display:flex;flex-wrap:wrap;gap:.35rem .9rem;align-items:center;margin-top:1.6rem;font-size:.86rem;color:var(--muted)}
+.rg-meta strong{color:var(--ink);font-weight:600}
+.rg-meta .dot{opacity:.45}
+
+/* Artikeltext */
+.rg-article{padding:clamp(28px,5vh,56px) 0 clamp(56px,8vh,96px)}
+.rg-body{max-width:760px;margin:0 auto}
+.rg-body>*+*{margin-top:1.15rem}
+.rg-body p,.rg-body li{font-size:1.06rem;line-height:1.75;color:#24333f}
+.rg-body h2{font-size:clamp(1.45rem,2.4vw,1.9rem);letter-spacing:-.025em;line-height:1.2;margin-top:3rem;scroll-margin-top:90px}
+.rg-body h3{font-size:1.18rem;letter-spacing:-.015em;margin-top:2rem}
+.rg-body ul,.rg-body ol{padding-left:1.3rem}
+.rg-body li+li{margin-top:.45rem}
+.rg-body a{color:var(--steel);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.rg-body a:hover{color:var(--steel-d)}
+.rg-body strong{color:var(--ink);font-weight:600}
+.rg-num{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;background:var(--green);color:#fff;font-family:var(--disp);font-size:.95rem;font-weight:600;margin-right:.6rem;vertical-align:.15em;letter-spacing:0}
+
+/* Kurz gesagt */
+.rg-tldr{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:1.3rem 1.5rem}
+.rg-tldr .rg-tldr-h{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-d);font-weight:600;margin-bottom:.6rem}
+.rg-tldr ul{margin:0}
+.rg-tldr li{font-size:1rem}
+
+/* Hinweis- und Rechenkästen */
+.rg-note{background:var(--paper-2);border-radius:14px;padding:1.1rem 1.3rem;font-size:.98rem}
+.rg-note p{font-size:.98rem}
+.rg-note b{color:var(--ink)}
+.rg-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;background:var(--white)}
+.rg-table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:520px}
+.rg-table th,.rg-table td{text-align:left;padding:.75rem .95rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rg-table th{font-family:var(--disp);font-weight:600;color:var(--ink);background:#faf9f5}
+.rg-table tr:last-child td{border-bottom:0}
+.rg-table td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+.rg-table tr.hl td{background:rgba(31,168,90,.07);font-weight:600;color:var(--ink)}
+.rg-small{font-size:.86rem !important;color:var(--muted) !important}
+
+/* Handlungsaufforderung */
+.rg-cta{margin-top:2.6rem !important;background:linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 100%);border-radius:var(--r-lg);padding:1.8rem 1.9rem;color:var(--ink-text)}
+.rg-cta h2,.rg-cta .rg-cta-h{color:#fff;font-family:var(--disp);font-weight:600;font-size:1.35rem;letter-spacing:-.02em;margin:0 0 .5rem}
+.rg-cta p{color:var(--ink-text);font-size:1rem}
+.rg-cta .rg-cta-act{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
+.rg-cta .btn-ghost{color:#fff}
+
+/* Quellen und Gewähr */
+.rg-src{border-top:1px solid var(--line);padding-top:1.4rem;margin-top:2.6rem !important}
+.rg-src p,.rg-src li{font-size:.86rem;color:var(--muted);line-height:1.6}
+.rg-src ul{padding-left:1.1rem}
+
+/* Häufige Fragen im Artikel */
+.rg-body .lp-faq{margin-top:1rem}
+
+/* Übersicht */
+.rg-list .card{padding:1.8rem 1.7rem}
+.rg-list .lcard h3{white-space:normal;overflow:visible;text-overflow:clip}
+.rg-cat{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-d);font-weight:600;margin-bottom:.8rem}
+.rg-date{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.9rem}
+
+/* Ratgeber-Hinweis auf Leistungsseiten */
+.lp-faq-more .rg-link{margin-left:.6rem}
+@media(max-width:560px){.lp-faq-more .rg-link{margin:.7rem 0 0}}

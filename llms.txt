@@ -7,6 +7,13 @@
 - [Startseite](https://jmr-energieberatung.de/): Leistungen, Förder-Check und Kontakt.
 - [Leistungen (Übersicht)](https://jmr-energieberatung.de/leistungen/): alle Leistungen in drei Gruppen.
 - [Häufige Fragen (FAQ)](https://jmr-energieberatung.de/faq.html): Antworten zu Förderung, iSFP, Heizungstausch, Baubegleitung und zur Wahl eines guten, unabhängigen Energieberaters.
+- [Ratgeber](https://jmr-energieberatung.de/ratgeber/): Beiträge mit Stand-Datum zu Förderung, Sanierungsfahrplan und Hauskauf.
+
+## Ratgeber
+
+- [Hauskauf: 7 Punkte, die Sie vor dem Kauf energetisch prüfen sollten](https://jmr-energieberatung.de/ratgeber/hauskauf-energetisch-pruefen/): Energieausweis, Heizung, Nachrüstpflicht oberste Geschossdecke, Fenster, Feuchte, Eigentümergemeinschaft, Jung kauft Alt.
+- [iSFP: Für wen sich der Sanierungsfahrplan lohnt und für wen nicht](https://jmr-energieberatung.de/ratgeber/isfp-lohnt-sich/): EBW-Zuschuss, iSFP-Bonus seit Juli 2026 (erst ab 30.000 €, nur auf den Betrag darüber), Rechenbeispiel.
+- [KfW 261 oder BAFA-Zuschuss: Effizienzhaus oder Einzelmaßnahmen?](https://jmr-energieberatung.de/ratgeber/effizienzhaus-oder-einzelmassnahmen/): Vergleich nach der BEG-Reform, Tilgungszuschüsse je Stufe, WPB-Bonus, Kombinationsverbot, Rechenbeispiel.
 
 ## Leistungsseiten
 
